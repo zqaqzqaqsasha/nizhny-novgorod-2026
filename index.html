@@ -468,10 +468,23 @@ input {
   display: none;
 }
 
+.event-card.is-closed {
+  background: #f8faf9;
+  border-left-color: var(--green);
+}
+
 .event-time {
   color: var(--accent);
   font-weight: 900;
   white-space: nowrap;
+}
+
+.event-title-row,
+.item-title-row {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 .event-title {
@@ -480,9 +493,36 @@ input {
   line-height: 1.22;
 }
 
+.event-card.is-closed .event-title {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
 .event-note {
   margin: 6px 0 0;
   color: var(--muted);
+}
+
+.status-pill {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.status-pill--open {
+  background: #e7f5ff;
+  color: #1864ab;
+}
+
+.status-pill--closed {
+  background: #ebfbee;
+  color: #2b8a3e;
 }
 
 .tags {
@@ -537,20 +577,39 @@ input {
   align-items: start;
 }
 
-.check-item input {
-  width: 20px;
-  height: 20px;
-  margin-top: 2px;
-  accent-color: var(--teal);
+.check-marker {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  margin-top: 1px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-weight: 900;
+  line-height: 1;
 }
 
-.check-item span {
+.check-item__title {
   font-weight: 750;
 }
 
-.check-item.is-done span {
+.check-item.is-done .check-marker {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
+.check-item.is-done .check-item__title,
+.reference-item.is-done strong,
+.update-item.is-done strong {
   color: var(--muted);
   text-decoration: line-through;
+}
+
+.item-note {
+  margin: 5px 0 0;
+  color: var(--muted);
 }
 
 .reference-item strong,
@@ -828,9 +887,9 @@ input {
     </footer>
 
     <script>
-const tags = ["еда", "кофе", "фото", "закат", "бронь", "такси", "пешком", "фиеста", "запас"];
+let tags = ["еда", "кофе", "фото", "закат", "бронь", "такси", "пешком", "фиеста", "запас"];
 
-const days = [
+let days = [
   {
     id: "day-12",
     accent: "#2f80ed",
@@ -1211,7 +1270,7 @@ const days = [
   },
 ];
 
-const prepItems = [
+let prepItems = [
   "Забронировать Si, Mamma на 12 августа.",
   "Забронировать Пяткинъ на 13 августа.",
   "Забронировать Медные Трубы на 13 августа: заведение работает только по брони.",
@@ -1223,7 +1282,7 @@ const prepItems = [
   "Выбрать оператора часовой прогулки на теплоходе.",
 ];
 
-const bookingItems = [
+let bookingItems = [
   ["Si, Mamma", "Ужин 12 августа на Рождественской, 24. Нужна бронь заранее."],
   ["Пяткинъ", "Основной ужин 13 августа. Русская кухня, плотный вечер."],
   ["Медные Трубы", "Коктейльный бар 13 августа. Только по брони."],
@@ -1232,14 +1291,14 @@ const bookingItems = [
   ["Настаятель", "Основные вечера: пятница и суббота. Настойки и дегустационный формат."],
 ];
 
-const rainItems = [
+let rainItems = [
   ["13 августа", "Стену Кремля заменить на территорию Кремля + кафе / музейную часть."],
   ["14 августа", "Сократить Стрелку и Пакгаузы, больше времени оставить Покровской и заведениям."],
   ["15 августа", "Если Фиесту перенесут, использовать день как свободный гастро-день."],
   ["16 августа", "Отменить теплоход, канатку оставить только если работает."],
 ];
 
-const packingItems = [
+let packingItems = [
   "Пауэрбанк",
   "Зарядки",
   "Вода",
@@ -1254,12 +1313,17 @@ const packingItems = [
   "Алкоголь и закуски для вечеров в отеле",
 ];
 
-const updates = [
+let updates = [
   ["Фиеста", "Точная дата, площадка и тайминг Приволжской фиесты."],
   ["Теплоход", "Оператор, время и цена часовой речной прогулки."],
   ["Афиша", "Городские события и фестиваль «Столица закатов» на 12-17 августа."],
   ["Заведения", "Новые места, которые захочется добавить ближе к поездке."],
 ];
+
+const googleSheetConfig = {
+  id: "1R1EP47oM8S9P2SP4X_-a9WlbpCnDwtqz9-VrEcMO2uk",
+  sheet: "Данные",
+};
 
 const state = {
   activeTag: "all",
@@ -1275,6 +1339,269 @@ function el(tagName, className, text) {
   return node;
 }
 
+function escapeHtml(value = "") {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function normalizeText(value = "") {
+  return String(value).trim().toLowerCase();
+}
+
+function normalizeStatus(status = "") {
+  const value = normalizeText(status);
+  return value === "закрыто" || value === "closed" || value === "done" ? "закрыто" : "открыто";
+}
+
+function hasStatus(status) {
+  return String(status ?? "").trim() !== "";
+}
+
+function isClosed(status) {
+  return hasStatus(status) && normalizeStatus(status) === "закрыто";
+}
+
+function statusBadge(status) {
+  if (!hasStatus(status)) return "";
+  const label = normalizeStatus(status);
+  return `<span class="status-pill status-pill--${label === "закрыто" ? "closed" : "open"}">${label}</span>`;
+}
+
+function splitTags(value = "") {
+  return String(value)
+    .split(/[,;#]/)
+    .map((tag) => tag.trim().replace(/^#/, ""))
+    .filter(Boolean);
+}
+
+function parseCsv(text) {
+  const rows = [];
+  let row = [];
+  let field = "";
+  let inQuotes = false;
+
+  for (let index = 0; index < text.length; index += 1) {
+    const char = text[index];
+    const next = text[index + 1];
+
+    if (char === '"' && inQuotes && next === '"') {
+      field += '"';
+      index += 1;
+      continue;
+    }
+
+    if (char === '"') {
+      inQuotes = !inQuotes;
+      continue;
+    }
+
+    if (char === "," && !inQuotes) {
+      row.push(field);
+      field = "";
+      continue;
+    }
+
+    if ((char === "\n" || char === "\r") && !inQuotes) {
+      if (char === "\r" && next === "\n") index += 1;
+      row.push(field);
+      if (row.some((cell) => cell.trim())) rows.push(row);
+      row = [];
+      field = "";
+      continue;
+    }
+
+    field += char;
+  }
+
+  row.push(field);
+  if (row.some((cell) => cell.trim())) rows.push(row);
+  return rows;
+}
+
+function rowsToObjects(rows) {
+  const [headers, ...body] = rows;
+  const keys = headers.map((header) => normalizeText(header));
+  return body.map((cells) => {
+    const row = {};
+    keys.forEach((key, index) => {
+      row[key] = cells[index] ?? "";
+    });
+    return row;
+  });
+}
+
+function loadSheetJsonp() {
+  return new Promise((resolve, reject) => {
+    const callbackName = `__nizhnySheet${Date.now()}${Math.floor(Math.random() * 10000)}`;
+    const url = new URL(`https://docs.google.com/spreadsheets/d/${googleSheetConfig.id}/gviz/tq`);
+    url.searchParams.set("sheet", googleSheetConfig.sheet);
+    url.searchParams.set("tqx", `out:json;responseHandler:${callbackName}`);
+    url.searchParams.set("_", String(Date.now()));
+
+    const script = document.createElement("script");
+    const timeout = window.setTimeout(() => {
+      cleanup();
+      reject(new Error("Google Sheet request timed out"));
+    }, 10000);
+
+    function cleanup() {
+      window.clearTimeout(timeout);
+      script.remove();
+      delete window[callbackName];
+    }
+
+    window[callbackName] = (data) => {
+      cleanup();
+      resolve(data);
+    };
+
+    script.onerror = () => {
+      cleanup();
+      reject(new Error("Google Sheet request failed"));
+    };
+
+    script.src = url.toString();
+    document.head.append(script);
+  });
+}
+
+function gvizToObjects(data) {
+  const table = data?.table;
+  if (!table?.cols?.length || !table?.rows?.length) return [];
+
+  const keys = table.cols.map((column) => normalizeText(column.label));
+  return table.rows.map((entry) => {
+    const row = {};
+    keys.forEach((key, index) => {
+      const cellData = entry.c?.[index];
+      row[key] = String(cellData?.f ?? cellData?.v ?? "").trim();
+    });
+    return row;
+  });
+}
+
+function cell(row, names, fallback = "") {
+  for (const name of names) {
+    const value = row[normalizeText(name)];
+    if (value != null && String(value).trim() !== "") return String(value).trim();
+  }
+  return fallback;
+}
+
+function sectionIs(row, names) {
+  const section = normalizeText(cell(row, ["Раздел", "Section"]));
+  return names.map(normalizeText).includes(section);
+}
+
+function numericOrder(row, index) {
+  const raw = cell(row, ["Порядок", "Order"]);
+  const value = Number.parseFloat(raw.replace(",", "."));
+  return Number.isFinite(value) ? value : index + 1;
+}
+
+function itemFromRow(row, index) {
+  return {
+    title: cell(row, ["Название", "Title"], "Без названия"),
+    note: cell(row, ["Описание", "Заметка", "Note", "Description"]),
+    tags: splitTags(cell(row, ["Теги", "Tags"])),
+    status: normalizeStatus(cell(row, ["Статус", "Status"])),
+    order: numericOrder(row, index),
+  };
+}
+
+function collectSection(rows, names, fallback) {
+  const items = rows
+    .filter((row) => sectionIs(row, names))
+    .map(itemFromRow)
+    .sort((a, b) => a.order - b.order);
+  return items.length ? items : fallback;
+}
+
+function buildDaysFromRows(rows) {
+  const map = new Map();
+  rows
+    .filter((row) => sectionIs(row, ["Расписание", "Schedule"]))
+    .forEach((row, index) => {
+      const date = cell(row, ["Дата", "Date"], "Дата не указана");
+      const dayTitle = cell(row, ["Заголовок дня", "День", "Day title"], "День поездки");
+      const key = `${date}::${dayTitle}`;
+      if (!map.has(key)) {
+        map.set(key, {
+          id: `day-${map.size + 1}`,
+          accent: cell(row, ["Цвет", "Color"], "#2f80ed"),
+          icon: cell(row, ["Иконка", "Icon"], "◼"),
+          date,
+          title: dayTitle,
+          summary: cell(row, ["Кратко о дне", "Кратко", "Summary"]),
+          order: numericOrder(row, index),
+          events: [],
+        });
+      }
+
+      map.get(key).events.push({
+        time: cell(row, ["Время", "Time"]),
+        title: cell(row, ["Название", "Title"], "Без названия"),
+        note: cell(row, ["Описание", "Заметка", "Note", "Description"]),
+        tags: splitTags(cell(row, ["Теги", "Tags"])),
+        status: normalizeStatus(cell(row, ["Статус", "Status"])),
+        order: numericOrder(row, index),
+      });
+    });
+
+  return [...map.values()]
+    .sort((a, b) => a.order - b.order)
+    .map((day) => ({
+      ...day,
+      events: day.events.sort((a, b) => a.order - b.order),
+    }));
+}
+
+function refreshTags() {
+  const set = new Set();
+  days.forEach((day) => {
+    day.events.forEach((event) => event.tags.forEach((tag) => set.add(tag)));
+  });
+  [prepItems, bookingItems, rainItems, packingItems, updates].flat().forEach((item) => {
+    getItemTags(item).forEach((tag) => set.add(tag));
+  });
+  tags = [...set].sort((a, b) => a.localeCompare(b, "ru"));
+}
+
+async function loadGoogleSheet() {
+  if (!googleSheetConfig.id) return;
+
+  const rows = gvizToObjects(await loadSheetJsonp());
+  prepItems = collectSection(rows, ["Подготовка", "До поездки", "Чеклист"], prepItems);
+  packingItems = collectSection(rows, ["Вещи", "Сборы"], packingItems);
+  refreshTags();
+}
+
+function getItemTitle(item) {
+  if (Array.isArray(item)) return item[0];
+  if (typeof item === "object") return item.title;
+  return item;
+}
+
+function getItemNote(item) {
+  if (Array.isArray(item)) return item[1] || "";
+  if (typeof item === "object") return item.note || "";
+  return "";
+}
+
+function getItemStatus(item) {
+  if (typeof item === "object" && !Array.isArray(item)) return item.status;
+  return "открыто";
+}
+
+function getItemTags(item) {
+  if (typeof item === "object" && !Array.isArray(item)) return item.tags || [];
+  return [];
+}
+
 function renderSummary() {
   const grid = byId("summaryGrid");
   grid.innerHTML = "";
@@ -1283,9 +1610,9 @@ function renderSummary() {
     card.href = `#${day.id}`;
     card.style.setProperty("--accent", day.accent);
     card.innerHTML = `
-      <span class="summary-card__date">${day.date}</span>
-      <h3>${day.icon} ${day.title}</h3>
-      <p>${day.summary}</p>
+      <span class="summary-card__date">${escapeHtml(day.date)}</span>
+      <h3>${escapeHtml(day.icon)} ${escapeHtml(day.title)}</h3>
+      <p>${escapeHtml(day.summary)}</p>
     `;
     grid.append(card);
   });
@@ -1322,7 +1649,8 @@ function renderDayNav() {
     const link = el("a");
     link.href = `#${day.id}`;
     link.style.setProperty("--accent", day.accent);
-    link.innerHTML = `<span>${day.date.split(",")[0]}</span>${day.icon} ${day.date.split(", ")[1]}`;
+    const [date, weekday = ""] = day.date.split(", ");
+    link.innerHTML = `<span>${escapeHtml(date)}</span>${escapeHtml(day.icon)} ${escapeHtml(weekday)}`;
     nav.append(link);
   });
 }
@@ -1337,25 +1665,28 @@ function renderDays() {
 
     const heading = el("div", "day-heading");
     heading.innerHTML = `
-      <div class="day-heading__badge">${day.icon}</div>
+      <div class="day-heading__badge">${escapeHtml(day.icon)}</div>
       <div>
-        <h3>${day.date} · ${day.title}</h3>
-        <p>${day.summary}</p>
+        <h3>${escapeHtml(day.date)} · ${escapeHtml(day.title)}</h3>
+        <p>${escapeHtml(day.summary)}</p>
       </div>
     `;
 
     const timeline = el("div", "timeline");
     day.events.forEach((event) => {
-      const card = el("article", "event-card");
-      card.dataset.search = `${day.date} ${day.title} ${event.time} ${event.title} ${event.note} ${event.tags.join(" ")}`.toLowerCase();
+      const card = el("article", `event-card${isClosed(event.status) ? " is-closed" : ""}`);
+      card.dataset.search = `${day.date} ${day.title} ${event.time} ${event.title} ${event.note} ${event.tags.join(" ")} ${normalizeStatus(event.status)}`.toLowerCase();
       card.dataset.tags = event.tags.join(",");
       card.style.setProperty("--accent", day.accent);
       card.innerHTML = `
-        <div class="event-time">${event.time}</div>
+        <div class="event-time">${escapeHtml(event.time)}</div>
         <div>
-          <h4 class="event-title">${event.title}</h4>
-          <p class="event-note">${event.note}</p>
-          <div class="tags">${event.tags.map((tag) => `<span class="tag">#${tag}</span>`).join("")}</div>
+          <div class="event-title-row">
+            <h4 class="event-title">${escapeHtml(event.title)}</h4>
+            ${statusBadge(event.status)}
+          </div>
+          <p class="event-note">${escapeHtml(event.note)}</p>
+          <div class="tags">${event.tags.map((tag) => `<span class="tag">#${escapeHtml(tag)}</span>`).join("")}</div>
         </div>
       `;
       timeline.append(card);
@@ -1370,17 +1701,20 @@ function renderChecklist(targetId, items, namespace) {
   const target = byId(targetId);
   target.innerHTML = "";
   items.forEach((item, index) => {
-    const id = `${namespace}-${index}`;
-    const row = el("label", "check-item");
-    const input = document.createElement("input");
-    input.type = "checkbox";
-    input.checked = localStorage.getItem(id) === "1";
-    if (input.checked) row.classList.add("is-done");
-    input.addEventListener("change", () => {
-      localStorage.setItem(id, input.checked ? "1" : "0");
-      row.classList.toggle("is-done", input.checked);
-    });
-    row.append(input, el("span", "", item));
+    const closed = isClosed(getItemStatus(item));
+    const row = el("article", `check-item${closed ? " is-done" : ""}`);
+    row.dataset.namespace = namespace;
+    row.dataset.index = String(index);
+    row.innerHTML = `
+      <span class="check-marker">${closed ? "✓" : "○"}</span>
+      <div>
+        <div class="item-title-row">
+          <span class="check-item__title">${escapeHtml(getItemTitle(item))}</span>
+          ${statusBadge(getItemStatus(item))}
+        </div>
+        ${getItemNote(item) ? `<p class="item-note">${escapeHtml(getItemNote(item))}</p>` : ""}
+      </div>
+    `;
     target.append(row);
   });
 }
@@ -1388,9 +1722,15 @@ function renderChecklist(targetId, items, namespace) {
 function renderReference(targetId, items) {
   const target = byId(targetId);
   target.innerHTML = "";
-  items.forEach(([title, note]) => {
-    const row = el("article", "reference-item");
-    row.innerHTML = `<strong>${title}</strong><p>${note}</p>`;
+  items.forEach((item) => {
+    const row = el("article", `reference-item${isClosed(getItemStatus(item)) ? " is-done" : ""}`);
+    row.innerHTML = `
+      <div class="item-title-row">
+        <strong>${escapeHtml(getItemTitle(item))}</strong>
+        ${statusBadge(getItemStatus(item))}
+      </div>
+      <p>${escapeHtml(getItemNote(item))}</p>
+    `;
     target.append(row);
   });
 }
@@ -1398,9 +1738,15 @@ function renderReference(targetId, items) {
 function renderUpdates() {
   const target = byId("updatesList");
   target.innerHTML = "";
-  updates.forEach(([title, note]) => {
-    const item = el("article", "update-item");
-    item.innerHTML = `<strong>${title}</strong><p>${note}</p>`;
+  updates.forEach((update) => {
+    const item = el("article", `update-item${isClosed(getItemStatus(update)) ? " is-done" : ""}`);
+    item.innerHTML = `
+      <div class="item-title-row">
+        <strong>${escapeHtml(getItemTitle(update))}</strong>
+        ${statusBadge(getItemStatus(update))}
+      </div>
+      <p>${escapeHtml(getItemNote(update))}</p>
+    `;
     target.append(item);
   });
 }
@@ -1416,7 +1762,11 @@ function applyFilters() {
   });
 }
 
-function init() {
+async function init() {
+  await loadGoogleSheet().catch((error) => {
+    console.warn("Google Sheet data is unavailable, fallback data is used.", error);
+  });
+
   renderSummary();
   renderFilters();
   renderDayNav();
