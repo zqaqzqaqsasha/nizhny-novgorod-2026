@@ -7,8 +7,7 @@
     <meta
       name="description"
       content="Наглядное расписание поездки в Нижний Новгород на 12-17 августа 2026 года."
-    />
-    <style>
+    />    <style>
 :root {
   color-scheme: light;
   --ink: #202124;
@@ -202,6 +201,17 @@ input {
   color: #fff;
 }
 
+.button--finance {
+  align-self: start;
+  background: var(--night);
+  color: #fff;
+  text-align: center;
+}
+
+.button[aria-disabled="true"] {
+  cursor: default;
+}
+
 .hero-strip {
   position: relative;
   z-index: 1;
@@ -245,6 +255,7 @@ input {
 
 .controls-band,
 .utility-band,
+.finance-band,
 .update-band {
   background: var(--wash);
 }
@@ -418,9 +429,9 @@ input {
 
 .day-heading {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr auto;
   gap: 14px;
-  align-items: center;
+  align-items: start;
   margin-bottom: 14px;
 }
 
@@ -445,6 +456,54 @@ input {
 .day-heading p {
   margin: 4px 0 0;
   color: var(--muted);
+}
+
+.day-heading__content {
+  min-width: 0;
+}
+
+.day-notice,
+.weather-note {
+  max-width: 820px;
+  padding: 9px 11px;
+  border-radius: 8px;
+}
+
+.day-notice {
+  background: color-mix(in srgb, var(--accent) 10%, #fff);
+  color: color-mix(in srgb, var(--accent) 70%, var(--ink));
+  font-weight: 800;
+}
+
+.weather-note {
+  background: #f7f9fb;
+  border: 1px solid var(--line);
+}
+
+.weather-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-width: 210px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.weather-toggle button {
+  min-height: 34px;
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.weather-toggle button.is-active {
+  background: var(--accent);
+  color: #fff;
 }
 
 .timeline {
@@ -501,6 +560,30 @@ input {
 .event-note {
   margin: 6px 0 0;
   color: var(--muted);
+}
+
+.map-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.map-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 6px 10px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line));
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--accent) 8%, #fff);
+  color: color-mix(in srgb, var(--accent) 72%, var(--night));
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.map-link:hover {
+  border-color: var(--accent);
 }
 
 .status-pill {
@@ -612,6 +695,27 @@ input {
   color: var(--muted);
 }
 
+.item-meta,
+.item-comment {
+  margin: 5px 0 0;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.item-meta {
+  color: var(--teal);
+}
+
+.item-comment {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  padding: 5px 8px;
+  border-radius: 8px;
+  background: #fff7e6;
+  color: #8a5a00;
+}
+
 .reference-item strong,
 .update-item strong {
   color: var(--ink);
@@ -625,6 +729,33 @@ input {
 
 .update-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.finance-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 22px;
+  align-items: start;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(25, 33, 48, 0.06);
+}
+
+.finance-card h3 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+.finance-card p {
+  max-width: 820px;
+  margin: 0;
+  color: var(--muted);
+}
+
+.finance-card p + p {
+  margin-top: 10px;
 }
 
 .footer {
@@ -652,6 +783,7 @@ input {
 
   .controls,
   .utility-layout,
+  .finance-card,
   .update-grid {
     grid-template-columns: 1fr;
   }
@@ -719,6 +851,15 @@ input {
     gap: 6px;
   }
 
+  .day-heading {
+    grid-template-columns: auto 1fr;
+  }
+
+  .weather-toggle {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
   .event-time {
     white-space: normal;
   }
@@ -742,7 +883,7 @@ input {
   }
 }
 
-    </style>
+</style>
   </head>
   <body>
     <header class="hero" id="top">
@@ -755,13 +896,14 @@ input {
         <div class="topbar__links">
           <a href="#schedule">Дни</a>
           <a href="#bookings">Брони</a>
+          <a href="#finance">Финансы</a>
           <a href="#rain">Дождь</a>
           <a href="#packing">Вещи</a>
         </div>
       </nav>
 
       <section class="hero__content" aria-labelledby="page-title">
-        <p class="eyebrow">Маршрут для Александра, Полины, Сони и Евгения</p>
+        <p class="eyebrow">Маршрут поездки</p>
         <h1 id="page-title">Нижний Новгород</h1>
         <p class="hero__lead">
           Гастротур, закаты, прогулки, канатная дорога, теплоход и Приволжская фиеста.
@@ -807,7 +949,7 @@ input {
           </div>
           <div class="search">
             <label for="searchInput">Поиск</label>
-            <input id="searchInput" type="search" placeholder="Например: закат, такси, Юла" />
+            <input id="searchInput" type="search" placeholder="Например: закат, такси, Юла пицца" />
           </div>
           <div class="tag-filter" id="tagFilter" aria-label="Фильтр по тегам"></div>
           <button class="reset-button" id="resetFilters" type="button">Сбросить</button>
@@ -868,6 +1010,32 @@ input {
         </div>
       </section>
 
+      <section class="band finance-band" id="finance" aria-labelledby="finance-title">
+        <div class="wrap">
+          <div class="section-heading">
+            <p class="eyebrow">Общие расходы</p>
+            <h2 id="finance-title">Финансы</h2>
+          </div>
+          <div class="finance-card">
+            <div>
+              <h3>Tricount для совместных трат</h3>
+              <p>
+                Для общих расходов используем Tricount. Я уже создал учет поездки,
+                поэтому все совместные траты — жилье, брони, билеты, такси, продукты
+                и общие ужины — лучше сразу заносить туда.
+              </p>
+              <p>
+                Приложение само считает, кто за кого заплатил, перекрывает суммы
+                и показывает итоговый баланс. Так никому не придется вручную
+                напоминать про переводы, а после поездки останется понятная
+                статистика расходов.
+              </p>
+            </div>
+            <span class="button button--finance" aria-disabled="true">Ссылка на Tricount будет добавлена позже</span>
+          </div>
+        </div>
+      </section>
+
       <section class="band update-band" aria-labelledby="updates-title">
         <div class="wrap">
           <div class="section-heading">
@@ -889,6 +1057,149 @@ input {
     <script>
 let tags = ["еда", "кофе", "фото", "закат", "бронь", "такси", "пешком", "фиеста", "запас"];
 
+const places = {
+  fonda: {
+    title: "Фонда",
+    address: "наб. Гребного Канала, 108, корп. 1, Нижний Новгород",
+    yandex: "https://yandex.ru/maps/org/fonda/1266104580?si=maltsev.ph",
+  },
+  rozhdestvenskaya: {
+    title: "Рождественская улица",
+    address: "Нижний Новгород",
+    yandex:
+      "https://yandex.ru/maps?ol=geo&text=%D0%A0%D0%BE%D0%B6%D0%B4%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0&sll=43.988703,56.328469&sspn=0.004043,0.017149&si=maltsev.ph",
+  },
+  siMamma: {
+    title: "Si, Mamma",
+    address: "Рождественская ул., 24, Нижний Новгород",
+    phone: "+7 (831) 234-43-07",
+    yandex: "https://yandex.ru/maps/org/si_mamma/160650918139?si=maltsev.ph",
+  },
+  nizhneVolzhskaya: {
+    title: "Нижне-Волжская набережная",
+    address: "Нижний Новгород",
+    yandex:
+      "https://yandex.ru/maps?ol=geo&text=%D0%9D%D0%B8%D0%B6%D0%BD%D0%B5-%D0%92%D0%BE%D0%BB%D0%B6%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BD%D0%B0%D0%B1%D0%B5%D1%80%D0%B5%D0%B6%D0%BD%D0%B0%D1%8F&sll=44.001091,56.331593&sspn=0.006378,0.046524&si=maltsev.ph",
+  },
+  tempCoffee: {
+    title: "Темп Кофе",
+    address: "ул. Пискунова, 24, Нижний Новгород",
+    yandex: "https://yandex.ru/maps/org/temp_kofe/101742287963?si=maltsev.ph",
+  },
+  tempVozdukh: {
+    title: "Темп воздух",
+    address: "Георгиевский съезд, 44, Нижний Новгород",
+    phone: "+7 (831) 423-93-00",
+    yandex: "https://yandex.ru/maps/org/temp_vozdukh/178003428360?si=maltsev.ph",
+  },
+  mininSquare: {
+    title: "Площадь Минина и Пожарского",
+    address: "Нижегородский район, городской округ Нижний Новгород",
+    yandex:
+      "https://yandex.ru/maps?ol=geo&text=%D0%BF%D0%BB%D0%BE%D1%89%D0%B0%D0%B4%D1%8C%20%D0%9C%D0%B8%D0%BD%D0%B8%D0%BD%D0%B0%20%D0%B8%20%D0%9F%D0%BE%D0%B6%D0%B0%D1%80%D1%81%D0%BA%D0%BE%D0%B3%D0%BE&sll=44.006948,56.327436&sspn=0.004667,0.006018&si=maltsev.ph",
+  },
+  kremlinMuseum: {
+    title: "Музей Нижегородский кремль",
+    address: "Нижний Новгород, Кремль, 6, Дмитровская башня",
+    yandex: "https://yandex.ru/maps/org/muzey_nizhegorodskiy_kreml/209614560608?si=maltsev.ph",
+  },
+  bistro918: {
+    title: "Бистро 9/18",
+    address: "Рождественская ул., 9, Нижний Новгород",
+    yandex: "https://yandex.ru/maps/org/bistro_9_18/46641775327?si=maltsev.ph",
+  },
+  mishka: {
+    title: "Мишка",
+    address: "Большая Покровская ул., 2/1, Нижний Новгород",
+    yandex: "https://yandex.ru/maps/org/mishka/1736394108?si=maltsev.ph",
+  },
+  pyatkin: {
+    title: "Пяткинъ",
+    address: "пер. Вахитова, 4А, Нижний Новгород",
+    phone: "+7 (831) 430-91-83",
+    yandex: "https://yandex.ru/maps/org/pyatkin/1060561455?si=maltsev.ph",
+  },
+  chkalovStairs: {
+    title: "Чкаловская лестница",
+    address: "Нижний Новгород, историческая территория Старый Нижний Новгород",
+    yandex: "https://yandex.ru/maps/org/chkalovskaya_lestnitsa/175894733311?si=maltsev.ph",
+  },
+  mednyeTruby: {
+    title: "Медные Трубы",
+    address: "Рождественская ул., 40, Нижний Новгород",
+    phone: "+7 (929) 046-47-50",
+    site: "https://mt-bar.ru",
+    yandex: "https://yandex.ru/maps/org/mednyye_truby/1302261108?si=maltsev.ph",
+  },
+  ministerstvo: {
+    title: "Министерство Завтраков",
+    address: "Большая Покровская ул., 21/5, Нижний Новгород",
+    yandex: "https://yandex.ru/maps/org/ministerstvo_zavtrakov/77154439922?si=maltsev.ph",
+  },
+  bolshayaPokrovskaya: {
+    title: "Большая Покровская улица",
+    address: "Нижний Новгород",
+    yandex:
+      "https://yandex.ru/maps?ol=geo&text=%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%B0%D1%8F%20%D0%9F%D0%BE%D0%BA%D1%80%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0&sll=43.994829,56.317088&sspn=0.017678,0.019835&si=maltsev.ph",
+  },
+  gosbank: {
+    title: "Государственный банк, 1911-1913 годы",
+    address: "Большая Покровская ул., 26, Нижний Новгород",
+    yandex:
+      "https://yandex.ru/maps/org/gosudarstvenny_bank_1911_1913_gody/245090801551?si=maltsev.ph",
+  },
+  promysly: {
+    title: "Художественные промыслы",
+    address: "Большая Покровская ул., 43, Нижний Новгород",
+    yandex: "https://yandex.ru/maps/org/khudozhestvennyye_promysly/1118596104?si=maltsev.ph",
+  },
+  surfCoffee: {
+    title: "Surf Coffee",
+    address: "Большая Покровская ул., 51А, Нижний Новгород",
+    yandex: "https://yandex.ru/maps/org/surf_coffee/92820399537?si=maltsev.ph",
+  },
+  yarmarka: {
+    title: "Нижегородская ярмарка",
+    address: "Совнаркомовская ул., 13, Нижний Новгород",
+    yandex: "https://yandex.ru/maps/org/nizhegorodskaya_yarmarka/1008332758?si=maltsev.ph",
+  },
+  strelka: {
+    title: "Стрелка",
+    address: "Нижний Новгород, мыс Стрелка",
+    yandex: "https://yandex.ru/maps/org/strelka/197781664449?si=maltsev.ph",
+  },
+  alexanderNevsky: {
+    title: "Кафедральный собор Александра Невского",
+    address: "ул. Стрелка, 3А, Нижний Новгород",
+    yandex:
+      "https://yandex.ru/maps/org/kafedralny_sobor_vo_imya_svyatogo_blagovernogo_knyazya_aleksandra_nevskogo/1061156993?si=maltsev.ph",
+  },
+  nastayatel: {
+    title: "Настаятель",
+    address: "Рождественская ул., 12Б, Нижний Новгород",
+    yandex: "https://yandex.ru/maps/org/nastayatel/190867308870?si=maltsev.ph",
+  },
+  yulaPizza: {
+    title: "Юла пицца",
+    address: "Октябрьская ул., 9Б, Нижний Новгород",
+    phone: "+7 (920) 299-06-96",
+    yandex: "https://yandex.ru/maps/org/yula_pitstsa/206680508835?si=maltsev.ph",
+  },
+};
+
+const placeAliases = [
+  ["siMamma", ["si, mamma", "si mamma"]],
+  ["tempVozdukh", ["темп воздух"]],
+  ["tempCoffee", ["темп кофе"]],
+  ["pyatkin", ["пяткинъ", "пяткин"]],
+  ["mednyeTruby", ["медные трубы"]],
+  ["yulaPizza", ["юла пицца", "юла"]],
+  ["nastayatel", ["настоятель"]],
+  ["bistro918", ["бистро 9/18", "9/18"]],
+  ["mishka", ["мишка"]],
+  ["ministerstvo", ["министерство завтраков"]],
+];
+
 let days = [
   {
     id: "day-12",
@@ -897,6 +1208,10 @@ let days = [
     date: "12 августа, среда",
     title: "Приезд и мягкий вход в город",
     summary: "Поезд, заселение, Рождественская, Si, Mamma и первый закат.",
+    weatherNotes: {
+      sunny: "Базовый план: спокойно заселяемся, гуляем по Рождественской и выходим к Волге на закат.",
+      rain: "Дождевой вариант: прогулки короче, больше теплых пауз, первый вечер без обязательного бара.",
+    },
     events: [
       {
         time: "10:05-14:40",
@@ -907,43 +1222,56 @@ let days = [
       {
         time: "14:40-15:20",
         title: "🚕 Такси до отеля Фонда",
-        note: "Отель возле «Усадьбы банной». Заезд с 14:00, можно сразу заселяться.",
+        note: "Заезд с 14:00, можно сразу заселяться и оставить вещи в номере.",
         tags: ["такси", "логистика"],
+        mapKeys: ["fonda"],
       },
       {
         time: "15:20-17:00",
         title: "🟡 Заселение и отдых",
-        note: "Душ, вещи, восстановление после дороги. Не ставить обязательных точек.",
+        note: "Душ, вещи, восстановление после дороги. Без обязательных точек.",
         tags: ["запас"],
       },
       {
         time: "17:00-18:15",
         title: "🚶📷 Рождественская улица",
-        note: "Купеческие дома, старый Нижний, Строгановская / Рождественская церковь.",
+        note: "Купеческие дома, старый Нижний, Строгановская церковь и городские надписи по пути.",
         tags: ["пешком", "фото"],
+        mapKeys: ["rozhdestvenskaya"],
+        rain: {
+          title: "🚶📷 Рождественская улица в коротком формате",
+          note: "Оставляем самую красивую часть улицы, чаще заходим в теплые места и не растягиваем прогулку.",
+        },
       },
       {
         time: "18:30-20:00",
         title: "🍽 Si, Mamma",
         note: "Ужин на Рождественской, 24. Нужно забронировать заранее.",
         tags: ["еда", "бронь"],
+        mapKeys: ["siMamma"],
       },
       {
         time: "20:00-21:00",
         title: "🌅📷 Нижне-Волжская набережная",
         note: "Первый закат поездки: Волга, Стрелка и вечерний город.",
         tags: ["закат", "фото", "пешком"],
+        mapKeys: ["nizhneVolzhskaya"],
+        rain: {
+          title: "🌆 Нижне-Волжская набережная по погоде",
+          note: "Если дождь небольшой, делаем короткую прогулку у воды; при сильном дожде оставляем вид на Волгу из ближайшего теплого места.",
+          tags: ["фото", "пешком", "запас"],
+        },
       },
       {
         time: "21:00-22:00",
         title: "🟡 Свободный вечер",
-        note: "Настаятель лучше оставить на пятницу или субботу.",
+        note: "Настаятель лучше оставить на пятницу или субботу как основной вечерний бар. В первый вечер спокойный формат: прогулка, отель и напитки с собой при желании.",
         tags: ["запас"],
       },
       {
         time: "После 22:00",
         title: "Отель",
-        note: "Сон, чтобы нормально войти в маршрут.",
+        note: "Сон, чтобы спокойно войти в маршрут.",
         tags: ["запас"],
       },
     ],
@@ -953,8 +1281,12 @@ let days = [
     accent: "#2f9e44",
     icon: "🟩",
     date: "13 августа, четверг",
-    title: "Кремль, 9/18, Мишка, Пяткинъ, Медные Трубы",
-    summary: "Исторический центр, стена Кремля, десертная остановка и коктейли.",
+    title: "Кремль, Бистро 9/18, Мишка, Пяткинъ, Медные Трубы",
+    summary: "Исторический центр, стены Кремля, дневная пауза, ужин и коктейли.",
+    weatherNotes: {
+      sunny: "Базовый план: Кремль, выход к Ивановскому съезду, Бистро 9/18 и верхний центр без лишних перепадов рельефа.",
+      rain: "Дождевой вариант: при небольшом дожде стены Кремля оставляем, при сильном сокращаем открытые переходы и добавляем музейную или кафе-паузу.",
+    },
     events: [
       {
         time: "09:30-10:15",
@@ -964,33 +1296,48 @@ let days = [
       },
       {
         time: "10:45-12:00",
-        title: "☕🍽 Темп",
-        note: "Поздний завтрак / ранний обед. Закладываем живую очередь.",
+        title: "☕🍽 Темп воздух",
+        note: "Поздний завтрак или ранний обед. Темп воздух предпочтительнее, но при необходимости можно заменить на Темп Кофе.",
         tags: ["еда", "кофе"],
+        mapKeys: ["tempVozdukh", "tempCoffee"],
       },
       {
         time: "12:00-12:40",
         title: "🚶📷 Площадь Минина и Пожарского",
-        note: "Переход к Кремлю и короткая фото-точка перед стеной.",
+        note: "Переход к Кремлю: логично входить со стороны площади Минина и Дмитровской башни.",
         tags: ["пешком", "фото"],
+        mapKeys: ["mininSquare"],
+        rain: {
+          note: "Короткая фото-точка у площади, затем без затяжных остановок переходим к Кремлю.",
+        },
       },
       {
         time: "12:40-14:40",
-        title: "🏰📷 Стена Кремля",
-        note: "Летний круговой маршрут: стена + выставки. Взрослый билет около 500 ₽.",
+        title: "🏰📷 Стены Кремля",
+        note: "Летний круговой маршрут по крытым участкам стен и музейным экспозициям. Взрослый билет около 500 ₽.",
         tags: ["фото", "бронь"],
+        mapKeys: ["kremlinMuseum"],
+        rain: {
+          note: "При небольшом дожде маршрут по стенам можно оставить. При сильном дожде сокращаем открытые переходы и переносим акцент на музей, кафе или более короткий маршрут.",
+        },
       },
       {
         time: "14:40-15:20",
-        title: "☕🍽 9/18",
-        note: "Логичная пауза после выхода к Ивановскому съезду.",
+        title: "☕🍽 Бистро 9/18",
+        note: "Логичная дневная пауза после выхода из Кремля в сторону Ивановского съезда.",
         tags: ["еда", "кофе"],
+        mapKeys: ["bistro918"],
       },
       {
         time: "15:20-16:20",
-        title: "🚶📷 Кожевенная улица + 🍰 Мишка",
-        note: "Атмосферная прогулка и десертная остановка на Большой Покровской.",
+        title: "🚶📷 Большая Покровская + 🍰 Мишка",
+        note: "Держим маршрут по верхнему центру: Мишка находится на Большой Покровской, поэтому Кожевенную улицу в этот переход не добавляем.",
         tags: ["пешком", "фото", "еда"],
+        mapKeys: ["bolshayaPokrovskaya", "mishka"],
+        rain: {
+          title: "🍰 Мишка и короткая прогулка по Большой Покровской",
+          note: "Если идет сильный дождь, оставляем Мишку как короткий перекус и сокращаем прогулку по улице.",
+        },
       },
       {
         time: "16:20-17:30",
@@ -1003,18 +1350,24 @@ let days = [
         title: "🍽 Пяткинъ",
         note: "Русская кухня, плотный ужин. Бронь заранее.",
         tags: ["еда", "бронь"],
+        mapKeys: ["pyatkin"],
       },
       {
         time: "19:45-21:15",
         title: "🚶🌅📷 Набережная / Чкаловская лестница",
         note: "Спокойная прогулка после ужина, можно не подниматься наверх.",
         tags: ["пешком", "закат", "фото"],
+        mapKeys: ["chkalovStairs"],
+        rain: {
+          note: "При дожде делаем короткую видовую остановку у Чкаловской лестницы и не растягиваем прогулку.",
+        },
       },
       {
         time: "22:00-23:30",
         title: "🍸 Медные Трубы",
         note: "Только по брони. Лучше просить коктейль под вкус.",
         tags: ["бар", "бронь"],
+        mapKeys: ["mednyeTruby"],
       },
     ],
   },
@@ -1025,6 +1378,11 @@ let days = [
     date: "14 августа, пятница",
     title: "Покровская, метромост, Стрелка, Настаятель",
     summary: "Большая Покровская, метро через Оку, Стрелка, Пакгаузы и барный вечер.",
+    notice: "Если Приволжскую фиесту перенесут на 14 августа, этот день можно поменять местами с 15 августа.",
+    weatherNotes: {
+      sunny: "Базовый план: Большая Покровская, метромост, Стрелка, закат и Настаятель как основной вечерний бар.",
+      rain: "Дождевой вариант: меньше открытых переходов на Стрелке, больше времени на Покровской, кафе и закрытые точки.",
+    },
     events: [
       {
         time: "09:30-10:15",
@@ -1037,18 +1395,24 @@ let days = [
         title: "☕🍽 Министерство Завтраков",
         note: "Большая Покровская, 21/5. Брони нет, закладываем очередь.",
         tags: ["еда", "кофе"],
+        mapKeys: ["ministerstvo"],
       },
       {
         time: "12:30-13:35",
         title: "🚶📷 Большая Покровская + Государственный банк",
-        note: "Сувениры, городские скульптуры и красивая архитектура снаружи.",
+        note: "Сувениры, городские скульптуры, архитектура и надписи вроде «Здесь чувствуешь жизнь» или «Быть, а не казаться», если попадутся по пути.",
         tags: ["пешком", "фото"],
+        mapKeys: ["bolshayaPokrovskaya", "gosbank"],
+        rain: {
+          note: "Сокращаем уличные остановки, оставляем главные фасады и чаще заходим внутрь магазинов или кофеен.",
+        },
       },
       {
         time: "13:35-15:00",
         title: "Покровка / сувениры / свободное окно",
-        note: "Можно зайти в «Художественные промыслы», затем кофе или лавочка.",
+        note: "Можно зайти в «Художественные промыслы», а рядом заложить Surf Coffee как кофе-паузу по маршруту.",
         tags: ["запас", "пешком"],
+        mapKeys: ["promysly", "surfCoffee"],
       },
       {
         time: "15:00-16:00",
@@ -1061,6 +1425,11 @@ let days = [
         title: "📷 Ярмарка, Стрелка, собор Александра Невского, Пакгаузы",
         note: "Ключевые видовые точки поездки и современное пространство.",
         tags: ["фото", "пешком"],
+        mapKeys: ["yarmarka", "strelka", "alexanderNevsky"],
+        rain: {
+          title: "📷 Ярмарка, собор Александра Невского и короткая Стрелка",
+          note: "При дожде сокращаем открытую часть у воды и оставляем самые понятные точки: Ярмарка, собор и короткий вид на Стрелку.",
+        },
       },
       {
         time: "18:00-19:15",
@@ -1073,12 +1442,19 @@ let days = [
         title: "🌅📷 Закат на Стрелке",
         note: "Виды на слияние Оки и Волги, собор и Пакгаузы.",
         tags: ["закат", "фото"],
+        mapKeys: ["strelka"],
+        rain: {
+          title: "🌆 Стрелка по погоде",
+          note: "Если дождь сильный, не привязываемся к закату: оставляем короткую видовую остановку или переносим время в кафе.",
+          tags: ["фото", "запас"],
+        },
       },
       {
         time: "21:00-23:30",
         title: "🍸 Настаятель",
-        note: "Пятничный барный вечер. Работает до 02:00.",
+        note: "Основной вечерний бар под напитки и спокойное завершение пятницы. Работает до 02:00.",
         tags: ["бар"],
+        mapKeys: ["nastayatel"],
       },
     ],
   },
@@ -1087,8 +1463,13 @@ let days = [
     accent: "#e03131",
     icon: "🟥",
     date: "15 августа, суббота",
-    title: "Приволжская фиеста",
-    summary: "Ранний старт аэростатов, сон, вечерняя программа и свечение.",
+    title: "Приволжская фиеста · взаимозаменяемо с 14 августа",
+    summary: "Если фиеста остается 15 августа, маршрут сохраняется; если ее перенесут на 14 августа, меняем эти два дня местами.",
+    notice: "День взаимозаменяем с 14 августа: если дату Приволжской фиесты перенесут, меняем дни местами.",
+    weatherNotes: {
+      sunny: "Базовый план: ранний старт аэростатов, восстановление днем, вечерняя программа и свечение.",
+      rain: "Дождевой вариант: ориентируемся на решения организаторов, не привязываемся к открытой площадке любой ценой и переносим акцент на отдых и гастро-паузы.",
+    },
     events: [
       {
         time: "03:30-04:00",
@@ -1099,19 +1480,25 @@ let days = [
       {
         time: "04:00-04:30",
         title: "🚕 Такси к точке наблюдения",
-        note: "Точку выбрать по информации организаторов. База: Стрелка / Нижне-Волжская.",
+        note: "Точку выбрать по информации организаторов. База для видов: Стрелка, Нижне-Волжская или короткий переход к Чкаловской лестнице.",
         tags: ["такси", "фиеста"],
+        mapKeys: ["strelka", "nizhneVolzhskaya", "chkalovStairs"],
       },
       {
         time: "04:30-07:00",
         title: "🎈📷 Утренний старт аэростатов",
-        note: "Лучше выбрать одну точку и не бегать между ними.",
+        note: "Выбираем одну понятную видовую точку. Чкаловская лестница — хороший ориентир для видов и фото, если она ложится в маршрут.",
         tags: ["фиеста", "фото"],
+        mapKeys: ["chkalovStairs"],
+        rain: {
+          title: "🎈📷 Фиеста по информации организаторов",
+          note: "Если старт перенесут или сократят из-за погоды, не остаемся на точке без необходимости: возвращаемся в отель или переносим акцент на дневной план.",
+        },
       },
       {
         time: "07:00-08:00",
         title: "☕ Перекус по ситуации",
-        note: "Кофе / булка где будет открыто. Не ехать специально через город.",
+        note: "Кофе и легкий перекус там, где будет удобно по фактической точке фиесты.",
         tags: ["кофе", "запас"],
       },
       {
@@ -1123,8 +1510,9 @@ let days = [
       {
         time: "12:00-15:30",
         title: "☕🍽 Поздний завтрак / обед + свободное время",
-        note: "Темп или 9/18; можно заменить завтраком в отеле, если все устали.",
+        note: "Темп воздух или Бистро 9/18; можно заменить завтраком в отеле, если все устали.",
         tags: ["еда", "кофе", "запас"],
+        mapKeys: ["tempVozdukh", "bistro918"],
       },
       {
         time: "15:30-16:00",
@@ -1137,12 +1525,18 @@ let days = [
         title: "🎈🌅📷 Вечерняя программа и свечение",
         note: "Полёты, привязные подъёмы, подготовка аэростатов и закат.",
         tags: ["фиеста", "закат", "фото"],
+        rain: {
+          title: "🎈 Вечерняя программа по погоде",
+          note: "Если вечернюю часть сократят из-за дождя или ветра, используем время для спокойного ужина и отдыха.",
+          tags: ["фиеста", "запас"],
+        },
       },
       {
         time: "21:00-00:00",
         title: "🍽 Ужин без брони + 🍸 Настаятель или отель",
-        note: "Выбирать по площадке и усталости. Настаятель работает до 02:00.",
+        note: "Выбирать по площадке и усталости. Настаятель можно оставить как субботний барный вариант, если хватит сил.",
         tags: ["еда", "бар", "запас"],
+        mapKeys: ["nastayatel"],
       },
     ],
   },
@@ -1151,14 +1545,19 @@ let days = [
     accent: "#f08c00",
     icon: "🟧",
     date: "16 августа, воскресенье",
-    title: "Канатная дорога, Бор, теплоход, Юла",
+    title: "Канатная дорога, Бор, теплоход, Юла пицца",
     summary: "Более спокойный волжский день: виды, вода, канатка и финальный ужин.",
+    weatherNotes: {
+      sunny: "Базовый план: канатная дорога, вода, спокойные виды и финальный ужин в Юла пицца.",
+      rain: "Дождевой вариант: канатку оставляем только если она работает комфортно, теплоход спокойно отменяем и переносим акцент на кафе и ужин.",
+    },
     events: [
       {
         time: "10:00-11:00",
         title: "Поздний подъём / завтрак в отеле",
-        note: "Завтрак включён. Можно заменить на 9/18, но без обязательности.",
+        note: "Завтрак включён. Можно заменить на Бистро 9/18, если хочется выйти в город.",
         tags: ["запас", "еда"],
+        mapKeys: ["bistro918"],
       },
       {
         time: "11:30-12:00",
@@ -1169,8 +1568,12 @@ let days = [
       {
         time: "12:00-13:15",
         title: "🚡 Канатная дорога Нижний Новгород → Бор → Нижний Новгород",
-        note: "В Бор садиться справа, обратно слева, чтобы ловить лучшие виды.",
+        note: "Для лучших видов: по дороге в Бор удобнее занимать места с правой стороны, на обратном пути — с левой.",
         tags: ["канатка", "фото"],
+        rain: {
+          note: "Едем только если канатная дорога работает и погода не мешает видам; при сильном ветре или ливне переносим время в город.",
+          tags: ["канатка", "запас"],
+        },
       },
       {
         time: "13:15-15:00",
@@ -1181,8 +1584,13 @@ let days = [
       {
         time: "15:30-16:30",
         title: "🚢 Часовая прогулка на теплоходе",
-        note: "Оператора и время выбрать позже. Если погода плохая, отменить без сожаления.",
+        note: "Оператора и время выбрать позже. Если погода плохая, спокойно отменить.",
         tags: ["теплоход", "фото"],
+        rain: {
+          title: "🟡 Теплоход отменяем по погоде",
+          note: "Если дождь или сильный ветер, не привязываемся к речной прогулке и оставляем это время под кофе, отдых или музейную паузу.",
+          tags: ["запас", "кофе"],
+        },
       },
       {
         time: "16:30-18:00",
@@ -1195,12 +1603,17 @@ let days = [
         title: "📷🌅 Памятник Чкалову и Чкаловская лестница",
         note: "Финальные классические виды города.",
         tags: ["фото", "закат"],
+        mapKeys: ["chkalovStairs"],
+        rain: {
+          note: "При дожде оставляем короткую остановку у Чкаловской лестницы, если покрытие и видимость комфортные.",
+        },
       },
       {
         time: "19:30-21:00",
-        title: "🍽 Юла",
+        title: "🍽 Юла пицца",
         note: "Бронь заранее. Желательно из-за посадки.",
         tags: ["еда", "бронь"],
+        mapKeys: ["yulaPizza"],
       },
       {
         time: "21:00-22:30",
@@ -1217,6 +1630,10 @@ let days = [
     date: "17 августа, понедельник",
     title: "Выезд",
     summary: "Завтрак, сборы, выселение до 12:00 и спокойный выезд на вокзал.",
+    weatherNotes: {
+      sunny: "Базовый план: без перегруза, спокойно собираемся и заранее едем к вокзалу.",
+      rain: "Дождевой вариант: меньше перемещений с багажом, больше времени закладываем на такси и ожидание под крышей.",
+    },
     events: [
       {
         time: "08:30-09:30",
@@ -1251,8 +1668,11 @@ let days = [
       {
         time: "13:00-14:00",
         title: "🚕 Переезд к Московскому вокзалу / ожидание",
-        note: "Лучше приехать заранее, чем таскаться с багажом по центру.",
+        note: "Лучше приехать заранее, чем ходить с багажом по центру.",
         tags: ["такси", "логистика"],
+        rain: {
+          note: "В дождь сразу едем к вокзалу или в ближайшее удобное место ожидания, чтобы не ходить с багажом.",
+        },
       },
       {
         time: "15:29",
@@ -1271,46 +1691,106 @@ let days = [
 ];
 
 let prepItems = [
-  "Забронировать Si, Mamma на 12 августа.",
-  "Забронировать Пяткинъ на 13 августа.",
-  "Забронировать Медные Трубы на 13 августа: заведение работает только по брони.",
-  "Забронировать Юлу на 16 августа.",
-  "Проверить дату, площадку и программу Приволжской фиесты.",
-  "Проверить прогноз: ветер, дождь, облачность, температура утром и вечером.",
-  "Проверить режим канатной дороги и отсутствие профилактики.",
-  "Купить билеты на стену Кремля, если онлайн-продажа доступна.",
-  "Выбрать оператора часовой прогулки на теплоходе.",
+  {
+    title: "Забронировать Si, Mamma на 12 августа.",
+    note: "Телефон: +7 (831) 234-43-07.",
+    status: "не выполнено",
+  },
+  {
+    title: "Забронировать Пяткинъ на 13 августа.",
+    note: "Телефон: +7 (831) 430-91-83.",
+    status: "не выполнено",
+  },
+  {
+    title: "Забронировать Медные Трубы на 13 августа.",
+    note: "Заведение работает только по брони. Телефон: +7 (929) 046-47-50.",
+    status: "не выполнено",
+  },
+  {
+    title: "Забронировать Юла пицца на 16 августа.",
+    note: "Телефон: +7 (920) 299-06-96.",
+    status: "не выполнено",
+  },
+  {
+    title: "Проверить дату, площадку и программу Приволжской фиесты.",
+    comment: "Если дату перенесут на 14 августа, меняем дни 14 и 15 местами.",
+    status: "не выполнено",
+  },
+  {
+    title: "Проверить прогноз: ветер, дождь, облачность, температура утром и вечером.",
+    status: "не выполнено",
+  },
+  {
+    title: "Проверить режим канатной дороги и отсутствие профилактики.",
+    status: "не выполнено",
+  },
+  {
+    title: "Купить билеты на стены Кремля, если онлайн-продажа доступна.",
+    status: "не выполнено",
+  },
+  {
+    title: "Выбрать оператора часовой прогулки на теплоходе.",
+    status: "не выполнено",
+  },
 ];
 
 let bookingItems = [
-  ["Si, Mamma", "Ужин 12 августа на Рождественской, 24. Нужна бронь заранее."],
-  ["Пяткинъ", "Основной ужин 13 августа. Русская кухня, плотный вечер."],
-  ["Медные Трубы", "Коктейльный бар 13 августа. Только по брони."],
-  ["Юла", "Ужин 16 августа. Желательно бронировать из-за посадки."],
-  ["Темп / 9/18 / Министерство Завтраков", "Без жёсткой брони, но закладывать живую очередь."],
-  ["Настаятель", "Основные вечера: пятница и суббота. Настойки и дегустационный формат."],
+  {
+    title: "Si, Mamma",
+    note: "Ужин 12 августа на Рождественской, 24. Нужна бронь заранее.",
+    phone: places.siMamma.phone,
+    status: "не выполнено",
+  },
+  {
+    title: "Пяткинъ",
+    note: "Основной ужин 13 августа. Русская кухня, плотный вечер.",
+    phone: places.pyatkin.phone,
+    status: "не выполнено",
+  },
+  {
+    title: "Медные Трубы",
+    note: "Коктейльный бар 13 августа. Только по брони.",
+    phone: places.mednyeTruby.phone,
+    status: "не выполнено",
+  },
+  {
+    title: "Юла пицца",
+    note: "Ужин 16 августа. Желательно бронировать из-за посадки.",
+    phone: places.yulaPizza.phone,
+    status: "не выполнено",
+  },
+  {
+    title: "Темп воздух / Бистро 9/18 / Министерство Завтраков",
+    note: "Без фиксированной брони, но закладывать живую очередь. Для Темп воздух телефон: +7 (831) 423-93-00.",
+    status: "не выполнено",
+  },
+  {
+    title: "Настаятель",
+    note: "Основные вечера: пятница и суббота. Вечернее заведение под напитки, без привязки к первому дню.",
+    status: "не выполнено",
+  },
 ];
 
 let rainItems = [
-  ["13 августа", "Стену Кремля заменить на территорию Кремля + кафе / музейную часть."],
+  ["13 августа", "При небольшом дожде стены Кремля можно оставить; при сильном дожде сокращаем открытые переходы и добавляем музей, кафе или более короткий маршрут."],
   ["14 августа", "Сократить Стрелку и Пакгаузы, больше времени оставить Покровской и заведениям."],
-  ["15 августа", "Если Фиесту перенесут, использовать день как свободный гастро-день."],
+  ["15 августа", "День взаимозаменяем с 14 августа: если дату Приволжской фиесты перенесут, меняем дни местами."],
   ["16 августа", "Отменить теплоход, канатку оставить только если работает."],
 ];
 
 let packingItems = [
-  "Пауэрбанк",
-  "Зарядки",
-  "Вода",
-  "Дождевик или компактный зонт",
-  "Лёгкая кофта на рассвет Фиесты",
-  "Удобная обувь",
-  "Солнцезащитные очки",
-  "Крем от солнца",
-  "Небольшой рюкзак",
-  "Документы и билеты",
-  "Наличные мелкими купюрами",
-  "Алкоголь и закуски для вечеров в отеле",
+  { title: "Пауэрбанк", status: "не выполнено" },
+  { title: "Зарядки", status: "не выполнено" },
+  { title: "Вода", status: "не выполнено" },
+  { title: "Дождевик или компактный зонт", status: "не выполнено" },
+  { title: "Легкая кофта на рассвет Фиесты", status: "не выполнено" },
+  { title: "Удобная обувь", status: "не выполнено" },
+  { title: "Солнцезащитные очки", status: "не выполнено" },
+  { title: "Крем от солнца", status: "не выполнено" },
+  { title: "Небольшой рюкзак", status: "не выполнено" },
+  { title: "Документы и билеты", status: "не выполнено" },
+  { title: "Наличные мелкими купюрами", status: "не выполнено" },
+  { title: "Напитки и закуски для спокойных вечеров в отеле", status: "не выполнено" },
 ];
 
 let updates = [
@@ -1328,6 +1808,7 @@ const googleSheetConfig = {
 const state = {
   activeTag: "all",
   query: "",
+  weather: {},
 };
 
 const byId = (id) => document.getElementById(id);
@@ -1352,9 +1833,17 @@ function normalizeText(value = "") {
   return String(value).trim().toLowerCase();
 }
 
+function findPlaceKey(...values) {
+  const source = normalizeText(values.filter(Boolean).join(" "));
+  if (!source) return "";
+  const match = placeAliases.find(([, aliases]) => aliases.some((alias) => source.includes(alias)));
+  return match?.[0] || "";
+}
+
 function normalizeStatus(status = "") {
   const value = normalizeText(status);
-  return value === "закрыто" || value === "closed" || value === "done" ? "закрыто" : "открыто";
+  const doneValues = ["закрыто", "closed", "done", "complete", "completed", "выполнено", "готово"];
+  return doneValues.includes(value) ? "выполнено" : "не выполнено";
 }
 
 function hasStatus(status) {
@@ -1362,13 +1851,13 @@ function hasStatus(status) {
 }
 
 function isClosed(status) {
-  return hasStatus(status) && normalizeStatus(status) === "закрыто";
+  return hasStatus(status) && normalizeStatus(status) === "выполнено";
 }
 
 function statusBadge(status) {
   if (!hasStatus(status)) return "";
   const label = normalizeStatus(status);
-  return `<span class="status-pill status-pill--${label === "закрыто" ? "closed" : "open"}">${label}</span>`;
+  return `<span class="status-pill status-pill--${label === "выполнено" ? "closed" : "open"}">${label}</span>`;
 }
 
 function splitTags(value = "") {
@@ -1504,11 +1993,17 @@ function numericOrder(row, index) {
 }
 
 function itemFromRow(row, index) {
+  const title = cell(row, ["Название", "Title"], "Без названия");
+  const note = cell(row, ["Описание", "Заметка", "Note", "Description"]);
+  const placeKey = cell(row, ["Место", "Place", "Заведение"]) || findPlaceKey(title, note);
   return {
-    title: cell(row, ["Название", "Title"], "Без названия"),
-    note: cell(row, ["Описание", "Заметка", "Note", "Description"]),
+    title,
+    note,
+    comment: cell(row, ["Комментарий", "Comment", "Comments"]),
+    phone: cell(row, ["Телефон", "Phone"]) || places[placeKey]?.phone || "",
+    placeKey,
     tags: splitTags(cell(row, ["Теги", "Tags"])),
-    status: normalizeStatus(cell(row, ["Статус", "Status"])),
+    status: normalizeStatus(cell(row, ["Статус", "Status"], "не выполнено")),
     order: numericOrder(row, index),
   };
 }
@@ -1576,6 +2071,7 @@ async function loadGoogleSheet() {
 
   const rows = gvizToObjects(await loadSheetJsonp());
   prepItems = collectSection(rows, ["Подготовка", "До поездки", "Чеклист"], prepItems);
+  bookingItems = collectSection(rows, ["Брони", "Бронирования", "Заведения"], bookingItems);
   packingItems = collectSection(rows, ["Вещи", "Сборы"], packingItems);
   refreshTags();
 }
@@ -1594,12 +2090,80 @@ function getItemNote(item) {
 
 function getItemStatus(item) {
   if (typeof item === "object" && !Array.isArray(item)) return item.status;
-  return "открыто";
+  return "";
 }
 
 function getItemTags(item) {
   if (typeof item === "object" && !Array.isArray(item)) return item.tags || [];
   return [];
+}
+
+function getItemComment(item) {
+  if (typeof item === "object" && !Array.isArray(item)) return item.comment || "";
+  return "";
+}
+
+function getItemPhone(item) {
+  if (typeof item === "object" && !Array.isArray(item)) {
+    const placeKey = item.placeKey || findPlaceKey(item.title, item.note);
+    return item.phone || places[placeKey]?.phone || "";
+  }
+  const placeKey = findPlaceKey(getItemTitle(item), getItemNote(item));
+  return places[placeKey]?.phone || "";
+}
+
+function itemDetailsHtml(item) {
+  const note = getItemNote(item);
+  const phone = getItemPhone(item);
+  const comment = getItemComment(item);
+  const noteHasPhone = phone && normalizeText(note).includes(normalizeText(phone));
+  return [
+    note ? `<p class="item-note">${escapeHtml(note)}</p>` : "",
+    phone && !noteHasPhone ? `<p class="item-meta">Телефон: ${escapeHtml(phone)}</p>` : "",
+    comment ? `<p class="item-comment">${escapeHtml(comment)}</p>` : "",
+  ].join("");
+}
+
+function getDayWeather(day) {
+  return state.weather[day.id] || "sunny";
+}
+
+function eventForWeather(event, mode) {
+  const variant = mode === "rain" ? event.rain : event.sunny;
+  if (!variant) return event;
+  return {
+    ...event,
+    ...variant,
+    tags: variant.tags || event.tags,
+    mapKeys: variant.mapKeys || event.mapKeys,
+  };
+}
+
+function mapLinksForEvent(event) {
+  const directLinks = event.mapUrl
+    ? [{ title: event.mapTitle || "Яндекс Карты", url: event.mapUrl }]
+    : [];
+  const placeLinks = (event.mapKeys || [])
+    .map((key) => places[key])
+    .filter((place) => place?.yandex)
+    .map((place) => ({ title: place.title, url: place.yandex }));
+  return [...directLinks, ...placeLinks];
+}
+
+function mapLinksHtml(event) {
+  const links = mapLinksForEvent(event);
+  if (!links.length) return "";
+  return `
+    <div class="map-actions">
+      ${links
+        .map((link) => {
+          const label =
+            links.length === 1 ? "Открыть в Яндекс Картах" : `Открыть в Яндекс Картах: ${link.title}`;
+          return `<a class="map-link" href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
+        })
+        .join("")}
+    </div>
+  `;
 }
 
 function renderSummary() {
@@ -1659,6 +2223,8 @@ function renderDays() {
   const container = byId("days");
   container.innerHTML = "";
   days.forEach((day) => {
+    const weather = getDayWeather(day);
+    const weatherNote = day.weatherNotes?.[weather] || "";
     const section = el("section", "day-section");
     section.id = day.id;
     section.style.setProperty("--accent", day.accent);
@@ -1666,27 +2232,46 @@ function renderDays() {
     const heading = el("div", "day-heading");
     heading.innerHTML = `
       <div class="day-heading__badge">${escapeHtml(day.icon)}</div>
-      <div>
+      <div class="day-heading__content">
         <h3>${escapeHtml(day.date)} · ${escapeHtml(day.title)}</h3>
         <p>${escapeHtml(day.summary)}</p>
+        ${day.notice ? `<p class="day-notice">${escapeHtml(day.notice)}</p>` : ""}
+        ${weatherNote ? `<p class="weather-note">${escapeHtml(weatherNote)}</p>` : ""}
+      </div>
+      <div class="weather-toggle" role="group" aria-label="Погода: ${escapeHtml(day.date)}">
+        <button class="${weather === "sunny" ? "is-active" : ""}" type="button" data-day="${escapeHtml(day.id)}" data-weather="sunny" aria-pressed="${weather === "sunny"}">Ясно</button>
+        <button class="${weather === "rain" ? "is-active" : ""}" type="button" data-day="${escapeHtml(day.id)}" data-weather="rain" aria-pressed="${weather === "rain"}">Если дождь</button>
       </div>
     `;
+    heading.querySelectorAll("[data-weather]").forEach((button) => {
+      button.addEventListener("click", () => {
+        state.weather[button.dataset.day] = button.dataset.weather;
+        renderDays();
+        applyFilters();
+      });
+    });
 
     const timeline = el("div", "timeline");
     day.events.forEach((event) => {
-      const card = el("article", `event-card${isClosed(event.status) ? " is-closed" : ""}`);
-      card.dataset.search = `${day.date} ${day.title} ${event.time} ${event.title} ${event.note} ${event.tags.join(" ")} ${normalizeStatus(event.status)}`.toLowerCase();
-      card.dataset.tags = event.tags.join(",");
+      const view = eventForWeather(event, weather);
+      const links = mapLinksForEvent(view).map((link) => link.title).join(" ");
+      const status = hasStatus(view.status) ? normalizeStatus(view.status) : "";
+      const tags = view.tags || [];
+      const card = el("article", `event-card${isClosed(view.status) ? " is-closed" : ""}`);
+      card.dataset.search =
+        `${day.date} ${day.title} ${view.time} ${view.title} ${view.note} ${tags.join(" ")} ${status} ${links}`.toLowerCase();
+      card.dataset.tags = tags.join(",");
       card.style.setProperty("--accent", day.accent);
       card.innerHTML = `
-        <div class="event-time">${escapeHtml(event.time)}</div>
+        <div class="event-time">${escapeHtml(view.time)}</div>
         <div>
           <div class="event-title-row">
-            <h4 class="event-title">${escapeHtml(event.title)}</h4>
-            ${statusBadge(event.status)}
+            <h4 class="event-title">${escapeHtml(view.title)}</h4>
+            ${statusBadge(view.status)}
           </div>
-          <p class="event-note">${escapeHtml(event.note)}</p>
-          <div class="tags">${event.tags.map((tag) => `<span class="tag">#${escapeHtml(tag)}</span>`).join("")}</div>
+          <p class="event-note">${escapeHtml(view.note)}</p>
+          ${mapLinksHtml(view)}
+          <div class="tags">${tags.map((tag) => `<span class="tag">#${escapeHtml(tag)}</span>`).join("")}</div>
         </div>
       `;
       timeline.append(card);
@@ -1712,7 +2297,7 @@ function renderChecklist(targetId, items, namespace) {
           <span class="check-item__title">${escapeHtml(getItemTitle(item))}</span>
           ${statusBadge(getItemStatus(item))}
         </div>
-        ${getItemNote(item) ? `<p class="item-note">${escapeHtml(getItemNote(item))}</p>` : ""}
+        ${itemDetailsHtml(item)}
       </div>
     `;
     target.append(row);
@@ -1729,7 +2314,7 @@ function renderReference(targetId, items) {
         <strong>${escapeHtml(getItemTitle(item))}</strong>
         ${statusBadge(getItemStatus(item))}
       </div>
-      <p>${escapeHtml(getItemNote(item))}</p>
+      ${itemDetailsHtml(item)}
     `;
     target.append(row);
   });
@@ -1745,7 +2330,7 @@ function renderUpdates() {
         <strong>${escapeHtml(getItemTitle(update))}</strong>
         ${statusBadge(getItemStatus(update))}
       </div>
-      <p>${escapeHtml(getItemNote(update))}</p>
+      ${itemDetailsHtml(update)}
     `;
     target.append(item);
   });
@@ -1793,6 +2378,6 @@ async function init() {
 
 init();
 
-    </script>
+</script>
   </body>
 </html>
