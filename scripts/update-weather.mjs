@@ -107,7 +107,13 @@ if (!response.ok) {
 
 const result = await response.json();
 if (result.errors?.length) {
-  throw new Error(`Yandex Weather returned ${result.errors.length} API error(s)`);
+  const details = result.errors
+    .map((error) => {
+      const path = Array.isArray(error.path) ? ` at ${error.path.join(".")}` : "";
+      return `${error.message || "Unknown GraphQL error"}${path}`;
+    })
+    .join("; ");
+  throw new Error(`Yandex Weather returned ${result.errors.length} API error(s): ${details}`);
 }
 
 const weather = result.data?.weatherByPoint;
