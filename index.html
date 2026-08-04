@@ -188,6 +188,31 @@ input {
   margin-top: 26px;
 }
 
+.hero__downloads {
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  background: rgba(10, 14, 20, 0.24);
+  backdrop-filter: blur(14px);
+}
+
+.hero__downloads-label {
+  margin: 0 0 8px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.hero__downloads-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -273,8 +298,7 @@ input {
 .controls-band,
 .utility-band,
 .finance-band,
-.links-band,
-.update-band {
+.links-band {
   background: var(--wash);
 }
 
@@ -442,6 +466,10 @@ input {
   font-weight: 800;
 }
 
+.day-nav__compact {
+  display: none;
+}
+
 .days {
   display: grid;
   gap: 34px;
@@ -470,6 +498,70 @@ input {
   color: var(--accent);
   font-size: 24px;
   font-weight: 900;
+}
+
+.day-weather {
+  margin: 0 0 14px 66px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--wash);
+}
+
+.day-weather__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.day-weather__period {
+  min-width: 0;
+  padding: 8px;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.day-weather__period-name,
+.day-weather__rain {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.day-weather__temperature {
+  display: block;
+  margin-top: 3px;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.day-weather__condition {
+  display: block;
+  min-width: 0;
+  margin-top: 2px;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 850;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.day-weather__rain {
+  margin-top: 2px;
+}
+
+.day-weather__meta,
+.day-weather__message {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.day-weather__meta a {
+  color: var(--blue);
+  text-decoration: underline;
 }
 
 .day-heading h3 {
@@ -793,8 +885,7 @@ input {
 }
 
 .checklist,
-.reference-list,
-.update-grid {
+.reference-list {
   display: grid;
   gap: 10px;
 }
@@ -806,8 +897,7 @@ input {
 }
 
 .check-item,
-.reference-item,
-.update-item {
+.reference-item {
   display: grid;
   gap: 5px;
   padding: 13px;
@@ -865,8 +955,7 @@ input {
 }
 
 .check-item.is-done .check-item__title,
-.reference-item.is-done strong,
-.update-item.is-done strong {
+.reference-item.is-done strong {
   color: var(--muted);
   text-decoration: line-through;
 }
@@ -897,19 +986,57 @@ input {
   color: #8a5a00;
 }
 
-.reference-item strong,
-.update-item strong {
+.reference-item strong {
   color: var(--ink);
 }
 
-.reference-item p,
-.update-item p {
+.reference-item p {
   margin: 0;
   color: var(--muted);
 }
 
-.update-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+.section-disclosure > summary {
+  list-style: none;
+}
+
+.section-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.disclosure-summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.disclosure-summary .section-heading {
+  margin-bottom: 20px;
+}
+
+.disclosure-toggle {
+  display: none;
+  flex: 0 0 auto;
+  min-height: 36px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--night);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.disclosure-toggle::after {
+  content: "⌄";
+  display: inline-block;
+  margin-left: 6px;
+  transition: transform 160ms ease;
+}
+
+.section-disclosure[open] .disclosure-toggle::after {
+  transform: rotate(180deg);
 }
 
 .finance-card {
@@ -961,6 +1088,17 @@ input {
   display: block;
   color: var(--ink);
   font-size: 17px;
+}
+
+.link-card__badge {
+  display: inline-flex;
+  margin-bottom: 5px;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: #e7f5ff;
+  color: #1864ab;
+  font-size: 11px;
+  font-weight: 900;
 }
 
 .link-card p {
@@ -1090,8 +1228,7 @@ input {
 	  .utility-layout,
 	  .finance-card,
 	  .link-list,
-	  .link-card,
-	  .update-grid {
+	  .link-card {
 	    grid-template-columns: 1fr;
 	  }
 
@@ -1104,7 +1241,7 @@ input {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .hero {
     min-height: auto;
     background-position: 62% center;
@@ -1143,9 +1280,42 @@ input {
     padding: 42px 0;
   }
 
-  .summary-grid,
-  .day-nav {
+  .summary-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .day-nav {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline proximity;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .day-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .day-nav a {
+    flex: 0 0 auto;
+    min-height: 44px;
+    height: 44px;
+    padding: 7px 11px;
+    border-top-width: 3px;
+    scroll-snap-align: start;
+    white-space: nowrap;
+  }
+
+  .day-nav__full {
+    display: none;
+  }
+
+  .day-nav__compact {
+    display: inline;
+    color: var(--ink);
+    font-size: 13px;
   }
 
   .section-heading h2 {
@@ -1164,6 +1334,43 @@ input {
 
   .day-heading {
     grid-template-columns: auto 1fr;
+  }
+
+  .day-weather {
+    margin-left: 0;
+    padding: 7px;
+  }
+
+  .day-weather__grid {
+    gap: 4px;
+  }
+
+  .day-weather__period {
+    padding: 6px 4px;
+    text-align: center;
+  }
+
+  .day-weather__temperature {
+    font-size: 18px;
+  }
+
+  .day-weather__condition,
+  .day-weather__period-name,
+  .day-weather__rain {
+    font-size: 10px;
+  }
+
+  .disclosure-summary {
+    cursor: pointer;
+  }
+
+  .disclosure-summary .section-heading {
+    margin-bottom: 12px;
+  }
+
+  .disclosure-toggle {
+    display: inline-flex;
+    align-items: center;
   }
 
   .weather-toggle {
@@ -1195,7 +1402,6 @@ input {
   }
 
   .summary-grid,
-  .day-nav,
   .extra-place-grid {
     grid-template-columns: 1fr;
   }
@@ -1204,9 +1410,18 @@ input {
     width: 100%;
   }
 
-  .hero__actions .button {
+  .hero__actions .button,
+  .hero__downloads-actions .button {
     flex: 0 0 100%;
     max-width: 100%;
+  }
+
+  .hero__downloads {
+    width: 100%;
+  }
+
+  .hero__downloads-actions {
+    flex-direction: column;
   }
 
   .install-modal {
@@ -1251,8 +1466,13 @@ input {
         <div class="hero__actions" aria-label="Быстрые переходы">
           <a class="button button--primary" href="#schedule">Открыть расписание</a>
           <a class="button button--ghost" href="#prep">Что проверить заранее</a>
-          <button class="button button--ghost" id="offlineSave" type="button">Скачать PDF</button>
-          <button class="button button--ghost" id="installAppButton" type="button">Добавить на экран</button>
+        </div>
+        <div class="hero__downloads" aria-label="Сохранить маршрут">
+          <p class="hero__downloads-label">Сохранить маршрут</p>
+          <div class="hero__downloads-actions">
+            <button class="button button--ghost" id="installAppButton" type="button">Скачать приложение</button>
+            <button class="button button--ghost" id="offlineSave" type="button">Скачать PDF</button>
+          </div>
         </div>
       </section>
 
@@ -1314,16 +1534,23 @@ input {
 
       <section class="band extra-places-band" id="extra-places" aria-labelledby="extra-places-title">
         <div class="wrap">
-          <div class="section-heading">
-            <p class="eyebrow">Запасные варианты</p>
-            <h2 id="extra-places-title">Заведения, которые не вошли в маршрут</h2>
-            <p class="section-note">
-              Дополнительные кафе, рестораны, кофейни и бары, которые можно
-              рассмотреть при изменении планов, появлении свободного времени
-              или неудобной логистике основного маршрута.
-            </p>
-          </div>
-          <div class="extra-places" id="extraPlacesGrid"></div>
+          <details class="section-disclosure" data-disclosure="extra-places" open>
+            <summary class="disclosure-summary" aria-controls="extraPlacesContent" aria-expanded="true">
+              <div class="section-heading">
+                <p class="eyebrow">Запасные варианты</p>
+                <h2 id="extra-places-title">Заведения и места, которые не вошли в основной маршрут</h2>
+                <p class="section-note">
+                  Дополнительные кафе, рестораны, кофейни, бары, парки и городские
+                  локации на случай изменения планов, свободного времени или
+                  неудобной логистики основного маршрута.
+                </p>
+              </div>
+              <span class="disclosure-toggle" aria-hidden="true">Скрыть</span>
+            </summary>
+            <div id="extraPlacesContent">
+              <div class="extra-places" id="extraPlacesGrid"></div>
+            </div>
+          </details>
         </div>
       </section>
 
@@ -1342,11 +1569,18 @@ input {
           </section>
 
           <section class="utility-section" id="bookings" aria-labelledby="bookings-title">
-            <div class="section-heading">
-              <p class="eyebrow">Еда и вечера</p>
-              <h2 id="bookings-title">Брони и заведения</h2>
-            </div>
-            <div class="reference-list" id="bookingList"></div>
+            <details class="section-disclosure" data-disclosure="bookings" open>
+              <summary class="disclosure-summary" aria-controls="bookingsContent" aria-expanded="true">
+                <div class="section-heading">
+                  <p class="eyebrow">Еда и вечера</p>
+                  <h2 id="bookings-title">Брони и заведения</h2>
+                </div>
+                <span class="disclosure-toggle" aria-hidden="true">Скрыть</span>
+              </summary>
+              <div id="bookingsContent">
+                <div class="reference-list" id="bookingList"></div>
+              </div>
+            </details>
           </section>
         </div>
       </section>
@@ -1392,21 +1626,18 @@ input {
 
       <section class="band links-band" id="useful" aria-labelledby="useful-title">
         <div class="wrap">
-          <div class="section-heading">
-            <p class="eyebrow">Мониторинг</p>
-            <h2 id="useful-title">Полезные ссылки</h2>
-          </div>
-          <div class="link-list" id="usefulLinks"></div>
-        </div>
-      </section>
-
-      <section class="band update-band" aria-labelledby="updates-title">
-        <div class="wrap">
-          <div class="section-heading">
-            <p class="eyebrow">Ближе к августу</p>
-            <h2 id="updates-title">Что обновить</h2>
-          </div>
-          <div class="update-grid" id="updatesList"></div>
+          <details class="section-disclosure" data-disclosure="useful" open>
+            <summary class="disclosure-summary" aria-controls="usefulContent" aria-expanded="true">
+              <div class="section-heading">
+                <p class="eyebrow">Мониторинг</p>
+                <h2 id="useful-title">Полезные ссылки</h2>
+              </div>
+              <span class="disclosure-toggle" aria-hidden="true">Скрыть</span>
+            </summary>
+            <div id="usefulContent">
+              <div class="link-list" id="usefulLinks"></div>
+            </div>
+          </details>
         </div>
       </section>
     </main>
@@ -1433,10 +1664,10 @@ input {
           data-install-close
         >×</button>
         <p class="eyebrow">Быстрый доступ</p>
-        <h2 id="installAppTitle">Добавить сайт как приложение</h2>
+        <h2 id="installAppTitle">Скачать приложение</h2>
         <p>
-          Маршрут можно добавить на экран „Домой“ и открывать как отдельное
-          веб-приложение.
+          Маршрут можно установить на экран „Домой“ и открывать как отдельное
+          приложение.
         </p>
 
         <div id="installIphoneInstructions">
@@ -1662,7 +1893,14 @@ const places = {
   shveytsariya: {
     title: "Парк «Швейцария»",
     address: "Нижний Новгород",
-    yandex: "https://yandex.ru/maps/-/CTB0b0il",
+    yandex: "https://yandex.ru/maps/-/CTCTvA4S",
+  },
+  zapovednyeKvartaly: {
+    title: "Заповедные кварталы",
+    address: "ул. Короленко, 18, Нижний Новгород",
+    yandex: "https://yandex.ru/maps/-/CTCTvN4n",
+    site: "https://tickets.zkvartaly.ru/",
+    description: "Музей под открытым небом и исторический квартал деревянной застройки. Здесь сохранились дома XIX-XX веков, небольшие сады и спокойная атмосфера старого Нижнего",
   },
   alexanderNevsky: {
     title: "Кафедральный собор Александра Невского",
@@ -1825,6 +2063,16 @@ const extraPlaces = [
       { placeKey: "scladclub", note: "Запасное вечернее место на случай изменения планов и наличия сил. Перед посещением проверить актуальный режим работы." },
     ],
   },
+  {
+    category: "Парки и городские пространства",
+    tags: ["пешком", "фото", "запас", "на улице"],
+    items: [
+      {
+        placeKey: "shveytsariya",
+        note: "Большой городской парк для продолжительной прогулки, отдыха и фотографий. Можно использовать как запасной вариант, если появится свободное время и не захочется оставаться в историческом центре.",
+      },
+    ],
+  },
 ];
 
 const placeAliases = [
@@ -1849,11 +2097,13 @@ const placeAliases = [
   ["mayar", ["mayar"]],
   ["skuratov", ["skuratov coffee", "skuratov"]],
   ["yunost", ["бар юность", "юность"]],
+  ["zapovednyeKvartaly", ["заповедные кварталы", "квартал трех святителей", "короленко 18"]],
 ];
 
 let days = [
   {
     id: "day-12",
+    dateISO: "2026-08-12",
     accent: "#2f80ed",
     icon: "🟦",
     date: "12 августа, среда",
@@ -1948,6 +2198,7 @@ let days = [
   },
   {
     id: "day-13",
+    dateISO: "2026-08-13",
     accent: "#2f9e44",
     icon: "🟩",
     date: "13 августа, четверг",
@@ -2099,14 +2350,15 @@ let days = [
   },
   {
     id: "day-14",
+    dateISO: "2026-08-14",
     accent: "#7c3aed",
     icon: "🟪",
     date: "14 августа, пятница",
-    title: "Покровская, метромост, Стрелка и Пакгаузы",
-    summary: "Большая Покровская, обязательная кофейня, метро через Оку, Стрелка, Пакгаузы и спокойное завершение дня.",
+    title: "Покровская, Заповедные кварталы, метромост, Стрелка и Пакгаузы",
+    summary: "Большая Покровская, кофейные точки, Заповедные кварталы, метро через Оку, Стрелка, Пакгаузы и спокойное завершение дня.",
     weatherNotes: {
-      sunny: "Базовый план: Большая Покровская, метромост, Стрелка, Пакгаузы, ужин у Ярмарки и раннее спокойное завершение перед фиестой.",
-      rain: "Дождевой вариант: меньше открытых переходов на Стрелке, больше времени на Покровской, кафе и закрытые точки.",
+      sunny: "Базовый план: Большая Покровская, Заповедные кварталы, метромост, Стрелка, Пакгаузы, ужин у Ярмарки и раннее спокойное завершение перед фиестой.",
+      rain: "Дождевой вариант: сокращаем прогулку по Заповедным кварталам и открытые переходы на Стрелке, больше времени оставляем кафе и закрытым точкам.",
     },
     events: [
       {
@@ -2129,7 +2381,7 @@ let days = [
         mapKeys: ["bistro918"],
       },
       {
-        time: "12:30-13:35",
+        time: "12:30-13:15",
         title: "🚶📷 Большая Покровская + Государственный банк",
         note: "Сувениры, городские скульптуры и архитектура.",
         tags: ["пешком", "фото"],
@@ -2139,30 +2391,41 @@ let days = [
         },
       },
       {
-        time: "13:35-13:50",
+        time: "13:15-13:30",
         title: "🛍️ Родина",
         note: "10–15 минут, по желанию. Если хочется привезти из Нижнего что-то действительно интересное, можно заглянуть в «Родину» — магазин одноименного нижегородского бренда. Там продаются футболки, худи, сумки, головные уборы и другие вещи с современным дизайном и локальной символикой. Адрес: ул. Пискунова, 9А.",
         tags: ["сувениры", "пешком", "запас"],
         links: [{ title: "Открыть сайт «Родины»", url: rodinaUrl }],
       },
       {
-        time: "13:50-14:20",
+        time: "13:30-13:50",
         title: "☕ Тематическая кофейная точка в стиле «Очень странных дел»",
         note: "Небольшая уличная кофейная точка на Большой Покровской. Здесь нет внутреннего зала: с улицы видны тематически оформленная дверь и окно заказа. Можно взять напиток или десерт навынос и сделать несколько фотографий снаружи.",
         tags: ["кофе", "пешком", "фото", "на улице"],
         mapKeys: ["strangerCoffee"],
       },
       {
-        time: "14:20-15:00",
+        time: "13:50-14:25",
         title: "☕ Кофе 1896",
         note: "Основная кофейная остановка дня в здании Русского музея фотографии. Кофе, выпечка и спокойная пауза перед дальнейшим маршрутом.",
         tags: ["кофе", "запас"],
         mapKeys: ["kofe1896"],
       },
       {
-        time: "15:00-16:00",
-        title: "🚇 Метро через метромост",
-        note: "Горьковская → Московская → Стрелка, чтобы проехать через Оку. По пути через метромост — красивые виды на город и воду.",
+        time: "14:25-15:20",
+        title: "🏘📷 Заповедные кварталы",
+        note: "Прогулка по кварталу деревянной застройки в районе улиц Короленко, Славянской, Студеной и Новой. Заходим со стороны центра, осматриваем исторические дома и постепенно выходим к метро „Горьковская“.",
+        tags: ["пешком", "фото", "музей", "на улице", "архитектура"],
+        mapKeys: ["zapovednyeKvartaly"],
+        links: [{ title: "Открыть официальный сайт Заповедных кварталов", url: places.zapovednyeKvartaly.site }],
+        rain: {
+          note: "При сильном дожде сокращаем прогулку до 20-25 минут либо пропускаем открытую часть, чтобы не сбить дальнейший маршрут через метромост.",
+        },
+      },
+      {
+        time: "15:20-16:00",
+        title: "🚶🚇 К метро и через метромост",
+        note: "От Заповедных кварталов идем к станции „Горьковская“, затем едем Горьковская → Московская → Стрелка, чтобы проехать через Оку.",
         tags: ["метро", "логистика"],
       },
       {
@@ -2214,6 +2477,7 @@ let days = [
   },
   {
     id: "day-15",
+    dateISO: "2026-08-15",
     accent: "#e03131",
     icon: "🟥",
     date: "15 августа, суббота",
@@ -2372,6 +2636,7 @@ let days = [
   },
   {
     id: "day-16",
+    dateISO: "2026-08-16",
     accent: "#f08c00",
     icon: "🟧",
     date: "16 августа, воскресенье",
@@ -2425,7 +2690,7 @@ let days = [
         title: "🚢 Часовая прогулка на теплоходе",
         note: "Билеты на теплоходы и речные прогулки: если захотим заранее выбрать прогулку по Волге или Оке, используем ссылку на речные экскурсии. Если погода плохая, спокойно отменить.",
         tags: ["теплоход", "фото"],
-        links: [{ title: "Открыть билеты на теплоходы и речные прогулки", url: boatTicketUrl }],
+        links: [{ title: "Купить билет на теплоход", url: boatTicketUrl }],
         rain: {
           title: "🟡 Теплоход отменяем по погоде",
           note: "Если дождь или сильный ветер, не привязываемся к речной прогулке и оставляем это время под кофе, отдых или музейную паузу.",
@@ -2466,6 +2731,7 @@ let days = [
   },
   {
     id: "day-17",
+    dateISO: "2026-08-17",
     accent: "#71717a",
     icon: "⬜",
     date: "17 августа, понедельник",
@@ -2677,19 +2943,12 @@ const canonicalPackingItems = [
 
 let packingItems = canonicalPackingItems.map((item) => ({ ...item }));
 
-let updates = [
-  ["Фиеста", "Точная дата, площадка и тайминг Приволжской фиесты."],
-  ["Теплоход", "Оператор, время и цена часовой речной прогулки."],
-  ["Афиша", "Городские события и фестиваль «Столица закатов» на 12-17 августа."],
-  ["Заведения", "Новые места, которые захочется добавить ближе к поездке."],
-];
-
 const usefulLinks = [
   {
     title: "Билеты на теплоходы и речные прогулки",
     note: "Речные экскурсии и прогулки по Волге или Оке.",
     url: boatTicketUrl,
-    button: "Открыть билеты на теплоходы",
+    button: "Купить билет на теплоход",
   },
   {
     title: "Летний музейный маршрут по Кремлю",
@@ -2715,6 +2974,27 @@ const usefulLinks = [
     url: volgaRegattaUrl,
     button: "Открыть страницу регаты",
   },
+  {
+    title: "Нижний 800",
+    note: "Городской Telegram-канал о Нижнем Новгороде: новости, анонсы событий, интересные места, городские проекты, фотографии и полезные материалы.",
+    url: "https://t.me/nizhny800",
+    button: "Открыть Telegram-канал",
+    badge: "Telegram",
+  },
+  {
+    title: "Внутри Нижнего",
+    note: "Городское медиа об активностях, развлечениях, новых заведениях, открытиях, выставках и других событиях Нижнего Новгорода.",
+    url: "https://t.me/vnutri_nizhnego",
+    button: "Открыть Telegram-канал",
+    badge: "Telegram",
+  },
+  {
+    title: "Спасибо, Нижний!",
+    note: "Авторский Telegram-канал о жизни Нижнего Новгорода: городские события, интересные места, наблюдения, истории и фотографии.",
+    url: "https://t.me/spasibonizhny",
+    button: "Открыть Telegram-канал",
+    badge: "Telegram",
+  },
 ];
 
 const googleSheetConfig = {
@@ -2723,6 +3003,9 @@ const googleSheetConfig = {
 };
 
 const fiestaModeStorageKey = "nizhny-novgorod-fiesta-mode";
+const weatherStorageKey = "nizhny-novgorod-weather";
+let weatherData = null;
+let weatherLoadState = "loading";
 
 function loadFiestaMode() {
   try {
@@ -2747,6 +3030,38 @@ const state = {
   weather: {},
   fiestaMode: loadFiestaMode(),
 };
+
+function isValidWeatherPayload(payload) {
+  return Boolean(payload && typeof payload === "object" && payload.days && typeof payload.days === "object");
+}
+
+function loadCachedWeather() {
+  try {
+    const cached = JSON.parse(window.localStorage.getItem(weatherStorageKey) || "null");
+    return isValidWeatherPayload(cached) ? cached : null;
+  } catch {
+    return null;
+  }
+}
+
+async function loadWeatherData() {
+  try {
+    const response = await fetch(`data/weather.json?v=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) throw new Error(`Weather data request failed: ${response.status}`);
+    const payload = await response.json();
+    if (!isValidWeatherPayload(payload)) throw new Error("Weather data has an invalid format");
+    weatherData = payload;
+    weatherLoadState = "ready";
+    try {
+      window.localStorage.setItem(weatherStorageKey, JSON.stringify(payload));
+    } catch {
+      // Weather remains available for the current session when storage is unavailable.
+    }
+  } catch {
+    weatherData = loadCachedWeather();
+    weatherLoadState = weatherData ? "cached" : "error";
+  }
+}
 
 const byId = (id) => document.getElementById(id);
 
@@ -3182,7 +3497,7 @@ function refreshTags() {
     });
   });
   extraPlaces.forEach((category) => category.tags.forEach((tag) => set.add(tag)));
-  [prepItems, bookingItems, rainItems, packingItems, updates].flat().forEach((item) => {
+  [prepItems, bookingItems, rainItems, packingItems].flat().forEach((item) => {
     getItemTags(item).forEach((tag) => set.add(tag));
   });
   tags = [...set].sort((a, b) => a.localeCompare(b, "ru"));
@@ -3657,7 +3972,7 @@ function buildRoutePdfDefinition() {
   content.push(sectionTitle("Брони и важные заведения"));
   bookingItems.forEach((item) => content.push(itemPdfBlock(item)));
 
-  content.push(sectionTitle("Заведения, которые не вошли в маршрут"));
+  content.push(sectionTitle("Заведения и места, которые не вошли в основной маршрут"));
   extraPlaces.forEach((category) => {
     content.push({ text: category.category, bold: true, color: "#667085", margin: [0, 5, 0, 4] });
     category.items.forEach((item) => {
@@ -3795,9 +4110,99 @@ function renderDayNav() {
     link.href = `#${day.id}`;
     link.style.setProperty("--accent", day.accent);
     const [date, weekday = ""] = day.date.split(", ");
-    link.innerHTML = `<span>${escapeHtml(date)}</span>${escapeHtml(day.icon)} ${escapeHtml(weekday)}`;
+    const shortDate = date.replace("августа", "авг.");
+    link.setAttribute("aria-label", day.date);
+    link.title = day.date;
+    link.innerHTML = `
+      <span class="day-nav__full">${escapeHtml(date)}</span>
+      <span class="day-nav__full">${escapeHtml(day.icon)} ${escapeHtml(weekday)}</span>
+      <span class="day-nav__compact">${escapeHtml(day.icon)} ${escapeHtml(shortDate)} | ${escapeHtml(weekday)}</span>
+    `;
     nav.append(link);
   });
+}
+
+const weatherPeriodLabels = {
+  morning: "Утро",
+  day: "День",
+  evening: "Вечер",
+  night: "Ночь",
+};
+
+function weatherConditionIcon(condition = "") {
+  const value = condition.toLowerCase();
+  if (value.includes("thunder")) return "⛈";
+  if (value.includes("rain") || value.includes("shower") || value.includes("drizzle")) return "🌧";
+  if (value.includes("snow") || value.includes("sleet") || value.includes("hail")) return "🌨";
+  if (value.includes("clear")) return "☀️";
+  if (value.includes("partly")) return "🌤";
+  return "☁️";
+}
+
+function formatWeatherTemperature(value) {
+  if (!Number.isFinite(Number(value))) return "-";
+  const temperature = Math.round(Number(value));
+  return `${temperature > 0 ? "+" : ""}${temperature}°`;
+}
+
+function formatWeatherUpdatedAt(value) {
+  if (!value) return "";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  return new Intl.DateTimeFormat("ru-RU", {
+    day: "numeric",
+    month: "long",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "Europe/Moscow",
+  }).format(date);
+}
+
+function renderDayWeather(day) {
+  const panel = el("aside", "day-weather");
+  panel.setAttribute("aria-label", `Прогноз погоды: ${day.date}`);
+  const forecast = weatherData?.days?.[day.dateISO];
+
+  if (!forecast) {
+    const message = weatherLoadState === "error"
+      ? "Не удалось обновить прогноз. Расписание доступно без погодных данных."
+      : "Прогноз появится ближе к дате поездки.";
+    panel.innerHTML = `<p class="day-weather__message">${escapeHtml(message)}</p>`;
+    return panel;
+  }
+
+  panel.innerHTML = `
+    <div class="day-weather__grid">
+      ${Object.entries(weatherPeriodLabels)
+        .map(([key, label]) => {
+          const period = forecast[key] || {};
+          const probability = Number.isFinite(Number(period.precipitationProbability))
+            ? Math.round(Number(period.precipitationProbability))
+            : null;
+          const rainText = period.hasRain
+            ? `Дождь${probability === null ? "" : ` ${probability}%`}`
+            : "Без дождя";
+          const conditionText = period.conditionText || "Нет данных";
+          return `<div class="day-weather__period">
+            <span class="day-weather__period-name">${escapeHtml(label)}</span>
+            <strong class="day-weather__temperature">${escapeHtml(formatWeatherTemperature(period.temperature))}</strong>
+            <span class="day-weather__condition">${escapeHtml(weatherConditionIcon(period.condition))} ${escapeHtml(conditionText)}</span>
+            <span class="day-weather__rain">${escapeHtml(rainText)}</span>
+          </div>`;
+        })
+        .join("")}
+    </div>
+    <p class="day-weather__meta">
+      ${weatherData.generatedAt ? `Обновлено: ${escapeHtml(formatWeatherUpdatedAt(weatherData.generatedAt))}. ` : ""}
+      ${
+        weatherData.sourceUrl
+          ? `<a href="${escapeHtml(weatherData.sourceUrl)}" target="_blank" rel="noopener noreferrer">Данные Яндекс Погоды</a>`
+          : "Данные Яндекс Погоды"
+      }
+      ${weatherLoadState === "cached" ? " · сохраненный прогноз" : ""}
+    </p>
+  `;
+  return panel;
 }
 
 function renderDays() {
@@ -3903,7 +4308,7 @@ function renderDays() {
       timeline.append(card);
     });
 
-    section.append(heading, timeline);
+    section.append(heading, renderDayWeather(day), timeline);
     container.append(section);
   });
 }
@@ -3971,6 +4376,11 @@ function renderExtraPlaces() {
         <p>${escapeHtml(item.note)}</p>
         <div class="map-actions">
           <a class="map-link" href="${escapeHtml(place.yandex)}" target="_blank" rel="noopener noreferrer">📍 Яндекс Карты</a>
+          ${
+            place.site
+              ? `<a class="event-link" href="${escapeHtml(place.site)}" target="_blank" rel="noopener noreferrer">Открыть официальный сайт</a>`
+              : ""
+          }
         </div>
       `;
       grid.append(card);
@@ -4002,28 +4412,13 @@ function renderUsefulLinks() {
     const row = el("article", "link-card");
     row.innerHTML = `
       <div>
+        ${link.badge ? `<span class="link-card__badge">${escapeHtml(link.badge)}</span>` : ""}
         <strong>${escapeHtml(link.title)}</strong>
         <p>${escapeHtml(link.note)}</p>
       </div>
       <a class="button button--small" href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.button)}</a>
     `;
     target.append(row);
-  });
-}
-
-function renderUpdates() {
-  const target = byId("updatesList");
-  target.innerHTML = "";
-  updates.forEach((update) => {
-    const item = el("article", `update-item${isClosed(getItemStatus(update)) ? " is-done" : ""}`);
-    item.innerHTML = `
-      <div class="item-title-row">
-        <strong>${escapeHtml(getItemTitle(update))}</strong>
-        ${statusBadge(getItemStatus(update))}
-      </div>
-      ${itemDetailsHtml(update)}
-    `;
-    target.append(item);
   });
 }
 
@@ -4044,6 +4439,56 @@ function applyFilters() {
   document.querySelectorAll(".extra-category").forEach((category) => {
     category.hidden = !category.querySelector(".extra-place-card:not([hidden])");
   });
+}
+
+function setupResponsiveDisclosures() {
+  const disclosures = [...document.querySelectorAll(".section-disclosure")];
+  const mobileQuery = window.matchMedia("(max-width: 768px)");
+  let previousMobile = null;
+
+  const updateLabel = (details) => {
+    const summary = details.querySelector("summary");
+    const label = details.querySelector(".disclosure-toggle");
+    summary?.setAttribute("aria-expanded", String(details.open));
+    if (label) label.textContent = details.open ? "Скрыть" : "Показать";
+  };
+
+  const sync = () => {
+    const mobile = mobileQuery.matches;
+    disclosures.forEach((details) => {
+      if (!mobile) details.open = true;
+      else if (previousMobile !== true) details.open = false;
+      updateLabel(details);
+    });
+    previousMobile = mobile;
+  };
+
+  disclosures.forEach((details) => {
+    const summary = details.querySelector("summary");
+    summary?.addEventListener("click", (event) => {
+      if (!mobileQuery.matches) event.preventDefault();
+      window.setTimeout(() => updateLabel(details), 0);
+    });
+    details.addEventListener("toggle", () => updateLabel(details));
+  });
+
+  const revealHashTarget = () => {
+    const id = window.location.hash.slice(1);
+    if (!id) return;
+    const section = byId(id);
+    const details = section?.matches(".section-disclosure")
+      ? section
+      : section?.querySelector(".section-disclosure") || section?.closest(".section-disclosure");
+    if (details) {
+      details.open = true;
+      updateLabel(details);
+    }
+  };
+
+  mobileQuery.addEventListener?.("change", sync);
+  window.addEventListener("hashchange", revealHashTarget);
+  sync();
+  revealHashTarget();
 }
 
 function isStandaloneApp() {
@@ -4102,7 +4547,9 @@ function setupInstallAppDialog() {
 }
 
 async function init() {
+  const weatherPromise = loadWeatherData();
   await loadGoogleSheet().catch(() => {});
+  await weatherPromise;
 
   renderSummary();
   renderFilters();
@@ -4113,7 +4560,7 @@ async function init() {
   renderReference("bookingList", bookingItems);
   renderExtraPlaces();
   renderUsefulLinks();
-  renderUpdates();
+  setupResponsiveDisclosures();
 
   byId("searchInput").addEventListener("input", (event) => {
     state.query = event.target.value;
