@@ -487,6 +487,12 @@ input {
   min-width: 0;
 }
 
+.day-heading__controls {
+  display: grid;
+  gap: 8px;
+  min-width: 210px;
+}
+
 .day-notice,
 .weather-note {
   max-width: 820px;
@@ -505,7 +511,36 @@ input {
   border: 1px solid var(--line);
 }
 
-.weather-toggle {
+.fiesta-mode-note {
+  max-width: 820px;
+  padding: 9px 11px;
+  border-left: 4px solid var(--accent);
+  background: #fff7f7;
+  color: var(--ink) !important;
+}
+
+.day-info-card {
+  display: grid;
+  gap: 2px;
+  max-width: 820px;
+  margin-top: 8px;
+  padding: 9px 11px;
+  border: 1px dashed #c8ced8;
+  border-radius: 8px;
+  background: #f7f9fb;
+  color: var(--muted);
+}
+
+.day-info-card strong {
+  color: var(--ink);
+}
+
+.day-info-card span {
+  font-size: 14px;
+}
+
+.weather-toggle,
+.fiesta-toggle {
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-width: 210px;
@@ -515,7 +550,8 @@ input {
   background: #fff;
 }
 
-.weather-toggle button {
+.weather-toggle button,
+.fiesta-toggle button {
   min-height: 34px;
   padding: 7px 10px;
   border: 0;
@@ -526,9 +562,14 @@ input {
   cursor: pointer;
 }
 
-.weather-toggle button.is-active {
+.weather-toggle button.is-active,
+.fiesta-toggle button.is-active {
   background: var(--accent);
   color: #fff;
+}
+
+.fiesta-toggle {
+  min-width: 330px;
 }
 
 .timeline {
@@ -584,6 +625,23 @@ input {
 
 .event-note {
   margin: 6px 0 0;
+  color: var(--muted);
+}
+
+.event-options {
+  display: grid;
+  gap: 9px;
+  margin-top: 11px;
+}
+
+.event-option {
+  padding: 10px 0 0 12px;
+  border-top: 1px solid var(--line);
+  border-left: 3px solid color-mix(in srgb, var(--accent) 48%, var(--line));
+}
+
+.event-option p {
+  margin: 4px 0 0;
   color: var(--muted);
 }
 
@@ -679,6 +737,55 @@ input {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 28px;
+}
+
+.extra-places-band {
+  background: var(--wash);
+  border-top: 1px solid var(--line);
+}
+
+.extra-places {
+  display: grid;
+  gap: 30px;
+}
+
+.extra-category__title {
+  margin: 0 0 12px;
+  font-size: 20px;
+}
+
+.extra-place-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.extra-place-card {
+  --accent: var(--blue);
+  min-width: 0;
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.extra-place-card__category {
+  margin: 0 0 3px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.extra-place-card h4 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.extra-place-card > p:not(.extra-place-card__category) {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 14px;
 }
 
 .utility-section {
@@ -988,6 +1095,10 @@ input {
 	    grid-template-columns: 1fr;
 	  }
 
+  .extra-place-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .hero-strip {
     grid-template-columns: 1fr;
   }
@@ -1060,6 +1171,16 @@ input {
     width: 100%;
   }
 
+  .day-heading__controls {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .fiesta-toggle {
+    width: 100%;
+    min-width: 0;
+  }
+
   .event-time {
     white-space: normal;
   }
@@ -1074,7 +1195,8 @@ input {
   }
 
   .summary-grid,
-  .day-nav {
+  .day-nav,
+  .extra-place-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1187,6 +1309,21 @@ input {
           </div>
           <div class="day-nav" id="dayNav" aria-label="Навигация по дням"></div>
           <div class="days" id="days"></div>
+        </div>
+      </section>
+
+      <section class="band extra-places-band" id="extra-places" aria-labelledby="extra-places-title">
+        <div class="wrap">
+          <div class="section-heading">
+            <p class="eyebrow">Запасные варианты</p>
+            <h2 id="extra-places-title">Заведения, которые не вошли в маршрут</h2>
+            <p class="section-note">
+              Дополнительные кафе, рестораны, кофейни и бары, которые можно
+              рассмотреть при изменении планов, появлении свободного времени
+              или неудобной логистике основного маршрута.
+            </p>
+          </div>
+          <div class="extra-places" id="extraPlacesGrid"></div>
         </div>
       </section>
 
@@ -1330,7 +1467,26 @@ input {
     </div>
 
     <script>
-let tags = ["еда", "кофе", "фото", "закат", "бронь", "такси", "пешком", "фиеста", "регата", "запас", "сувениры", "музей"];
+let tags = [
+  "еда",
+  "кофе",
+  "фото",
+  "закат",
+  "бронь",
+  "такси",
+  "пешком",
+  "фиеста",
+  "регата",
+  "запас",
+  "сувениры",
+  "музей",
+  "бар",
+  "ночь",
+  "в помещении",
+  "на улице",
+  "логистика",
+  "теплоход",
+];
 
 const tricountUrl = "https://tricount.com/toVVuhWmjLHqRaYsSe";
 const stolitzaZakatovUrl = "https://stolicazakatov.nn-afisha.ru/?ysclid=mre26wza4c24955178";
@@ -1449,7 +1605,7 @@ const places = {
     yandex: "https://yandex.ru/maps/org/surf_coffee/92820399537?si=maltsev.ph",
   },
   strangerCoffee: {
-    title: "Кофейня в стиле «Очень странные дела»",
+    title: "Тематическая кофейная точка в стиле «Очень странных дел»",
     address: "Большая Покровская ул., 57, Нижний Новгород",
   },
   rodina: {
@@ -1525,7 +1681,151 @@ const places = {
     phone: "+7 (920) 299-06-96",
     yandex: "https://yandex.ru/maps/org/yula_pitstsa/206680508835?si=maltsev.ph",
   },
+  cafe38: {
+    title: "Кафе 38",
+    yandex: "https://yandex.ru/maps/?text=Кафе%2038%20Рождественская%2038%20Нижний%20Новгород",
+    site: "https://38.cafe/",
+  },
+  pinci: {
+    title: "Pinci",
+    yandex: "https://yandex.ru/maps/?text=Pinci%20ресторан%20Нижний%20Новгород",
+  },
+  ceylon: {
+    title: "Цейлон",
+    yandex: "https://yandex.ru/maps/?text=Цейлон%20Большая%20Покровская%2015%20Нижний%20Новгород",
+    site: "https://ceylon.salutandco.ru/",
+  },
+  seledkaCoffee: {
+    title: "Селедка и Кофе",
+    yandex: "https://yandex.ru/maps/?text=Селедка%20и%20Кофе%20Нижний%20Новгород",
+  },
+  mayar: {
+    title: "Mayar",
+    yandex: "https://yandex.ru/maps/?text=Mayar%20кафе%20Нижний%20Новгород",
+    site: "https://mayarcafe.ru/",
+  },
+  skuratov: {
+    title: "Skuratov Coffee",
+    yandex: "https://yandex.ru/maps/?text=Skuratov%20Coffee%20Нижний%20Новгород",
+    site: "https://skuratovcoffee.ru/",
+  },
+  yunost: {
+    title: "Бар «Юность»",
+    yandex: "https://yandex.ru/maps/?text=Юность%20бар%20Нижний%20Новгород",
+  },
+  pasters: {
+    title: "Pasters",
+    yandex: "https://yandex.ru/maps/?text=Pasters%20Нижний%20Новгород",
+  },
+  salutBurgers: {
+    title: "Salut Burgers",
+    yandex: "https://yandex.ru/maps/?text=Salut%20Burgers%20Нижний%20Новгород",
+  },
+  matePizza: {
+    title: "Мейт.Пицца",
+    yandex: "https://yandex.ru/maps/?text=Мейт.Пицца%20Нижний%20Новгород",
+  },
+  kusto: {
+    title: "Кусто",
+    yandex: "https://yandex.ru/maps/?text=Кусто%20ресторан%20Нижний%20Новгород",
+  },
+  yale: {
+    title: "Yale",
+    yandex: "https://yandex.ru/maps/?text=Yale%20ресторан%20Нижний%20Новгород",
+  },
+  redWall: {
+    title: "Red Wall",
+    yandex: "https://yandex.ru/maps/?text=Red%20Wall%20ресторан%20Нижний%20Новгород",
+  },
+  brera: {
+    title: "Brera",
+    yandex: "https://yandex.ru/maps/?text=Brera%20ресторан%20Нижний%20Новгород",
+  },
+  negroni: {
+    title: "Negroni",
+    yandex: "https://yandex.ru/maps/?text=Negroni%20ресторан%20Нижний%20Новгород",
+  },
+  gusVYablokah: {
+    title: "Гусь в яблоках",
+    yandex: "https://yandex.ru/maps/?text=Гусь%20в%20яблоках%20Нижний%20Новгород",
+  },
+  samovarDaUtki: {
+    title: "Самовар да утки",
+    yandex: "https://yandex.ru/maps/?text=Самовар%20да%20утки%20Нижний%20Новгород",
+  },
+  krasa: {
+    title: "Краса",
+    yandex: "https://yandex.ru/maps/?text=Краса%20ресторан%20Нижний%20Новгород",
+  },
+  citadel: {
+    title: "Цитадель",
+    yandex: "https://yandex.ru/maps/?text=Цитадель%20ресторан%20Нижний%20Новгород",
+  },
+  veryMatch: {
+    title: "Very Match",
+    yandex: "https://yandex.ru/maps/?text=Very%20Match%20кофейня%20Нижний%20Новгород",
+  },
+  salutSpecialty: {
+    title: "Salut! Specialty Coffee",
+    yandex: "https://yandex.ru/maps/?text=Salut%20Specialty%20Coffee%20Нижний%20Новгород",
+  },
+  molaMolaCapri: {
+    title: "Mola Mola Capri",
+    yandex: "https://yandex.ru/maps/?text=Mola%20Mola%20Capri%20Нижний%20Новгород",
+  },
+  mixturaBar: {
+    title: "Mixtura Bar",
+    yandex: "https://yandex.ru/maps/?text=Mixtura%20Bar%20Нижний%20Новгород",
+  },
+  scladclub: {
+    title: "SCLADCLUB",
+    yandex: "https://yandex.ru/maps/?text=SCLADCLUB%20Нижний%20Новгород",
+  },
 };
+
+const extraPlaces = [
+  {
+    category: "Кафе и бистро",
+    tags: ["еда", "запас", "в помещении"],
+    items: [
+      { placeKey: "pasters", note: "Запасной вариант кафе или бистро при изменении маршрута. Перед посещением стоит проверить актуальный режим работы." },
+      { placeKey: "salutBurgers", note: "Запасной вариант для быстрого приема пищи при свободном окне. Перед посещением стоит проверить актуальный режим работы." },
+      { placeKey: "matePizza", note: "Альтернативная точка с пиццей при изменении вечернего плана. Использовать только при удобной логистике." },
+    ],
+  },
+  {
+    category: "Рестораны",
+    tags: ["еда", "запас", "в помещении"],
+    items: [
+      { placeKey: "kusto", note: "Дополнительный ресторанный вариант при изменении основного плана. Перед посещением проверить актуальный режим работы." },
+      { placeKey: "yale", note: "Дополнительный ресторанный вариант на случай свободного времени или более удобной логистики." },
+      { placeKey: "redWall", note: "Ресторан из запасного списка для корректировки маршрута. Актуальные условия посещения лучше проверить заранее." },
+      { placeKey: "brera", note: "Альтернативный ресторанный вариант вне основного расписания. Рассматривать только при изменении планов." },
+      { placeKey: "negroni", note: "Запасной ресторанный вариант для свободного окна. Перед посещением проверить актуальный режим работы." },
+      { placeKey: "gusVYablokah", note: "Дополнительный вариант ресторана при изменении гастрономического плана поездки." },
+      { placeKey: "samovarDaUtki", note: "Ресторан из резервного списка. Подойдет только если появится свободное время и точка будет удобна по маршруту." },
+      { placeKey: "krasa", note: "Дополнительная ресторанная точка вне основного расписания. Перед посещением проверить актуальную информацию." },
+      { placeKey: "citadel", note: "Запасной ресторанный вариант на случай изменения маршрута или неудобной логистики основных заведений." },
+    ],
+  },
+  {
+    category: "Кофейни",
+    tags: ["кофе", "запас", "в помещении"],
+    items: [
+      { placeKey: "veryMatch", note: "Дополнительная кофейная точка при появлении свободного времени. Перед посещением проверить режим работы." },
+      { placeKey: "salutSpecialty", note: "Запасная кофейня вне основного маршрута. Рассматривать при удобной логистике." },
+      { placeKey: "molaMolaCapri", note: "Альтернативная кофейная остановка, если основной план изменится или появится свободное окно." },
+    ],
+  },
+  {
+    category: "Бары и вечерние места",
+    tags: ["ночь", "запас", "в помещении"],
+    items: [
+      { placeKey: "mixturaBar", note: "Дополнительный вечерний вариант вне основного расписания. Актуальные условия посещения лучше проверить заранее." },
+      { placeKey: "scladclub", note: "Запасное вечернее место на случай изменения планов и наличия сил. Перед посещением проверить актуальный режим работы." },
+    ],
+  },
+];
 
 const placeAliases = [
   ["siMamma", ["si, mamma", "si mamma"]],
@@ -1542,6 +1842,13 @@ const placeAliases = [
   ["kofe1896", ["кофе 1896", "1896"]],
   ["samovarnaya", ["самоварная"]],
   ["strangerCoffee", ["очень странные дела", "большая покровская 57"]],
+  ["cafe38", ["кафе 38"]],
+  ["pinci", ["pinci"]],
+  ["ceylon", ["цейлон"]],
+  ["seledkaCoffee", ["селедка и кофе"]],
+  ["mayar", ["mayar"]],
+  ["skuratov", ["skuratov coffee", "skuratov"]],
+  ["yunost", ["бар юность", "юность"]],
 ];
 
 let days = [
@@ -1588,11 +1895,20 @@ let days = [
         time: "17:00-19:00",
         title: "🚶📷 Рождественская улица",
         note: "Купеческие дома, старый Нижний, Строгановская церковь. По пути: городские надписи „Здесь чувствуешь жизнь“ и „Быть, а не казаться“. Если понадобится спокойная пауза, можно остановиться на кофе на Рождественской.",
-        tags: ["пешком", "фото", "кофе"],
+        tags: ["пешком", "фото", "кофе", "еда", "запас", "в помещении"],
         mapKeys: ["rozhdestvenskaya"],
+        options: [
+          {
+            title: "☕ Кофе или десерт в «Кафе 38»",
+            note: "Короткая необязательная остановка во время прогулки по Рождественской улице. Можно зайти на кофе или десерт, не превращая эту паузу в полноценный прием пищи перед ужином.",
+            tags: ["кофе", "еда", "запас", "в помещении"],
+            mapKeys: ["cafe38"],
+            links: [{ title: "Открыть официальный сайт «Кафе 38»", url: places.cafe38.site }],
+          },
+        ],
         rain: {
           title: "🚶📷 Рождественская улица в коротком формате",
-          note: "Оставляем самую красивую часть улицы и фототочки с надписями «Здесь чувствуешь жизнь» и «Быть, а не казаться», чаще заходим в теплые места. Без дополнительных кофейных крюков.",
+          note: "Оставляем самую красивую часть улицы и фототочки с надписями «Здесь чувствуешь жизнь» и «Быть, а не казаться». При необходимости используем «Кафе 38» как короткую теплую паузу без отдельного маршрута.",
         },
       },
       {
@@ -1775,8 +2091,8 @@ let days = [
     events: [
       {
         time: "09:30-10:15",
-        title: "Подъём",
-        note: "Можно съесть лёгкий завтрак в отеле, если не планируется завтрак в городе.",
+        title: "Подъем",
+        note: "Можно съесть легкий завтрак в отеле, если не планируется завтрак в городе.",
         tags: ["запас"],
       },
       {
@@ -1784,7 +2100,6 @@ let days = [
         title: "🚕 Такси до Бистро 9/18",
         note: "Переезд до Бистро 9/18 и небольшой запас времени на дорогу.",
         tags: ["такси", "логистика", "запас"],
-        mapKeys: ["bistro918"],
       },
       {
         time: "11:00-12:30",
@@ -1806,15 +2121,15 @@ let days = [
       {
         time: "13:35-13:50",
         title: "🛍️ Родина",
-        note: "10–15 минут, по желанию. Если хочется привезти из Нижнего что-то действительно интересное, можно заглянуть в «Родину» — магазин одноимённого нижегородского бренда. Там продаются футболки, худи, сумки, головные уборы и другие вещи с современным дизайном и локальной символикой. Адрес: ул. Пискунова, 9А.",
+        note: "10–15 минут, по желанию. Если хочется привезти из Нижнего что-то действительно интересное, можно заглянуть в «Родину» — магазин одноименного нижегородского бренда. Там продаются футболки, худи, сумки, головные уборы и другие вещи с современным дизайном и локальной символикой. Адрес: ул. Пискунова, 9А.",
         tags: ["сувениры", "пешком", "запас"],
         links: [{ title: "Открыть сайт «Родины»", url: rodinaUrl }],
       },
       {
         time: "13:50-14:20",
-        title: "📷 Тематическая остановка в стиле „Очень странных дел“",
-        note: "Короткая остановка ради интерьера и фотографий. Напиток или десерт — по желанию.",
-        tags: ["кофе", "пешком", "фото"],
+        title: "☕ Тематическая кофейная точка в стиле «Очень странных дел»",
+        note: "Небольшая уличная кофейная точка на Большой Покровской. Здесь нет внутреннего зала: с улицы видны тематически оформленная дверь и окно заказа. Можно взять напиток или десерт навынос и сделать несколько фотографий снаружи.",
+        tags: ["кофе", "пешком", "фото", "на улице"],
         mapKeys: ["strangerCoffee"],
       },
       {
@@ -1883,30 +2198,93 @@ let days = [
     icon: "🟥",
     date: "15 августа, суббота",
     title: "Приволжская фиеста",
-    summary: "Ранний старт аэростатов, восстановление днем, Волжская регата и вечерняя программа.",
+    summary: "Два варианта дня: полный сценарий с ранним стартом или спокойное начало, Волжская регата и вечерняя программа фиесты.",
     notice: "План предварительный и будет скорректирован после публикации официальной программы Приволжской фиесты. При переносе мероприятия маршруты соответствующих дней поменяем местами.",
     weatherToggle: false,
+    fiestaModeNote: "Утренняя программа фиесты требует очень раннего подъема. Можно выбрать полный сценарий с утренними полетами либо более спокойный вариант только с дневной и вечерней программой.",
+    fiestaModes: {
+      early: { label: "С ранним подъемом" },
+      relaxed: {
+        label: "Без раннего подъема",
+        events: [
+          {
+            time: "10:00-11:00",
+            title: "Поздний подъем и завтрак",
+            note: "Поздний подъем и завтрак в отеле или рядом. Новое обязательное заведение не назначаем.",
+            tags: ["еда", "запас"],
+          },
+          {
+            time: "11:00-12:00",
+            title: "Спокойное начало дня и подготовка к выезду",
+            note: "Проверяем актуальную площадку фиесты и регаты, собираемся и планируем дорогу без спешки.",
+            tags: ["фиеста", "регата", "логистика", "запас"],
+          },
+          {
+            time: "Время уточняется",
+            title: "⛵ Волжская регата — 2026",
+            note: "Соревнования профессионалов и любителей парусного спорта в акватории Волги и Оки. Посещение бесплатное. Точное время и удобную точку просмотра проверяем после публикации программы.",
+            tags: ["регата", "фото", "запас"],
+            links: [{ title: "Открыть страницу регаты", url: volgaRegattaUrl }],
+          },
+          {
+            time: "12:00-15:30",
+            title: "🍽 Обед в Pinci",
+            note: "Основной вариант обеда при возвращении в центр. Решение принимаем с учетом фактической площадки фиесты, программы регаты и времени на дорогу.",
+            tags: ["еда", "запас", "в помещении"],
+            mapKeys: ["pinci"],
+            options: [
+              {
+                title: "Запасной вариант — «Цейлон»",
+                note: "Азиатское бистро с блюдами, вдохновленными кухнями Шри-Ланки, Индии, Таиланда и Малайзии. Использовать как альтернативу Pinci при более удобной логистике или очереди.",
+                tags: ["еда", "запас", "в помещении"],
+                mapKeys: ["ceylon"],
+                links: [{ title: "Открыть официальный сайт «Цейлона»", url: places.ceylon.site }],
+              },
+            ],
+          },
+          {
+            time: "15:30-16:00",
+            title: "🚕 Выезд на вечернюю площадку",
+            note: "Ориентируемся на официально объявленную локацию.",
+            tags: ["такси", "фиеста"],
+          },
+          {
+            time: "16:00-21:00",
+            title: "🎈🌅📷 Вечерняя программа и свечение",
+            note: "Полеты, привязные подъемы, подготовка аэростатов и закат.",
+            tags: ["фиеста", "закат", "фото"],
+          },
+          {
+            time: "21:00-00:00",
+            title: "🍸 «Селедка и Кофе» по силам",
+            note: "Вечерний вариант после программы фиесты при возвращении в центр и наличии сил. Можно зайти на напитки, закуски или поздний ужин. При сильной усталости сразу возвращаемся в отель.",
+            tags: ["еда", "ночь", "запас", "в помещении"],
+            mapKeys: ["seledkaCoffee"],
+          },
+        ],
+      },
+    },
     weatherNotes: {
-      sunny: "Базовый план: ранний старт аэростатов, восстановление днем, вечерняя программа и свечение.",
+      sunny: "Фиеста проводится при подходящей погоде; точный порядок событий сверяем с официальной программой.",
     },
     events: [
       {
         time: "03:30-04:00",
-        title: "Подъём",
+        title: "Подъем",
         note: "Одежду, воду, телефоны, пауэрбанки и перекус подготовить с вечера. Времени пока пугаться не стоит: оно может быть скорректировано по официальной программе. Но обычно старт проходит примерно по такому графику.",
         tags: ["фиеста", "логистика"],
       },
       {
         time: "Перед выездом",
         title: "🎈 Бесплатные точки просмотра Фиесты с земли",
-        note: "Смотреть Фиесту с земли можно бесплатно. После публикации площадки и направления полёта выбираем одну подходящую точку наблюдения. Это варианты, а не последовательный маршрут: не нужно посещать все места подряд.",
+        note: "Смотреть Фиесту с земли можно бесплатно. После публикации площадки и направления полета выбираем одну подходящую точку наблюдения. Это варианты, а не последовательный маршрут: не нужно посещать все места подряд.",
         tags: ["фиеста", "фото", "запас"],
         mapKeys: ["fedorovskaya", "chkalovStairs", "strelka", "verkhneVolzhskaya", "shveytsariya"],
       },
       {
         time: "04:00-04:30",
         title: "🚕 Такси к точке наблюдения",
-        note: "Точку выбираем только по актуальной информации организаторов, площадке и направлению полёта.",
+        note: "Точку выбираем только по актуальной информации организаторов, площадке и направлению полета.",
         tags: ["такси", "фиеста"],
       },
       {
@@ -1925,7 +2303,7 @@ let days = [
       {
         time: "08:00-11:30",
         title: "🟡 Сон в отеле",
-        note: "Восстановление после раннего подъёма.",
+        note: "Восстановление после раннего подъема.",
         tags: ["запас"],
       },
       {
@@ -1937,9 +2315,19 @@ let days = [
       },
       {
         time: "12:00-15:30",
-        title: "🟡 [Вакант]",
-        note: "Позже определим, чем заполнить это окно с учетом времени фиесты, регаты, фактической площадки и самочувствия.",
-        tags: ["запас"],
+        title: "🍽 Обед в Pinci",
+        note: "Основной вариант обеда при возвращении в центр. Решение принимаем с учетом фактической площадки фиесты, программы регаты и времени на дорогу.",
+        tags: ["еда", "запас", "в помещении"],
+        mapKeys: ["pinci"],
+        options: [
+          {
+            title: "Запасной вариант — «Цейлон»",
+            note: "Азиатское бистро с блюдами, вдохновленными кухнями Шри-Ланки, Индии, Таиланда и Малайзии. Использовать как альтернативу Pinci при более удобной логистике или очереди.",
+            tags: ["еда", "запас", "в помещении"],
+            mapKeys: ["ceylon"],
+            links: [{ title: "Открыть официальный сайт «Цейлона»", url: places.ceylon.site }],
+          },
+        ],
       },
       {
         time: "15:30-16:00",
@@ -1950,14 +2338,15 @@ let days = [
       {
         time: "16:00-21:00",
         title: "🎈🌅📷 Вечерняя программа и свечение",
-        note: "Полёты, привязные подъёмы, подготовка аэростатов и закат.",
+        note: "Полеты, привязные подъемы, подготовка аэростатов и закат.",
         tags: ["фиеста", "закат", "фото"],
       },
       {
         time: "21:00-00:00",
-        title: "🟡 [Вакант]",
-        note: "Позже определим вечерний план с учетом фактической программы фиесты, расположения площадки и уровня усталости.",
-        tags: ["запас"],
+        title: "🍸 «Селедка и Кофе» по силам",
+        note: "Вечерний вариант после программы фиесты при возвращении в центр и наличии сил. Можно зайти на напитки, закуски или поздний ужин. При сильной усталости сразу возвращаемся в отель.",
+        tags: ["еда", "ночь", "запас", "в помещении"],
+        mapKeys: ["seledkaCoffee"],
       },
     ],
   },
@@ -1966,40 +2355,50 @@ let days = [
     accent: "#f08c00",
     icon: "🟧",
     date: "16 августа, воскресенье",
-    title: "Канатная дорога, Бор, теплоход, Юла пицца",
-    summary: "Более спокойный волжский день: виды, вода, канатка и финальный ужин.",
+    title: "Верхне-Волжская набережная, теплоход, Юла пицца",
+    summary: "Спокойный волжский день: поздний завтрак, прогулка по Верхне-Волжской набережной, кофе, теплоход и финальный ужин.",
+    infoCard: {
+      title: "🚡 Канатная дорога — R.I.P. до 2027 года",
+      note: "Канатная дорога закрыта на реконструкцию, поэтому поездка в Бор исключена из программы.",
+    },
     weatherNotes: {
-      sunny: "Базовый план: канатная дорога, вода, спокойные виды и финальный ужин в Юла пицца.",
-      rain: "Дождевой вариант: канатку оставляем только если она работает комфортно, теплоход спокойно отменяем и переносим акцент на кафе и ужин.",
+      sunny: "Базовый план: поздний завтрак, Верхне-Волжская набережная, кофе, теплоход и финальный ужин в Юла пицца.",
+      rain: "Дождевой вариант: сокращаем открытую прогулку, теплоход спокойно отменяем и переносим акцент на кафе, отдых и ужин.",
     },
     events: [
       {
         time: "10:00-11:00",
-        title: "🟡 [Вакант]",
-        note: "Позже определим утренний план и место для завтрака.",
-        tags: ["запас"],
+        title: "🍳 Завтрак в Mayar",
+        note: "Неспешный завтрак в светлом кафе-кондитерской перед дневной программой. В меню завтраки в течение дня и десерты.",
+        tags: ["еда", "кофе", "в помещении"],
+        mapKeys: ["mayar"],
+        links: [{ title: "Открыть официальный сайт Mayar", url: places.mayar.site }],
       },
       {
-        time: "11:30-12:00",
-        title: "🚕 Такси к канатной дороге",
-        note: "Заранее проверить режим и отсутствие профилактики.",
-        tags: ["такси", "логистика"],
-      },
-      {
-        time: "12:00-13:15",
-        title: "🚡 Канатная дорога Нижний Новгород → Бор → Нижний Новгород",
-        note: "Для лучших видов: по дороге в Бор удобнее занимать места с правой стороны, на обратном пути — с левой.",
-        tags: ["канатка", "фото"],
+        time: "11:15-12:30",
+        title: "🚶📷 Верхне-Волжская набережная",
+        note: "Неторопливая прогулка и виды на Волгу.",
+        tags: ["пешком", "фото", "на улице"],
+        mapKeys: ["verkhneVolzhskaya"],
         rain: {
-          note: "Едем только если канатная дорога работает и погода не мешает видам; при сильном ветре или ливне переносим время в город.",
-          tags: ["канатка", "запас"],
+          title: "🚶📷 Верхне-Волжская набережная по погоде",
+          note: "При небольшом дожде оставляем короткую прогулку и виды на Волгу, при сильном сокращаем открытую часть.",
+          tags: ["пешком", "фото", "запас", "на улице"],
         },
       },
       {
+        time: "12:30-13:15",
+        title: "☕ Skuratov Coffee",
+        note: "Кофе и легкий перекус во время прогулки по Верхне-Волжской набережной. Не затягиваем остановку, чтобы сохранить запас перед теплоходом.",
+        tags: ["кофе", "еда", "запас", "в помещении"],
+        mapKeys: ["skuratov"],
+        links: [{ title: "Открыть официальный сайт Skuratov Coffee", url: places.skuratov.site }],
+      },
+      {
         time: "13:15-15:00",
-        title: "🟡 Кофе / лёгкий перекус / свободное окно",
-        note: "Запас на дорогу, очереди, погоду и небольшую прогулку.",
-        tags: ["кофе", "еда", "запас"],
+        title: "🟡 Свободное время / дорога к причалу",
+        note: "Оставляем запас на прогулку, транспорт, возможные очереди и подготовку к теплоходу.",
+        tags: ["запас", "логистика", "пешком"],
       },
       {
         time: "15:30-16:30",
@@ -2015,9 +2414,9 @@ let days = [
       },
       {
         time: "16:30-18:00",
-        title: "🚶📷 Верхне-Волжская набережная",
-        note: "Спокойная прогулка после воды.",
-        tags: ["пешком", "фото"],
+        title: "🛋 Отдых / свободное время",
+        note: "После теплохода оставляем спокойную паузу перед вечерней прогулкой.",
+        tags: ["запас"],
       },
       {
         time: "18:45-19:45",
@@ -2038,9 +2437,10 @@ let days = [
       },
       {
         time: "После 21:30",
-        title: "🟡 Свободный вечер",
-        note: "Свободное время без заранее выбранного заведения.",
-        tags: ["запас"],
+        title: "🍸 Бар «Юность» по желанию",
+        note: "Необязательное продолжение вечера после ужина. Можно зайти на один коктейль или настойку. При усталости возвращаемся в отель.",
+        tags: ["ночь", "запас", "в помещении"],
+        mapKeys: ["yunost"],
       },
     ],
   },
@@ -2058,14 +2458,14 @@ let days = [
     events: [
       {
         time: "08:30-09:30",
-        title: "Подъём и сбор вещей",
+        title: "Подъем и сбор вещей",
         note: "Проверить документы, зарядки, пауэрбанки и сувениры.",
         tags: ["логистика"],
       },
       {
         time: "09:30-10:15",
         title: "☕ Завтрак в отеле",
-        note: "Можно съесть лёгкий завтрак в отеле, если не планируется завтрак в городе.",
+        note: "Можно съесть легкий завтрак в отеле, если не планируется завтрак в городе.",
         tags: ["кофе", "еда"],
       },
       {
@@ -2151,16 +2551,12 @@ let prepItems = [
     status: "не выполнено",
   },
   {
-    title: "Решить, идём ли на выставку «Великая Всероссийская» в Пакгаузах.",
+    title: "Решить, идем ли на выставку «Великая Всероссийская» в Пакгаузах.",
     comment: "Билет — 500 ₽, дни работы лучше проверить ближе к поездке.",
     status: "не выполнено",
   },
   {
     title: "Проверить прогноз: ветер, дождь, облачность, температура утром и вечером.",
-    status: "не выполнено",
-  },
-  {
-    title: "Проверить режим канатной дороги и отсутствие профилактики.",
     status: "не выполнено",
   },
   {
@@ -2229,8 +2625,8 @@ let bookingItems = [
     status: "не выполнено",
   },
   {
-    title: "Кофейня в стиле «Очень странные дела»",
-    note: "Обязательная точка на Большой Покровской, 57. Ссылку на карты добавим, когда будет точное название.",
+    title: "Тематическая кофейная точка в стиле «Очень странных дел»",
+    note: "Небольшая уличная кофейная точка на Большой Покровской, 57. Внутреннего зала нет: напитки и десерты выдают навынос через окно заказа, а тематически оформленная дверь подходит для фотографий снаружи.",
     status: "не выполнено",
   },
 ];
@@ -2238,7 +2634,7 @@ let bookingItems = [
 let rainItems = [
   ["13 августа", "При небольшом дожде стены Кремля можно оставить; при сильном дожде сокращаем открытые переходы и добавляем музей, кафе или более короткий маршрут."],
   ["14 августа", "Сократить Стрелку и Пакгаузы, больше времени оставить Покровской и заведениям."],
-  ["16 августа", "Отменить теплоход, канатку оставить только если работает."],
+  ["16 августа", "Сократить прогулку по Верхне-Волжской набережной и отменить теплоход при сильном дожде или ветре."],
 ];
 
 const canonicalPackingItems = [
@@ -2248,7 +2644,7 @@ const canonicalPackingItems = [
   "🔌 Зарядки",
   "💧 Вода",
   "🌂 Дождевик или компактный зонт",
-  "🧥 Лёгкая кофта",
+  "🧥 Легкая кофта",
   "👟 Удобная обувь",
   "🕶️ Солнцезащитные очки",
   "☀️ Крем от солнца",
@@ -2306,10 +2702,30 @@ const googleSheetConfig = {
   sheet: "Данные",
 };
 
+const fiestaModeStorageKey = "nizhny-novgorod-fiesta-mode";
+
+function loadFiestaMode() {
+  try {
+    const saved = window.localStorage.getItem(fiestaModeStorageKey);
+    return saved === "relaxed" ? "relaxed" : "early";
+  } catch {
+    return "early";
+  }
+}
+
+function saveFiestaMode(mode) {
+  try {
+    window.localStorage.setItem(fiestaModeStorageKey, mode);
+  } catch {
+    // The route still works when browser storage is unavailable.
+  }
+}
+
 const state = {
   activeTag: "all",
   query: "",
   weather: {},
+  fiestaMode: loadFiestaMode(),
 };
 
 const byId = (id) => document.getElementById(id);
@@ -2570,6 +2986,10 @@ function dedupeSelectedItems(items, normalizedTitles) {
 }
 
 function applySheetSafeLocalOverrides() {
+  prepItems = prepItems.filter(
+    (item) => !normalizeText(getItemTitle(item)).includes("канатн"),
+  );
+
   prepItems = upsertSheetSafeItem(
     prepItems,
     (item) => normalizeText(getItemTitle(item)).includes("приволжской фиесты"),
@@ -2670,13 +3090,21 @@ function applySheetSafeLocalOverrides() {
 
   bookingItems = upsertSheetSafeItem(
     bookingItems,
-    (item) => normalizeText(getItemTitle(item)).includes("очень странные дела"),
+    (item) => normalizeText(getItemTitle(item)).includes("очень странн"),
     {
-      title: "Кофейня в стиле «Очень странные дела»",
-      note: "Обязательная точка на Большой Покровской, 57. Ссылку на карты добавим, когда будет точное название.",
+      title: "Тематическая кофейная точка в стиле «Очень странных дел»",
+      note: "Небольшая уличная кофейная точка на Большой Покровской, 57. Внутреннего зала нет: напитки и десерты выдают навынос через окно заказа, а тематически оформленная дверь подходит для фотографий снаружи.",
       status: "не выполнено",
     },
   );
+
+  let strangerCoffeeSeen = false;
+  bookingItems = bookingItems.filter((item) => {
+    if (!normalizeText(getItemTitle(item)).includes("очень странн")) return true;
+    if (strangerCoffeeSeen) return false;
+    strangerCoffeeSeen = true;
+    return true;
+  });
 
   bookingItems = dedupeSelectedItems(bookingItems, [
     "бистро 9/18",
@@ -2727,8 +3155,13 @@ function buildDaysFromRows(rows) {
 function refreshTags() {
   const set = new Set();
   days.forEach((day) => {
-    day.events.forEach((event) => event.tags.forEach((tag) => set.add(tag)));
+    const eventGroups = [day.events, ...Object.values(day.fiestaModes || {}).map((mode) => mode.events || [])];
+    eventGroups.flat().forEach((event) => {
+      (event.tags || []).forEach((tag) => set.add(tag));
+      (event.options || []).forEach((option) => (option.tags || []).forEach((tag) => set.add(tag)));
+    });
   });
+  extraPlaces.forEach((category) => category.tags.forEach((tag) => set.add(tag)));
   [prepItems, bookingItems, rainItems, packingItems, updates].flat().forEach((item) => {
     getItemTags(item).forEach((tag) => set.add(tag));
   });
@@ -2829,6 +3262,10 @@ function getDayWeather(day) {
   return state.weather[day.id] || "sunny";
 }
 
+function getDayEvents(day, fiestaMode = state.fiestaMode) {
+  return day.fiestaModes?.[fiestaMode]?.events || day.events;
+}
+
 function hasWeatherToggle(day) {
   return day.weatherToggle !== false && Boolean(day.weatherNotes?.rain || day.events.some((event) => event.rain));
 }
@@ -2898,6 +3335,30 @@ function eventLinksHtml(event) {
         .join("")}
     </div>
   `;
+}
+
+function eventOptionsSearchText(event) {
+  return (event.options || [])
+    .map((option) => {
+      const placesText = (option.mapKeys || []).map((key) => places[key]?.title || "").join(" ");
+      const linksText = regularLinksForEvent(option).map((link) => link.title).join(" ");
+      return `${option.title || ""} ${option.note || ""} ${(option.tags || []).join(" ")} ${placesText} ${linksText}`;
+    })
+    .join(" ");
+}
+
+function eventOptionsHtml(event) {
+  if (!event.options?.length) return "";
+  return `<div class="event-options">${event.options
+    .map(
+      (option) => `<section class="event-option">
+        <strong>${escapeHtml(option.title)}</strong>
+        <p>${escapeHtml(option.note || "")}</p>
+        ${mapLinksHtml(option)}
+        ${eventLinksHtml(option)}
+      </section>`,
+    )
+    .join("")}</div>`;
 }
 
 function downloadOfflineBlob(blob, filename) {
@@ -3006,6 +3467,7 @@ function placesForEvent(event) {
 
 function eventPdfBlock(event, mode) {
   const view = eventForWeather(event, mode);
+  const viewLinkUrls = new Set(regularLinksForEvent(view).map((link) => link.url));
   const stack = [
     {
       text: `${pdfText(view.time)} · ${pdfText(view.title)}`,
@@ -3023,7 +3485,9 @@ function eventPdfBlock(event, mode) {
     if (place.address) stack.push({ text: wrapPdfText(`Адрес: ${place.title} — ${place.address}`), style: "small" });
     if (place.hours) stack.push({ text: wrapPdfText(`Время работы: ${place.hours}`), style: "small" });
     if (place.phone) stack.push({ text: wrapPdfText(`Телефон: ${place.title} — ${place.phone}`), style: "small" });
-    if (place.site) stack.push({ text: wrapPdfText(`Сайт: ${place.title} — ${place.site}`), style: "small" });
+    if (place.site && !viewLinkUrls.has(place.site)) {
+      stack.push({ text: wrapPdfText(`Сайт: ${place.title} — ${place.site}`), style: "small" });
+    }
   });
 
   mapLinksForEvent(view).forEach((link) => {
@@ -3039,6 +3503,29 @@ function eventPdfBlock(event, mode) {
       text: wrapPdfText(`${link.title} — ${link.url}`, 78),
       link: link.url,
       style: "pdfLink",
+    });
+  });
+
+  (view.options || []).forEach((option) => {
+    const optionLinkUrls = new Set(regularLinksForEvent(option).map((link) => link.url));
+    stack.push({ text: pdfText(option.title), bold: true, color: "#7c3aed", margin: [0, 5, 0, 2] });
+    if (option.note) stack.push({ text: wrapPdfText(option.note), style: "small" });
+    placesForEvent(option).forEach((place) => {
+      if (place.address) stack.push({ text: wrapPdfText(`Адрес: ${place.title} — ${place.address}`), style: "small" });
+      if (place.phone) stack.push({ text: wrapPdfText(`Телефон: ${place.title} — ${place.phone}`), style: "small" });
+      if (place.site && !optionLinkUrls.has(place.site)) {
+        stack.push({ text: wrapPdfText(`Сайт: ${place.title} — ${place.site}`), style: "small" });
+      }
+    });
+    mapLinksForEvent(option).forEach((link) => {
+      stack.push({
+        text: wrapPdfText(`Яндекс Карты: ${link.title} — ${link.url}`, 78),
+        link: link.url,
+        style: "pdfLink",
+      });
+    });
+    regularLinksForEvent(option).forEach((link) => {
+      stack.push({ text: wrapPdfText(`${link.title} — ${link.url}`, 78), link: link.url, style: "pdfLink" });
     });
   });
 
@@ -3119,7 +3606,20 @@ function buildRoutePdfDefinition() {
     content.push({ text: wrapPdfText(day.summary), color: "#4b5563", margin: [0, 0, 0, 4] });
     if (day.notice) content.push({ text: wrapPdfText(day.notice), style: "notice" });
     if (day.transferNotice) content.push({ text: wrapPdfText(day.transferNotice), style: "notice" });
+    if (day.infoCard) {
+      content.push({ text: pdfText(day.infoCard.title), bold: true, color: "#667085", margin: [0, 3, 0, 1] });
+      content.push({ text: wrapPdfText(day.infoCard.note), style: "smallAccent" });
+    }
+    if (day.fiestaModeNote) content.push({ text: wrapPdfText(day.fiestaModeNote), style: "smallAccent" });
     if (day.weatherNotes?.sunny) content.push({ text: wrapPdfText(day.weatherNotes.sunny), style: "smallAccent" });
+
+    if (day.fiestaModes) {
+      Object.entries(day.fiestaModes).forEach(([mode, config]) => {
+        content.push({ text: config.label, style: "weatherPdfTitle", color: day.accent });
+        getDayEvents(day, mode).forEach((event) => content.push(eventPdfBlock(event, "sunny")));
+      });
+      return;
+    }
 
     content.push({ text: "Ясно", style: "weatherPdfTitle", color: day.accent });
     day.events.forEach((event) => content.push(eventPdfBlock(event, "sunny")));
@@ -3136,6 +3636,26 @@ function buildRoutePdfDefinition() {
 
   content.push(sectionTitle("Брони и важные заведения"));
   bookingItems.forEach((item) => content.push(itemPdfBlock(item)));
+
+  content.push(sectionTitle("Заведения, которые не вошли в маршрут"));
+  extraPlaces.forEach((category) => {
+    content.push({ text: category.category, bold: true, color: "#667085", margin: [0, 5, 0, 4] });
+    category.items.forEach((item) => {
+      const place = places[item.placeKey];
+      content.push({
+        stack: [
+          { text: place.title, bold: true },
+          { text: wrapPdfText(item.note), style: "small" },
+          {
+            text: wrapPdfText(`Яндекс Карты: ${place.title} — ${place.yandex}`, 78),
+            link: place.yandex,
+            style: "pdfLink",
+          },
+        ],
+        margin: [0, 0, 0, 5],
+      });
+    });
+  });
 
   content.push(sectionTitle("Чек-лист вещей"));
   packingItems.forEach((item) => content.push(itemPdfBlock(item)));
@@ -3197,7 +3717,7 @@ async function saveOfflinePdf() {
       pdfMake.createPdf(docDefinition).download("nizhny-novgorod-route.pdf", resolve);
     });
   } catch (error) {
-    alert("Не получилось создать PDF. Проверь интернет и попробуй ещё раз.");
+    alert("Не получилось создать PDF. Проверь интернет и попробуй еще раз.");
   } finally {
     if (button) {
       button.textContent = originalText || "Скачать PDF";
@@ -3267,6 +3787,7 @@ function renderDays() {
     const weather = getDayWeather(day);
     const weatherNote = day.weatherNotes?.[weather] || "";
     const showWeatherToggle = hasWeatherToggle(day);
+    const showFiestaToggle = Boolean(day.fiestaModes);
     const section = el("section", "day-section");
     section.id = day.id;
     section.style.setProperty("--accent", day.accent);
@@ -3279,13 +3800,39 @@ function renderDays() {
         <p>${escapeHtml(day.summary)}</p>
         ${day.notice ? `<p class="day-notice">${escapeHtml(day.notice)}</p>` : ""}
         ${day.transferNotice ? `<p class="day-notice">${escapeHtml(day.transferNotice)}</p>` : ""}
+        ${
+          day.infoCard
+            ? `<aside class="day-info-card" aria-label="Информация">
+                <strong>${escapeHtml(day.infoCard.title)}</strong>
+                <span>${escapeHtml(day.infoCard.note)}</span>
+              </aside>`
+            : ""
+        }
+        ${day.fiestaModeNote ? `<p class="fiesta-mode-note">${escapeHtml(day.fiestaModeNote)}</p>` : ""}
         ${weatherNote ? `<p class="weather-note">${escapeHtml(weatherNote)}</p>` : ""}
       </div>
       ${
-        showWeatherToggle
-          ? `<div class="weather-toggle" role="group" aria-label="Погода: ${escapeHtml(day.date)}">
-              <button class="${weather === "sunny" ? "is-active" : ""}" type="button" data-day="${escapeHtml(day.id)}" data-weather="sunny" aria-pressed="${weather === "sunny"}">☀️ Ясно</button>
-              <button class="${weather === "rain" ? "is-active" : ""}" type="button" data-day="${escapeHtml(day.id)}" data-weather="rain" aria-pressed="${weather === "rain"}">🌧️ Если дождь</button>
+        showWeatherToggle || showFiestaToggle
+          ? `<div class="day-heading__controls">
+              ${
+                showFiestaToggle
+                  ? `<div class="fiesta-toggle" role="group" aria-label="Сценарий Фиесты: ${escapeHtml(day.date)}">
+                      ${Object.entries(day.fiestaModes)
+                        .map(
+                          ([mode, config]) => `<button class="${state.fiestaMode === mode ? "is-active" : ""}" type="button" data-fiesta-mode="${escapeHtml(mode)}" aria-pressed="${state.fiestaMode === mode}">${escapeHtml(config.label)}</button>`,
+                        )
+                        .join("")}
+                    </div>`
+                  : ""
+              }
+              ${
+                showWeatherToggle
+                  ? `<div class="weather-toggle" role="group" aria-label="Погода: ${escapeHtml(day.date)}">
+                      <button class="${weather === "sunny" ? "is-active" : ""}" type="button" data-day="${escapeHtml(day.id)}" data-weather="sunny" aria-pressed="${weather === "sunny"}">☀️ Ясно</button>
+                      <button class="${weather === "rain" ? "is-active" : ""}" type="button" data-day="${escapeHtml(day.id)}" data-weather="rain" aria-pressed="${weather === "rain"}">🌧️ Если дождь</button>
+                    </div>`
+                  : ""
+              }
             </div>`
           : ""
       }
@@ -3297,17 +3844,26 @@ function renderDays() {
         applyFilters();
       });
     });
+    heading.querySelectorAll("[data-fiesta-mode]").forEach((button) => {
+      button.addEventListener("click", () => {
+        state.fiestaMode = button.dataset.fiestaMode === "relaxed" ? "relaxed" : "early";
+        saveFiestaMode(state.fiestaMode);
+        renderDays();
+        applyFilters();
+      });
+    });
 
     const timeline = el("div", "timeline");
-    day.events.forEach((event) => {
+    getDayEvents(day).forEach((event) => {
       const view = eventForWeather(event, weather);
       const links = mapLinksForEvent(view).map((link) => link.title).join(" ");
       const regularLinks = regularLinksForEvent(view).map((link) => link.title).join(" ");
       const status = hasStatus(view.status) ? normalizeStatus(view.status) : "";
       const tags = view.tags || [];
+      const optionsSearch = eventOptionsSearchText(view);
       const card = el("article", `event-card${isClosed(view.status) ? " is-closed" : ""}`);
       card.dataset.search =
-        `${day.date} ${day.title} ${view.time} ${view.title} ${view.note} ${tags.join(" ")} ${status} ${links} ${regularLinks}`.toLowerCase();
+        `${day.date} ${day.title} ${view.time} ${view.title} ${view.note} ${tags.join(" ")} ${status} ${links} ${regularLinks} ${optionsSearch}`.toLowerCase();
       card.dataset.tags = tags.join(",");
       card.style.setProperty("--accent", day.accent);
       card.innerHTML = `
@@ -3320,6 +3876,7 @@ function renderDays() {
           <p class="event-note">${escapeHtml(view.note)}</p>
           ${mapLinksHtml(view)}
           ${eventLinksHtml(view)}
+          ${eventOptionsHtml(view)}
           <div class="tags">${tags.map((tag) => `<span class="tag">#${escapeHtml(tag)}</span>`).join("")}</div>
         </div>
       `;
@@ -3369,6 +3926,38 @@ function renderReference(targetId, items) {
       ${itemLinksHtml(item)}
     `;
     target.append(row);
+  });
+}
+
+function renderExtraPlaces() {
+  const target = byId("extraPlacesGrid");
+  if (!target) return;
+  target.innerHTML = "";
+
+  extraPlaces.forEach((category) => {
+    const section = el("section", "extra-category");
+    const heading = el("h3", "extra-category__title", category.category);
+    const grid = el("div", "extra-place-grid");
+
+    category.items.forEach((item) => {
+      const place = places[item.placeKey];
+      if (!place) return;
+      const card = el("article", "extra-place-card");
+      card.dataset.search = `${place.title} ${category.category} ${item.note}`.toLowerCase();
+      card.dataset.tags = category.tags.join(",");
+      card.innerHTML = `
+        <p class="extra-place-card__category">${escapeHtml(category.category)}</p>
+        <h4>${escapeHtml(place.title)}</h4>
+        <p>${escapeHtml(item.note)}</p>
+        <div class="map-actions">
+          <a class="map-link" href="${escapeHtml(place.yandex)}" target="_blank" rel="noopener noreferrer">📍 Яндекс Карты</a>
+        </div>
+      `;
+      grid.append(card);
+    });
+
+    section.append(heading, grid);
+    target.append(section);
   });
 }
 
@@ -3426,6 +4015,14 @@ function applyFilters() {
     const tagMatch = state.activeTag === "all" || card.dataset.tags.split(",").includes(state.activeTag);
     const queryMatch = !query || card.dataset.search.includes(query);
     card.classList.toggle("is-hidden", !(tagMatch && queryMatch));
+  });
+  document.querySelectorAll(".extra-place-card").forEach((card) => {
+    const tagMatch = state.activeTag === "all" || card.dataset.tags.split(",").includes(state.activeTag);
+    const queryMatch = !query || card.dataset.search.includes(query);
+    card.hidden = !(tagMatch && queryMatch);
+  });
+  document.querySelectorAll(".extra-category").forEach((category) => {
+    category.hidden = !category.querySelector(".extra-place-card:not([hidden])");
   });
 }
 
@@ -3494,6 +4091,7 @@ async function init() {
   renderChecklist("prepList", prepItems, "prep");
   renderPackingList("packingList", packingItems);
   renderReference("bookingList", bookingItems);
+  renderExtraPlaces();
   renderUsefulLinks();
   renderUpdates();
 
