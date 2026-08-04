@@ -23,7 +23,6 @@ if (!apiKey) {
 const query = `
   query RouteWeather($request: PointInput!, $language: Language) {
     weatherByPoint(request: $request, language: $language) {
-      url
       forecast {
         days(limit: 14) {
           time
@@ -155,7 +154,7 @@ const payload = {
     lon: 44.006948,
   },
   source: "Яндекс Погода",
-  sourceUrl: weather.url || "https://yandex.ru/pogoda/nizhny-novgorod",
+  sourceUrl: "https://yandex.ru/pogoda/nizhny-novgorod",
   days,
 };
 
