@@ -1,0 +1,42 @@
+name: Update weather
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-weather
+  cancel-in-progress: false
+
+jobs:
+  update-weather:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Update weather data
+        env:
+          YANDEX_WEATHER_API_KEY: ${{ secrets.YANDEX_WEATHER_API_KEY }}
+        run: node scripts/update-weather.mjs
+
+      - name: Commit changed forecast
+        run: |
+          if git diff --quiet -- data/weather.json; then
+            echo "Weather data did not change."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/weather.json
+          git commit -m "Обновить прогноз погоды"
+          git push
