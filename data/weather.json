@@ -1,5 +1,5 @@
 {
-  "generatedAt": null,
+  "generatedAt": "2026-08-05T22:20:10.742Z",
   "location": {
     "title": "Площадь Минина и Пожарского",
     "lat": 56.327436,
@@ -7,5 +7,44 @@
   },
   "source": "Яндекс Погода",
   "sourceUrl": "https://yandex.ru/pogoda/nizhny-novgorod",
-  "days": {}
+  "days": {
+    "2026-08-12": {
+      "morning": {
+        "temperature": 19,
+        "condition": "LIGHT_RAIN",
+        "conditionText": "Небольшой дождь",
+        "icon": "ovc_-ra",
+        "precipitationProbability": 20,
+        "precipitationType": "RAIN",
+        "hasRain": true
+      },
+      "day": {
+        "temperature": 21,
+        "condition": "LIGHT_RAIN",
+        "conditionText": "Небольшой дождь",
+        "icon": "ovc_-ra",
+        "precipitationProbability": 50,
+        "precipitationType": "RAIN",
+        "hasRain": true
+      },
+      "evening": {
+        "temperature": 18,
+        "condition": "LIGHT_RAIN",
+        "conditionText": "Небольшой дождь",
+        "icon": "bkn_-ra_n",
+        "precipitationProbability": 60,
+        "precipitationType": "RAIN",
+        "hasRain": true
+      },
+      "night": {
+        "temperature": 17,
+        "condition": "CLOUDY",
+        "conditionText": "Облачно",
+        "icon": "bkn_n",
+        "precipitationProbability": 0,
+        "precipitationType": "NO_TYPE",
+        "hasRain": false
+      }
+    }
+  }
 }
