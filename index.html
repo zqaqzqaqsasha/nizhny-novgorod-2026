@@ -2679,6 +2679,7 @@ let days = [
             note: "Короткая необязательная остановка во время прогулки по Рождественской улице. Можно зайти на кофе или десерт, не превращая эту паузу в полноценный прием пищи перед ужином.",
             tags: ["кофе", "еда", "запас", "в помещении"],
             mapKeys: ["cafe38"],
+            venueKey: "cafe38",
             links: [{ title: "Открыть официальный сайт «Кафе 38»", url: places.cafe38.site }],
           },
         ],
@@ -2693,6 +2694,7 @@ let days = [
         note: "Ужин на Рождественской, 24. Нужно забронировать заранее.",
         tags: ["еда", "бронь"],
         mapKeys: ["siMamma"],
+        venueKey: "siMamma",
       },
       {
         time: "20:00-21:00",
@@ -2712,6 +2714,7 @@ let days = [
         note: "Один из лучших коктейльных баров России. Посещение только по предварительной брони.",
         tags: ["бар", "бронь"],
         mapKeys: ["mednyeTruby"],
+        venueKey: "mednyeTruby",
         links: [{ title: "Забронировать в Медных Трубах", url: places.mednyeTruby.site }],
       },
       {
@@ -2746,6 +2749,7 @@ let days = [
         title: "🚕 Переезд к Темп воздух",
         note: "Спокойно добираемся к Георгиевскому съезду без спешки после завтрака в отеле.",
         tags: ["такси", "логистика"],
+        mapKeys: ["tempVozdukh"],
       },
       {
         time: "10:45-11:15",
@@ -2753,6 +2757,7 @@ let days = [
         note: "Короткая остановка на кофе с видом перед прогулкой по Кремлю.",
         tags: ["кофе", "фото"],
         mapKeys: ["tempVozdukh"],
+        venueKey: "tempVozdukh",
       },
       {
         time: "11:15-11:50",
@@ -2812,6 +2817,7 @@ let days = [
         note: "После Кремля остаемся в верхнем центре: Мишка находится на Большой Покровской, поэтому не спускаемся на Рождественскую и не делаем лишний подъем обратно.",
         tags: ["пешком", "фото", "еда"],
         mapKeys: ["bolshayaPokrovskaya", "mishka"],
+        venueKey: "mishka",
         rain: {
           title: "🍰 Мишка и короткая прогулка по Большой Покровской",
           note: "Если идет сильный дождь, оставляем Мишку как короткий перекус и сокращаем прогулку по улице.",
@@ -2837,6 +2843,7 @@ let days = [
         note: "Русская кухня, плотный ужин. Бронь заранее. Чтобы без спешки успеть к закату, ближе к 19:00 просим счет и выходим не позднее 19:15.",
         tags: ["еда", "бронь"],
         mapKeys: ["pyatkin"],
+        venueKey: "pyatkin",
       },
       {
         time: "19:15-19:30",
@@ -2864,6 +2871,12 @@ let days = [
         note: "Возвращаемся на Рождественскую на такси. При хорошей погоде и наличии сил можно спуститься пешком, но это займет больше времени.",
         tags: ["такси", "логистика", "запас"],
         mapKeys: ["nastayatel"],
+        rain: {
+          title: "🟡 Запас времени на Рождественской",
+          note: "После раннего переезда с пропущенной видовой точки уже остаемся на Рождественской и спокойно ждем начала вечера в помещении.",
+          tags: ["запас", "в помещении"],
+          mapKeys: ["rozhdestvenskaya"],
+        },
       },
       {
         time: "С 20:20",
@@ -2871,6 +2884,7 @@ let days = [
         note: "Основной вечерний бар на Рождественской. Приходим прежде всего за напитками и атмосферой; бургеры — по аппетиту.",
         tags: ["бар", "еда"],
         mapKeys: ["nastayatel"],
+        venueKey: "nastayatel",
       },
     ],
   },
@@ -2898,6 +2912,7 @@ let days = [
         title: "🚕 Такси до Бистро 9/18",
         note: "Переезд до Бистро 9/18 и небольшой запас времени на дорогу.",
         tags: ["такси", "логистика", "запас"],
+        mapKeys: ["bistro918"],
       },
       {
         time: "11:00-12:30",
@@ -2905,6 +2920,7 @@ let days = [
         note: "Кофейня и бистро в центре Нижнего Новгорода, рядом с Кремлем. Здесь можно полноценно поесть, выпить кофе и попробовать десерты; из окон открываются виды на Кремль и собор. В меню есть завтраки, обеды и ужины, а кофе готовят при посетителях.",
         tags: ["еда", "кофе"],
         mapKeys: ["bistro918"],
+        venueKey: "bistro918",
       },
       {
         time: "12:30-12:45",
@@ -2919,13 +2935,24 @@ let days = [
         note: "Основная кофейная остановка дня в здании Русского музея фотографии. Кофе, выпечка и спокойная пауза перед дальнейшим маршрутом.",
         tags: ["кофе", "запас"],
         mapKeys: ["kofe1896"],
+        venueKey: "kofe1896",
       },
       {
         time: "13:10-14:00",
         title: "🚶📷 Большая Покровская + Государственный банк",
         note: "Городские скульптуры и архитектура. Тематическую кофейную точку в стиле «Очень странных дел» на Большой Покровской, 57, оставляем короткой остановкой по пути: напиток или десерт навынос и несколько фотографий снаружи.",
         tags: ["пешком", "фото"],
-        mapKeys: ["bolshayaPokrovskaya", "gosbank", "strangerCoffee", "surfCoffee"],
+        mapKeys: ["bolshayaPokrovskaya", "gosbank", "strangerCoffee"],
+        venueKey: "strangerCoffee",
+        options: [
+          {
+            title: "Запасной вариант — Surf Coffee × Cinema",
+            note: "Если тематическую кофейную точку пропускаем или она закрыта, можно отдельно зайти в Surf Coffee × Cinema за кофе и короткой паузой в помещении.",
+            tags: ["кофе", "запас", "в помещении"],
+            mapKeys: ["surfCoffee"],
+            venueKey: "surfCoffee",
+          },
+        ],
         rain: {
           note: "Сокращаем уличные остановки, оставляем главные фасады и при необходимости пропускаем тематическую кофейную точку без внутреннего зала.",
         },
@@ -2983,6 +3010,7 @@ let days = [
         note: "Вариант ужина на территории Нижегородской ярмарки. Самоварная — ресторан русской кухни; по словам создателей, блюда готовят по старинным рецептам, восстановленным по архивным материалам и книгам о ресторанах Нижегородской ярмарки.",
         tags: ["еда", "запас"],
         mapKeys: ["samovarnaya"],
+        venueKey: "samovarnaya",
       },
       {
         time: "19:15-20:45",
@@ -3051,12 +3079,14 @@ let days = [
             note: "Основной вариант обеда при возвращении в центр. Решение принимаем с учетом фактической площадки фиесты, программы регаты и времени на дорогу.",
             tags: ["еда", "запас", "в помещении"],
             mapKeys: ["pinci"],
+            venueKey: "pinci",
             options: [
               {
                 title: "Запасной вариант — «Цейлон»",
                 note: "Азиатское бистро с блюдами, вдохновленными кухнями Шри-Ланки, Индии, Таиланда и Малайзии. Использовать как альтернативу Pinci при более удобной логистике или очереди.",
                 tags: ["еда", "запас", "в помещении"],
                 mapKeys: ["ceylon"],
+                venueKey: "ceylon",
                 links: [{ title: "Открыть официальный сайт «Цейлона»", url: places.ceylon.site }],
               },
             ],
@@ -3079,6 +3109,7 @@ let days = [
             note: "Вечерний вариант после программы фиесты при возвращении в центр и наличии сил. Можно зайти на напитки, закуски или поздний ужин. При сильной усталости сразу возвращаемся в отель.",
             tags: ["еда", "ночь", "запас", "в помещении"],
             mapKeys: ["seledkaCoffee"],
+            venueKey: "seledkaCoffee",
           },
         ],
       },
@@ -3138,12 +3169,14 @@ let days = [
         note: "Основной вариант обеда при возвращении в центр. Решение принимаем с учетом фактической площадки фиесты, программы регаты и времени на дорогу.",
         tags: ["еда", "запас", "в помещении"],
         mapKeys: ["pinci"],
+        venueKey: "pinci",
         options: [
           {
             title: "Запасной вариант — «Цейлон»",
             note: "Азиатское бистро с блюдами, вдохновленными кухнями Шри-Ланки, Индии, Таиланда и Малайзии. Использовать как альтернативу Pinci при более удобной логистике или очереди.",
             tags: ["еда", "запас", "в помещении"],
             mapKeys: ["ceylon"],
+            venueKey: "ceylon",
             links: [{ title: "Открыть официальный сайт «Цейлона»", url: places.ceylon.site }],
           },
         ],
@@ -3166,6 +3199,7 @@ let days = [
         note: "Вечерний вариант после программы фиесты при возвращении в центр и наличии сил. Можно зайти на напитки, закуски или поздний ужин. При сильной усталости сразу возвращаемся в отель.",
         tags: ["еда", "ночь", "запас", "в помещении"],
         mapKeys: ["seledkaCoffee"],
+        venueKey: "seledkaCoffee",
       },
     ],
   },
@@ -3192,6 +3226,7 @@ let days = [
         note: "Неспешный завтрак в светлом кафе-кондитерской перед дневной программой. В меню завтраки в течение дня и десерты.",
         tags: ["еда", "кофе", "в помещении"],
         mapKeys: ["mayar"],
+        venueKey: "mayar",
         links: [{ title: "Открыть официальный сайт Mayar", url: places.mayar.site }],
       },
       {
@@ -3212,6 +3247,7 @@ let days = [
         note: "Кофе и легкий перекус во время прогулки по Верхне-Волжской набережной. Не затягиваем остановку, чтобы сохранить запас перед теплоходом.",
         tags: ["кофе", "еда", "запас", "в помещении"],
         mapKeys: ["skuratov"],
+        venueKey: "skuratov",
         links: [{ title: "Открыть официальный сайт Skuratov Coffee", url: places.skuratov.site }],
       },
       {
@@ -3254,6 +3290,7 @@ let days = [
         note: "Бронь заранее. Желательно из-за посадки. У входа есть надпись «Это по любви».",
         tags: ["еда", "бронь"],
         mapKeys: ["yulaPizza"],
+        venueKey: "yulaPizza",
       },
       {
         time: "После 21:30",
@@ -3261,6 +3298,7 @@ let days = [
         note: "Необязательное продолжение вечера после ужина. Можно зайти на один коктейль или настойку. При усталости возвращаемся в отель.",
         tags: ["ночь", "запас", "в помещении"],
         mapKeys: ["yunost"],
+        venueKey: "yunost",
       },
     ],
   },
@@ -3687,13 +3725,16 @@ function venueResponsiveImageAttrs(image, profile, sizes = "132px") {
   return `src="${escapeHtml(src)}" srcset="${escapeHtml(srcset)}" sizes="${escapeHtml(sizes)}" alt="${escapeHtml(venueImageAlt(profile, image))}" loading="lazy" decoding="async"`;
 }
 
-function venueKeysForEvent(mapKeys = []) {
-  const seen = new Set();
-  return mapKeys.filter((key) => {
-    if (seen.has(key) || !venueProfileForKey(key, { includeClosed: false }) || !venueImagesForKey(key).length) return false;
-    seen.add(key);
-    return true;
-  }).slice(0, 2);
+function explicitVenueKeysForItem(item = {}) {
+  const keys = Array.isArray(item.venueKeys)
+    ? item.venueKeys
+    : item.venueKey
+      ? [item.venueKey]
+      : [];
+  return [...new Set(keys)]
+    .filter((key) => venueProfileForKey(key, { includeClosed: false }))
+    .filter((key) => venueImagesForKey(key).length)
+    .slice(0, 2);
 }
 
 function venueThumbHtml(key, sizes = "132px") {
@@ -3707,8 +3748,8 @@ function venueThumbHtml(key, sizes = "132px") {
   </button>`;
 }
 
-function venueThumbsHtml(mapKeys = [], className = "") {
-  const keys = venueKeysForEvent(mapKeys);
+function venueThumbsHtml(item = {}, className = "") {
+  const keys = explicitVenueKeysForItem(item);
   if (!keys.length) return "";
   return `<div class="venue-thumbs ${escapeHtml(className)}">${keys.map((key) => venueThumbHtml(key)).join("")}</div>`;
 }
@@ -4549,7 +4590,7 @@ function eventOptionsHtml(event) {
             ${mapLinksHtml(option)}
             ${eventLinksHtml(option)}
           </div>
-          ${venueThumbsHtml(option.mapKeys || [])}
+          ${venueThumbsHtml(option)}
         </div>
       </section>`,
     )
@@ -5166,7 +5207,7 @@ function renderDays() {
               ${eventOptionsHtml(view)}
               <div class="tags">${tags.map((tag) => `<span class="tag">#${escapeHtml(tag)}</span>`).join("")}</div>
             </div>
-            ${venueThumbsHtml(view.mapKeys || [])}
+            ${venueThumbsHtml(view)}
           </div>
         </div>
       `;
