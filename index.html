@@ -403,6 +403,28 @@ input {
   gap: 8px;
 }
 
+.mobile-tag-filter {
+  display: none;
+}
+
+.mobile-tag-filter label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.mobile-tag-filter select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 38px 0 13px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  font-weight: 800;
+}
+
 .tag-button {
   min-height: 36px;
   padding: 7px 11px;
@@ -458,6 +480,18 @@ input {
   background: #fff;
   border-top: 4px solid var(--accent);
   font-weight: 900;
+  transition: background-color 160ms ease, box-shadow 160ms ease, color 160ms ease;
+}
+
+.day-nav a.is-active {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 18%, #fff);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--accent) 35%, transparent), 0 5px 14px rgba(23, 32, 41, 0.12);
+}
+
+.day-nav a.is-active span {
+  color: currentColor;
 }
 
 .day-nav span {
@@ -1302,6 +1336,14 @@ input {
     font-size: 13px;
   }
 
+  .tag-filter {
+    display: none;
+  }
+
+  .mobile-tag-filter {
+    display: block;
+  }
+
   .section-heading h2 {
     font-size: 28px;
   }
@@ -1422,7 +1464,7 @@ input {
 }
 
     </style>
-    <link rel="stylesheet" href="./venue-cards.css" />
+    <link rel="stylesheet" href="./venue-cards.css?v=3" />
   </head>
   <body>
     <header class="hero" id="top">
@@ -1499,6 +1541,12 @@ input {
             <input id="searchInput" type="search" placeholder="Например: закат, такси, Юла пицца" />
           </div>
           <div class="tag-filter" id="tagFilter" aria-label="Фильтр по тегам"></div>
+          <div class="mobile-tag-filter">
+            <label for="tagSelect">Категория</label>
+            <select id="tagSelect">
+              <option value="all">Все категории</option>
+            </select>
+          </div>
           <button class="reset-button" id="resetFilters" type="button">Сбросить</button>
         </div>
       </section>
@@ -1542,15 +1590,17 @@ input {
       <section class="band utility-band" id="prep" aria-labelledby="prep-title">
         <div class="wrap utility-layout">
           <section class="utility-section" aria-labelledby="prep-title">
-            <div class="section-heading">
-              <p class="eyebrow">До поездки</p>
-              <h2 id="prep-title">Проверить заранее</h2>
-              <p class="section-note">
-                Пункты в этом блоке активные и могут обновляться: Александр имеет
-                доступ к редактированию чек-листа.
-              </p>
-            </div>
-            <div class="checklist" id="prepList"></div>
+            <details class="section-disclosure" data-disclosure="prep" open>
+              <summary class="disclosure-summary" aria-controls="prepContent" aria-expanded="true">
+                <div class="section-heading">
+                  <p class="eyebrow">До поездки</p>
+                  <h2 id="prep-title">Проверить заранее</h2>
+                  <p class="section-note">Пункты в этом блоке активные и могут обновляться. Статусы в этом разделе обновляет Александр.</p>
+                </div>
+                <span class="disclosure-toggle" aria-hidden="true">Скрыть</span>
+              </summary>
+              <div id="prepContent"><div class="checklist" id="prepList"></div></div>
+            </details>
           </section>
 
           <section class="utility-section" id="bookings" aria-labelledby="bookings-title">
@@ -1572,21 +1622,30 @@ input {
 
       <section class="band packing-band" id="packing" aria-labelledby="packing-title">
         <div class="wrap">
-          <div class="section-heading">
-            <p class="eyebrow">Сборы</p>
-            <h2 id="packing-title">Чек-лист вещей</h2>
-          </div>
-          <div class="packing-cloud" id="packingList"></div>
+          <details class="section-disclosure" data-disclosure="packing" open>
+            <summary class="disclosure-summary" aria-controls="packingContent" aria-expanded="true">
+              <div class="section-heading">
+                <p class="eyebrow">Сборы</p>
+                <h2 id="packing-title">Чек-лист вещей</h2>
+              </div>
+              <span class="disclosure-toggle" aria-hidden="true">Скрыть</span>
+            </summary>
+            <div id="packingContent"><div class="packing-cloud" id="packingList"></div></div>
+          </details>
         </div>
       </section>
 
       <section class="band finance-band" id="finance" aria-labelledby="finance-title">
         <div class="wrap">
-          <div class="section-heading">
-            <p class="eyebrow">Общие расходы</p>
-            <h2 id="finance-title">Финансы</h2>
-          </div>
-          <div class="finance-card">
+          <details class="section-disclosure" data-disclosure="finance" open>
+            <summary class="disclosure-summary" aria-controls="financeContent" aria-expanded="true">
+              <div class="section-heading">
+                <p class="eyebrow">Общие расходы</p>
+                <h2 id="finance-title">Финансы</h2>
+              </div>
+              <span class="disclosure-toggle" aria-hidden="true">Скрыть</span>
+            </summary>
+            <div class="finance-card" id="financeContent">
             <div>
               <h3>Tricount для совместных трат</h3>
               <p>
@@ -1605,7 +1664,8 @@ input {
               target="_blank"
               rel="noopener noreferrer"
             >Открыть Tricount</a>
-          </div>
+            </div>
+          </details>
         </div>
       </section>
 
@@ -1706,8 +1766,8 @@ input {
       </section>
     </div>
 
-    <script src="./venue-cards-data.js"></script>
-    <script src="./venue-cards.js"></script>
+    <script src="./venue-cards-data.js?v=3"></script>
+    <script src="./venue-cards.js?v=3"></script>
     <script>
 let tags = [
   "еда",
@@ -1847,7 +1907,7 @@ const places = {
     yandex: "https://yandex.ru/maps/org/surf_coffee/92820399537?si=maltsev.ph",
   },
   strangerCoffee: {
-    title: "Тематическая кофейная точка в стиле «Очень странных дел»",
+    title: "Тематическая точка «Очень странные дела»",
     address: "Большая Покровская ул., 57, Нижний Новгород",
   },
   rodina: {
@@ -1879,6 +1939,8 @@ const places = {
   samovarnaya: {
     title: "Самоварная",
     address: "Нижегородская ярмарка, Нижний Новгород",
+    phone: "+7 (831) 224-88-83",
+    site: "https://www.yarmarka.ru/samovarnaya/",
     yandex: "https://yandex.ru/maps/-/CTBKR-~3",
   },
   pakgauzy: {
@@ -1938,10 +2000,12 @@ const places = {
   pinci: {
     title: "Pinci",
     yandex: "https://yandex.ru/maps/?text=Pinci%20ресторан%20Нижний%20Новгород",
+    site: "https://pinci.ru/",
   },
   ceylon: {
     title: "Цейлон",
     yandex: "https://yandex.ru/maps/?text=Цейлон%20Большая%20Покровская%2015%20Нижний%20Новгород",
+    phone: "+7 (920) 011-46-78",
     site: "https://ceylon.salutandco.ru/",
   },
   seledkaCoffee: {
@@ -1951,6 +2015,7 @@ const places = {
   mayar: {
     title: "Mayar",
     yandex: "https://yandex.ru/maps/?text=Mayar%20кафе%20Нижний%20Новгород",
+    phone: "+7 (987) 747-44-30",
     site: "https://mayarcafe.ru/",
   },
   skuratov: {
@@ -1961,6 +2026,7 @@ const places = {
   yunost: {
     title: "Бар «Юность»",
     yandex: "https://yandex.ru/maps/?text=Юность%20бар%20Нижний%20Новгород",
+    site: "https://yunost-nn.ru/",
   },
   pasters: {
     title: "Pasters",
@@ -2185,7 +2251,7 @@ let days = [
         options: [
           {
             title: "☕ Кофе или десерт в «Кафе 38»",
-            note: "Короткая необязательная остановка во время прогулки по Рождественской улице. Можно зайти на кофе или десерт, не превращая эту паузу в полноценный прием пищи перед ужином.",
+            note: "Необязательная остановка во время прогулки. Можно зайти на кофе / десерт, не превращая паузу в полноценный прием пищи перед ужином. Бронь доступна, но для такой короткой остановки заранее не требуется.",
             tags: ["кофе", "еда", "запас", "в помещении"],
             mapKeys: ["cafe38"],
             venueKey: "cafe38",
@@ -2426,22 +2492,22 @@ let days = [
       {
         time: "11:00-12:30",
         title: "☕🍽 Бистро 9/18",
-        note: "Кофейня и бистро в центре Нижнего Новгорода, рядом с Кремлем. Здесь можно полноценно поесть, выпить кофе и попробовать десерты; из окон открываются виды на Кремль и собор. В меню есть завтраки, обеды и ужины, а кофе готовят при посетителях.",
-        tags: ["еда", "кофе"],
+        note: "Кофейня и бистро в центре Нижнего, около Кремля. Еда, кофе и десерты; из окон открываются красивые виды. В меню есть завтраки, обеды и ужины, а кофе готовят при посетителях. Возможность и способ бронирования уточнить заранее.",
+        tags: ["еда", "кофе", "бронь"],
         mapKeys: ["bistro918"],
         venueKey: "bistro918",
       },
       {
         time: "12:30-12:45",
         title: "🛍️ Родина",
-        note: "10–15 минут, по желанию. Если хочется привезти из Нижнего что-то действительно интересное, можно заглянуть в «Родину» — магазин одноименного нижегородского бренда. Там продаются футболки, худи, сумки, головные уборы и другие вещи с современным дизайном и локальной символикой. Адрес: ул. Пискунова, 9А.",
+        note: "10–15 минут, по желанию. Если хочется привезти из Нижнего что-то интересное, можно заглянуть в «Родину» — магазин одноименного нижегородского бренда: футболки, худи, сумки, головные уборы и другие вещи с локальной символикой.",
         tags: ["сувениры", "пешком", "запас"],
         links: [{ title: "Открыть сайт «Родины»", url: rodinaUrl }],
       },
       {
         time: "12:45-13:10",
         title: "☕ Кофе 1896",
-        note: "Основная кофейная остановка дня в здании Русского музея фотографии. Кофе, выпечка и спокойная пауза перед дальнейшим маршрутом.",
+        note: "Кофейная остановка в здании Русского музея фотографии. Кофе, выпечка и спокойная пауза перед дальнейшим маршрутом.",
         tags: ["кофе", "запас"],
         mapKeys: ["kofe1896"],
         venueKey: "kofe1896",
@@ -2449,14 +2515,14 @@ let days = [
       {
         time: "13:10-14:00",
         title: "🚶📷 Большая Покровская + Государственный банк",
-        note: "Городские скульптуры и архитектура. Тематическую кофейную точку в стиле «Очень странных дел» на Большой Покровской, 57, оставляем короткой остановкой по пути: напиток или десерт навынос и несколько фотографий снаружи.",
-        tags: ["пешком", "фото"],
+        note: "Городские скульптуры и архитектура. Тематическую точку в стиле «Очень странных дел» оставляем короткой остановкой по пути.",
+        tags: ["пешком", "фото", "напитки"],
         mapKeys: ["bolshayaPokrovskaya", "gosbank", "strangerCoffee"],
         venueKey: "strangerCoffee",
         options: [
           {
             title: "Surf Coffee × Cinema",
-            note: "Если тематическую кофейную точку пропускаем или она закрыта, можно отдельно зайти в Surf Coffee × Cinema за кофе и короткой паузой в помещении.",
+            note: "Можно отдельно зайти в Surf Coffee × Cinema за кофе и короткой паузой в помещении.",
             tags: ["кофе", "запас", "в помещении"],
             mapKeys: ["surfCoffee"],
             venueKey: "surfCoffee",
@@ -2502,7 +2568,7 @@ let days = [
       {
         time: "16:00-18:00",
         title: "📷 Ярмарка, Стрелка, собор Александра Невского, Пакгаузы",
-        note: "Ключевые видовые точки поездки и выставка «Великая Всероссийская» в Пакгаузах: про Всероссийскую промышленную и художественную выставку 1896 года, одно из главных событий в истории города. Билет — 500 ₽; дни работы проверить ближе к поездке, ориентир по времени — 11:00-19:00.",
+        note: "Ключевые видовые точки поездки и выставка «Великая Всероссийская» в Пакгаузах: про Всероссийскую промышленную и художественную выставку 1896 года, одно из главных событий в истории города. Билет — 500 ₽; дни работы проверить ближе к поездке, время работы выставки — 11:00-19:00.",
         tags: ["фото", "пешком"],
         mapKeys: ["yarmarka", "strelka", "alexanderNevsky", "pakgauzy"],
         links: [{ title: "Купить билет на выставку", url: velikayaVserossiyskayaUrl }],
@@ -2516,8 +2582,8 @@ let days = [
       {
         time: "18:00-19:15",
         title: "🍽 Самоварная",
-        note: "Вариант ужина на территории Нижегородской ярмарки. Самоварная — ресторан русской кухни; по словам создателей, блюда готовят по старинным рецептам, восстановленным по архивным материалам и книгам о ресторанах Нижегородской ярмарки.",
-        tags: ["еда", "запас"],
+        note: "Самоварная — ресторан русской кухни; блюда готовят по старинным рецептам, восстановленным по архивным материалам и книгам о ресторанах Нижегородской ярмарки. Стол на 18:00 лучше забронировать заранее.",
+        tags: ["еда", "запас", "бронь"],
         mapKeys: ["samovarnaya"],
         venueKey: "samovarnaya",
       },
@@ -2553,9 +2619,9 @@ let days = [
     accent: "#e03131",
     icon: "🟥",
     date: "15 августа, суббота",
-    title: "Приволжская фиеста",
-    summary: "Два варианта дня: полный сценарий с ранним стартом или спокойное начало, Волжская регата и вечерняя программа фиесты.",
-    notice: "План предварительный и будет скорректирован после публикации официальной программы Приволжской фиесты. При переносе мероприятия маршруты соответствующих дней поменяем местами.",
+    title: "Приволжская фиеста и День города",
+    summary: "Два варианта дня: полный сценарий с ранним стартом или спокойное начало, Волжская регата, День города и вечерняя программа фиесты.",
+    notice: "План предварительный и будет скорректирован после публикации официальной программы Приволжской фиесты. 15 августа — День города Нижнего Новгорода. Официальную программу, площадки и возможные ограничения движения нужно проверить ближе к поездке. При переносе Фиесты маршруты соответствующих дней поменяем местами.",
     weatherToggle: false,
     fiestaModeNote: "Утренняя программа фиесты требует очень раннего подъема. Можно выбрать полный сценарий с утренними полетами либо более спокойный вариант только с дневной и вечерней программой.",
     fiestaModes: {
@@ -2585,15 +2651,15 @@ let days = [
           {
             time: "12:00-15:30",
             title: "🍽 Обед в Pinci",
-            note: "Основной вариант обеда при возвращении в центр. Решение принимаем с учетом фактической площадки фиесты, программы регаты и времени на дорогу.",
-            tags: ["еда", "запас", "в помещении"],
+            note: "Основной вариант обеда при возвращении в центр. После уточнения площадки Фиесты, программы регаты и Дня города выбранное время лучше забронировать.",
+            tags: ["еда", "запас", "в помещении", "бронь"],
             mapKeys: ["pinci"],
             venueKey: "pinci",
             options: [
               {
                 title: "Цейлон",
-                note: "Азиатское бистро с блюдами, вдохновленными кухнями Шри-Ланки, Индии, Таиланда и Малайзии. Использовать как альтернативу Pinci при более удобной логистике или очереди.",
-                tags: ["еда", "запас", "в помещении"],
+                note: "Азиатское бистро с блюдами, вдохновленными кухнями Шри-Ланки, Индии, Таиланда и Малайзии. При выборе вместо Pinci стол лучше забронировать; одновременно оба заведения не бронируем.",
+                tags: ["еда", "запас", "в помещении", "бронь"],
                 mapKeys: ["ceylon"],
                 venueKey: "ceylon",
                 links: [{ title: "Открыть официальный сайт «Цейлона»", url: places.ceylon.site }],
@@ -2615,7 +2681,7 @@ let days = [
           {
             time: "21:00-00:00",
             title: "🍸 «Селедка и Кофе» по силам",
-            note: "Вечерний вариант после программы фиесты при возвращении в центр и наличии сил. Можно зайти на напитки, закуски или поздний ужин. При сильной усталости сразу возвращаемся в отель.",
+            note: "Вечерний вариант после фиесты при возвращении в центр и наличии сил. Можно зайти на напитки, закуски или поздний ужин. При сильной усталости сразу идем спать.",
             tags: ["еда", "ночь", "запас", "в помещении"],
             mapKeys: ["seledkaCoffee"],
             venueKey: "seledkaCoffee",
@@ -2675,15 +2741,15 @@ let days = [
       {
         time: "12:00-15:30",
         title: "🍽 Обед в Pinci",
-        note: "Основной вариант обеда при возвращении в центр. Решение принимаем с учетом фактической площадки фиесты, программы регаты и времени на дорогу.",
-        tags: ["еда", "запас", "в помещении"],
+        note: "Основной вариант обеда при возвращении в центр. После уточнения площадки Фиесты, программы регаты и Дня города выбранное время лучше забронировать.",
+        tags: ["еда", "запас", "в помещении", "бронь"],
         mapKeys: ["pinci"],
         venueKey: "pinci",
         options: [
           {
             title: "Цейлон",
-            note: "Азиатское бистро с блюдами, вдохновленными кухнями Шри-Ланки, Индии, Таиланда и Малайзии. Использовать как альтернативу Pinci при более удобной логистике или очереди.",
-            tags: ["еда", "запас", "в помещении"],
+            note: "Азиатское бистро с блюдами, вдохновленными кухнями Шри-Ланки, Индии, Таиланда и Малайзии. При выборе вместо Pinci стол лучше забронировать; одновременно оба заведения не бронируем.",
+            tags: ["еда", "запас", "в помещении", "бронь"],
             mapKeys: ["ceylon"],
             venueKey: "ceylon",
             links: [{ title: "Открыть официальный сайт «Цейлона»", url: places.ceylon.site }],
@@ -2705,7 +2771,7 @@ let days = [
       {
         time: "21:00-00:00",
         title: "🍸 «Селедка и Кофе» по силам",
-        note: "Вечерний вариант после программы фиесты при возвращении в центр и наличии сил. Можно зайти на напитки, закуски или поздний ужин. При сильной усталости сразу возвращаемся в отель.",
+        note: "Вечерний вариант после фиесты при возвращении в центр и наличии сил. Можно зайти на напитки, закуски или поздний ужин. При сильной усталости сразу идем спать.",
         tags: ["еда", "ночь", "запас", "в помещении"],
         mapKeys: ["seledkaCoffee"],
         venueKey: "seledkaCoffee",
@@ -2732,8 +2798,8 @@ let days = [
       {
         time: "10:00-11:00",
         title: "🍳 Завтрак в Mayar",
-        note: "Неспешный завтрак в светлом кафе-кондитерской перед дневной программой. В меню завтраки в течение дня и десерты.",
-        tags: ["еда", "кофе", "в помещении"],
+        note: "Неспешный завтрак в светлом кафе-кондитерской перед дневной программой. Стол на воскресный завтрак лучше забронировать.",
+        tags: ["еда", "кофе", "в помещении", "бронь"],
         mapKeys: ["mayar"],
         venueKey: "mayar",
         links: [{ title: "Открыть официальный сайт Mayar", url: places.mayar.site }],
@@ -2804,7 +2870,7 @@ let days = [
       {
         time: "После 21:30",
         title: "🍸 Бар «Юность» по желанию",
-        note: "Необязательное продолжение вечера после ужина. Можно зайти на один коктейль или настойку. При усталости возвращаемся в отель.",
+        note: "Необязательное продолжение вечера после ужина. Бронь уточняем только после решения, что действительно идем; при усталости возвращаемся в отель.",
         tags: ["ночь", "запас", "в помещении"],
         mapKeys: ["yunost"],
         venueKey: "yunost",
@@ -2886,7 +2952,7 @@ let days = [
   },
 ];
 
-let prepItems = [
+const canonicalPrepItems = [
   {
     title: "Забронировать Si, Mamma на 12 августа.",
     note: "Телефон: +7 (831) 234-43-07.",
@@ -2906,6 +2972,54 @@ let prepItems = [
   {
     title: "Забронировать Юла пицца на 16 августа.",
     note: "Телефон: +7 (920) 299-06-96.",
+    status: "не выполнено",
+  },
+  {
+    title: "Забронировать Самоварную на 14 августа, 18:00.",
+    note: "Телефон: +7 (831) 224-88-83. Пятничный вечер и ограниченное окно перед закатом — стол лучше забронировать заранее.",
+    placeKey: "samovarnaya",
+    links: [{ title: "Открыть официальную страницу Самоварной", url: places.samovarnaya.site }],
+    status: "не выполнено",
+  },
+  {
+    title: "После публикации программы Фиесты и Дня города выбрать Pinci или Цейлон и забронировать один стол на 15 августа.",
+    note: "Основной вариант — Pinci, запасной — Цейлон. Одновременно бронировать оба заведения не нужно. Время выбрать после уточнения площадки Фиесты, программы регаты и городской программы.",
+    phone: places.ceylon.phone,
+    links: [
+      { title: "Открыть официальный сайт Pinci", url: places.pinci.site },
+      { title: "Открыть официальный сайт Цейлона", url: places.ceylon.site },
+    ],
+    status: "не выполнено",
+  },
+  {
+    title: "Забронировать Mayar на 16 августа, 10:00.",
+    note: "Воскресный завтрак. Телефон: +7 (987) 747-44-30.",
+    placeKey: "mayar",
+    links: [{ title: "Открыть официальный сайт Mayar", url: places.mayar.site }],
+    status: "не выполнено",
+  },
+  {
+    title: "Уточнить возможность бронирования Бистро 9/18 на 14 августа, 11:00.",
+    note: "Заведение небольшое, поэтому возможность и способ бронирования лучше уточнить заранее по актуальным контактам.",
+    placeKey: "bistro918",
+    status: "не выполнено",
+  },
+  {
+    title: "В день Фиесты уточнить наличие столов в «Селедке и Кофе», если решим идти.",
+    note: "Это необязательный поздний вариант после вечерней программы. Не создавать жесткую бронь заранее, пока не понятны время возвращения и силы.",
+    placeKey: "seledkaCoffee",
+    status: "не выполнено",
+  },
+  {
+    title: "При решении продолжить вечер 16 августа уточнить бронь в баре «Юность».",
+    note: "Необязательное продолжение после Юла пицца. Бронировать только после решения, что мы действительно идем.",
+    placeKey: "yunost",
+    links: [{ title: "Открыть официальный сайт бара «Юность»", url: places.yunost.site }],
+    status: "не выполнено",
+  },
+  {
+    title: "Проверить официальную программу Дня города и ограничения движения 15 августа.",
+    note: "Сверить площадки, концерты, перекрытия, работу транспорта и влияние городской программы на Фиесту, регату и возвращение в центр.",
     status: "не выполнено",
   },
   {
@@ -2939,7 +3053,9 @@ let prepItems = [
   },
 ];
 
-let bookingItems = [
+let prepItems = canonicalPrepItems.map((item) => ({ ...item }));
+
+const canonicalBookingItems = [
   {
     title: "Si, Mamma",
     note: "Ужин 12 августа на Рождественской, 24. Нужна бронь заранее.",
@@ -2964,7 +3080,7 @@ let bookingItems = [
   },
   {
     title: "Бистро 9/18",
-    note: "Полноценный завтрак 14 августа. Кофейня и бистро в центре Нижнего Новгорода, рядом с Кремлем. Здесь можно полноценно поесть, выпить кофе и попробовать десерты; из окон открываются виды на Кремль и собор.",
+    note: "Полноценный завтрак 14 августа. Возможность и способ бронирования уточнить заранее.",
     placeKey: "bistro918",
     status: "не выполнено",
   },
@@ -2982,7 +3098,7 @@ let bookingItems = [
   },
   {
     title: "Настаятель",
-    note: "Основной вечерний бар на Рождественской 13 августа. Приходим прежде всего за напитками и атмосферой; бургеры — по аппетиту.",
+    note: "Столы не бронируют. Приходим без брони.",
     placeKey: "nastayatel",
     status: "не выполнено",
   },
@@ -2998,12 +3114,65 @@ let bookingItems = [
     status: "не выполнено",
   },
   {
-    title: "Тематическая кофейная точка в стиле «Очень странных дел»",
-    note: "Небольшая уличная кофейная точка на Большой Покровской, 57. Внутреннего зала нет: напитки и десерты выдают навынос через окно заказа, а тематически оформленная дверь подходит для фотографий снаружи.",
+    title: "Тематическая точка «Очень странные дела»",
+    note: "Небольшая тематическая точка на Большой Покровской, 57. Напитки и десерты выдают навынос через окно заказа; оформленная дверь подходит для фотографий снаружи.",
     placeKey: "strangerCoffee",
     status: "не выполнено",
   },
+  {
+    title: "Самоварная",
+    note: "Бронь желательна на 14 августа, 18:00.",
+    phone: places.samovarnaya.phone,
+    placeKey: "samovarnaya",
+    links: [{ title: "Открыть официальную страницу Самоварной", url: places.samovarnaya.site }],
+    status: "не выполнено",
+  },
+  {
+    title: "Pinci",
+    note: "Основной вариант 15 августа. Бронировать после уточнения программы Фиесты, регаты и Дня города.",
+    placeKey: "pinci",
+    links: [{ title: "Открыть официальный сайт Pinci", url: places.pinci.site }],
+    status: "не выполнено",
+  },
+  {
+    title: "Цейлон",
+    note: "Запасной вариант вместо Pinci. Не бронировать одновременно с Pinci.",
+    phone: places.ceylon.phone,
+    placeKey: "ceylon",
+    links: [{ title: "Открыть официальный сайт Цейлона", url: places.ceylon.site }],
+    status: "не выполнено",
+  },
+  {
+    title: "Mayar",
+    note: "Бронь желательна на 16 августа, 10:00.",
+    phone: places.mayar.phone,
+    placeKey: "mayar",
+    links: [{ title: "Открыть официальный сайт Mayar", url: places.mayar.site }],
+    status: "не выполнено",
+  },
+  {
+    title: "Селедка и Кофе",
+    note: "Наличие столов уточнить в день посещения.",
+    placeKey: "seledkaCoffee",
+    status: "не выполнено",
+  },
+  {
+    title: "Бар «Юность»",
+    note: "Бронь только при решении продолжить вечер.",
+    placeKey: "yunost",
+    links: [{ title: "Открыть сайт и уточнить бронь в баре «Юность»", url: places.yunost.site }],
+    status: "не выполнено",
+  },
+  {
+    title: "Кафе 38",
+    note: "Бронь доступна, но для короткой необязательной остановки на кофе или десерт заранее не требуется.",
+    placeKey: "cafe38",
+    links: [{ title: "Открыть официальный сайт «Кафе 38»", url: places.cafe38.site }],
+    status: "не выполнено",
+  },
 ];
+
+let bookingItems = canonicalBookingItems.map((item) => ({ ...item }));
 
 let rainItems = [
   ["13 августа", "При небольшом дожде стены Кремля можно оставить; при сильном дожде сокращаем открытые переходы и добавляем музей, кафе или более короткий маршрут."],
@@ -3118,6 +3287,14 @@ const state = {
   weather: {},
   fiestaMode: loadFiestaMode(),
 };
+
+let daySectionObserver = null;
+let activeDayId = "";
+let dayNavPointerActive = false;
+let dayNavPointerStartScrollLeft = 0;
+let dayNavAutoScrolling = false;
+let dayNavAutoPauseUntil = 0;
+let dayNavClickLockUntil = 0;
 
 function isValidWeatherPayload(payload) {
   return Boolean(payload && typeof payload === "object" && payload.days && typeof payload.days === "object");
@@ -3328,6 +3505,7 @@ function itemFromRow(row, index) {
   const note = cell(row, ["Описание", "Заметка", "Note", "Description"]);
   const placeKey = cell(row, ["Место", "Place", "Заведение"]) || findPlaceKey(title, note);
   return {
+    id: cell(row, ["ID", "Id", "Идентификатор"]),
     title,
     note,
     comment: cell(row, ["Комментарий", "Comment", "Comments"]),
@@ -3382,149 +3560,38 @@ function mergeEditableSheetFields(sheetItem, localItem) {
   };
 }
 
-function upsertSheetSafeItem(items, predicate, localItem) {
-  const index = items.findIndex(predicate);
-  if (index === -1) return [...items, localItem];
-  return items.map((item, itemIndex) => (itemIndex === index ? mergeEditableSheetFields(item, localItem) : item));
+function itemStableKey(item) {
+  if (item?.id) return `id:${normalizeText(item.id)}`;
+  const title = normalizeText(getItemTitle(item));
+  if (title.includes("очень странн")) return "title:stranger-coffee";
+  if (title.includes("медные трубы")) return "title:mednye-truby";
+  if (title.includes("юл") && title.includes("забронировать")) return "title:yula-booking";
+  if (title.includes("pinci") || title.includes("цейлон")) return `title:${title}`;
+  if (title.includes("приволжской фиесты") && title.includes("проверить")) return "title:fiesta-program";
+  if (title.includes("кремл") && (title.includes("билет") || title.includes("маршрут") || title.includes("стен"))) return "title:kremlin-ticket";
+  if (title.includes("теплоход")) return "title:boat-tickets";
+  return `title:${title}`;
 }
 
-function dedupeSelectedItems(items, normalizedTitles) {
-  const seen = new Set();
-  return items.filter((item) => {
-    const title = normalizeText(getItemTitle(item));
-    if (!normalizedTitles.includes(title)) return true;
-    if (seen.has(title)) return false;
-    seen.add(title);
-    return true;
+function mergeCanonicalAndSheetItems(canonicalItems, sheetItems) {
+  const sheetByKey = new Map(sheetItems.map((item) => [itemStableKey(item), item]));
+  const canonicalKeys = new Set(canonicalItems.map(itemStableKey));
+  const merged = canonicalItems.map((localItem) => {
+    const sheetItem = sheetByKey.get(itemStableKey(localItem));
+    return sheetItem ? mergeEditableSheetFields(sheetItem, localItem) : { ...localItem };
   });
+  sheetItems.forEach((item) => {
+    if (!canonicalKeys.has(itemStableKey(item))) merged.push(item);
+  });
+  return merged;
 }
 
 function applySheetSafeLocalOverrides() {
-  prepItems = prepItems.filter(
-    (item) => !normalizeText(getItemTitle(item)).includes("канатн"),
+  prepItems = mergeCanonicalAndSheetItems(
+    canonicalPrepItems,
+    prepItems.filter((item) => !normalizeText(getItemTitle(item)).includes("канатн")),
   );
-
-  prepItems = upsertSheetSafeItem(
-    prepItems,
-    (item) => normalizeText(getItemTitle(item)).includes("приволжской фиесты"),
-    {
-      title: "Проверить дату, площадку, время и официальную программу Приволжской фиесты.",
-      comment: "Маршрут 15 августа предварительный и будет скорректирован после публикации официальной программы.",
-      status: "не выполнено",
-    },
-  );
-
-  prepItems = upsertSheetSafeItem(
-    prepItems,
-    (item) => normalizeText(getItemTitle(item)).includes("волжской регаты"),
-    {
-      title: "Проверить точное время и программу Волжской регаты 15 августа.",
-      comment: "Посещение бесплатное; точное время и удобную точку просмотра определим после обновления официальной программы.",
-      status: "не выполнено",
-    },
-  );
-
-  prepItems = upsertSheetSafeItem(
-    prepItems,
-    (item) => normalizeText(getItemTitle(item)).includes("кремл"),
-    {
-      title: "Решить, покупаем ли билет на летний музейный маршрут по Кремлю.",
-      comment: "Стоимость — 600 ₽.",
-      status: "не выполнено",
-    },
-  );
-
-  prepItems = upsertSheetSafeItem(
-    prepItems,
-    (item) => normalizeText(getItemTitle(item)).includes("теплоход"),
-    {
-      title: "Проверить билеты на теплоходы и речные прогулки.",
-      comment: "Ссылка на речные экскурсии добавлена в маршрут и полезные ссылки.",
-      status: "не выполнено",
-    },
-  );
-
-  prepItems = upsertSheetSafeItem(
-    prepItems,
-    (item) => normalizeText(getItemTitle(item)).includes("забронировать медные трубы"),
-    {
-      title: "Забронировать Медные Трубы на 12 августа.",
-      note: "Посещение возможно только по предварительной брони. Лучше забронировать заранее. Телефон: +7 (929) 046-47-50.",
-      links: [{ title: "Забронировать в Медных Трубах", url: places.mednyeTruby.site }],
-      status: "не выполнено",
-    },
-  );
-
-  bookingItems = upsertSheetSafeItem(
-    bookingItems,
-    (item) => normalizeText(getItemTitle(item)) === "медные трубы",
-    {
-      title: "Медные Трубы",
-      note: "Один из лучших коктейльных баров России. Посещение только по предварительной брони.",
-      phone: places.mednyeTruby.phone,
-      placeKey: "mednyeTruby",
-      links: [{ title: "Забронировать в Медных Трубах", url: places.mednyeTruby.site }],
-      status: "не выполнено",
-    },
-  );
-
-  bookingItems = upsertSheetSafeItem(
-    bookingItems,
-    (item) => normalizeText(getItemTitle(item)) === "бистро 9/18",
-    {
-      title: "Бистро 9/18",
-      note: "Полноценный завтрак 14 августа. Кофейня и бистро в центре Нижнего Новгорода, рядом с Кремлем. Здесь можно полноценно поесть, выпить кофе и попробовать десерты; из окон открываются виды на Кремль и собор.",
-      placeKey: "bistro918",
-      status: "не выполнено",
-    },
-  );
-
-  bookingItems = upsertSheetSafeItem(
-    bookingItems,
-    (item) => normalizeText(getItemTitle(item)) === "настаятель",
-    {
-      title: "Настаятель",
-      note: "Основной вечерний бар на Рождественской 13 августа. Приходим прежде всего за напитками и атмосферой; бургеры — по аппетиту.",
-      status: "не выполнено",
-    },
-  );
-
-  bookingItems = upsertSheetSafeItem(
-    bookingItems,
-    (item) => {
-      const title = normalizeText(getItemTitle(item));
-      return title.includes("темп воздух") && title.includes("министерство завтраков");
-    },
-    {
-      title: "Темп воздух / Министерство Завтраков",
-      note: "Запасные варианты без фиксированной брони. Для „Темп воздух“ учитывать возможную живую очередь.",
-      status: "не выполнено",
-    },
-  );
-
-  bookingItems = upsertSheetSafeItem(
-    bookingItems,
-    (item) => normalizeText(getItemTitle(item)).includes("очень странн"),
-    {
-      title: "Тематическая кофейная точка в стиле «Очень странных дел»",
-      note: "Небольшая уличная кофейная точка на Большой Покровской, 57. Внутреннего зала нет: напитки и десерты выдают навынос через окно заказа, а тематически оформленная дверь подходит для фотографий снаружи.",
-      status: "не выполнено",
-    },
-  );
-
-  let strangerCoffeeSeen = false;
-  bookingItems = bookingItems.filter((item) => {
-    if (!normalizeText(getItemTitle(item)).includes("очень странн")) return true;
-    if (strangerCoffeeSeen) return false;
-    strangerCoffeeSeen = true;
-    return true;
-  });
-
-  bookingItems = dedupeSelectedItems(bookingItems, [
-    "бистро 9/18",
-    "настаятель",
-    "темп воздух / министерство завтраков",
-  ]);
+  bookingItems = mergeCanonicalAndSheetItems(canonicalBookingItems, bookingItems);
 }
 
 function buildDaysFromRows(rows) {
@@ -4171,6 +4238,20 @@ function renderFilters() {
   const all = buttonForTag("all", "Все");
   box.append(all);
   tags.forEach((tag) => box.append(buttonForTag(tag, `#${tag}`)));
+
+  const select = byId("tagSelect");
+  if (select) {
+    select.innerHTML = "";
+    const allOption = el("option", "", "Все категории");
+    allOption.value = "all";
+    select.append(allOption);
+    tags.forEach((tag) => {
+      const option = el("option", "", tag);
+      option.value = tag;
+      select.append(option);
+    });
+    select.value = state.activeTag;
+  }
 }
 
 function buttonForTag(value, label) {
@@ -4205,8 +4286,98 @@ function renderDayNav() {
       <span class="day-nav__full">${escapeHtml(day.icon)} ${escapeHtml(weekday)}</span>
       <span class="day-nav__compact">${escapeHtml(day.icon)} ${escapeHtml(shortDate)} | ${escapeHtml(weekday)}</span>
     `;
+    link.addEventListener("click", () => {
+      dayNavClickLockUntil = Date.now() + 1800;
+      setActiveDay(day.id, true);
+    });
     nav.append(link);
   });
+  bindDayNavManualScrollProtection();
+  setActiveDay(activeDayId || days[0]?.id, false);
+}
+
+function bindDayNavManualScrollProtection() {
+  const nav = byId("dayNav");
+  if (!nav || nav.dataset.syncBound === "true") return;
+  nav.dataset.syncBound = "true";
+  const pauseAutoCenter = () => {
+    dayNavAutoPauseUntil = Date.now() + 1400;
+  };
+  nav.addEventListener("pointerdown", () => {
+    dayNavPointerActive = true;
+    dayNavPointerStartScrollLeft = nav.scrollLeft;
+  });
+  window.addEventListener("pointerup", () => {
+    if (!dayNavPointerActive) return;
+    dayNavPointerActive = false;
+    if (Math.abs(nav.scrollLeft - dayNavPointerStartScrollLeft) > 4) pauseAutoCenter();
+  });
+  nav.addEventListener("touchstart", () => {
+    dayNavPointerActive = true;
+    dayNavPointerStartScrollLeft = nav.scrollLeft;
+  }, { passive: true });
+  nav.addEventListener("touchend", () => {
+    dayNavPointerActive = false;
+    if (Math.abs(nav.scrollLeft - dayNavPointerStartScrollLeft) > 4) pauseAutoCenter();
+  }, { passive: true });
+  nav.addEventListener("scroll", () => {
+    if (!dayNavAutoScrolling) pauseAutoCenter();
+  }, { passive: true });
+}
+
+function centerActiveDayLink(link) {
+  const nav = byId("dayNav");
+  if (!nav || !link || window.innerWidth > 768 || dayNavPointerActive || Date.now() < dayNavAutoPauseUntil) return;
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const targetLeft = link.offsetLeft - (nav.clientWidth - link.offsetWidth) / 2;
+  dayNavAutoScrolling = true;
+  nav.scrollTo({ left: Math.max(0, targetLeft), behavior: reducedMotion ? "auto" : "smooth" });
+  window.setTimeout(() => {
+    dayNavAutoScrolling = false;
+  }, reducedMotion ? 0 : 500);
+}
+
+function setActiveDay(dayId, shouldCenter = true) {
+  if (!dayId) return;
+  const nav = byId("dayNav");
+  if (!nav) return;
+  activeDayId = dayId;
+  nav.querySelectorAll("a").forEach((link) => {
+    const active = link.getAttribute("href") === `#${dayId}`;
+    link.classList.toggle("is-active", active);
+    if (active) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+    if (active && shouldCenter) centerActiveDayLink(link);
+  });
+}
+
+function activeDayAtWorkingLine() {
+  const sections = [...document.querySelectorAll(".day-section")];
+  if (!sections.length) return "";
+  const navBottom = byId("dayNav")?.getBoundingClientRect().bottom || 84;
+  const workingLine = navBottom + 40;
+  let current = sections[0];
+  sections.forEach((section) => {
+    if (section.getBoundingClientRect().top <= workingLine) current = section;
+  });
+  return current.id;
+}
+
+function setupDayNavigationSync() {
+  daySectionObserver?.disconnect();
+  const sections = [...document.querySelectorAll(".day-section")];
+  if (!sections.length || !("IntersectionObserver" in window)) {
+    setActiveDay(sections[0]?.id || days[0]?.id, false);
+    return;
+  }
+  daySectionObserver = new IntersectionObserver(() => {
+    if (Date.now() < dayNavClickLockUntil) return;
+    const dayId = activeDayAtWorkingLine();
+    if (dayId && dayId !== activeDayId) setActiveDay(dayId, true);
+  }, { rootMargin: "-80px 0px -65% 0px", threshold: [0, 0.01, 1] });
+  sections.forEach((section) => daySectionObserver.observe(section));
+  const current = activeDayAtWorkingLine() || sections[0].id;
+  setActiveDay(current, false);
 }
 
 const weatherPeriodLabels = {
@@ -4405,6 +4576,7 @@ function renderDays() {
     section.append(heading, renderDayWeather(day), timeline);
     container.append(section);
   });
+  setupDayNavigationSync();
 }
 
 function renderChecklist(targetId, items, namespace) {
@@ -4577,6 +4749,13 @@ function setupResponsiveDisclosures() {
       if (!mobileQuery.matches) event.preventDefault();
       window.setTimeout(() => updateLabel(details), 0);
     });
+    summary?.addEventListener("keydown", (event) => {
+      if (!["Enter", " "].includes(event.key)) return;
+      event.preventDefault();
+      if (!mobileQuery.matches) return;
+      details.open = !details.open;
+      updateLabel(details);
+    });
     details.addEventListener("toggle", () => updateLabel(details));
   });
 
@@ -4681,6 +4860,12 @@ async function init() {
 
   byId("searchInput").addEventListener("input", (event) => {
     state.query = event.target.value;
+    applyFilters();
+  });
+
+  byId("tagSelect")?.addEventListener("change", (event) => {
+    state.activeTag = event.target.value;
+    renderFilters();
     applyFilters();
   });
 
