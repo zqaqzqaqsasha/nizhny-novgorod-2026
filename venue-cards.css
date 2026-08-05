@@ -508,6 +508,34 @@ body.venue-dialog-open {
 
 .venue-card__actions .button {
   width: 100%;
+  min-height: 46px;
+  border: 1px solid color-mix(in srgb, var(--night) 24%, var(--line));
+  background: #fff;
+  color: var(--night);
+  box-shadow: 0 5px 14px rgba(23, 32, 41, 0.08);
+  text-decoration: none;
+  transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+}
+
+.venue-card__actions .button--primary {
+  border-color: var(--night);
+  background: var(--night);
+  color: #fff;
+}
+
+.venue-card__actions .button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(23, 32, 41, 0.14);
+}
+
+.venue-card__actions .button:not(.button--primary):hover {
+  background: color-mix(in srgb, var(--accent) 8%, #fff);
+  border-color: var(--accent);
+}
+
+.venue-card__actions .button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 42%, transparent);
+  outline-offset: 2px;
 }
 
 @media (max-width: 768px) {

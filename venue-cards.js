@@ -31,11 +31,12 @@
       ...(folder.food || []).map((image) => ({ ...image, kind: "food" })),
       ...(folder.exter || []).map((image) => ({ ...image, kind: "exter" })),
       ...(folder.other || []).map((image) => ({ ...image, kind: "other" })),
-    ].filter((image) => image?.url);
+    ].filter((image) => image?.url || image?.remoteUrl);
     const seen = new Set();
     return ordered.filter((image) => {
-      if (seen.has(image.url)) return false;
-      seen.add(image.url);
+      const key = image.url || image.remoteUrl;
+      if (seen.has(key)) return false;
+      seen.add(key);
       return true;
     });
   }
@@ -45,6 +46,25 @@
     const sourcePrefix = `${endpoint}/`;
     if (!url || !transformation || !url.startsWith(sourcePrefix)) return url || "";
     return `${sourcePrefix}tr:${transformation}/${url.slice(sourcePrefix.length)}`;
+  }
+
+  function remoteImageUrl(image, transformation) {
+    return image?.remoteUrl ? imageKitUrl(image.remoteUrl, transformation) : "";
+  }
+
+  function fallbackAttributes(image, transformation, srcset = "") {
+    const fallback = remoteImageUrl(image, transformation);
+    if (!fallback) return "";
+    return ` data-fallback-src="${escapeHtml(fallback)}"${srcset ? ` data-fallback-srcset="${escapeHtml(srcset)}"` : ""}`;
+  }
+
+  function useRemoteFallback(image) {
+    if (!image?.dataset?.fallbackSrc || image.dataset.fallbackUsed === "true") return false;
+    image.dataset.fallbackUsed = "true";
+    if (image.dataset.fallbackSrcset) image.srcset = image.dataset.fallbackSrcset;
+    else image.removeAttribute("srcset");
+    image.src = image.dataset.fallbackSrc;
+    return true;
   }
 
   function venueImageAlt(profile, image) {
@@ -59,13 +79,18 @@
   }
 
   function venueResponsiveImageAttrs(image, profile, sizes = "132px") {
-    const src = imageKitUrl(image.url, "w-480,h-360,c-at_max,q-75");
-    const srcset = [
-      `${imageKitUrl(image.url, "w-240,h-180,c-at_max,q-72")} 240w`,
-      `${src} 480w`,
-      `${imageKitUrl(image.url, "w-720,h-540,c-at_max,q-76")} 720w`,
-    ].join(", ");
-    return `src="${escapeHtml(src)}" srcset="${escapeHtml(srcset)}" sizes="${escapeHtml(sizes)}" alt="${escapeHtml(venueImageAlt(profile, image))}" loading="lazy" decoding="async"`;
+    const src = image.src640 || image.url || remoteImageUrl(image, "w-480,h-360,c-at_max,q-75");
+    const srcset = image.src320 && image.src640
+      ? `${image.src320} 320w, ${image.src640} 640w`
+      : [
+          `${imageKitUrl(src, "w-240,h-180,c-at_max,q-72")} 240w`,
+          `${imageKitUrl(src, "w-480,h-360,c-at_max,q-75")} 480w`,
+          `${imageKitUrl(src, "w-720,h-540,c-at_max,q-76")} 720w`,
+        ].join(", ");
+    const fallbackSrcset = image.remoteUrl
+      ? `${remoteImageUrl(image, "w-320,h-240,c-at_max,q-72")} 320w, ${remoteImageUrl(image, "w-640,h-480,c-at_max,q-76")} 640w`
+      : "";
+    return `src="${escapeHtml(src)}" srcset="${escapeHtml(srcset)}" sizes="${escapeHtml(sizes)}" alt="${escapeHtml(venueImageAlt(profile, image))}" loading="lazy" decoding="async"${fallbackAttributes(image, "w-640,h-480,c-at_max,q-76", fallbackSrcset)}`;
   }
 
   function explicitVenueKeysForItem(item = {}) {
@@ -101,13 +126,15 @@
     const profile = venueProfileForKey(key, { includeClosed: false });
     const image = venueImagesForKey(key)[0];
     if (!profile || !image) return "";
-    const src = imageKitUrl(image.url, "w-640,h-480,c-at_max,q-76");
-    const srcset = [
-      `${imageKitUrl(image.url, "w-320,h-240,c-at_max,q-72")} 320w`,
-      `${src} 640w`,
-    ].join(", ");
+    const src = image.src640 || image.url || remoteImageUrl(image, "w-640,h-480,c-at_max,q-76");
+    const srcset = image.src320 && image.src640
+      ? `${image.src320} 320w, ${image.src640} 640w`
+      : `${imageKitUrl(src, "w-320,h-240,c-at_max,q-72")} 320w, ${imageKitUrl(src, "w-640,h-480,c-at_max,q-76")} 640w`;
+    const fallbackSrcset = image.remoteUrl
+      ? `${remoteImageUrl(image, "w-320,h-240,c-at_max,q-72")} 320w, ${remoteImageUrl(image, "w-640,h-480,c-at_max,q-76")} 640w`
+      : "";
     return `<button class="extra-place-card__cover" type="button" data-venue-key="${escapeHtml(key)}" aria-label="${escapeHtml(`Открыть карточку заведения ${profile.title}`)}">
-      <img src="${escapeHtml(src)}" srcset="${escapeHtml(srcset)}" sizes="(max-width: 430px) 44vw, (max-width: 980px) 46vw, 29vw" alt="${escapeHtml(venueImageAlt(profile, image))}" loading="lazy" decoding="async" />
+      <img src="${escapeHtml(src)}" srcset="${escapeHtml(srcset)}" sizes="(max-width: 430px) 44vw, (max-width: 980px) 46vw, 29vw" alt="${escapeHtml(venueImageAlt(profile, image))}" loading="lazy" decoding="async"${fallbackAttributes(image, "w-640,h-480,c-at_max,q-76", fallbackSrcset)} />
     </button>`;
   }
 
@@ -159,7 +186,7 @@
     if (!target || !profile) return;
     target.innerHTML = venueModalState.images
       .map((image, index) => `<button class="venue-gallery__thumb${index === venueModalState.index ? " is-active" : ""}" type="button" data-gallery-index="${index}" aria-label="Показать фотографию ${index + 1} из ${venueModalState.images.length}">
-        <img src="${escapeHtml(imageKitUrl(image.url, "w-180,h-135,c-at_max,q-68"))}" alt="${escapeHtml(venueImageAlt(profile, image))}" loading="lazy" decoding="async" />
+        <img src="${escapeHtml(image.thumbUrl || imageKitUrl(image.url || image.remoteUrl, "w-240,c-at_max,q-68"))}" alt="${escapeHtml(venueImageAlt(profile, image))}" loading="lazy" decoding="async"${fallbackAttributes(image, "w-240,c-at_max,q-68")} />
       </button>`)
       .join("");
   }
@@ -174,7 +201,8 @@
     indexes.delete(venueModalState.index);
     indexes.forEach((index) => {
       const preload = new Image();
-      preload.src = imageKitUrl(venueModalState.images[index].url, "w-1600,c-at_max,q-82");
+      const image = venueModalState.images[index];
+      preload.src = image.url || remoteImageUrl(image, "w-1600,c-at_max,q-82");
       venueModalState.preloads.push(preload);
     });
   }
@@ -198,13 +226,16 @@
     main.classList.add("is-loading");
     main.alt = venueImageAlt(profile, image);
     main.onload = () => main.classList.remove("is-loading");
+    main.dataset.fallbackSrc = remoteImageUrl(image, "w-1600,c-at_max,q-82");
+    main.dataset.fallbackUsed = "false";
     main.onerror = () => {
+      if (useRemoteFallback(main)) return;
       venueModalState.images.splice(venueModalState.index, 1);
       venueModalState.index = Math.min(venueModalState.index, Math.max(venueModalState.images.length - 1, 0));
       renderVenueGalleryThumbs();
       updateVenueGallery();
     };
-    main.src = imageKitUrl(image.url, "w-1600,c-at_max,q-82");
+    main.src = image.url || remoteImageUrl(image, "w-1600,c-at_max,q-82");
     counter.textContent = `${venueModalState.index + 1} / ${venueModalState.images.length}`;
     const single = venueModalState.images.length < 2;
     prev.hidden = single;
@@ -292,6 +323,7 @@
   }
 
   function handleBrokenVenueImage(image) {
+    if (useRemoteFallback(image)) return;
     const extraCover = image.closest(".extra-place-card__cover");
     if (extraCover) {
       extraCover.remove();
@@ -311,8 +343,13 @@
     }
     const profile = venueProfileForKey(key);
     image.dataset.imageIndex = String(nextIndex);
-    image.src = imageKitUrl(images[nextIndex].url, "w-480,h-360,c-at_max,q-75");
-    image.srcset = `${imageKitUrl(images[nextIndex].url, "w-240,h-180,c-at_max,q-72")} 240w, ${image.src} 480w, ${imageKitUrl(images[nextIndex].url, "w-720,h-540,c-at_max,q-76")} 720w`;
+    const replacement = images[nextIndex];
+    image.src = replacement.src640 || replacement.url || remoteImageUrl(replacement, "w-480,h-360,c-at_max,q-75");
+    image.srcset = replacement.src320 && replacement.src640
+      ? `${replacement.src320} 320w, ${replacement.src640} 640w`
+      : "";
+    image.dataset.fallbackSrc = remoteImageUrl(replacement, "w-640,h-480,c-at_max,q-76");
+    image.dataset.fallbackUsed = "false";
     image.alt = venueImageAlt(profile, images[nextIndex]);
   }
 
@@ -346,7 +383,12 @@
       }
     });
     document.addEventListener("error", (event) => {
-      if (event.target instanceof HTMLImageElement) handleBrokenVenueImage(event.target);
+      if (!(event.target instanceof HTMLImageElement)) return;
+      if (useRemoteFallback(event.target)) {
+        event.stopImmediatePropagation();
+        return;
+      }
+      handleBrokenVenueImage(event.target);
     }, true);
     const viewport = byId("venueGalleryViewport");
     viewport?.addEventListener("touchstart", (event) => {

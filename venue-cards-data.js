@@ -297,16 +297,16 @@ window.NN_VENUES = {
   "strangerCoffee": {
     "number": 15,
     "key": "strangerCoffee",
-    "title": "Тематическая кофейня в стиле «Очень странных дел»",
+    "title": "Тематическая точка «Очень странные дела»",
     "routeStatus": "Тематическая остановка в маршруте",
     "approvalStatus": "Утверждено",
-    "category": "Тематическая кофейня",
-    "cuisine": "Кофе, напитки и десерты — меню пока не опубликовано",
+    "category": "Тематическая точка с напитками",
+    "cuisine": "Напитки и десерты — меню пока не опубликовано",
     "averageCheck": "уточняется",
     "averageCheckSource": "Средний чек не опубликован",
     "averageCheckSourceUrl": null,
-    "description": "Новое тематическое заведение в стиле «Очень странных дел» на Большой Покровской, 57. Отдельной карточки на Яндекс Картах и упоминаний в городских подборках пока нет.",
-    "whyInRoute": "Короткая остановка ради интерьера и фотографий 14 августа. Напиток или десерт — по желанию.",
+    "description": "Небольшая тематическая точка на Большой Покровской, 57. Напитки и десерты выдают навынос через окно заказа; оформленная дверь подходит для фотографий снаружи.",
+    "whyInRoute": "Короткая остановка ради напитка, десерта и фотографий 14 августа.",
     "officialSite": null,
     "mapUrl": "https://yandex.ru/maps/-/CTCxrF49",
     "note": "Новое заведение, поэтому отдельной карточки на Яндекс Картах и упоминаний в подборках пока нет. Ссылка ведет на подтвержденный адрес заведения.",
@@ -369,7 +369,7 @@ window.NN_VENUES = {
     "averageCheckSource": "Restoclub",
     "averageCheckSourceUrl": "https://www.restoclub.ru/nn/place/seledka-i-kofe/menu",
     "description": "Известный бар на Рождественской улице с неформальной атмосферой, коктейлями, закусками и возможностью позднего ужина.",
-    "whyInRoute": "Необязательное продолжение вечера после программы фиесты при возвращении в центр и наличии сил.",
+    "whyInRoute": "Необязательное продолжение вечера после фиесты при возвращении в центр и наличии сил.",
     "officialSite": null,
     "mapUrl": "https://yandex.ru/maps/-/CTCxZ4O1",
     "note": "Отдельный официальный сайт не найден.",
@@ -802,7 +802,7 @@ window.NN_VENUES = {
 
 window.NN_VENUE_ASSETS = {
   "baseUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026",
-  "source": "ImageKit",
+  "source": "Local WebP with ImageKit fallback",
   "updatedRenames": {
     "surf-coffee-cinema": "exter-4.JPG переименован в cover.JPG",
     "nastayatel": "IMG_2374.JPG переименован в inter-4.JPG"
@@ -824,88 +824,130 @@ window.NN_VENUE_ASSETS = {
     "bistro-918": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/cover.JPG"
+        "url": "./assets/venues/bistro-918/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/bistro-918/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/cover.JPG",
+        "src320": "./assets/venues/bistro-918/cover-320.webp",
+        "src640": "./assets/venues/bistro-918/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/inter-1.JPG"
+          "url": "./assets/venues/bistro-918/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/bistro-918/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/inter-2.JPG"
+          "url": "./assets/venues/bistro-918/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/bistro-918/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/inter-3.JPG"
+          "url": "./assets/venues/bistro-918/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/bistro-918/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/inter-4.JPG"
+          "url": "./assets/venues/bistro-918/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/bistro-918/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/inter-5.JPG"
+          "url": "./assets/venues/bistro-918/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/bistro-918/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/inter-5.JPG"
         },
         {
           "file": "inter-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/inter-6.JPG"
+          "url": "./assets/venues/bistro-918/gallery/inter-6.webp",
+          "thumbUrl": "./assets/venues/bistro-918/thumbs/inter-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/inter-6.JPG"
         },
         {
           "file": "inter-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/inter-7.JPG"
+          "url": "./assets/venues/bistro-918/gallery/inter-7.webp",
+          "thumbUrl": "./assets/venues/bistro-918/thumbs/inter-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/inter-7.JPG"
         },
         {
           "file": "inter-8.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/inter-8.JPG"
+          "url": "./assets/venues/bistro-918/gallery/inter-8.webp",
+          "thumbUrl": "./assets/venues/bistro-918/thumbs/inter-8.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/inter-8.JPG"
         },
         {
           "file": "inter-9.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/inter-9.JPG"
+          "url": "./assets/venues/bistro-918/gallery/inter-9.webp",
+          "thumbUrl": "./assets/venues/bistro-918/thumbs/inter-9.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/inter-9.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/food-1.JPG"
+          "url": "./assets/venues/bistro-918/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/bistro-918/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/food-2.JPG"
+          "url": "./assets/venues/bistro-918/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/bistro-918/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/food-3.JPG"
+          "url": "./assets/venues/bistro-918/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/bistro-918/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/food-4.JPG"
+          "url": "./assets/venues/bistro-918/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/bistro-918/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/food-5.JPG"
+          "url": "./assets/venues/bistro-918/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/bistro-918/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/food-6.JPG"
+          "url": "./assets/venues/bistro-918/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/bistro-918/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/food-6.JPG"
         },
         {
           "file": "food-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/food-7.JPG"
+          "url": "./assets/venues/bistro-918/gallery/food-7.webp",
+          "thumbUrl": "./assets/venues/bistro-918/thumbs/food-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/food-7.JPG"
         },
         {
           "file": "food-8.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/food-8.JPG"
+          "url": "./assets/venues/bistro-918/gallery/food-8.webp",
+          "thumbUrl": "./assets/venues/bistro-918/thumbs/food-8.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/food-8.JPG"
         },
         {
           "file": "food-9.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/food-9.JPG"
+          "url": "./assets/venues/bistro-918/gallery/food-9.webp",
+          "thumbUrl": "./assets/venues/bistro-918/thumbs/food-9.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/food-9.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/exter-1.JPG"
+          "url": "./assets/venues/bistro-918/gallery/exter-1.webp",
+          "thumbUrl": "./assets/venues/bistro-918/thumbs/exter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/bistro-918/exter-1.JPG"
         }
       ],
       "other": []
@@ -913,92 +955,136 @@ window.NN_VENUE_ASSETS = {
     "brera": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/cover.JPG"
+        "url": "./assets/venues/brera/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/brera/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/cover.JPG",
+        "src320": "./assets/venues/brera/cover-320.webp",
+        "src640": "./assets/venues/brera/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/inter-1.JPG"
+          "url": "./assets/venues/brera/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/brera/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/inter-2.JPG"
+          "url": "./assets/venues/brera/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/brera/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/inter-3.JPG"
+          "url": "./assets/venues/brera/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/brera/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/inter-4.JPG"
+          "url": "./assets/venues/brera/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/brera/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/inter-5.JPG"
+          "url": "./assets/venues/brera/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/brera/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/inter-5.JPG"
         },
         {
           "file": "inter-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/inter-6.JPG"
+          "url": "./assets/venues/brera/gallery/inter-6.webp",
+          "thumbUrl": "./assets/venues/brera/thumbs/inter-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/inter-6.JPG"
         },
         {
           "file": "inter-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/inter-7.JPG"
+          "url": "./assets/venues/brera/gallery/inter-7.webp",
+          "thumbUrl": "./assets/venues/brera/thumbs/inter-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/inter-7.JPG"
         },
         {
           "file": "inter-8.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/inter-8.JPG"
+          "url": "./assets/venues/brera/gallery/inter-8.webp",
+          "thumbUrl": "./assets/venues/brera/thumbs/inter-8.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/inter-8.JPG"
         },
         {
           "file": "inter-9.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/inter-9.JPG"
+          "url": "./assets/venues/brera/gallery/inter-9.webp",
+          "thumbUrl": "./assets/venues/brera/thumbs/inter-9.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/inter-9.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/food-1.JPG"
+          "url": "./assets/venues/brera/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/brera/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/food-2.JPG"
+          "url": "./assets/venues/brera/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/brera/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/food-3.JPG"
+          "url": "./assets/venues/brera/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/brera/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/food-4.JPG"
+          "url": "./assets/venues/brera/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/brera/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/food-5.JPG"
+          "url": "./assets/venues/brera/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/brera/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/food-6.JPG"
+          "url": "./assets/venues/brera/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/brera/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/food-6.JPG"
         },
         {
           "file": "food-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/food-7.JPG"
+          "url": "./assets/venues/brera/gallery/food-7.webp",
+          "thumbUrl": "./assets/venues/brera/thumbs/food-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/food-7.JPG"
         },
         {
           "file": "food-8.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/food-8.JPG"
+          "url": "./assets/venues/brera/gallery/food-8.webp",
+          "thumbUrl": "./assets/venues/brera/thumbs/food-8.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/food-8.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/exter-1.JPG"
+          "url": "./assets/venues/brera/gallery/exter-1.webp",
+          "thumbUrl": "./assets/venues/brera/thumbs/exter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/exter-1.JPG"
         },
         {
           "file": "exter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/exter-2.JPG"
+          "url": "./assets/venues/brera/gallery/exter-2.webp",
+          "thumbUrl": "./assets/venues/brera/thumbs/exter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/exter-2.JPG"
         },
         {
           "file": "exter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/exter-3.JPG"
+          "url": "./assets/venues/brera/gallery/exter-3.webp",
+          "thumbUrl": "./assets/venues/brera/thumbs/exter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/brera/exter-3.JPG"
         }
       ],
       "other": []
@@ -1006,52 +1092,76 @@ window.NN_VENUE_ASSETS = {
     "cafe-38": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/cover.JPG"
+        "url": "./assets/venues/cafe-38/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/cafe-38/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/cover.JPG",
+        "src320": "./assets/venues/cafe-38/cover-320.webp",
+        "src640": "./assets/venues/cafe-38/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/inter-1.JPG"
+          "url": "./assets/venues/cafe-38/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/cafe-38/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/inter-2.JPG"
+          "url": "./assets/venues/cafe-38/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/cafe-38/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/inter-2.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/food-1.JPG"
+          "url": "./assets/venues/cafe-38/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/cafe-38/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/food-2.JPG"
+          "url": "./assets/venues/cafe-38/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/cafe-38/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/food-3.JPG"
+          "url": "./assets/venues/cafe-38/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/cafe-38/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/food-4.JPG"
+          "url": "./assets/venues/cafe-38/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/cafe-38/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/food-5.JPG"
+          "url": "./assets/venues/cafe-38/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/cafe-38/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/food-5.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/exter-1.JPG"
+          "url": "./assets/venues/cafe-38/gallery/exter-1.webp",
+          "thumbUrl": "./assets/venues/cafe-38/thumbs/exter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/exter-1.JPG"
         },
         {
           "file": "exter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/exter-2.JPG"
+          "url": "./assets/venues/cafe-38/gallery/exter-2.webp",
+          "thumbUrl": "./assets/venues/cafe-38/thumbs/exter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/exter-2.JPG"
         },
         {
           "file": "exter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/exter-3.JPG"
+          "url": "./assets/venues/cafe-38/gallery/exter-3.webp",
+          "thumbUrl": "./assets/venues/cafe-38/thumbs/exter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/cafe-38/exter-3.JPG"
         }
       ],
       "other": []
@@ -1059,72 +1169,106 @@ window.NN_VENUE_ASSETS = {
     "ceylon": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/cover.JPG"
+        "url": "./assets/venues/ceylon/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/ceylon/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/cover.JPG",
+        "src320": "./assets/venues/ceylon/cover-320.webp",
+        "src640": "./assets/venues/ceylon/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/inter-1.JPG"
+          "url": "./assets/venues/ceylon/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/ceylon/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/inter-2.JPG"
+          "url": "./assets/venues/ceylon/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/ceylon/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/inter-3.JPG"
+          "url": "./assets/venues/ceylon/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/ceylon/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/inter-4.JPG"
+          "url": "./assets/venues/ceylon/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/ceylon/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/inter-5.JPG"
+          "url": "./assets/venues/ceylon/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/ceylon/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/inter-5.JPG"
         },
         {
           "file": "inter-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/inter-6.JPG"
+          "url": "./assets/venues/ceylon/gallery/inter-6.webp",
+          "thumbUrl": "./assets/venues/ceylon/thumbs/inter-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/inter-6.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/food-1.JPG"
+          "url": "./assets/venues/ceylon/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/ceylon/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/food-2.JPG"
+          "url": "./assets/venues/ceylon/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/ceylon/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/food-3.JPG"
+          "url": "./assets/venues/ceylon/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/ceylon/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/food-4.JPG"
+          "url": "./assets/venues/ceylon/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/ceylon/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/food-5.JPG"
+          "url": "./assets/venues/ceylon/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/ceylon/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/food-6.JPG"
+          "url": "./assets/venues/ceylon/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/ceylon/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/food-6.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/exter-1.JPG"
+          "url": "./assets/venues/ceylon/gallery/exter-1.webp",
+          "thumbUrl": "./assets/venues/ceylon/thumbs/exter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/exter-1.JPG"
         },
         {
           "file": "exter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/exter-2.JPG"
+          "url": "./assets/venues/ceylon/gallery/exter-2.webp",
+          "thumbUrl": "./assets/venues/ceylon/thumbs/exter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/exter-2.JPG"
         },
         {
           "file": "exter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/exter-3.JPG"
+          "url": "./assets/venues/ceylon/gallery/exter-3.webp",
+          "thumbUrl": "./assets/venues/ceylon/thumbs/exter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ceylon/exter-3.JPG"
         }
       ],
       "other": []
@@ -1132,60 +1276,88 @@ window.NN_VENUE_ASSETS = {
     "citadel": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/cover.JPG"
+        "url": "./assets/venues/citadel/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/citadel/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/cover.JPG",
+        "src320": "./assets/venues/citadel/cover-320.webp",
+        "src640": "./assets/venues/citadel/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/inter-1.JPG"
+          "url": "./assets/venues/citadel/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/citadel/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/inter-2.JPG"
+          "url": "./assets/venues/citadel/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/citadel/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/inter-3.JPG"
+          "url": "./assets/venues/citadel/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/citadel/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/inter-4.JPG"
+          "url": "./assets/venues/citadel/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/citadel/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/inter-5.JPG"
+          "url": "./assets/venues/citadel/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/citadel/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/inter-5.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/food-1.JPG"
+          "url": "./assets/venues/citadel/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/citadel/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/food-2.JPG"
+          "url": "./assets/venues/citadel/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/citadel/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/food-3.JPG"
+          "url": "./assets/venues/citadel/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/citadel/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/food-4.JPG"
+          "url": "./assets/venues/citadel/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/citadel/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/food-5.JPG"
+          "url": "./assets/venues/citadel/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/citadel/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/food-5.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/exter-1.JPG"
+          "url": "./assets/venues/citadel/gallery/exter-1.webp",
+          "thumbUrl": "./assets/venues/citadel/thumbs/exter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/exter-1.JPG"
         },
         {
           "file": "exter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/exter-2.JPG"
+          "url": "./assets/venues/citadel/gallery/exter-2.webp",
+          "thumbUrl": "./assets/venues/citadel/thumbs/exter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/citadel/exter-2.JPG"
         }
       ],
       "other": []
@@ -1193,76 +1365,112 @@ window.NN_VENUE_ASSETS = {
     "gus-v-yablokah": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/cover.JPG"
+        "url": "./assets/venues/gus-v-yablokah/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/gus-v-yablokah/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/cover.JPG",
+        "src320": "./assets/venues/gus-v-yablokah/cover-320.webp",
+        "src640": "./assets/venues/gus-v-yablokah/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/inter-1.JPG"
+          "url": "./assets/venues/gus-v-yablokah/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/gus-v-yablokah/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/inter-2.JPG"
+          "url": "./assets/venues/gus-v-yablokah/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/gus-v-yablokah/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/inter-3.JPG"
+          "url": "./assets/venues/gus-v-yablokah/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/gus-v-yablokah/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/inter-4.JPG"
+          "url": "./assets/venues/gus-v-yablokah/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/gus-v-yablokah/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/inter-5.JPG"
+          "url": "./assets/venues/gus-v-yablokah/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/gus-v-yablokah/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/inter-5.JPG"
         },
         {
           "file": "inter-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/inter-6.JPG"
+          "url": "./assets/venues/gus-v-yablokah/gallery/inter-6.webp",
+          "thumbUrl": "./assets/venues/gus-v-yablokah/thumbs/inter-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/inter-6.JPG"
         },
         {
           "file": "inter-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/inter-7.JPG"
+          "url": "./assets/venues/gus-v-yablokah/gallery/inter-7.webp",
+          "thumbUrl": "./assets/venues/gus-v-yablokah/thumbs/inter-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/inter-7.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/food-1.JPG"
+          "url": "./assets/venues/gus-v-yablokah/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/gus-v-yablokah/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/food-2.JPG"
+          "url": "./assets/venues/gus-v-yablokah/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/gus-v-yablokah/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/food-3.JPG"
+          "url": "./assets/venues/gus-v-yablokah/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/gus-v-yablokah/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/food-4.JPG"
+          "url": "./assets/venues/gus-v-yablokah/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/gus-v-yablokah/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/food-5.JPG"
+          "url": "./assets/venues/gus-v-yablokah/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/gus-v-yablokah/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/food-6.JPG"
+          "url": "./assets/venues/gus-v-yablokah/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/gus-v-yablokah/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/food-6.JPG"
         },
         {
           "file": "food-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/food-7.JPG"
+          "url": "./assets/venues/gus-v-yablokah/gallery/food-7.webp",
+          "thumbUrl": "./assets/venues/gus-v-yablokah/thumbs/food-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/food-7.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/exter-1.JPG"
+          "url": "./assets/venues/gus-v-yablokah/gallery/exter-1.webp",
+          "thumbUrl": "./assets/venues/gus-v-yablokah/thumbs/exter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/exter-1.JPG"
         },
         {
           "file": "exter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/exter-2.JPG"
+          "url": "./assets/venues/gus-v-yablokah/gallery/exter-2.webp",
+          "thumbUrl": "./assets/venues/gus-v-yablokah/thumbs/exter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/gus-v-yablokah/exter-2.JPG"
         }
       ],
       "other": []
@@ -1270,56 +1478,82 @@ window.NN_VENUE_ASSETS = {
     "kofe-1896": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/cover.JPG"
+        "url": "./assets/venues/kofe-1896/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/kofe-1896/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/cover.JPG",
+        "src320": "./assets/venues/kofe-1896/cover-320.webp",
+        "src640": "./assets/venues/kofe-1896/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/inter-1.JPG"
+          "url": "./assets/venues/kofe-1896/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/kofe-1896/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/inter-2.JPG"
+          "url": "./assets/venues/kofe-1896/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/kofe-1896/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/inter-3.JPG"
+          "url": "./assets/venues/kofe-1896/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/kofe-1896/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/inter-4.JPG"
+          "url": "./assets/venues/kofe-1896/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/kofe-1896/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/inter-4.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/food-1.JPG"
+          "url": "./assets/venues/kofe-1896/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/kofe-1896/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/food-1.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/food-3.JPG"
+          "url": "./assets/venues/kofe-1896/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/kofe-1896/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/food-4.JPG"
+          "url": "./assets/venues/kofe-1896/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/kofe-1896/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/food-5.JPG"
+          "url": "./assets/venues/kofe-1896/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/kofe-1896/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/food-6.JPG"
+          "url": "./assets/venues/kofe-1896/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/kofe-1896/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/food-6.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/exter-1.JPG"
+          "url": "./assets/venues/kofe-1896/gallery/exter-1.webp",
+          "thumbUrl": "./assets/venues/kofe-1896/thumbs/exter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/exter-1.JPG"
         },
         {
           "file": "exter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/exter-2.JPG"
+          "url": "./assets/venues/kofe-1896/gallery/exter-2.webp",
+          "thumbUrl": "./assets/venues/kofe-1896/thumbs/exter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kofe-1896/exter-2.JPG"
         }
       ],
       "other": []
@@ -1327,84 +1561,124 @@ window.NN_VENUE_ASSETS = {
     "krasa": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/cover.JPG"
+        "url": "./assets/venues/krasa/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/krasa/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/cover.JPG",
+        "src320": "./assets/venues/krasa/cover-320.webp",
+        "src640": "./assets/venues/krasa/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/inter-1.JPG"
+          "url": "./assets/venues/krasa/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/krasa/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/inter-2.JPG"
+          "url": "./assets/venues/krasa/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/krasa/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/inter-3.JPG"
+          "url": "./assets/venues/krasa/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/krasa/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/inter-4.JPG"
+          "url": "./assets/venues/krasa/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/krasa/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/inter-5.JPG"
+          "url": "./assets/venues/krasa/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/krasa/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/inter-5.JPG"
         },
         {
           "file": "inter-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/inter-6.JPG"
+          "url": "./assets/venues/krasa/gallery/inter-6.webp",
+          "thumbUrl": "./assets/venues/krasa/thumbs/inter-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/inter-6.JPG"
         },
         {
           "file": "inter-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/inter-7.JPG"
+          "url": "./assets/venues/krasa/gallery/inter-7.webp",
+          "thumbUrl": "./assets/venues/krasa/thumbs/inter-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/inter-7.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/food-1.JPG"
+          "url": "./assets/venues/krasa/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/krasa/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/food-2.JPG"
+          "url": "./assets/venues/krasa/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/krasa/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/food-3.JPG"
+          "url": "./assets/venues/krasa/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/krasa/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/food-4.JPG"
+          "url": "./assets/venues/krasa/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/krasa/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/food-5.JPG"
+          "url": "./assets/venues/krasa/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/krasa/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/food-6.JPG"
+          "url": "./assets/venues/krasa/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/krasa/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/food-6.JPG"
         },
         {
           "file": "food-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/food-7.JPG"
+          "url": "./assets/venues/krasa/gallery/food-7.webp",
+          "thumbUrl": "./assets/venues/krasa/thumbs/food-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/food-7.JPG"
         },
         {
           "file": "food-8.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/food-8.JPG"
+          "url": "./assets/venues/krasa/gallery/food-8.webp",
+          "thumbUrl": "./assets/venues/krasa/thumbs/food-8.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/food-8.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/exter-1.JPG"
+          "url": "./assets/venues/krasa/gallery/exter-1.webp",
+          "thumbUrl": "./assets/venues/krasa/thumbs/exter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/exter-1.JPG"
         },
         {
           "file": "exter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/exter-2.JPG"
+          "url": "./assets/venues/krasa/gallery/exter-2.webp",
+          "thumbUrl": "./assets/venues/krasa/thumbs/exter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/exter-2.JPG"
         },
         {
           "file": "exter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/exter-3.JPG"
+          "url": "./assets/venues/krasa/gallery/exter-3.webp",
+          "thumbUrl": "./assets/venues/krasa/thumbs/exter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/krasa/exter-3.JPG"
         }
       ],
       "other": []
@@ -1412,68 +1686,100 @@ window.NN_VENUE_ASSETS = {
     "kusto": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/cover.JPG"
+        "url": "./assets/venues/kusto/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/kusto/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/cover.JPG",
+        "src320": "./assets/venues/kusto/cover-320.webp",
+        "src640": "./assets/venues/kusto/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/inter-1.JPG"
+          "url": "./assets/venues/kusto/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/kusto/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/inter-2.JPG"
+          "url": "./assets/venues/kusto/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/kusto/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/inter-3.JPG"
+          "url": "./assets/venues/kusto/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/kusto/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/inter-4.JPG"
+          "url": "./assets/venues/kusto/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/kusto/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/inter-5.JPG"
+          "url": "./assets/venues/kusto/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/kusto/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/inter-5.JPG"
         },
         {
           "file": "inter-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/inter-6.JPG"
+          "url": "./assets/venues/kusto/gallery/inter-6.webp",
+          "thumbUrl": "./assets/venues/kusto/thumbs/inter-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/inter-6.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/food-1.JPG"
+          "url": "./assets/venues/kusto/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/kusto/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/food-2.JPG"
+          "url": "./assets/venues/kusto/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/kusto/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/food-3.JPG"
+          "url": "./assets/venues/kusto/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/kusto/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/food-4.JPG"
+          "url": "./assets/venues/kusto/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/kusto/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/food-5.JPG"
+          "url": "./assets/venues/kusto/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/kusto/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/food-6.JPG"
+          "url": "./assets/venues/kusto/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/kusto/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/food-6.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/exter-1.JPG"
+          "url": "./assets/venues/kusto/gallery/exter-1.webp",
+          "thumbUrl": "./assets/venues/kusto/thumbs/exter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/exter-1.JPG"
         },
         {
           "file": "exter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/exter-2.JPG"
+          "url": "./assets/venues/kusto/gallery/exter-2.webp",
+          "thumbUrl": "./assets/venues/kusto/thumbs/exter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/kusto/exter-2.JPG"
         }
       ],
       "other": []
@@ -1481,92 +1787,136 @@ window.NN_VENUE_ASSETS = {
     "mate-pizza": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/cover.JPG"
+        "url": "./assets/venues/mate-pizza/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/mate-pizza/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/cover.JPG",
+        "src320": "./assets/venues/mate-pizza/cover-320.webp",
+        "src640": "./assets/venues/mate-pizza/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/inter-1.JPG"
+          "url": "./assets/venues/mate-pizza/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/mate-pizza/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/inter-2.JPG"
+          "url": "./assets/venues/mate-pizza/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/mate-pizza/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/inter-3.JPG"
+          "url": "./assets/venues/mate-pizza/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/mate-pizza/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/inter-4.JPG"
+          "url": "./assets/venues/mate-pizza/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/mate-pizza/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/inter-5.JPG"
+          "url": "./assets/venues/mate-pizza/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/mate-pizza/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/inter-5.JPG"
         },
         {
           "file": "inter-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/inter-6.JPG"
+          "url": "./assets/venues/mate-pizza/gallery/inter-6.webp",
+          "thumbUrl": "./assets/venues/mate-pizza/thumbs/inter-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/inter-6.JPG"
         },
         {
           "file": "inter-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/inter-7.JPG"
+          "url": "./assets/venues/mate-pizza/gallery/inter-7.webp",
+          "thumbUrl": "./assets/venues/mate-pizza/thumbs/inter-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/inter-7.JPG"
         },
         {
           "file": "inter-8.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/inter-8.JPG"
+          "url": "./assets/venues/mate-pizza/gallery/inter-8.webp",
+          "thumbUrl": "./assets/venues/mate-pizza/thumbs/inter-8.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/inter-8.JPG"
         },
         {
           "file": "inter-9.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/inter-9.JPG"
+          "url": "./assets/venues/mate-pizza/gallery/inter-9.webp",
+          "thumbUrl": "./assets/venues/mate-pizza/thumbs/inter-9.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/inter-9.JPG"
         },
         {
           "file": "inter-10.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/inter-10.JPG"
+          "url": "./assets/venues/mate-pizza/gallery/inter-10.webp",
+          "thumbUrl": "./assets/venues/mate-pizza/thumbs/inter-10.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/inter-10.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/food-1.JPG"
+          "url": "./assets/venues/mate-pizza/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/mate-pizza/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/food-2.JPG"
+          "url": "./assets/venues/mate-pizza/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/mate-pizza/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/food-3.JPG"
+          "url": "./assets/venues/mate-pizza/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/mate-pizza/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/food-4.JPG"
+          "url": "./assets/venues/mate-pizza/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/mate-pizza/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/food-5.JPG"
+          "url": "./assets/venues/mate-pizza/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/mate-pizza/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/food-6.JPG"
+          "url": "./assets/venues/mate-pizza/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/mate-pizza/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/food-6.JPG"
         },
         {
           "file": "food-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/food-7.JPG"
+          "url": "./assets/venues/mate-pizza/gallery/food-7.webp",
+          "thumbUrl": "./assets/venues/mate-pizza/thumbs/food-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/food-7.JPG"
         },
         {
           "file": "food-8.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/food-8.JPG"
+          "url": "./assets/venues/mate-pizza/gallery/food-8.webp",
+          "thumbUrl": "./assets/venues/mate-pizza/thumbs/food-8.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/food-8.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/exter-1.JPG"
+          "url": "./assets/venues/mate-pizza/gallery/exter-1.webp",
+          "thumbUrl": "./assets/venues/mate-pizza/thumbs/exter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/exter-1.JPG"
         },
         {
           "file": "exter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/exter-2.JPG"
+          "url": "./assets/venues/mate-pizza/gallery/exter-2.webp",
+          "thumbUrl": "./assets/venues/mate-pizza/thumbs/exter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mate-pizza/exter-2.JPG"
         }
       ],
       "other": []
@@ -1574,60 +1924,88 @@ window.NN_VENUE_ASSETS = {
     "mayar": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/cover.JPG"
+        "url": "./assets/venues/mayar/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/mayar/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/cover.JPG",
+        "src320": "./assets/venues/mayar/cover-320.webp",
+        "src640": "./assets/venues/mayar/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/inter-1.JPG"
+          "url": "./assets/venues/mayar/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/mayar/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/inter-2.JPG"
+          "url": "./assets/venues/mayar/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/mayar/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/inter-3.JPG"
+          "url": "./assets/venues/mayar/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/mayar/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/inter-4.JPG"
+          "url": "./assets/venues/mayar/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/mayar/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/inter-4.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/food-1.JPG"
+          "url": "./assets/venues/mayar/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/mayar/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/food-2.JPG"
+          "url": "./assets/venues/mayar/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/mayar/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/food-3.JPG"
+          "url": "./assets/venues/mayar/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/mayar/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/food-4.JPG"
+          "url": "./assets/venues/mayar/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/mayar/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/food-5.JPG"
+          "url": "./assets/venues/mayar/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/mayar/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/food-6.JPG"
+          "url": "./assets/venues/mayar/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/mayar/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/food-6.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/exter-1.JPG"
+          "url": "./assets/venues/mayar/gallery/exter-1.webp",
+          "thumbUrl": "./assets/venues/mayar/thumbs/exter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/exter-1.JPG"
         },
         {
           "file": "exter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/exter-2.JPG"
+          "url": "./assets/venues/mayar/gallery/exter-2.webp",
+          "thumbUrl": "./assets/venues/mayar/thumbs/exter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mayar/exter-2.JPG"
         }
       ],
       "other": []
@@ -1635,56 +2013,82 @@ window.NN_VENUE_ASSETS = {
     "mednye-truby": {
       "cover": {
         "file": "cover.WEBP",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/cover.WEBP"
+        "url": "./assets/venues/mednye-truby/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/mednye-truby/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/cover.WEBP",
+        "src320": "./assets/venues/mednye-truby/cover-320.webp",
+        "src640": "./assets/venues/mednye-truby/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.WEBP",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/inter-1.WEBP"
+          "url": "./assets/venues/mednye-truby/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/mednye-truby/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/inter-1.WEBP"
         },
         {
           "file": "inter-2.WEBP",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/inter-2.WEBP"
+          "url": "./assets/venues/mednye-truby/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/mednye-truby/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/inter-2.WEBP"
         },
         {
           "file": "inter-3.WEBP",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/inter-3.WEBP"
+          "url": "./assets/venues/mednye-truby/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/mednye-truby/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/inter-3.WEBP"
         },
         {
           "file": "inter-4.WEBP",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/inter-4.WEBP"
+          "url": "./assets/venues/mednye-truby/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/mednye-truby/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/inter-4.WEBP"
         },
         {
           "file": "inter-5.WEBP",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/inter-5.WEBP"
+          "url": "./assets/venues/mednye-truby/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/mednye-truby/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/inter-5.WEBP"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/food-1.JPG"
+          "url": "./assets/venues/mednye-truby/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/mednye-truby/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/food-1.JPG"
         },
         {
           "file": "food-2.WEBP",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/food-2.WEBP"
+          "url": "./assets/venues/mednye-truby/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/mednye-truby/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/food-2.WEBP"
         },
         {
           "file": "food-3.WEBP",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/food-3.WEBP"
+          "url": "./assets/venues/mednye-truby/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/mednye-truby/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/food-3.WEBP"
         },
         {
           "file": "food-4.WEBP",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/food-4.WEBP"
+          "url": "./assets/venues/mednye-truby/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/mednye-truby/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/food-4.WEBP"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/food-5.JPG"
+          "url": "./assets/venues/mednye-truby/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/mednye-truby/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/food-5.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter.WEBP",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/exter.WEBP"
+          "url": "./assets/venues/mednye-truby/gallery/exter.webp",
+          "thumbUrl": "./assets/venues/mednye-truby/thumbs/exter.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mednye-truby/exter.WEBP"
         }
       ],
       "other": []
@@ -1692,64 +2096,94 @@ window.NN_VENUE_ASSETS = {
     "ministerstvo-zavtrakov": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/cover.JPG"
+        "url": "./assets/venues/ministerstvo-zavtrakov/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/ministerstvo-zavtrakov/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/cover.JPG",
+        "src320": "./assets/venues/ministerstvo-zavtrakov/cover-320.webp",
+        "src640": "./assets/venues/ministerstvo-zavtrakov/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/inter-1.JPG"
+          "url": "./assets/venues/ministerstvo-zavtrakov/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/ministerstvo-zavtrakov/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/inter-2.JPG"
+          "url": "./assets/venues/ministerstvo-zavtrakov/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/ministerstvo-zavtrakov/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/inter-3.JPG"
+          "url": "./assets/venues/ministerstvo-zavtrakov/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/ministerstvo-zavtrakov/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/inter-4.JPG"
+          "url": "./assets/venues/ministerstvo-zavtrakov/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/ministerstvo-zavtrakov/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/inter-5.JPG"
+          "url": "./assets/venues/ministerstvo-zavtrakov/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/ministerstvo-zavtrakov/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/inter-5.JPG"
         },
         {
           "file": "inter-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/inter-6.JPG"
+          "url": "./assets/venues/ministerstvo-zavtrakov/gallery/inter-6.webp",
+          "thumbUrl": "./assets/venues/ministerstvo-zavtrakov/thumbs/inter-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/inter-6.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/food-1.JPG"
+          "url": "./assets/venues/ministerstvo-zavtrakov/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/ministerstvo-zavtrakov/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/food-2.JPG"
+          "url": "./assets/venues/ministerstvo-zavtrakov/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/ministerstvo-zavtrakov/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/food-3.JPG"
+          "url": "./assets/venues/ministerstvo-zavtrakov/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/ministerstvo-zavtrakov/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/food-4.JPG"
+          "url": "./assets/venues/ministerstvo-zavtrakov/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/ministerstvo-zavtrakov/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/food-5.JPG"
+          "url": "./assets/venues/ministerstvo-zavtrakov/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/ministerstvo-zavtrakov/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/food-6.JPG"
+          "url": "./assets/venues/ministerstvo-zavtrakov/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/ministerstvo-zavtrakov/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/food-6.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/exter.JPG"
+          "url": "./assets/venues/ministerstvo-zavtrakov/gallery/exter.webp",
+          "thumbUrl": "./assets/venues/ministerstvo-zavtrakov/thumbs/exter.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/ministerstvo-zavtrakov/exter.JPG"
         }
       ],
       "other": []
@@ -1757,56 +2191,82 @@ window.NN_VENUE_ASSETS = {
     "mishka": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/cover.JPG"
+        "url": "./assets/venues/mishka/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/mishka/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/cover.JPG",
+        "src320": "./assets/venues/mishka/cover-320.webp",
+        "src640": "./assets/venues/mishka/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/inter-1.JPG"
+          "url": "./assets/venues/mishka/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/mishka/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/inter-2.JPG"
+          "url": "./assets/venues/mishka/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/mishka/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/inter-2.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/food-1.JPG"
+          "url": "./assets/venues/mishka/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/mishka/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/food-2.JPG"
+          "url": "./assets/venues/mishka/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/mishka/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/food-3.JPG"
+          "url": "./assets/venues/mishka/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/mishka/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/food-4.JPG"
+          "url": "./assets/venues/mishka/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/mishka/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/food-5.JPG"
+          "url": "./assets/venues/mishka/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/mishka/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/food-6.JPG"
+          "url": "./assets/venues/mishka/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/mishka/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/food-6.JPG"
         },
         {
           "file": "food-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/food-7.JPG"
+          "url": "./assets/venues/mishka/gallery/food-7.webp",
+          "thumbUrl": "./assets/venues/mishka/thumbs/food-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/food-7.JPG"
         },
         {
           "file": "food-8.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/food-8.JPG"
+          "url": "./assets/venues/mishka/gallery/food-8.webp",
+          "thumbUrl": "./assets/venues/mishka/thumbs/food-8.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/food-8.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/exter.JPG"
+          "url": "./assets/venues/mishka/gallery/exter.webp",
+          "thumbUrl": "./assets/venues/mishka/thumbs/exter.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mishka/exter.JPG"
         }
       ],
       "other": []
@@ -1814,88 +2274,130 @@ window.NN_VENUE_ASSETS = {
     "mixtura-bar": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/cover.JPG"
+        "url": "./assets/venues/mixtura-bar/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/mixtura-bar/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/cover.JPG",
+        "src320": "./assets/venues/mixtura-bar/cover-320.webp",
+        "src640": "./assets/venues/mixtura-bar/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/inter-1.JPG"
+          "url": "./assets/venues/mixtura-bar/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/mixtura-bar/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/inter-2.JPG"
+          "url": "./assets/venues/mixtura-bar/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/mixtura-bar/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/inter-3.JPG"
+          "url": "./assets/venues/mixtura-bar/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/mixtura-bar/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/inter-4.JPG"
+          "url": "./assets/venues/mixtura-bar/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/mixtura-bar/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/inter-5.JPG"
+          "url": "./assets/venues/mixtura-bar/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/mixtura-bar/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/inter-5.JPG"
         },
         {
           "file": "inter-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/inter-6.JPG"
+          "url": "./assets/venues/mixtura-bar/gallery/inter-6.webp",
+          "thumbUrl": "./assets/venues/mixtura-bar/thumbs/inter-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/inter-6.JPG"
         },
         {
           "file": "inter-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/inter-7.JPG"
+          "url": "./assets/venues/mixtura-bar/gallery/inter-7.webp",
+          "thumbUrl": "./assets/venues/mixtura-bar/thumbs/inter-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/inter-7.JPG"
         },
         {
           "file": "inter-8.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/inter-8.JPG"
+          "url": "./assets/venues/mixtura-bar/gallery/inter-8.webp",
+          "thumbUrl": "./assets/venues/mixtura-bar/thumbs/inter-8.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/inter-8.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/food-1.JPG"
+          "url": "./assets/venues/mixtura-bar/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/mixtura-bar/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/food-2.JPG"
+          "url": "./assets/venues/mixtura-bar/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/mixtura-bar/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/food-3.JPG"
+          "url": "./assets/venues/mixtura-bar/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/mixtura-bar/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/food-4.JPG"
+          "url": "./assets/venues/mixtura-bar/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/mixtura-bar/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/food-5.JPG"
+          "url": "./assets/venues/mixtura-bar/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/mixtura-bar/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/food-6.JPG"
+          "url": "./assets/venues/mixtura-bar/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/mixtura-bar/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/food-6.JPG"
         },
         {
           "file": "food-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/food-7.JPG"
+          "url": "./assets/venues/mixtura-bar/gallery/food-7.webp",
+          "thumbUrl": "./assets/venues/mixtura-bar/thumbs/food-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/food-7.JPG"
         },
         {
           "file": "food-8.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/food-8.JPG"
+          "url": "./assets/venues/mixtura-bar/gallery/food-8.webp",
+          "thumbUrl": "./assets/venues/mixtura-bar/thumbs/food-8.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/food-8.JPG"
         },
         {
           "file": "food-9.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/food-9.JPG"
+          "url": "./assets/venues/mixtura-bar/gallery/food-9.webp",
+          "thumbUrl": "./assets/venues/mixtura-bar/thumbs/food-9.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/food-9.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/exter-1.JPG"
+          "url": "./assets/venues/mixtura-bar/gallery/exter-1.webp",
+          "thumbUrl": "./assets/venues/mixtura-bar/thumbs/exter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/exter-1.JPG"
         },
         {
           "file": "exter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/exter-2.JPG"
+          "url": "./assets/venues/mixtura-bar/gallery/exter-2.webp",
+          "thumbUrl": "./assets/venues/mixtura-bar/thumbs/exter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mixtura-bar/exter-2.JPG"
         }
       ],
       "other": []
@@ -1903,80 +2405,118 @@ window.NN_VENUE_ASSETS = {
     "mola-mola-capri": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/cover.JPG"
+        "url": "./assets/venues/mola-mola-capri/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/mola-mola-capri/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/cover.JPG",
+        "src320": "./assets/venues/mola-mola-capri/cover-320.webp",
+        "src640": "./assets/venues/mola-mola-capri/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/inter-1.JPG"
+          "url": "./assets/venues/mola-mola-capri/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/mola-mola-capri/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/inter-2.JPG"
+          "url": "./assets/venues/mola-mola-capri/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/mola-mola-capri/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/inter-3.JPG"
+          "url": "./assets/venues/mola-mola-capri/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/mola-mola-capri/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/inter-4.JPG"
+          "url": "./assets/venues/mola-mola-capri/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/mola-mola-capri/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/inter-5.JPG"
+          "url": "./assets/venues/mola-mola-capri/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/mola-mola-capri/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/inter-5.JPG"
         },
         {
           "file": "inter-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/inter-6.JPG"
+          "url": "./assets/venues/mola-mola-capri/gallery/inter-6.webp",
+          "thumbUrl": "./assets/venues/mola-mola-capri/thumbs/inter-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/inter-6.JPG"
         },
         {
           "file": "inter-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/inter-7.JPG"
+          "url": "./assets/venues/mola-mola-capri/gallery/inter-7.webp",
+          "thumbUrl": "./assets/venues/mola-mola-capri/thumbs/inter-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/inter-7.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/food-1.JPG"
+          "url": "./assets/venues/mola-mola-capri/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/mola-mola-capri/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/food-2.JPG"
+          "url": "./assets/venues/mola-mola-capri/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/mola-mola-capri/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/food-3.JPG"
+          "url": "./assets/venues/mola-mola-capri/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/mola-mola-capri/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/food-4.JPG"
+          "url": "./assets/venues/mola-mola-capri/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/mola-mola-capri/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/food-5.JPG"
+          "url": "./assets/venues/mola-mola-capri/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/mola-mola-capri/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/food-6.JPG"
+          "url": "./assets/venues/mola-mola-capri/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/mola-mola-capri/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/food-6.JPG"
         },
         {
           "file": "food-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/food-7.JPG"
+          "url": "./assets/venues/mola-mola-capri/gallery/food-7.webp",
+          "thumbUrl": "./assets/venues/mola-mola-capri/thumbs/food-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/food-7.JPG"
         },
         {
           "file": "food-8.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/food-8.JPG"
+          "url": "./assets/venues/mola-mola-capri/gallery/food-8.webp",
+          "thumbUrl": "./assets/venues/mola-mola-capri/thumbs/food-8.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/food-8.JPG"
         },
         {
           "file": "food-9.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/food-9.JPG"
+          "url": "./assets/venues/mola-mola-capri/gallery/food-9.webp",
+          "thumbUrl": "./assets/venues/mola-mola-capri/thumbs/food-9.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/food-9.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/exter.JPG"
+          "url": "./assets/venues/mola-mola-capri/gallery/exter.webp",
+          "thumbUrl": "./assets/venues/mola-mola-capri/thumbs/exter.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/mola-mola-capri/exter.JPG"
         }
       ],
       "other": []
@@ -1984,60 +2524,88 @@ window.NN_VENUE_ASSETS = {
     "nastayatel": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/cover.JPG"
+        "url": "./assets/venues/nastayatel/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/nastayatel/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/cover.JPG",
+        "src320": "./assets/venues/nastayatel/cover-320.webp",
+        "src640": "./assets/venues/nastayatel/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/inter-1.JPG"
+          "url": "./assets/venues/nastayatel/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/nastayatel/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/inter-2.JPG"
+          "url": "./assets/venues/nastayatel/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/nastayatel/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/inter-3.JPG"
+          "url": "./assets/venues/nastayatel/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/nastayatel/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/inter-4.JPG"
+          "url": "./assets/venues/nastayatel/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/nastayatel/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/inter-4.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/food-1.JPG"
+          "url": "./assets/venues/nastayatel/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/nastayatel/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/food-2.JPG"
+          "url": "./assets/venues/nastayatel/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/nastayatel/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/food-3.JPG"
+          "url": "./assets/venues/nastayatel/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/nastayatel/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/food-4.JPG"
+          "url": "./assets/venues/nastayatel/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/nastayatel/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/food-5.JPG"
+          "url": "./assets/venues/nastayatel/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/nastayatel/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/food-6.JPG"
+          "url": "./assets/venues/nastayatel/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/nastayatel/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/food-6.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/exter-1.JPG"
+          "url": "./assets/venues/nastayatel/gallery/exter-1.webp",
+          "thumbUrl": "./assets/venues/nastayatel/thumbs/exter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/exter-1.JPG"
         },
         {
           "file": "exter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/exter-2.JPG"
+          "url": "./assets/venues/nastayatel/gallery/exter-2.webp",
+          "thumbUrl": "./assets/venues/nastayatel/thumbs/exter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/nastayatel/exter-2.JPG"
         }
       ],
       "other": []
@@ -2045,60 +2613,88 @@ window.NN_VENUE_ASSETS = {
     "negroni": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/cover.JPG"
+        "url": "./assets/venues/negroni/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/negroni/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/cover.JPG",
+        "src320": "./assets/venues/negroni/cover-320.webp",
+        "src640": "./assets/venues/negroni/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/inter-1.JPG"
+          "url": "./assets/venues/negroni/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/negroni/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/inter-2.JPG"
+          "url": "./assets/venues/negroni/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/negroni/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/inter-3.JPG"
+          "url": "./assets/venues/negroni/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/negroni/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/inter-4.JPG"
+          "url": "./assets/venues/negroni/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/negroni/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/inter-4.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/food-1.JPG"
+          "url": "./assets/venues/negroni/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/negroni/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/food-2.JPG"
+          "url": "./assets/venues/negroni/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/negroni/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/food-3.JPG"
+          "url": "./assets/venues/negroni/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/negroni/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/food-4.JPG"
+          "url": "./assets/venues/negroni/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/negroni/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/food-5.JPG"
+          "url": "./assets/venues/negroni/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/negroni/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/food-6.JPG"
+          "url": "./assets/venues/negroni/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/negroni/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/food-6.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/exter-1.JPG"
+          "url": "./assets/venues/negroni/gallery/exter-1.webp",
+          "thumbUrl": "./assets/venues/negroni/thumbs/exter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/exter-1.JPG"
         },
         {
           "file": "exter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/exter-2.JPG"
+          "url": "./assets/venues/negroni/gallery/exter-2.webp",
+          "thumbUrl": "./assets/venues/negroni/thumbs/exter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/negroni/exter-2.JPG"
         }
       ],
       "other": []
@@ -2106,40 +2702,58 @@ window.NN_VENUE_ASSETS = {
     "pasters": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pasters/cover.JPG"
+        "url": "./assets/venues/pasters/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/pasters/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pasters/cover.JPG",
+        "src320": "./assets/venues/pasters/cover-320.webp",
+        "src640": "./assets/venues/pasters/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pasters/inter-1.JPG"
+          "url": "./assets/venues/pasters/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/pasters/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pasters/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pasters/inter-2.JPG"
+          "url": "./assets/venues/pasters/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/pasters/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pasters/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pasters/inter-3.JPG"
+          "url": "./assets/venues/pasters/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/pasters/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pasters/inter-3.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pasters/food-1.JPG"
+          "url": "./assets/venues/pasters/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/pasters/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pasters/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pasters/food-2.JPG"
+          "url": "./assets/venues/pasters/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/pasters/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pasters/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pasters/food-3.JPG"
+          "url": "./assets/venues/pasters/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/pasters/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pasters/food-3.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pasters/exter.JPG"
+          "url": "./assets/venues/pasters/gallery/exter.webp",
+          "thumbUrl": "./assets/venues/pasters/thumbs/exter.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pasters/exter.JPG"
         }
       ],
       "other": []
@@ -2147,44 +2761,64 @@ window.NN_VENUE_ASSETS = {
     "pinci": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pinci/cover.JPG"
+        "url": "./assets/venues/pinci/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/pinci/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pinci/cover.JPG",
+        "src320": "./assets/venues/pinci/cover-320.webp",
+        "src640": "./assets/venues/pinci/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pinci/inter-1.JPG"
+          "url": "./assets/venues/pinci/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/pinci/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pinci/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pinci/inter-2.JPG"
+          "url": "./assets/venues/pinci/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/pinci/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pinci/inter-2.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pinci/food-1.JPG"
+          "url": "./assets/venues/pinci/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/pinci/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pinci/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pinci/food-2.JPG"
+          "url": "./assets/venues/pinci/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/pinci/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pinci/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pinci/food-3.JPG"
+          "url": "./assets/venues/pinci/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/pinci/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pinci/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pinci/food-4.JPG"
+          "url": "./assets/venues/pinci/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/pinci/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pinci/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pinci/food-5.JPG"
+          "url": "./assets/venues/pinci/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/pinci/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pinci/food-5.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pinci/exter.JPG"
+          "url": "./assets/venues/pinci/gallery/exter.webp",
+          "thumbUrl": "./assets/venues/pinci/thumbs/exter.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pinci/exter.JPG"
         }
       ],
       "other": []
@@ -2192,48 +2826,70 @@ window.NN_VENUE_ASSETS = {
     "pyatkin": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pyatkin/cover.JPG"
+        "url": "./assets/venues/pyatkin/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/pyatkin/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pyatkin/cover.JPG",
+        "src320": "./assets/venues/pyatkin/cover-320.webp",
+        "src640": "./assets/venues/pyatkin/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pyatkin/inter-1.JPG"
+          "url": "./assets/venues/pyatkin/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/pyatkin/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pyatkin/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pyatkin/inter-2.JPG"
+          "url": "./assets/venues/pyatkin/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/pyatkin/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pyatkin/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pyatkin/inter-3.JPG"
+          "url": "./assets/venues/pyatkin/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/pyatkin/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pyatkin/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pyatkin/inter-4.JPG"
+          "url": "./assets/venues/pyatkin/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/pyatkin/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pyatkin/inter-4.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pyatkin/food-1.JPG"
+          "url": "./assets/venues/pyatkin/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/pyatkin/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pyatkin/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pyatkin/food-2.JPG"
+          "url": "./assets/venues/pyatkin/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/pyatkin/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pyatkin/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pyatkin/food-3.JPG"
+          "url": "./assets/venues/pyatkin/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/pyatkin/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pyatkin/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pyatkin/food-4.JPG"
+          "url": "./assets/venues/pyatkin/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/pyatkin/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pyatkin/food-4.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pyatkin/exter.JPG"
+          "url": "./assets/venues/pyatkin/gallery/exter.webp",
+          "thumbUrl": "./assets/venues/pyatkin/thumbs/exter.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/pyatkin/exter.JPG"
         }
       ],
       "other": []
@@ -2241,52 +2897,76 @@ window.NN_VENUE_ASSETS = {
     "red-wall": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/cover.JPG"
+        "url": "./assets/venues/red-wall/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/red-wall/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/cover.JPG",
+        "src320": "./assets/venues/red-wall/cover-320.webp",
+        "src640": "./assets/venues/red-wall/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/inter-1.JPG"
+          "url": "./assets/venues/red-wall/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/red-wall/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/inter-2.JPG"
+          "url": "./assets/venues/red-wall/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/red-wall/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/inter-3.JPG"
+          "url": "./assets/venues/red-wall/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/red-wall/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/inter-3.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/food-1.JPG"
+          "url": "./assets/venues/red-wall/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/red-wall/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/food-2.JPG"
+          "url": "./assets/venues/red-wall/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/red-wall/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/food-3.JPG"
+          "url": "./assets/venues/red-wall/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/red-wall/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/food-4.JPG"
+          "url": "./assets/venues/red-wall/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/red-wall/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/food-4.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/exter-1.JPG"
+          "url": "./assets/venues/red-wall/gallery/exter-1.webp",
+          "thumbUrl": "./assets/venues/red-wall/thumbs/exter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/exter-1.JPG"
         },
         {
           "file": "exter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/exter-2.JPG"
+          "url": "./assets/venues/red-wall/gallery/exter-2.webp",
+          "thumbUrl": "./assets/venues/red-wall/thumbs/exter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/exter-2.JPG"
         },
         {
           "file": "exter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/exter-3.JPG"
+          "url": "./assets/venues/red-wall/gallery/exter-3.webp",
+          "thumbUrl": "./assets/venues/red-wall/thumbs/exter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/red-wall/exter-3.JPG"
         }
       ],
       "other": []
@@ -2294,68 +2974,100 @@ window.NN_VENUE_ASSETS = {
     "salut-burgers": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/cover.JPG"
+        "url": "./assets/venues/salut-burgers/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/salut-burgers/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/cover.JPG",
+        "src320": "./assets/venues/salut-burgers/cover-320.webp",
+        "src640": "./assets/venues/salut-burgers/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/inter-4.JPG"
+          "url": "./assets/venues/salut-burgers/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/salut-burgers/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/inter-5.JPG"
+          "url": "./assets/venues/salut-burgers/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/salut-burgers/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/inter-5.JPG"
         },
         {
           "file": "inter-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/inter-6.JPG"
+          "url": "./assets/venues/salut-burgers/gallery/inter-6.webp",
+          "thumbUrl": "./assets/venues/salut-burgers/thumbs/inter-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/inter-6.JPG"
         },
         {
           "file": "inter-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/inter-7.JPG"
+          "url": "./assets/venues/salut-burgers/gallery/inter-7.webp",
+          "thumbUrl": "./assets/venues/salut-burgers/thumbs/inter-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/inter-7.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/food-1.JPG"
+          "url": "./assets/venues/salut-burgers/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/salut-burgers/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/food-2.JPG"
+          "url": "./assets/venues/salut-burgers/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/salut-burgers/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/food-3.JPG"
+          "url": "./assets/venues/salut-burgers/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/salut-burgers/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/food-4.JPG"
+          "url": "./assets/venues/salut-burgers/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/salut-burgers/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/food-5.JPG"
+          "url": "./assets/venues/salut-burgers/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/salut-burgers/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/food-6.JPG"
+          "url": "./assets/venues/salut-burgers/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/salut-burgers/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/food-6.JPG"
         },
         {
           "file": "food-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/food-7.JPG"
+          "url": "./assets/venues/salut-burgers/gallery/food-7.webp",
+          "thumbUrl": "./assets/venues/salut-burgers/thumbs/food-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/food-7.JPG"
         },
         {
           "file": "food-8.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/food-8.JPG"
+          "url": "./assets/venues/salut-burgers/gallery/food-8.webp",
+          "thumbUrl": "./assets/venues/salut-burgers/thumbs/food-8.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/food-8.JPG"
         },
         {
           "file": "food-9.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/food-9.JPG"
+          "url": "./assets/venues/salut-burgers/gallery/food-9.webp",
+          "thumbUrl": "./assets/venues/salut-burgers/thumbs/food-9.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/food-9.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/exter.JPG"
+          "url": "./assets/venues/salut-burgers/gallery/exter.webp",
+          "thumbUrl": "./assets/venues/salut-burgers/thumbs/exter.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-burgers/exter.JPG"
         }
       ],
       "other": []
@@ -2363,48 +3075,70 @@ window.NN_VENUE_ASSETS = {
     "salut-specialty-coffee": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-specialty-coffee/cover.JPG"
+        "url": "./assets/venues/salut-specialty-coffee/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/salut-specialty-coffee/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-specialty-coffee/cover.JPG",
+        "src320": "./assets/venues/salut-specialty-coffee/cover-320.webp",
+        "src640": "./assets/venues/salut-specialty-coffee/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-specialty-coffee/inter-1.JPG"
+          "url": "./assets/venues/salut-specialty-coffee/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/salut-specialty-coffee/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-specialty-coffee/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-specialty-coffee/inter-2.JPG"
+          "url": "./assets/venues/salut-specialty-coffee/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/salut-specialty-coffee/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-specialty-coffee/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-specialty-coffee/inter-3.JPG"
+          "url": "./assets/venues/salut-specialty-coffee/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/salut-specialty-coffee/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-specialty-coffee/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-specialty-coffee/inter-4.JPG"
+          "url": "./assets/venues/salut-specialty-coffee/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/salut-specialty-coffee/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-specialty-coffee/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-specialty-coffee/inter-5.JPG"
+          "url": "./assets/venues/salut-specialty-coffee/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/salut-specialty-coffee/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-specialty-coffee/inter-5.JPG"
         },
         {
           "file": "inter-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-specialty-coffee/inter-6.JPG"
+          "url": "./assets/venues/salut-specialty-coffee/gallery/inter-6.webp",
+          "thumbUrl": "./assets/venues/salut-specialty-coffee/thumbs/inter-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-specialty-coffee/inter-6.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-specialty-coffee/food-1.JPG"
+          "url": "./assets/venues/salut-specialty-coffee/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/salut-specialty-coffee/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-specialty-coffee/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-specialty-coffee/food-2.JPG"
+          "url": "./assets/venues/salut-specialty-coffee/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/salut-specialty-coffee/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-specialty-coffee/food-2.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-specialty-coffee/exter.JPG"
+          "url": "./assets/venues/salut-specialty-coffee/gallery/exter.webp",
+          "thumbUrl": "./assets/venues/salut-specialty-coffee/thumbs/exter.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/salut-specialty-coffee/exter.JPG"
         }
       ],
       "other": []
@@ -2412,60 +3146,88 @@ window.NN_VENUE_ASSETS = {
     "samovar-da-utki": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/cover.JPG"
+        "url": "./assets/venues/samovar-da-utki/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/samovar-da-utki/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/cover.JPG",
+        "src320": "./assets/venues/samovar-da-utki/cover-320.webp",
+        "src640": "./assets/venues/samovar-da-utki/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/inter-1.JPG"
+          "url": "./assets/venues/samovar-da-utki/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/samovar-da-utki/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/inter-2.JPG"
+          "url": "./assets/venues/samovar-da-utki/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/samovar-da-utki/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/inter-3.JPG"
+          "url": "./assets/venues/samovar-da-utki/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/samovar-da-utki/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/inter-4.JPG"
+          "url": "./assets/venues/samovar-da-utki/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/samovar-da-utki/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/inter-5.JPG"
+          "url": "./assets/venues/samovar-da-utki/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/samovar-da-utki/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/inter-5.JPG"
         },
         {
           "file": "inter-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/inter-6.JPG"
+          "url": "./assets/venues/samovar-da-utki/gallery/inter-6.webp",
+          "thumbUrl": "./assets/venues/samovar-da-utki/thumbs/inter-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/inter-6.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/food-1.JPG"
+          "url": "./assets/venues/samovar-da-utki/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/samovar-da-utki/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/food-2.JPG"
+          "url": "./assets/venues/samovar-da-utki/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/samovar-da-utki/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/food-3.JPG"
+          "url": "./assets/venues/samovar-da-utki/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/samovar-da-utki/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/food-4.JPG"
+          "url": "./assets/venues/samovar-da-utki/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/samovar-da-utki/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/food-5.JPG"
+          "url": "./assets/venues/samovar-da-utki/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/samovar-da-utki/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/food-5.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/exter.JPG"
+          "url": "./assets/venues/samovar-da-utki/gallery/exter.webp",
+          "thumbUrl": "./assets/venues/samovar-da-utki/thumbs/exter.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovar-da-utki/exter.JPG"
         }
       ],
       "other": []
@@ -2473,60 +3235,88 @@ window.NN_VENUE_ASSETS = {
     "samovarnaya": {
       "cover": {
         "file": "cover.WEBP",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/cover.WEBP"
+        "url": "./assets/venues/samovarnaya/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/samovarnaya/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/cover.WEBP",
+        "src320": "./assets/venues/samovarnaya/cover-320.webp",
+        "src640": "./assets/venues/samovarnaya/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.WEBP",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/inter-1.WEBP"
+          "url": "./assets/venues/samovarnaya/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/samovarnaya/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/inter-1.WEBP"
         },
         {
           "file": "inter-2.WEBP",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/inter-2.WEBP"
+          "url": "./assets/venues/samovarnaya/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/samovarnaya/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/inter-2.WEBP"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/food-1.JPG"
+          "url": "./assets/venues/samovarnaya/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/samovarnaya/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/food-2.JPG"
+          "url": "./assets/venues/samovarnaya/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/samovarnaya/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/food-3.JPG"
+          "url": "./assets/venues/samovarnaya/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/samovarnaya/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/food-4.JPG"
+          "url": "./assets/venues/samovarnaya/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/samovarnaya/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/food-5.JPG"
+          "url": "./assets/venues/samovarnaya/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/samovarnaya/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/food-6.JPG"
+          "url": "./assets/venues/samovarnaya/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/samovarnaya/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/food-6.JPG"
         },
         {
           "file": "food-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/food-7.JPG"
+          "url": "./assets/venues/samovarnaya/gallery/food-7.webp",
+          "thumbUrl": "./assets/venues/samovarnaya/thumbs/food-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/food-7.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter-1.WEBP",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/exter-1.WEBP"
+          "url": "./assets/venues/samovarnaya/gallery/exter-1.webp",
+          "thumbUrl": "./assets/venues/samovarnaya/thumbs/exter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/exter-1.WEBP"
         },
         {
           "file": "exter-2.WEBP",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/exter-2.WEBP"
+          "url": "./assets/venues/samovarnaya/gallery/exter-2.webp",
+          "thumbUrl": "./assets/venues/samovarnaya/thumbs/exter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/exter-2.WEBP"
         },
         {
           "file": "exter-3.WEBP",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/exter-3.WEBP"
+          "url": "./assets/venues/samovarnaya/gallery/exter-3.webp",
+          "thumbUrl": "./assets/venues/samovarnaya/thumbs/exter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/samovarnaya/exter-3.WEBP"
         }
       ],
       "other": []
@@ -2534,88 +3324,130 @@ window.NN_VENUE_ASSETS = {
     "seledka-i-kofe": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/cover.JPG"
+        "url": "./assets/venues/seledka-i-kofe/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/seledka-i-kofe/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/cover.JPG",
+        "src320": "./assets/venues/seledka-i-kofe/cover-320.webp",
+        "src640": "./assets/venues/seledka-i-kofe/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/inter-1.JPG"
+          "url": "./assets/venues/seledka-i-kofe/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/seledka-i-kofe/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/inter-2.JPG"
+          "url": "./assets/venues/seledka-i-kofe/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/seledka-i-kofe/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/inter-3.JPG"
+          "url": "./assets/venues/seledka-i-kofe/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/seledka-i-kofe/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/inter-4.JPG"
+          "url": "./assets/venues/seledka-i-kofe/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/seledka-i-kofe/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/inter-5.JPG"
+          "url": "./assets/venues/seledka-i-kofe/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/seledka-i-kofe/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/inter-5.JPG"
         },
         {
           "file": "inter-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/inter-6.JPG"
+          "url": "./assets/venues/seledka-i-kofe/gallery/inter-6.webp",
+          "thumbUrl": "./assets/venues/seledka-i-kofe/thumbs/inter-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/inter-6.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/food-1.JPG"
+          "url": "./assets/venues/seledka-i-kofe/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/seledka-i-kofe/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/food-2.JPG"
+          "url": "./assets/venues/seledka-i-kofe/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/seledka-i-kofe/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/food-3.JPG"
+          "url": "./assets/venues/seledka-i-kofe/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/seledka-i-kofe/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/food-4.JPG"
+          "url": "./assets/venues/seledka-i-kofe/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/seledka-i-kofe/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/food-5.JPG"
+          "url": "./assets/venues/seledka-i-kofe/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/seledka-i-kofe/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/food-6.JPG"
+          "url": "./assets/venues/seledka-i-kofe/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/seledka-i-kofe/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/food-6.JPG"
         },
         {
           "file": "food-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/food-7.JPG"
+          "url": "./assets/venues/seledka-i-kofe/gallery/food-7.webp",
+          "thumbUrl": "./assets/venues/seledka-i-kofe/thumbs/food-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/food-7.JPG"
         },
         {
           "file": "food-8.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/food-8.JPG"
+          "url": "./assets/venues/seledka-i-kofe/gallery/food-8.webp",
+          "thumbUrl": "./assets/venues/seledka-i-kofe/thumbs/food-8.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/food-8.JPG"
         },
         {
           "file": "food-9.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/food-9.JPG"
+          "url": "./assets/venues/seledka-i-kofe/gallery/food-9.webp",
+          "thumbUrl": "./assets/venues/seledka-i-kofe/thumbs/food-9.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/food-9.JPG"
         },
         {
           "file": "food-10.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/food-10.JPG"
+          "url": "./assets/venues/seledka-i-kofe/gallery/food-10.webp",
+          "thumbUrl": "./assets/venues/seledka-i-kofe/thumbs/food-10.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/food-10.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/exter-1.JPG"
+          "url": "./assets/venues/seledka-i-kofe/gallery/exter-1.webp",
+          "thumbUrl": "./assets/venues/seledka-i-kofe/thumbs/exter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/exter-1.JPG"
         },
         {
           "file": "exter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/exter-2.JPG"
+          "url": "./assets/venues/seledka-i-kofe/gallery/exter-2.webp",
+          "thumbUrl": "./assets/venues/seledka-i-kofe/thumbs/exter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/exter-2.JPG"
         },
         {
           "file": "exter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/exter-3.JPG"
+          "url": "./assets/venues/seledka-i-kofe/gallery/exter-3.webp",
+          "thumbUrl": "./assets/venues/seledka-i-kofe/thumbs/exter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/seledka-i-kofe/exter-3.JPG"
         }
       ],
       "other": []
@@ -2623,44 +3455,64 @@ window.NN_VENUE_ASSETS = {
     "si-mamma": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/si-mamma/cover.JPG"
+        "url": "./assets/venues/si-mamma/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/si-mamma/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/si-mamma/cover.JPG",
+        "src320": "./assets/venues/si-mamma/cover-320.webp",
+        "src640": "./assets/venues/si-mamma/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/si-mamma/inter-1.JPG"
+          "url": "./assets/venues/si-mamma/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/si-mamma/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/si-mamma/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/si-mamma/inter-2.JPG"
+          "url": "./assets/venues/si-mamma/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/si-mamma/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/si-mamma/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/si-mamma/inter-3.JPG"
+          "url": "./assets/venues/si-mamma/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/si-mamma/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/si-mamma/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/si-mamma/inter-4.JPG"
+          "url": "./assets/venues/si-mamma/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/si-mamma/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/si-mamma/inter-4.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/si-mamma/food-1.JPG"
+          "url": "./assets/venues/si-mamma/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/si-mamma/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/si-mamma/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/si-mamma/food-2.JPG"
+          "url": "./assets/venues/si-mamma/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/si-mamma/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/si-mamma/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/si-mamma/food-3.JPG"
+          "url": "./assets/venues/si-mamma/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/si-mamma/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/si-mamma/food-3.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/si-mamma/exter.JPG"
+          "url": "./assets/venues/si-mamma/gallery/exter.webp",
+          "thumbUrl": "./assets/venues/si-mamma/thumbs/exter.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/si-mamma/exter.JPG"
         }
       ],
       "other": []
@@ -2668,44 +3520,64 @@ window.NN_VENUE_ASSETS = {
     "skuratov-coffee": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/skuratov-coffee/cover.JPG"
+        "url": "./assets/venues/skuratov-coffee/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/skuratov-coffee/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/skuratov-coffee/cover.JPG",
+        "src320": "./assets/venues/skuratov-coffee/cover-320.webp",
+        "src640": "./assets/venues/skuratov-coffee/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/skuratov-coffee/inter-1.JPG"
+          "url": "./assets/venues/skuratov-coffee/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/skuratov-coffee/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/skuratov-coffee/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/skuratov-coffee/inter-2.JPG"
+          "url": "./assets/venues/skuratov-coffee/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/skuratov-coffee/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/skuratov-coffee/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/skuratov-coffee/inter-3.JPG"
+          "url": "./assets/venues/skuratov-coffee/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/skuratov-coffee/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/skuratov-coffee/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/skuratov-coffee/inter-4.JPG"
+          "url": "./assets/venues/skuratov-coffee/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/skuratov-coffee/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/skuratov-coffee/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/skuratov-coffee/inter-5.JPG"
+          "url": "./assets/venues/skuratov-coffee/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/skuratov-coffee/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/skuratov-coffee/inter-5.JPG"
         },
         {
           "file": "inter-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/skuratov-coffee/inter-6.JPG"
+          "url": "./assets/venues/skuratov-coffee/gallery/inter-6.webp",
+          "thumbUrl": "./assets/venues/skuratov-coffee/thumbs/inter-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/skuratov-coffee/inter-6.JPG"
         }
       ],
       "food": [
         {
           "file": "food.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/skuratov-coffee/food.JPG"
+          "url": "./assets/venues/skuratov-coffee/gallery/food.webp",
+          "thumbUrl": "./assets/venues/skuratov-coffee/thumbs/food.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/skuratov-coffee/food.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/skuratov-coffee/exter.JPG"
+          "url": "./assets/venues/skuratov-coffee/gallery/exter.webp",
+          "thumbUrl": "./assets/venues/skuratov-coffee/thumbs/exter.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/skuratov-coffee/exter.JPG"
         }
       ],
       "other": []
@@ -2713,24 +3585,34 @@ window.NN_VENUE_ASSETS = {
     "stranger-things-cafe": {
       "cover": {
         "file": "cover.PNG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/stranger-things-cafe/cover.PNG"
+        "url": "./assets/venues/stranger-things-cafe/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/stranger-things-cafe/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/stranger-things-cafe/cover.PNG",
+        "src320": "./assets/venues/stranger-things-cafe/cover-320.webp",
+        "src640": "./assets/venues/stranger-things-cafe/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter.PNG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/stranger-things-cafe/inter.PNG"
+          "url": "./assets/venues/stranger-things-cafe/gallery/inter.webp",
+          "thumbUrl": "./assets/venues/stranger-things-cafe/thumbs/inter.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/stranger-things-cafe/inter.PNG"
         }
       ],
       "food": [
         {
           "file": "food.PNG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/stranger-things-cafe/food.PNG"
+          "url": "./assets/venues/stranger-things-cafe/gallery/food.webp",
+          "thumbUrl": "./assets/venues/stranger-things-cafe/thumbs/food.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/stranger-things-cafe/food.PNG"
         }
       ],
       "exter": [
         {
           "file": "exter.PNG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/stranger-things-cafe/exter.PNG"
+          "url": "./assets/venues/stranger-things-cafe/gallery/exter.webp",
+          "thumbUrl": "./assets/venues/stranger-things-cafe/thumbs/exter.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/stranger-things-cafe/exter.PNG"
         }
       ],
       "other": []
@@ -2738,43 +3620,63 @@ window.NN_VENUE_ASSETS = {
     "surf-coffee-cinema": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/surf-coffee-cinema/cover.JPG"
+        "url": "./assets/venues/surf-coffee-cinema/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/surf-coffee-cinema/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/surf-coffee-cinema/cover.JPG",
+        "src320": "./assets/venues/surf-coffee-cinema/cover-320.webp",
+        "src640": "./assets/venues/surf-coffee-cinema/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/surf-coffee-cinema/inter-1.JPG"
+          "url": "./assets/venues/surf-coffee-cinema/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/surf-coffee-cinema/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/surf-coffee-cinema/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/surf-coffee-cinema/inter-2.JPG"
+          "url": "./assets/venues/surf-coffee-cinema/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/surf-coffee-cinema/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/surf-coffee-cinema/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/surf-coffee-cinema/inter-3.JPG"
+          "url": "./assets/venues/surf-coffee-cinema/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/surf-coffee-cinema/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/surf-coffee-cinema/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/surf-coffee-cinema/inter-4.JPG"
+          "url": "./assets/venues/surf-coffee-cinema/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/surf-coffee-cinema/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/surf-coffee-cinema/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/surf-coffee-cinema/inter-5.JPG"
+          "url": "./assets/venues/surf-coffee-cinema/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/surf-coffee-cinema/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/surf-coffee-cinema/inter-5.JPG"
         }
       ],
       "food": [],
       "exter": [
         {
           "file": "exter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/surf-coffee-cinema/exter-3.JPG"
+          "url": "./assets/venues/surf-coffee-cinema/gallery/exter-3.webp",
+          "thumbUrl": "./assets/venues/surf-coffee-cinema/thumbs/exter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/surf-coffee-cinema/exter-3.JPG"
         },
         {
           "file": "exter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/surf-coffee-cinema/exter-5.JPG"
+          "url": "./assets/venues/surf-coffee-cinema/gallery/exter-5.webp",
+          "thumbUrl": "./assets/venues/surf-coffee-cinema/thumbs/exter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/surf-coffee-cinema/exter-5.JPG"
         },
         {
           "file": "exter-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/surf-coffee-cinema/exter-6.JPG"
+          "url": "./assets/venues/surf-coffee-cinema/gallery/exter-6.webp",
+          "thumbUrl": "./assets/venues/surf-coffee-cinema/thumbs/exter-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/surf-coffee-cinema/exter-6.JPG"
         }
       ],
       "other": []
@@ -2782,88 +3684,130 @@ window.NN_VENUE_ASSETS = {
     "temp-piskunova": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/cover.JPG"
+        "url": "./assets/venues/temp-piskunova/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/temp-piskunova/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/cover.JPG",
+        "src320": "./assets/venues/temp-piskunova/cover-320.webp",
+        "src640": "./assets/venues/temp-piskunova/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/inter-1.JPG"
+          "url": "./assets/venues/temp-piskunova/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/temp-piskunova/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/inter-2.JPG"
+          "url": "./assets/venues/temp-piskunova/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/temp-piskunova/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/inter-3.JPG"
+          "url": "./assets/venues/temp-piskunova/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/temp-piskunova/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/inter-4.JPG"
+          "url": "./assets/venues/temp-piskunova/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/temp-piskunova/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/inter-5.JPG"
+          "url": "./assets/venues/temp-piskunova/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/temp-piskunova/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/inter-5.JPG"
         },
         {
           "file": "inter-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/inter-6.JPG"
+          "url": "./assets/venues/temp-piskunova/gallery/inter-6.webp",
+          "thumbUrl": "./assets/venues/temp-piskunova/thumbs/inter-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/inter-6.JPG"
         },
         {
           "file": "inter-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/inter-7.JPG"
+          "url": "./assets/venues/temp-piskunova/gallery/inter-7.webp",
+          "thumbUrl": "./assets/venues/temp-piskunova/thumbs/inter-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/inter-7.JPG"
         },
         {
           "file": "inter-8.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/inter-8.JPG"
+          "url": "./assets/venues/temp-piskunova/gallery/inter-8.webp",
+          "thumbUrl": "./assets/venues/temp-piskunova/thumbs/inter-8.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/inter-8.JPG"
         },
         {
           "file": "inter-9.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/inter-9.JPG"
+          "url": "./assets/venues/temp-piskunova/gallery/inter-9.webp",
+          "thumbUrl": "./assets/venues/temp-piskunova/thumbs/inter-9.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/inter-9.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/food-1.JPG"
+          "url": "./assets/venues/temp-piskunova/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/temp-piskunova/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/food-2.JPG"
+          "url": "./assets/venues/temp-piskunova/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/temp-piskunova/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/food-3.JPG"
+          "url": "./assets/venues/temp-piskunova/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/temp-piskunova/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/food-4.JPG"
+          "url": "./assets/venues/temp-piskunova/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/temp-piskunova/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/food-5.JPG"
+          "url": "./assets/venues/temp-piskunova/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/temp-piskunova/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/food-6.JPG"
+          "url": "./assets/venues/temp-piskunova/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/temp-piskunova/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/food-6.JPG"
         },
         {
           "file": "food-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/food-7.JPG"
+          "url": "./assets/venues/temp-piskunova/gallery/food-7.webp",
+          "thumbUrl": "./assets/venues/temp-piskunova/thumbs/food-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/food-7.JPG"
         },
         {
           "file": "food-8.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/food-8.JPG"
+          "url": "./assets/venues/temp-piskunova/gallery/food-8.webp",
+          "thumbUrl": "./assets/venues/temp-piskunova/thumbs/food-8.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/food-8.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/exter-1.JPG"
+          "url": "./assets/venues/temp-piskunova/gallery/exter-1.webp",
+          "thumbUrl": "./assets/venues/temp-piskunova/thumbs/exter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/exter-1.JPG"
         },
         {
           "file": "exter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/exter-2.JPG"
+          "url": "./assets/venues/temp-piskunova/gallery/exter-2.webp",
+          "thumbUrl": "./assets/venues/temp-piskunova/thumbs/exter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-piskunova/exter-2.JPG"
         }
       ],
       "other": []
@@ -2871,64 +3815,94 @@ window.NN_VENUE_ASSETS = {
     "temp-vozdukh": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/cover.JPG"
+        "url": "./assets/venues/temp-vozdukh/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/temp-vozdukh/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/cover.JPG",
+        "src320": "./assets/venues/temp-vozdukh/cover-320.webp",
+        "src640": "./assets/venues/temp-vozdukh/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/inter-1.JPG"
+          "url": "./assets/venues/temp-vozdukh/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/temp-vozdukh/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/inter-2.JPG"
+          "url": "./assets/venues/temp-vozdukh/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/temp-vozdukh/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/inter-3.JPG"
+          "url": "./assets/venues/temp-vozdukh/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/temp-vozdukh/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/inter-4.JPG"
+          "url": "./assets/venues/temp-vozdukh/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/temp-vozdukh/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/inter-5.JPG"
+          "url": "./assets/venues/temp-vozdukh/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/temp-vozdukh/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/inter-5.JPG"
         },
         {
           "file": "inter-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/inter-6.JPG"
+          "url": "./assets/venues/temp-vozdukh/gallery/inter-6.webp",
+          "thumbUrl": "./assets/venues/temp-vozdukh/thumbs/inter-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/inter-6.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/food-1.JPG"
+          "url": "./assets/venues/temp-vozdukh/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/temp-vozdukh/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/food-2.JPG"
+          "url": "./assets/venues/temp-vozdukh/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/temp-vozdukh/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/food-3.JPG"
+          "url": "./assets/venues/temp-vozdukh/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/temp-vozdukh/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/food-4.JPG"
+          "url": "./assets/venues/temp-vozdukh/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/temp-vozdukh/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/food-5.JPG"
+          "url": "./assets/venues/temp-vozdukh/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/temp-vozdukh/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/food-6.JPG"
+          "url": "./assets/venues/temp-vozdukh/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/temp-vozdukh/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/food-6.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/exter.JPG"
+          "url": "./assets/venues/temp-vozdukh/gallery/exter.webp",
+          "thumbUrl": "./assets/venues/temp-vozdukh/thumbs/exter.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/temp-vozdukh/exter.JPG"
         }
       ],
       "other": []
@@ -2936,48 +3910,70 @@ window.NN_VENUE_ASSETS = {
     "very-match": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/very-match/cover.JPG"
+        "url": "./assets/venues/very-match/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/very-match/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/very-match/cover.JPG",
+        "src320": "./assets/venues/very-match/cover-320.webp",
+        "src640": "./assets/venues/very-match/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/very-match/inter-1.JPG"
+          "url": "./assets/venues/very-match/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/very-match/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/very-match/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/very-match/inter-2.JPG"
+          "url": "./assets/venues/very-match/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/very-match/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/very-match/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/very-match/inter-3.JPG"
+          "url": "./assets/venues/very-match/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/very-match/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/very-match/inter-3.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/very-match/food-1.JPG"
+          "url": "./assets/venues/very-match/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/very-match/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/very-match/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/very-match/food-2.JPG"
+          "url": "./assets/venues/very-match/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/very-match/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/very-match/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/very-match/food-3.JPG"
+          "url": "./assets/venues/very-match/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/very-match/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/very-match/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/very-match/food-4.JPG"
+          "url": "./assets/venues/very-match/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/very-match/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/very-match/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/very-match/food-5.JPG"
+          "url": "./assets/venues/very-match/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/very-match/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/very-match/food-5.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/very-match/exter.JPG"
+          "url": "./assets/venues/very-match/gallery/exter.webp",
+          "thumbUrl": "./assets/venues/very-match/thumbs/exter.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/very-match/exter.JPG"
         }
       ],
       "other": []
@@ -2985,84 +3981,124 @@ window.NN_VENUE_ASSETS = {
     "yale": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/cover.JPG"
+        "url": "./assets/venues/yale/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/yale/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/cover.JPG",
+        "src320": "./assets/venues/yale/cover-320.webp",
+        "src640": "./assets/venues/yale/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/inter-1.JPG"
+          "url": "./assets/venues/yale/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/yale/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/inter-2.JPG"
+          "url": "./assets/venues/yale/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/yale/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/inter-3.JPG"
+          "url": "./assets/venues/yale/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/yale/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/inter-4.JPG"
+          "url": "./assets/venues/yale/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/yale/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/inter-5.JPG"
+          "url": "./assets/venues/yale/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/yale/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/inter-5.JPG"
         },
         {
           "file": "inter-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/inter-6.JPG"
+          "url": "./assets/venues/yale/gallery/inter-6.webp",
+          "thumbUrl": "./assets/venues/yale/thumbs/inter-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/inter-6.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/food-1.JPG"
+          "url": "./assets/venues/yale/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/yale/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/food-2.JPG"
+          "url": "./assets/venues/yale/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/yale/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/food-3.JPG"
+          "url": "./assets/venues/yale/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/yale/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/food-4.JPG"
+          "url": "./assets/venues/yale/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/yale/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/food-5.JPG"
+          "url": "./assets/venues/yale/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/yale/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/food-6.JPG"
+          "url": "./assets/venues/yale/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/yale/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/food-6.JPG"
         },
         {
           "file": "food-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/food-7.JPG"
+          "url": "./assets/venues/yale/gallery/food-7.webp",
+          "thumbUrl": "./assets/venues/yale/thumbs/food-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/food-7.JPG"
         },
         {
           "file": "food-8.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/food-8.JPG"
+          "url": "./assets/venues/yale/gallery/food-8.webp",
+          "thumbUrl": "./assets/venues/yale/thumbs/food-8.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/food-8.JPG"
         },
         {
           "file": "food-9.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/food-9.JPG"
+          "url": "./assets/venues/yale/gallery/food-9.webp",
+          "thumbUrl": "./assets/venues/yale/thumbs/food-9.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/food-9.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/exter-1.JPG"
+          "url": "./assets/venues/yale/gallery/exter-1.webp",
+          "thumbUrl": "./assets/venues/yale/thumbs/exter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/exter-1.JPG"
         },
         {
           "file": "exter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/exter-2.JPG"
+          "url": "./assets/venues/yale/gallery/exter-2.webp",
+          "thumbUrl": "./assets/venues/yale/thumbs/exter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/exter-2.JPG"
         },
         {
           "file": "exter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/exter-3.JPG"
+          "url": "./assets/venues/yale/gallery/exter-3.webp",
+          "thumbUrl": "./assets/venues/yale/thumbs/exter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yale/exter-3.JPG"
         }
       ],
       "other": []
@@ -3070,34 +4106,50 @@ window.NN_VENUE_ASSETS = {
     "yula-pizza": {
       "cover": {
         "file": "cover.WEBP",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yula-pizza/cover.WEBP"
+        "url": "./assets/venues/yula-pizza/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/yula-pizza/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yula-pizza/cover.WEBP",
+        "src320": "./assets/venues/yula-pizza/cover-320.webp",
+        "src640": "./assets/venues/yula-pizza/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.WEBP",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yula-pizza/inter-1.WEBP"
+          "url": "./assets/venues/yula-pizza/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/yula-pizza/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yula-pizza/inter-1.WEBP"
         },
         {
           "file": "inter-2.WEBP",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yula-pizza/inter-2.WEBP"
+          "url": "./assets/venues/yula-pizza/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/yula-pizza/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yula-pizza/inter-2.WEBP"
         },
         {
           "file": "inter-3.WEBP",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yula-pizza/inter-3.WEBP"
+          "url": "./assets/venues/yula-pizza/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/yula-pizza/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yula-pizza/inter-3.WEBP"
         },
         {
           "file": "inter-4.WEBP",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yula-pizza/inter-4.WEBP"
+          "url": "./assets/venues/yula-pizza/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/yula-pizza/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yula-pizza/inter-4.WEBP"
         }
       ],
       "food": [
         {
           "file": "food-1.WEBP",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yula-pizza/food-1.WEBP"
+          "url": "./assets/venues/yula-pizza/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/yula-pizza/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yula-pizza/food-1.WEBP"
         },
         {
           "file": "food-2.WEBP",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yula-pizza/food-2.WEBP"
+          "url": "./assets/venues/yula-pizza/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/yula-pizza/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yula-pizza/food-2.WEBP"
         }
       ],
       "exter": [],
@@ -3106,79 +4158,117 @@ window.NN_VENUE_ASSETS = {
     "yunost": {
       "cover": {
         "file": "cover.JPG",
-        "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/cover.JPG"
+        "url": "./assets/venues/yunost/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/yunost/thumbs/cover.webp",
+        "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/cover.JPG",
+        "src320": "./assets/venues/yunost/cover-320.webp",
+        "src640": "./assets/venues/yunost/cover-640.webp"
       },
       "inter": [
         {
           "file": "inter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/inter-1.JPG"
+          "url": "./assets/venues/yunost/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/yunost/thumbs/inter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/inter-1.JPG"
         },
         {
           "file": "inter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/inter-2.JPG"
+          "url": "./assets/venues/yunost/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/yunost/thumbs/inter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/inter-2.JPG"
         },
         {
           "file": "inter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/inter-3.JPG"
+          "url": "./assets/venues/yunost/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/yunost/thumbs/inter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/inter-3.JPG"
         },
         {
           "file": "inter-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/inter-4.JPG"
+          "url": "./assets/venues/yunost/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/yunost/thumbs/inter-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/inter-4.JPG"
         },
         {
           "file": "inter-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/inter-5.JPG"
+          "url": "./assets/venues/yunost/gallery/inter-5.webp",
+          "thumbUrl": "./assets/venues/yunost/thumbs/inter-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/inter-5.JPG"
         }
       ],
       "food": [
         {
           "file": "food-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/food-1.JPG"
+          "url": "./assets/venues/yunost/gallery/food-1.webp",
+          "thumbUrl": "./assets/venues/yunost/thumbs/food-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/food-1.JPG"
         },
         {
           "file": "food-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/food-2.JPG"
+          "url": "./assets/venues/yunost/gallery/food-2.webp",
+          "thumbUrl": "./assets/venues/yunost/thumbs/food-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/food-2.JPG"
         },
         {
           "file": "food-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/food-3.JPG"
+          "url": "./assets/venues/yunost/gallery/food-3.webp",
+          "thumbUrl": "./assets/venues/yunost/thumbs/food-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/food-3.JPG"
         },
         {
           "file": "food-4.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/food-4.JPG"
+          "url": "./assets/venues/yunost/gallery/food-4.webp",
+          "thumbUrl": "./assets/venues/yunost/thumbs/food-4.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/food-4.JPG"
         },
         {
           "file": "food-5.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/food-5.JPG"
+          "url": "./assets/venues/yunost/gallery/food-5.webp",
+          "thumbUrl": "./assets/venues/yunost/thumbs/food-5.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/food-5.JPG"
         },
         {
           "file": "food-6.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/food-6.JPG"
+          "url": "./assets/venues/yunost/gallery/food-6.webp",
+          "thumbUrl": "./assets/venues/yunost/thumbs/food-6.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/food-6.JPG"
         },
         {
           "file": "food-7.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/food-7.JPG"
+          "url": "./assets/venues/yunost/gallery/food-7.webp",
+          "thumbUrl": "./assets/venues/yunost/thumbs/food-7.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/food-7.JPG"
         },
         {
           "file": "food-8.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/food-8.JPG"
+          "url": "./assets/venues/yunost/gallery/food-8.webp",
+          "thumbUrl": "./assets/venues/yunost/thumbs/food-8.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/food-8.JPG"
         }
       ],
       "exter": [
         {
           "file": "exter-1.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/exter-1.JPG"
+          "url": "./assets/venues/yunost/gallery/exter-1.webp",
+          "thumbUrl": "./assets/venues/yunost/thumbs/exter-1.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/exter-1.JPG"
         },
         {
           "file": "exter-2.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/exter-2.JPG"
+          "url": "./assets/venues/yunost/gallery/exter-2.webp",
+          "thumbUrl": "./assets/venues/yunost/thumbs/exter-2.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/exter-2.JPG"
         },
         {
           "file": "exter-3.JPG",
-          "url": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/exter-3.JPG"
+          "url": "./assets/venues/yunost/gallery/exter-3.webp",
+          "thumbUrl": "./assets/venues/yunost/thumbs/exter-3.webp",
+          "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yunost/exter-3.JPG"
         }
       ],
       "other": []
     }
-  }
+  },
+  "localBaseUrl": "./assets/venues",
+  "generatedFrom": "nizhny-novgorod-2026-3"
 };
