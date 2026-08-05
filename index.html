@@ -825,6 +825,490 @@ input {
   font-weight: 900;
 }
 
+.event-content,
+.event-main,
+.venue-card__body,
+.venue-card__copy {
+  min-width: 0;
+}
+
+.event-main-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: start;
+}
+
+.venue-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  max-width: 272px;
+}
+
+.venue-thumb {
+  position: relative;
+  width: 132px;
+  height: 92px;
+  flex: 0 0 auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #e9edf2;
+  color: #fff;
+  cursor: pointer;
+}
+
+.venue-thumb:hover,
+.venue-thumb:focus-visible {
+  border-color: var(--accent);
+  outline: 3px solid color-mix(in srgb, var(--accent) 26%, transparent);
+  outline-offset: 2px;
+}
+
+.venue-thumb img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 180ms ease;
+}
+
+.venue-thumb:hover img {
+  transform: scale(1.035);
+}
+
+.venue-thumb__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 34%, rgba(7, 10, 14, 0.72));
+  pointer-events: none;
+}
+
+.venue-thumb__label {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 7px;
+  overflow: hidden;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reference-item__venue,
+.extra-place-card__title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.reference-item__venue .venue-thumb {
+  width: 104px;
+  height: 72px;
+}
+
+.venue-title-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 900;
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.venue-title-button:hover,
+.venue-title-button:focus-visible {
+  color: var(--accent);
+  outline: none;
+  text-decoration-color: currentColor;
+}
+
+.venue-closed-badge {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  align-items: center;
+  min-height: 26px;
+  padding: 4px 9px;
+  border: 1px solid #ffa8a8;
+  border-radius: 999px;
+  background: #fff5f5;
+  color: #c92a2a;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.extra-place-card.is-venue-closed {
+  background: #f3f4f6;
+  color: var(--muted);
+  filter: saturate(0.55);
+}
+
+.extra-place-card.is-venue-closed h4 {
+  color: var(--muted);
+}
+
+body.venue-dialog-open {
+  overflow: hidden;
+}
+
+.venue-modal[hidden] {
+  display: none;
+}
+
+.venue-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.venue-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 14, 20, 0.78);
+  backdrop-filter: blur(6px);
+}
+
+.venue-card {
+  position: relative;
+  z-index: 1;
+  width: min(960px, 100%);
+  max-height: calc(100dvh - 40px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid color-mix(in srgb, var(--line) 86%, #000);
+  border-radius: 14px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+}
+
+.venue-card__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 4;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--night);
+  font-size: 27px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.venue-card__close:focus-visible,
+.venue-gallery__arrow:focus-visible,
+.venue-gallery__thumb:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+.venue-gallery {
+  position: relative;
+  overflow: hidden;
+  border-radius: 13px 13px 0 0;
+  background: #11151b;
+}
+
+.venue-gallery[hidden] {
+  display: none;
+}
+
+.venue-gallery__viewport {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 320px;
+  max-height: 520px;
+  touch-action: pan-y;
+}
+
+.venue-gallery__main {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.venue-gallery__main.is-loading {
+  opacity: 0;
+}
+
+.venue-gallery__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  border-radius: 999px;
+  background: rgba(10, 14, 20, 0.68);
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.venue-gallery__arrow--prev {
+  left: 14px;
+}
+
+.venue-gallery__arrow--next {
+  right: 14px;
+}
+
+.venue-gallery__counter {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 2;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: rgba(10, 14, 20, 0.72);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.venue-gallery__thumbs {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  gap: 7px;
+  padding: 9px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+}
+
+.venue-gallery__thumb {
+  width: 74px;
+  height: 54px;
+  flex: 0 0 auto;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: 7px;
+  background: #242a33;
+  cursor: pointer;
+}
+
+.venue-gallery__thumb.is-active {
+  border-color: #fff;
+}
+
+.venue-gallery__thumb img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.venue-card__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(240px, 0.75fr);
+  gap: 28px;
+  padding: 24px;
+}
+
+.venue-card__eyebrow {
+  margin: 0 0 6px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.venue-card__title-row {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-right: 42px;
+}
+
+.venue-card__title {
+  margin: 0;
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+}
+
+.venue-card__description,
+.venue-card__route-copy {
+  margin: 14px 0 0;
+  color: var(--muted);
+  line-height: 1.58;
+}
+
+.venue-card__route {
+  margin-top: 18px;
+  padding: 14px;
+  border-left: 4px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  background: color-mix(in srgb, var(--accent) 7%, #fff);
+}
+
+.venue-card__route strong {
+  display: block;
+}
+
+.venue-card__route-copy {
+  margin-top: 5px;
+}
+
+.venue-card__facts {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.venue-card__fact {
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--wash);
+}
+
+.venue-card__fact dt {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.venue-card__fact dd {
+  margin: 5px 0 0;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.venue-card__fact a {
+  color: var(--accent);
+}
+
+.venue-card__actions {
+  display: grid;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.venue-card__actions .button {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .event-main-layout,
+  .venue-card__body {
+    grid-template-columns: 1fr;
+  }
+
+  .venue-thumbs {
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+
+  .venue-thumb {
+    width: min(156px, calc(50vw - 34px));
+    height: 100px;
+  }
+
+  .reference-item__venue {
+    flex-direction: column;
+  }
+
+  .reference-item__venue .venue-thumb {
+    width: min(156px, 100%);
+    height: 92px;
+  }
+
+  .venue-modal {
+    place-items: stretch;
+    padding: 8px;
+  }
+
+  .venue-card {
+    width: 100%;
+    max-height: calc(100dvh - 16px);
+    border-radius: 11px;
+  }
+
+  .venue-gallery {
+    border-radius: 10px 10px 0 0;
+  }
+
+  .venue-gallery__viewport {
+    min-height: 220px;
+  }
+
+  .venue-card__body {
+    gap: 20px;
+    padding: 20px 16px 22px;
+  }
+
+  .venue-gallery__arrow {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 360px) {
+  .venue-thumb {
+    width: 100%;
+  }
+
+  .venue-gallery__viewport {
+    min-height: 190px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .venue-thumb img,
+  .venue-gallery__main {
+    transition: none;
+  }
+}
+
+@media print {
+  .venue-thumbs,
+  .venue-modal {
+    display: none !important;
+  }
+}
+
 .utility-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -1697,6 +2181,31 @@ input {
       </section>
     </div>
 
+    <div class="venue-modal" id="venueModal" hidden>
+      <div class="venue-modal__backdrop" data-venue-close></div>
+      <section
+        class="venue-card"
+        id="venueDialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="venueModalTitle"
+        tabindex="-1"
+      >
+        <button class="venue-card__close" type="button" aria-label="Закрыть карточку заведения" data-venue-close>×</button>
+        <div class="venue-gallery" id="venueGallery" hidden>
+          <div class="venue-gallery__viewport" id="venueGalleryViewport">
+            <img class="venue-gallery__main" id="venueGalleryMain" alt="" decoding="async" />
+            <button class="venue-gallery__arrow venue-gallery__arrow--prev" id="venueGalleryPrev" type="button" aria-label="Предыдущая фотография">‹</button>
+            <button class="venue-gallery__arrow venue-gallery__arrow--next" id="venueGalleryNext" type="button" aria-label="Следующая фотография">›</button>
+            <span class="venue-gallery__counter" id="venueGalleryCounter" aria-live="polite"></span>
+          </div>
+          <div class="venue-gallery__thumbs" id="venueGalleryThumbs" aria-label="Фотографии заведения"></div>
+        </div>
+        <div class="venue-card__body" id="venueModalBody"></div>
+      </section>
+    </div>
+
+    <script src="./venue-cards-data.js"></script>
     <script>
 let tags = [
   "еда",
@@ -2021,6 +2530,23 @@ const places = {
   },
 };
 
+const venueProfiles = window.NN_VENUES || {};
+const venueAssets = window.NN_VENUE_ASSETS || { baseUrl: "", folders: {} };
+
+Object.entries(venueProfiles).forEach(([key, profile]) => {
+  const current = places[key] || {};
+  places[key] = {
+    ...current,
+    title: profile.title || current.title || key,
+    yandex: profile.mapUrl || current.yandex || "",
+    site: profile.officialSite || current.site || "",
+  };
+});
+
+if (places.nastayatel) {
+  places.nastayatel.address = "пер. Вахитова, 7, Нижний Новгород";
+}
+
 const extraPlaces = [
   {
     category: "Кафе и бистро",
@@ -2060,7 +2586,7 @@ const extraPlaces = [
     tags: ["ночь", "запас", "в помещении"],
     items: [
       { placeKey: "mixturaBar", note: "Дополнительный вечерний вариант вне основного расписания. Актуальные условия посещения лучше проверить заранее." },
-      { placeKey: "scladclub", note: "Запасное вечернее место на случай изменения планов и наличия сил. Перед посещением проверить актуальный режим работы." },
+      { placeKey: "scladclub", note: "Архивная запись: заведение больше не работает и не предлагается для маршрута или бронирования." },
     ],
   },
   {
@@ -2399,7 +2925,7 @@ let days = [
         title: "🚶📷 Большая Покровская + Государственный банк",
         note: "Городские скульптуры и архитектура. Тематическую кофейную точку в стиле «Очень странных дел» на Большой Покровской, 57, оставляем короткой остановкой по пути: напиток или десерт навынос и несколько фотографий снаружи.",
         tags: ["пешком", "фото"],
-        mapKeys: ["bolshayaPokrovskaya", "gosbank"],
+        mapKeys: ["bolshayaPokrovskaya", "gosbank", "strangerCoffee", "surfCoffee"],
         rain: {
           note: "Сокращаем уличные остановки, оставляем главные фасады и при необходимости пропускаем тематическую кофейную точку без внутреннего зала.",
         },
@@ -2871,12 +3397,14 @@ let bookingItems = [
     title: "Si, Mamma",
     note: "Ужин 12 августа на Рождественской, 24. Нужна бронь заранее.",
     phone: places.siMamma.phone,
+    placeKey: "siMamma",
     status: "не выполнено",
   },
   {
     title: "Пяткинъ",
     note: "Основной ужин 13 августа. Русская кухня, плотный вечер.",
     phone: places.pyatkin.phone,
+    placeKey: "pyatkin",
     status: "не выполнено",
   },
   {
@@ -2897,6 +3425,7 @@ let bookingItems = [
     title: "Юла пицца",
     note: "Ужин 16 августа. Желательно бронировать из-за посадки.",
     phone: places.yulaPizza.phone,
+    placeKey: "yulaPizza",
     status: "не выполнено",
   },
   {
@@ -2907,11 +3436,13 @@ let bookingItems = [
   {
     title: "Настаятель",
     note: "Основной вечерний бар на Рождественской 13 августа. Приходим прежде всего за напитками и атмосферой; бургеры — по аппетиту.",
+    placeKey: "nastayatel",
     status: "не выполнено",
   },
   {
     title: "Кофе 1896",
     note: "Новая кофейня в Русском музее фотографии: уютно, темные теплые интерьеры, посадка на улице, розетки и Wi-Fi. В меню кофе, выпечка и сырники. 1896 — год Всероссийской выставки, которую снимал Максим Дмитриев; он работал как раз в этом здании на бывшей Осыпной улице.",
+    placeKey: "kofe1896",
     status: "не выполнено",
   },
   {
@@ -2922,6 +3453,7 @@ let bookingItems = [
   {
     title: "Тематическая кофейная точка в стиле «Очень странных дел»",
     note: "Небольшая уличная кофейная точка на Большой Покровской, 57. Внутреннего зала нет: напитки и десерты выдают навынос через окно заказа, а тематически оформленная дверь подходит для фотографий снаружи.",
+    placeKey: "strangerCoffee",
     status: "не выполнено",
   },
 ];
@@ -3088,6 +3620,320 @@ function escapeHtml(value = "") {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+const venueModalState = {
+  key: "",
+  profile: null,
+  images: [],
+  index: 0,
+  opener: null,
+  openerId: "",
+  touchStartX: null,
+  preloads: [],
+};
+let venueOpenerCounter = 0;
+
+function venueProfileForKey(key, { includeClosed = true } = {}) {
+  const profile = venueProfiles[key];
+  if (!profile || (!includeClosed && profile.closed)) return null;
+  return profile;
+}
+
+function venueImagesForKey(key) {
+  const profile = venueProfileForKey(key);
+  const folder = profile?.photoFolder ? venueAssets.folders?.[profile.photoFolder] : null;
+  if (!folder || profile.closed) return [];
+  const ordered = [
+    folder.cover ? { ...folder.cover, kind: "cover" } : null,
+    ...(folder.inter || []).map((image) => ({ ...image, kind: "inter" })),
+    ...(folder.food || []).map((image) => ({ ...image, kind: "food" })),
+    ...(folder.exter || []).map((image) => ({ ...image, kind: "exter" })),
+    ...(folder.other || []).map((image) => ({ ...image, kind: "other" })),
+  ].filter((image) => image?.url);
+  const seen = new Set();
+  return ordered.filter((image) => {
+    if (seen.has(image.url)) return false;
+    seen.add(image.url);
+    return true;
+  });
+}
+
+function imageKitUrl(url, transformation) {
+  const endpoint = (venueAssets.baseUrl || "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026").replace(/\/+$/, "");
+  const sourcePrefix = `${endpoint}/`;
+  if (!url || !transformation || !url.startsWith(sourcePrefix)) return url || "";
+  return `${sourcePrefix}tr:${transformation}/${url.slice(sourcePrefix.length)}`;
+}
+
+function venueImageAlt(profile, image) {
+  const labels = {
+    cover: "обложка заведения",
+    inter: "интерьер",
+    food: "блюдо",
+    exter: "вид снаружи",
+    other: "фотография",
+  };
+  return `${profile.title}: ${labels[image.kind] || labels.other}`;
+}
+
+function venueResponsiveImageAttrs(image, profile, sizes = "132px") {
+  const src = imageKitUrl(image.url, "w-480,h-360,c-at_max,q-75");
+  const srcset = [
+    `${imageKitUrl(image.url, "w-240,h-180,c-at_max,q-72")} 240w`,
+    `${src} 480w`,
+    `${imageKitUrl(image.url, "w-720,h-540,c-at_max,q-76")} 720w`,
+  ].join(", ");
+  return `src="${escapeHtml(src)}" srcset="${escapeHtml(srcset)}" sizes="${escapeHtml(sizes)}" alt="${escapeHtml(venueImageAlt(profile, image))}" loading="lazy" decoding="async"`;
+}
+
+function venueKeysForEvent(mapKeys = []) {
+  const seen = new Set();
+  return mapKeys.filter((key) => {
+    if (seen.has(key) || !venueProfileForKey(key, { includeClosed: false }) || !venueImagesForKey(key).length) return false;
+    seen.add(key);
+    return true;
+  }).slice(0, 2);
+}
+
+function venueThumbHtml(key, sizes = "132px") {
+  const profile = venueProfileForKey(key, { includeClosed: false });
+  const images = venueImagesForKey(key);
+  if (!profile || !images.length) return "";
+  return `<button class="venue-thumb" type="button" data-venue-key="${escapeHtml(key)}" aria-label="${escapeHtml(`Открыть карточку заведения ${profile.title}`)}">
+    <img ${venueResponsiveImageAttrs(images[0], profile, sizes)} data-venue-key="${escapeHtml(key)}" data-image-index="0" />
+    <span class="venue-thumb__shade" aria-hidden="true"></span>
+    <span class="venue-thumb__label">${escapeHtml(profile.title)}</span>
+  </button>`;
+}
+
+function venueThumbsHtml(mapKeys = [], className = "") {
+  const keys = venueKeysForEvent(mapKeys);
+  if (!keys.length) return "";
+  return `<div class="venue-thumbs ${escapeHtml(className)}">${keys.map((key) => venueThumbHtml(key)).join("")}</div>`;
+}
+
+function isMissingVenueValue(value) {
+  const normalized = normalizeText(value);
+  return !normalized || normalized === "уточняется" || normalized === "null";
+}
+
+function venueModalBodyHtml(profile) {
+  const showAverage = !isMissingVenueValue(profile.averageCheck);
+  const showSource = showAverage && profile.averageCheckSource && profile.averageCheckSourceUrl;
+  const showCuisine = !isMissingVenueValue(profile.cuisine) && !(profile.closed && normalizeText(profile.cuisine).includes("не подтвержден"));
+  return `
+    <div class="venue-card__copy">
+      <p class="venue-card__eyebrow">${escapeHtml(profile.routeStatus || profile.category || "Заведение")}</p>
+      <div class="venue-card__title-row">
+        <h2 class="venue-card__title" id="venueModalTitle">${escapeHtml(profile.title)}</h2>
+        ${profile.closed ? `<span class="venue-closed-badge">${escapeHtml(profile.closedLabel || "Больше не работает")}</span>` : ""}
+      </div>
+      ${profile.description ? `<p class="venue-card__description">${escapeHtml(profile.description)}</p>` : ""}
+      ${!profile.closed && profile.whyInRoute ? `<div class="venue-card__route"><strong>Почему в маршруте</strong><p class="venue-card__route-copy">${escapeHtml(profile.whyInRoute)}</p></div>` : ""}
+    </div>
+    <dl class="venue-card__facts">
+      ${profile.category ? `<div class="venue-card__fact"><dt>Категория</dt><dd>${escapeHtml(profile.category)}</dd></div>` : ""}
+      ${showCuisine ? `<div class="venue-card__fact"><dt>Кухня</dt><dd>${escapeHtml(profile.cuisine)}</dd></div>` : ""}
+      ${showAverage ? `<div class="venue-card__fact"><dt>Средний чек</dt><dd>${escapeHtml(profile.averageCheck)}${showSource ? `<br><a href="${escapeHtml(profile.averageCheckSourceUrl)}" target="_blank" rel="noopener noreferrer">Источник: ${escapeHtml(profile.averageCheckSource)}</a>` : ""}</dd></div>` : ""}
+      <div class="venue-card__actions">
+        ${profile.mapUrl ? `<a class="button button--primary" href="${escapeHtml(profile.mapUrl)}" target="_blank" rel="noopener noreferrer">${profile.closed ? "Открыть архивную карту" : "Открыть карту"}</a>` : ""}
+        ${!profile.closed && profile.officialSite ? `<a class="button" href="${escapeHtml(profile.officialSite)}" target="_blank" rel="noopener noreferrer">Официальный сайт</a>` : ""}
+      </div>
+    </dl>`;
+}
+
+function renderVenueGalleryThumbs() {
+  const target = byId("venueGalleryThumbs");
+  const profile = venueModalState.profile;
+  if (!target || !profile) return;
+  target.innerHTML = venueModalState.images
+    .map((image, index) => `<button class="venue-gallery__thumb${index === venueModalState.index ? " is-active" : ""}" type="button" data-gallery-index="${index}" aria-label="Показать фотографию ${index + 1} из ${venueModalState.images.length}">
+      <img src="${escapeHtml(imageKitUrl(image.url, "w-180,h-135,c-at_max,q-68"))}" alt="${escapeHtml(venueImageAlt(profile, image))}" loading="lazy" decoding="async" />
+    </button>`)
+    .join("");
+}
+
+function preloadVenueNeighbors() {
+  venueModalState.preloads = [];
+  if (venueModalState.images.length < 2) return;
+  const indexes = new Set([
+    (venueModalState.index - 1 + venueModalState.images.length) % venueModalState.images.length,
+    (venueModalState.index + 1) % venueModalState.images.length,
+  ]);
+  indexes.delete(venueModalState.index);
+  indexes.forEach((index) => {
+    const preload = new Image();
+    preload.src = imageKitUrl(venueModalState.images[index].url, "w-1600,c-at_max,q-82");
+    venueModalState.preloads.push(preload);
+  });
+}
+
+function updateVenueGallery() {
+  const gallery = byId("venueGallery");
+  const main = byId("venueGalleryMain");
+  const counter = byId("venueGalleryCounter");
+  const prev = byId("venueGalleryPrev");
+  const next = byId("venueGalleryNext");
+  const profile = venueModalState.profile;
+  if (!gallery || !main || !profile) return;
+  if (!venueModalState.images.length) {
+    gallery.hidden = true;
+    main.removeAttribute("src");
+    return;
+  }
+  gallery.hidden = false;
+  const image = venueModalState.images[venueModalState.index];
+  main.classList.add("is-loading");
+  main.alt = venueImageAlt(profile, image);
+  main.onload = () => main.classList.remove("is-loading");
+  main.onerror = () => {
+    venueModalState.images.splice(venueModalState.index, 1);
+    venueModalState.index = Math.min(venueModalState.index, Math.max(venueModalState.images.length - 1, 0));
+    renderVenueGalleryThumbs();
+    updateVenueGallery();
+  };
+  main.src = imageKitUrl(image.url, "w-1600,c-at_max,q-82");
+  counter.textContent = `${venueModalState.index + 1} / ${venueModalState.images.length}`;
+  const single = venueModalState.images.length < 2;
+  prev.hidden = single;
+  next.hidden = single;
+  byId("venueGalleryThumbs").querySelectorAll("[data-gallery-index]").forEach((button, index) => {
+    button.classList.toggle("is-active", index === venueModalState.index);
+    button.setAttribute("aria-current", index === venueModalState.index ? "true" : "false");
+  });
+  byId("venueGalleryThumbs").querySelector(".is-active")?.scrollIntoView({ block: "nearest", inline: "nearest" });
+  preloadVenueNeighbors();
+}
+
+function setVenueGalleryIndex(index) {
+  const length = venueModalState.images.length;
+  if (!length) return;
+  venueModalState.index = (index + length) % length;
+  updateVenueGallery();
+}
+
+function openVenueModal(key, opener) {
+  const profile = venueProfileForKey(key);
+  const modal = byId("venueModal");
+  if (!profile || !modal) return;
+  venueModalState.key = key;
+  venueModalState.profile = profile;
+  venueModalState.images = venueImagesForKey(key);
+  venueModalState.index = 0;
+  venueModalState.opener = opener || document.activeElement;
+  if (venueModalState.opener instanceof HTMLElement) {
+    if (!venueModalState.opener.id) venueModalState.opener.id = `venue-opener-${++venueOpenerCounter}`;
+    venueModalState.openerId = venueModalState.opener.id;
+  }
+  byId("venueModalBody").innerHTML = venueModalBodyHtml(profile);
+  renderVenueGalleryThumbs();
+  updateVenueGallery();
+  modal.hidden = false;
+  document.body.classList.add("venue-dialog-open");
+  window.requestAnimationFrame(() => byId("venueDialog")?.focus());
+}
+
+function closeVenueModal() {
+  const modal = byId("venueModal");
+  if (!modal || modal.hidden) return;
+  modal.hidden = true;
+  document.body.classList.remove("venue-dialog-open");
+  const main = byId("venueGalleryMain");
+  main.onload = null;
+  main.onerror = null;
+  main.removeAttribute("src");
+  venueModalState.preloads = [];
+  const opener = document.getElementById(venueModalState.openerId) || venueModalState.opener;
+  venueModalState.key = "";
+  venueModalState.profile = null;
+  venueModalState.images = [];
+  venueModalState.opener = null;
+  venueModalState.openerId = "";
+  if (opener?.isConnected) window.setTimeout(() => opener.focus({ preventScroll: true }), 50);
+}
+
+function trapVenueModalFocus(event) {
+  const dialog = byId("venueDialog");
+  if (event.key !== "Tab" || !dialog) return;
+  const focusable = [...dialog.querySelectorAll('a[href], button:not([disabled]):not([hidden]), [tabindex]:not([tabindex="-1"])')]
+    .filter((node) => node.offsetParent !== null);
+  if (!focusable.length) {
+    event.preventDefault();
+    dialog.focus();
+    return;
+  }
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (document.activeElement === dialog || !dialog.contains(document.activeElement)) {
+    event.preventDefault();
+    (event.shiftKey ? last : first).focus();
+  } else if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+}
+
+function setupVenueCards() {
+  document.addEventListener("click", (event) => {
+    const opener = event.target.closest("button[data-venue-key]");
+    if (opener) {
+      openVenueModal(opener.dataset.venueKey, opener);
+      return;
+    }
+    const galleryButton = event.target.closest("[data-gallery-index]");
+    if (galleryButton) setVenueGalleryIndex(Number(galleryButton.dataset.galleryIndex));
+  });
+  byId("venueModal").querySelectorAll("[data-venue-close]").forEach((control) => {
+    control.addEventListener("click", closeVenueModal);
+  });
+  byId("venueGalleryPrev").addEventListener("click", () => setVenueGalleryIndex(venueModalState.index - 1));
+  byId("venueGalleryNext").addEventListener("click", () => setVenueGalleryIndex(venueModalState.index + 1));
+  document.addEventListener("keydown", (event) => {
+    if (byId("venueModal").hidden) return;
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeVenueModal();
+    }
+    else if (event.key === "ArrowLeft") setVenueGalleryIndex(venueModalState.index - 1);
+    else if (event.key === "ArrowRight") setVenueGalleryIndex(venueModalState.index + 1);
+    else trapVenueModalFocus(event);
+  });
+  document.addEventListener("error", (event) => {
+    const image = event.target;
+    if (!(image instanceof HTMLImageElement)) return;
+    if (image.closest(".venue-gallery__thumb")) {
+      image.closest(".venue-gallery__thumb").remove();
+      return;
+    }
+    if (!image.closest(".venue-thumb")) return;
+    const key = image.dataset.venueKey;
+    const images = venueImagesForKey(key);
+    const nextIndex = Number(image.dataset.imageIndex || 0) + 1;
+    if (!images[nextIndex]) {
+      image.closest(".venue-thumb").remove();
+      return;
+    }
+    image.dataset.imageIndex = String(nextIndex);
+    const profile = venueProfileForKey(key);
+    image.src = imageKitUrl(images[nextIndex].url, "w-480,h-360,c-at_max,q-75");
+    image.srcset = `${imageKitUrl(images[nextIndex].url, "w-240,h-180,c-at_max,q-72")} 240w, ${image.src} 480w, ${imageKitUrl(images[nextIndex].url, "w-720,h-540,c-at_max,q-76")} 720w`;
+    image.alt = venueImageAlt(profile, images[nextIndex]);
+  }, true);
+  const viewport = byId("venueGalleryViewport");
+  viewport.addEventListener("touchstart", (event) => {
+    venueModalState.touchStartX = event.changedTouches[0]?.clientX ?? null;
+  }, { passive: true });
+  viewport.addEventListener("touchend", (event) => {
+    if (venueModalState.touchStartX === null) return;
+    const delta = (event.changedTouches[0]?.clientX ?? venueModalState.touchStartX) - venueModalState.touchStartX;
+    venueModalState.touchStartX = null;
+    if (Math.abs(delta) < 45) return;
+    setVenueGalleryIndex(venueModalState.index + (delta < 0 ? 1 : -1));
+  }, { passive: true });
 }
 
 function normalizeText(value = "") {
@@ -3696,10 +4542,15 @@ function eventOptionsHtml(event) {
   return `<div class="event-options">${event.options
     .map(
       (option) => `<section class="event-option">
-        <strong>${escapeHtml(option.title)}</strong>
-        <p>${escapeHtml(option.note || "")}</p>
-        ${mapLinksHtml(option)}
-        ${eventLinksHtml(option)}
+        <div class="event-main-layout">
+          <div class="event-main">
+            <strong>${escapeHtml(option.title)}</strong>
+            <p>${escapeHtml(option.note || "")}</p>
+            ${mapLinksHtml(option)}
+            ${eventLinksHtml(option)}
+          </div>
+          ${venueThumbsHtml(option.mapKeys || [])}
+        </div>
       </section>`,
     )
     .join("")}</div>`;
@@ -4302,16 +5153,21 @@ function renderDays() {
       card.style.setProperty("--accent", day.accent);
       card.innerHTML = `
         <div class="event-time">${escapeHtml(view.time)}</div>
-        <div>
-          <div class="event-title-row">
-            <h4 class="event-title">${escapeHtml(view.title)}</h4>
-            ${statusBadge(view.status)}
+        <div class="event-content">
+          <div class="event-main-layout">
+            <div class="event-main">
+              <div class="event-title-row">
+                <h4 class="event-title">${escapeHtml(view.title)}</h4>
+                ${statusBadge(view.status)}
+              </div>
+              <p class="event-note">${escapeHtml(view.note)}</p>
+              ${mapLinksHtml(view)}
+              ${eventLinksHtml(view)}
+              ${eventOptionsHtml(view)}
+              <div class="tags">${tags.map((tag) => `<span class="tag">#${escapeHtml(tag)}</span>`).join("")}</div>
+            </div>
+            ${venueThumbsHtml(view.mapKeys || [])}
           </div>
-          <p class="event-note">${escapeHtml(view.note)}</p>
-          ${mapLinksHtml(view)}
-          ${eventLinksHtml(view)}
-          ${eventOptionsHtml(view)}
-          <div class="tags">${tags.map((tag) => `<span class="tag">#${escapeHtml(tag)}</span>`).join("")}</div>
         </div>
       `;
       timeline.append(card);
@@ -4350,10 +5206,18 @@ function renderReference(targetId, items) {
   const target = byId(targetId);
   target.innerHTML = "";
   items.forEach((item) => {
-    const row = el("article", "reference-item");
+    const profile = item.placeKey ? venueProfileForKey(item.placeKey) : null;
+    const row = el("article", `reference-item${profile?.closed ? " is-venue-closed" : ""}`);
+    const titleHtml = profile
+      ? `<button class="venue-title-button" type="button" data-venue-key="${escapeHtml(item.placeKey)}">${escapeHtml(getItemTitle(item))}</button>`
+      : `<strong>${escapeHtml(getItemTitle(item))}</strong>`;
     row.innerHTML = `
-      <div class="item-title-row">
-        <strong>${escapeHtml(getItemTitle(item))}</strong>
+      <div class="reference-item__venue">
+        <div>
+          <div class="item-title-row">${titleHtml}</div>
+          ${profile?.closed ? `<span class="venue-closed-badge">${escapeHtml(profile.closedLabel || "Больше не работает")}</span>` : ""}
+        </div>
+        ${profile && !profile.closed ? venueThumbHtml(item.placeKey, "104px") : ""}
       </div>
       ${itemDetailsHtml(item)}
       ${itemMapLinksHtml(item)}
@@ -4376,17 +5240,22 @@ function renderExtraPlaces() {
     category.items.forEach((item) => {
       const place = places[item.placeKey];
       if (!place) return;
-      const card = el("article", "extra-place-card");
+      const profile = venueProfileForKey(item.placeKey);
+      const closed = Boolean(profile?.closed);
+      const card = el("article", `extra-place-card${closed ? " is-venue-closed" : ""}`);
       card.dataset.search = `${place.title} ${category.category} ${item.note}`.toLowerCase();
       card.dataset.tags = category.tags.join(",");
       card.innerHTML = `
         <p class="extra-place-card__category">${escapeHtml(category.category)}</p>
-        <h4>${escapeHtml(place.title)}</h4>
+        <div class="extra-place-card__title-row">
+          <h4>${profile ? `<button class="venue-title-button" type="button" data-venue-key="${escapeHtml(item.placeKey)}">${escapeHtml(place.title)}</button>` : escapeHtml(place.title)}</h4>
+          ${closed ? `<span class="venue-closed-badge">${escapeHtml(profile.closedLabel || "Больше не работает")}</span>` : ""}
+        </div>
         <p>${escapeHtml(item.note)}</p>
         <div class="map-actions">
-          <a class="map-link" href="${escapeHtml(place.yandex)}" target="_blank" rel="noopener noreferrer">📍 Яндекс Карты</a>
+          <a class="map-link" href="${escapeHtml(place.yandex)}" target="_blank" rel="noopener noreferrer">${closed ? "Архивная карта" : "📍 Яндекс Карты"}</a>
           ${
-            place.site
+            place.site && !closed
               ? `<a class="event-link" href="${escapeHtml(place.site)}" target="_blank" rel="noopener noreferrer">Открыть официальный сайт</a>`
               : ""
           }
@@ -4570,6 +5439,7 @@ async function init() {
   renderExtraPlaces();
   renderUsefulLinks();
   setupResponsiveDisclosures();
+  setupVenueCards();
 
   byId("searchInput").addEventListener("input", (event) => {
     state.query = event.target.value;
