@@ -681,6 +681,68 @@ input {
   box-shadow: 0 8px 20px rgba(25, 33, 48, 0.04);
 }
 
+.event-layout,
+.reference-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: start;
+  min-width: 0;
+}
+
+.event-main,
+.reference-main {
+  min-width: 0;
+}
+
+.venue-covers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  max-width: 236px;
+}
+
+.venue-cover {
+  position: relative;
+  flex: 0 0 auto;
+  width: 110px;
+  height: 84px;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--wash);
+  cursor: pointer;
+}
+
+.venue-cover img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.venue-cover:focus-visible,
+.venue-name-button:focus-visible,
+.venue-gallery__thumbnail:focus-visible,
+.venue-gallery__arrow:focus-visible,
+.venue-modal__close:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 72%, white);
+  outline-offset: 2px;
+}
+
+.event-option .venue-covers {
+  justify-content: flex-start;
+  max-width: none;
+  margin-top: 9px;
+}
+
+.event-option .venue-cover {
+  width: 96px;
+  height: 72px;
+}
+
 .event-card.is-hidden {
   display: none;
 }
@@ -861,6 +923,24 @@ input {
   background: #fff;
 }
 
+.extra-place-card.is-closed-venue {
+  background: #f3f4f5;
+  color: var(--muted);
+  filter: saturate(0.35);
+}
+
+.venue-closed-badge {
+  display: inline-flex;
+  width: fit-content;
+  margin: 0 0 7px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #ffe3e3;
+  color: #c92a2a;
+  font-size: 12px;
+  font-weight: 900;
+}
+
 .extra-place-card__category {
   margin: 0 0 3px;
   color: var(--muted);
@@ -878,6 +958,12 @@ input {
   margin: 6px 0 0;
   color: var(--muted);
   font-size: 14px;
+}
+
+.extra-place-card .venue-covers {
+  justify-content: flex-start;
+  max-width: none;
+  margin-top: 10px;
 }
 
 .utility-section {
@@ -904,6 +990,27 @@ input {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #fff;
+}
+
+.reference-item .venue-cover {
+  width: 104px;
+  height: 78px;
+}
+
+.venue-name-button {
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-weight: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.venue-name-button:hover {
+  color: var(--accent);
 }
 
 .check-item {
@@ -1123,6 +1230,263 @@ input {
   font-weight: 800;
 }
 
+body.venue-dialog-open {
+  overflow: hidden;
+}
+
+.venue-modal[hidden] {
+  display: none;
+}
+
+.venue-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.venue-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 14, 20, 0.72);
+}
+
+.venue-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(920px, 100%);
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 20px 54px rgba(10, 14, 20, 0.22);
+}
+
+.venue-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 4;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--night);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.venue-gallery {
+  position: relative;
+  overflow: hidden;
+  background: var(--night);
+}
+
+.venue-gallery__viewport {
+  position: relative;
+  width: 100%;
+  height: clamp(280px, 48vh, 430px);
+}
+
+.venue-gallery__image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.venue-gallery__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--night);
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.venue-gallery__arrow--prev {
+  left: 12px;
+}
+
+.venue-gallery__arrow--next {
+  right: 12px;
+}
+
+.venue-gallery__counter {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  z-index: 2;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: rgba(10, 14, 20, 0.74);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.venue-gallery__thumbnails {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  padding: 9px 12px 11px;
+  background: #10161f;
+  scrollbar-width: thin;
+}
+
+.venue-gallery__thumbnail {
+  flex: 0 0 72px;
+  width: 72px;
+  height: 54px;
+  overflow: hidden;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background: #27313d;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.venue-gallery__thumbnail.is-active {
+  border-color: #fff;
+  opacity: 1;
+}
+
+.venue-gallery__thumbnail img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.venue-modal__body {
+  padding: 22px;
+}
+
+.venue-modal__header {
+  padding-right: 46px;
+}
+
+.venue-modal__header h2 {
+  margin: 5px 0 0;
+  font-size: clamp(27px, 4vw, 40px);
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+}
+
+.venue-modal__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.venue-modal__meta span {
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #e7f5ff;
+  color: #1864ab;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.venue-modal__description {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.venue-modal__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(230px, 0.85fr);
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.venue-modal__panel {
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.venue-modal__panel--soft {
+  background: var(--wash);
+}
+
+.venue-modal__panel h3 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.venue-modal__panel p {
+  margin: 7px 0 0;
+  color: var(--muted);
+}
+
+.venue-facts {
+  display: grid;
+  gap: 11px;
+}
+
+.venue-fact span {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.venue-fact strong,
+.venue-fact a {
+  overflow-wrap: anywhere;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.venue-modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.venue-modal__actions a {
+  overflow-wrap: anywhere;
+}
+
+.venue-modal.no-gallery .venue-modal__body {
+  padding-top: 28px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .venue-modal *,
+  .venue-cover * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+
 .install-modal[hidden] {
   display: none;
 }
@@ -1332,6 +1696,23 @@ input {
     gap: 6px;
   }
 
+  .event-layout,
+  .reference-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .venue-covers {
+    justify-content: flex-start;
+    max-width: none;
+  }
+
+  .venue-cover,
+  .reference-item .venue-cover {
+    width: min(180px, 48%);
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
   .day-heading {
     grid-template-columns: auto 1fr;
   }
@@ -1435,6 +1816,39 @@ input {
 
   .install-modal__dialog h2 {
     font-size: 24px;
+  }
+
+  .venue-modal {
+    padding: 0;
+  }
+
+  .venue-modal__dialog {
+    width: 100%;
+    max-height: 100dvh;
+    border-radius: 0;
+  }
+
+  .venue-gallery__viewport {
+    height: min(42dvh, 330px);
+  }
+
+  .venue-modal__body {
+    padding: 18px 14px 26px;
+  }
+
+  .venue-modal__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .venue-modal__actions .button {
+    width: 100%;
+  }
+}
+
+@media print {
+  .venue-covers,
+  .venue-modal {
+    display: none !important;
   }
 }
 
@@ -1697,6 +2111,29 @@ input {
       </section>
     </div>
 
+    <div class="venue-modal" id="venueModal" hidden>
+      <div class="venue-modal__backdrop" data-venue-close></div>
+      <article
+        class="venue-modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="venueModalTitle"
+      >
+        <button class="venue-modal__close" type="button" aria-label="Закрыть карточку заведения" data-venue-close>×</button>
+        <section class="venue-gallery" id="venueGallery" aria-label="Фотографии заведения" hidden>
+          <div class="venue-gallery__viewport" id="venueGalleryViewport">
+            <img class="venue-gallery__image" id="venueGalleryImage" alt="" decoding="async" />
+            <button class="venue-gallery__arrow venue-gallery__arrow--prev" type="button" aria-label="Предыдущая фотография">‹</button>
+            <button class="venue-gallery__arrow venue-gallery__arrow--next" type="button" aria-label="Следующая фотография">›</button>
+            <div class="venue-gallery__counter" aria-live="polite"><span id="venueGalleryCurrent">1</span> / <span id="venueGalleryTotal">1</span></div>
+          </div>
+          <div class="venue-gallery__thumbnails" id="venueGalleryThumbnails" aria-label="Миниатюры фотографий"></div>
+        </section>
+        <div class="venue-modal__body" id="venueModalBody"></div>
+      </article>
+    </div>
+
+    <script src="venue-cards-data.js"></script>
     <script>
 let tags = [
   "еда",
@@ -1910,7 +2347,7 @@ const places = {
   },
   nastayatel: {
     title: "Настаятель",
-    address: "Рождественская ул., 12Б, Нижний Новгород",
+    address: "пер. Вахитова, 7, Нижний Новгород",
     yandex: "https://yandex.ru/maps/org/nastayatel/190867308870?si=maltsev.ph",
   },
   yulaPizza: {
@@ -2399,7 +2836,7 @@ let days = [
         title: "🚶📷 Большая Покровская + Государственный банк",
         note: "Городские скульптуры и архитектура. Тематическую кофейную точку в стиле «Очень странных дел» на Большой Покровской, 57, оставляем короткой остановкой по пути: напиток или десерт навынос и несколько фотографий снаружи.",
         tags: ["пешком", "фото"],
-        mapKeys: ["bolshayaPokrovskaya", "gosbank"],
+        mapKeys: ["bolshayaPokrovskaya", "gosbank", "strangerCoffee"],
         rain: {
           note: "Сокращаем уличные остановки, оставляем главные фасады и при необходимости пропускаем тематическую кофейную точку без внутреннего зала.",
         },
@@ -2871,12 +3308,14 @@ let bookingItems = [
     title: "Si, Mamma",
     note: "Ужин 12 августа на Рождественской, 24. Нужна бронь заранее.",
     phone: places.siMamma.phone,
+    placeKey: "siMamma",
     status: "не выполнено",
   },
   {
     title: "Пяткинъ",
     note: "Основной ужин 13 августа. Русская кухня, плотный вечер.",
     phone: places.pyatkin.phone,
+    placeKey: "pyatkin",
     status: "не выполнено",
   },
   {
@@ -2897,6 +3336,7 @@ let bookingItems = [
     title: "Юла пицца",
     note: "Ужин 16 августа. Желательно бронировать из-за посадки.",
     phone: places.yulaPizza.phone,
+    placeKey: "yulaPizza",
     status: "не выполнено",
   },
   {
@@ -2907,11 +3347,13 @@ let bookingItems = [
   {
     title: "Настаятель",
     note: "Основной вечерний бар на Рождественской 13 августа. Приходим прежде всего за напитками и атмосферой; бургеры — по аппетиту.",
+    placeKey: "nastayatel",
     status: "не выполнено",
   },
   {
     title: "Кофе 1896",
     note: "Новая кофейня в Русском музее фотографии: уютно, темные теплые интерьеры, посадка на улице, розетки и Wi-Fi. В меню кофе, выпечка и сырники. 1896 — год Всероссийской выставки, которую снимал Максим Дмитриев; он работал как раз в этом здании на бывшей Осыпной улице.",
+    placeKey: "kofe1896",
     status: "не выполнено",
   },
   {
@@ -2922,6 +3364,7 @@ let bookingItems = [
   {
     title: "Тематическая кофейная точка в стиле «Очень странных дел»",
     note: "Небольшая уличная кофейная точка на Большой Покровской, 57. Внутреннего зала нет: напитки и десерты выдают навынос через окно заказа, а тематически оформленная дверь подходит для фотографий снаружи.",
+    placeKey: "strangerCoffee",
     status: "не выполнено",
   },
 ];
@@ -3415,6 +3858,7 @@ function applySheetSafeLocalOverrides() {
     {
       title: "Настаятель",
       note: "Основной вечерний бар на Рождественской 13 августа. Приходим прежде всего за напитками и атмосферой; бургеры — по аппетиту.",
+      placeKey: "nastayatel",
       status: "не выполнено",
     },
   );
@@ -3438,6 +3882,7 @@ function applySheetSafeLocalOverrides() {
     {
       title: "Тематическая кофейная точка в стиле «Очень странных дел»",
       note: "Небольшая уличная кофейная точка на Большой Покровской, 57. Внутреннего зала нет: напитки и десерты выдают навынос через окно заказа, а тематически оформленная дверь подходит для фотографий снаружи.",
+      placeKey: "strangerCoffee",
       status: "не выполнено",
     },
   );
@@ -3700,9 +4145,296 @@ function eventOptionsHtml(event) {
         <p>${escapeHtml(option.note || "")}</p>
         ${mapLinksHtml(option)}
         ${eventLinksHtml(option)}
+        ${venueCoversHtml(option.mapKeys)}
       </section>`,
     )
     .join("")}</div>`;
+}
+
+const venueProfiles = window.NN_VENUES || {};
+const venueAssetManifest = window.NN_VENUE_ASSETS || {};
+const venueModalState = {
+  key: "",
+  images: [],
+  index: 0,
+  opener: null,
+  touchStartX: 0,
+};
+
+function venueProfile(key) {
+  return key && Object.prototype.hasOwnProperty.call(venueProfiles, key) ? venueProfiles[key] : null;
+}
+
+function venueImages(key) {
+  const profile = venueProfile(key);
+  const folder = profile?.photoFolder ? venueAssetManifest.folders?.[profile.photoFolder] : null;
+  if (!folder) return [];
+  return [
+    folder.cover ? { ...folder.cover, type: "cover" } : null,
+    ...(folder.inter || []).map((image) => ({ ...image, type: "inter" })),
+    ...(folder.food || []).map((image) => ({ ...image, type: "food" })),
+    ...(folder.exter || []).map((image) => ({ ...image, type: "exter" })),
+    ...(folder.other || []).map((image) => ({ ...image, type: "other" })),
+  ].filter((image) => image?.url);
+}
+
+function imageKitUrl(url, transformation) {
+  const endpoint = String(venueAssetManifest.baseUrl || "").replace(/\/$/, "");
+  if (!endpoint || !url?.startsWith(`${endpoint}/`) || !transformation) return url;
+  return `${endpoint}/tr:${transformation}/${url.slice(endpoint.length + 1)}`;
+}
+
+function venueImageAlt(profile, image) {
+  const labels = {
+    cover: "обложка",
+    inter: "интерьер",
+    food: "блюда и напитки",
+    exter: "фасад",
+    other: "фотография",
+  };
+  return `${profile.title}: ${labels[image.type] || labels.other}`;
+}
+
+function venueThumbSrcset(url) {
+  return [
+    `${imageKitUrl(url, "w-240,h-180,c-at_max,q-72")} 240w`,
+    `${imageKitUrl(url, "w-480,h-360,c-at_max,q-75")} 480w`,
+  ].join(", ");
+}
+
+function recognizedVenueKeys(keys) {
+  return [...new Set(keys || [])].filter((key) => venueProfile(key));
+}
+
+function venueCoversHtml(keys, limit = 2) {
+  const covers = recognizedVenueKeys(keys)
+    .map((key) => ({ key, profile: venueProfile(key), images: venueImages(key) }))
+    .filter((entry) => !entry.profile.closed && entry.images.length)
+    .slice(0, limit);
+  if (!covers.length) return "";
+  return `<div class="venue-covers">${covers
+    .map(({ key, profile, images }) => {
+      const image = images[0];
+      return `<button class="venue-cover" type="button" data-venue-key="${escapeHtml(key)}" aria-label="Открыть карточку заведения ${escapeHtml(profile.title)}">
+        <img src="${escapeHtml(imageKitUrl(image.url, "w-480,h-360,c-at_max,q-75"))}" srcset="${escapeHtml(venueThumbSrcset(image.url))}" sizes="(max-width: 768px) 48vw, 110px" alt="${escapeHtml(venueImageAlt(profile, image))}" loading="lazy" decoding="async" data-venue-cover />
+      </button>`;
+    })
+    .join("")}</div>`;
+}
+
+function hydrateVenueCover(button) {
+  const key = button.dataset.venueKey;
+  const profile = venueProfile(key);
+  const images = venueImages(key);
+  const image = button.querySelector("[data-venue-cover]");
+  if (!profile || !image || !images.length) {
+    button.remove();
+    return;
+  }
+  let fallbackIndex = 0;
+  image.addEventListener("error", () => {
+    fallbackIndex += 1;
+    const fallback = images[fallbackIndex];
+    if (!fallback) {
+      button.remove();
+      return;
+    }
+    image.alt = venueImageAlt(profile, fallback);
+    image.srcset = venueThumbSrcset(fallback.url);
+    image.src = imageKitUrl(fallback.url, "w-480,h-360,c-at_max,q-75");
+  });
+}
+
+function bindVenueOpeners(root = document) {
+  root.querySelectorAll("[data-venue-key]").forEach((control) => {
+    if (control.dataset.venueBound === "true") return;
+    control.dataset.venueBound = "true";
+    if (control.classList.contains("venue-cover")) hydrateVenueCover(control);
+    control.addEventListener("click", () => openVenueModal(control.dataset.venueKey, control));
+  });
+}
+
+function usefulVenueValue(value) {
+  const text = String(value || "").trim();
+  return text && normalizeText(text) !== "уточняется" ? text : "";
+}
+
+function venueSourceUrl(value) {
+  return String(value || "").split(/\s*;\s*/).find((url) => /^https?:\/\//i.test(url)) || "";
+}
+
+function venueModalBodyHtml(profile) {
+  const averageCheck = usefulVenueValue(profile.averageCheck);
+  const sourceTitle = usefulVenueValue(profile.averageCheckSource);
+  const sourceUrl = venueSourceUrl(profile.averageCheckSourceUrl);
+  const facts = [
+    usefulVenueValue(profile.cuisine)
+      ? `<div class="venue-fact"><span>Кухня</span><strong>${escapeHtml(profile.cuisine)}</strong></div>`
+      : "",
+    averageCheck
+      ? `<div class="venue-fact"><span>Средний чек</span><strong>${escapeHtml(averageCheck)}</strong></div>`
+      : "",
+    averageCheck && sourceTitle && sourceUrl
+      ? `<div class="venue-fact"><span>Источник среднего чека</span><a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(sourceTitle)}</a></div>`
+      : "",
+  ].filter(Boolean);
+  const meta = (profile.closed ? [profile.category] : [profile.routeStatus, profile.category]).map(usefulVenueValue).filter(Boolean);
+  const mapUrl = usefulVenueValue(profile.mapUrl);
+  const officialSite = usefulVenueValue(profile.officialSite);
+  return `
+    <header class="venue-modal__header">
+      ${profile.closed ? `<span class="venue-closed-badge">${escapeHtml(profile.closedLabel || "Больше не работает")}</span>` : ""}
+      ${meta.length ? `<div class="venue-modal__meta">${meta.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}</div>` : ""}
+      <h2 id="venueModalTitle">${escapeHtml(profile.title)}</h2>
+    </header>
+    ${usefulVenueValue(profile.description) ? `<p class="venue-modal__description">${escapeHtml(profile.description)}</p>` : ""}
+    ${usefulVenueValue(profile.whyInRoute) || facts.length ? `<div class="venue-modal__grid">
+      ${usefulVenueValue(profile.whyInRoute) ? `<section class="venue-modal__panel venue-modal__panel--soft"><h3>Почему в маршруте</h3><p>${escapeHtml(profile.whyInRoute)}</p></section>` : ""}
+      ${facts.length ? `<section class="venue-modal__panel"><div class="venue-facts">${facts.join("")}</div></section>` : ""}
+    </div>` : ""}
+    ${mapUrl || officialSite ? `<div class="venue-modal__actions">
+      ${mapUrl ? `<a class="button button--small" href="${escapeHtml(mapUrl)}" target="_blank" rel="noopener noreferrer">Открыть карту</a>` : ""}
+      ${officialSite ? `<a class="button button--small" href="${escapeHtml(officialSite)}" target="_blank" rel="noopener noreferrer">Официальный сайт</a>` : ""}
+    </div>` : ""}
+  `;
+}
+
+function renderVenueThumbnails() {
+  const target = byId("venueGalleryThumbnails");
+  const profile = venueProfile(venueModalState.key);
+  if (!target || !profile) return;
+  target.hidden = venueModalState.images.length < 2;
+  target.innerHTML = venueModalState.images
+    .map((image, index) => `<button class="venue-gallery__thumbnail${index === venueModalState.index ? " is-active" : ""}" type="button" data-gallery-index="${index}" data-gallery-url="${escapeHtml(image.url)}" aria-label="Показать фотографию ${index + 1} из ${venueModalState.images.length}">
+      <img src="${escapeHtml(imageKitUrl(image.url, "w-180,h-135,c-at_max,q-70"))}" alt="${escapeHtml(venueImageAlt(profile, image))}" loading="lazy" decoding="async" />
+    </button>`)
+    .join("");
+  target.querySelectorAll("[data-gallery-index]").forEach((button) => {
+    button.addEventListener("click", () => showVenueImage(Number(button.dataset.galleryIndex)));
+    button.querySelector("img")?.addEventListener("error", () => removeBrokenVenueImage(button.dataset.galleryUrl));
+  });
+}
+
+function preloadVenueNeighbors() {
+  const indexes = [venueModalState.index - 1, venueModalState.index + 1]
+    .filter((index) => index >= 0 && index < venueModalState.images.length);
+  indexes.forEach((index) => {
+    const preload = new Image();
+    preload.src = imageKitUrl(venueModalState.images[index].url, "w-1600,c-at_max,q-82");
+  });
+}
+
+function showVenueImage(index) {
+  const profile = venueProfile(venueModalState.key);
+  const gallery = byId("venueGallery");
+  const image = byId("venueGalleryImage");
+  if (!profile || !gallery || !image || !venueModalState.images.length) {
+    if (gallery) gallery.hidden = true;
+    return;
+  }
+  venueModalState.index = (index + venueModalState.images.length) % venueModalState.images.length;
+  const current = venueModalState.images[venueModalState.index];
+  gallery.hidden = false;
+  image.alt = venueImageAlt(profile, current);
+  image.dataset.galleryUrl = current.url;
+  image.srcset = [
+    `${imageKitUrl(current.url, "w-960,c-at_max,q-80")} 960w`,
+    `${imageKitUrl(current.url, "w-1600,c-at_max,q-82")} 1600w`,
+  ].join(", ");
+  image.sizes = "(max-width: 768px) 100vw, 920px";
+  image.src = imageKitUrl(current.url, "w-1600,c-at_max,q-82");
+  byId("venueGalleryCurrent").textContent = String(venueModalState.index + 1);
+  byId("venueGalleryTotal").textContent = String(venueModalState.images.length);
+  document.querySelectorAll(".venue-gallery__arrow").forEach((button) => {
+    button.hidden = venueModalState.images.length < 2;
+  });
+  renderVenueThumbnails();
+  preloadVenueNeighbors();
+}
+
+function removeBrokenVenueImage(url) {
+  const index = venueModalState.images.findIndex((image) => image.url === url);
+  if (!venueModalState.images[index]) return;
+  venueModalState.images.splice(index, 1);
+  if (!venueModalState.images.length) {
+    byId("venueGallery").hidden = true;
+    byId("venueModal")?.classList.add("no-gallery");
+    return;
+  }
+  venueModalState.index = Math.min(venueModalState.index, venueModalState.images.length - 1);
+  showVenueImage(venueModalState.index);
+}
+
+function openVenueModal(key, opener) {
+  const profile = venueProfile(key);
+  const modal = byId("venueModal");
+  if (!profile || !modal) return;
+  venueModalState.key = key;
+  venueModalState.images = venueImages(key);
+  venueModalState.index = 0;
+  venueModalState.opener = opener;
+  byId("venueModalBody").innerHTML = venueModalBodyHtml(profile);
+  modal.classList.toggle("no-gallery", !venueModalState.images.length);
+  modal.hidden = false;
+  document.body.classList.add("venue-dialog-open");
+  if (venueModalState.images.length) showVenueImage(0);
+  else byId("venueGallery").hidden = true;
+  modal.querySelector(".venue-modal__close")?.focus();
+}
+
+function closeVenueModal() {
+  const modal = byId("venueModal");
+  if (!modal || modal.hidden) return;
+  modal.hidden = true;
+  document.body.classList.remove("venue-dialog-open");
+  byId("venueGalleryImage")?.removeAttribute("src");
+  byId("venueGalleryImage")?.removeAttribute("srcset");
+  const opener = venueModalState.opener;
+  venueModalState.key = "";
+  venueModalState.images = [];
+  venueModalState.opener = null;
+  opener?.focus();
+}
+
+function setupVenueModal() {
+  const modal = byId("venueModal");
+  const viewport = byId("venueGalleryViewport");
+  const mainImage = byId("venueGalleryImage");
+  if (!modal || !viewport || !mainImage) return;
+  modal.querySelectorAll("[data-venue-close]").forEach((control) => control.addEventListener("click", closeVenueModal));
+  modal.querySelector(".venue-gallery__arrow--prev")?.addEventListener("click", () => showVenueImage(venueModalState.index - 1));
+  modal.querySelector(".venue-gallery__arrow--next")?.addEventListener("click", () => showVenueImage(venueModalState.index + 1));
+  mainImage.addEventListener("error", () => removeBrokenVenueImage(mainImage.dataset.galleryUrl));
+  viewport.addEventListener("touchstart", (event) => {
+    venueModalState.touchStartX = event.changedTouches[0].clientX;
+  }, { passive: true });
+  viewport.addEventListener("touchend", (event) => {
+    const distance = event.changedTouches[0].clientX - venueModalState.touchStartX;
+    if (Math.abs(distance) >= 45) showVenueImage(venueModalState.index + (distance < 0 ? 1 : -1));
+  }, { passive: true });
+  document.addEventListener("keydown", (event) => {
+    if (modal.hidden) return;
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeVenueModal();
+      return;
+    }
+    if (event.key === "ArrowLeft") showVenueImage(venueModalState.index - 1);
+    if (event.key === "ArrowRight") showVenueImage(venueModalState.index + 1);
+    if (event.key !== "Tab") return;
+    const focusable = [...modal.querySelectorAll('button:not([hidden]), a[href]:not([hidden]), [tabindex]:not([tabindex="-1"])')]
+      .filter((element) => !element.disabled && element.offsetParent !== null);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
 }
 
 function downloadOfflineBlob(blob, filename) {
@@ -4302,18 +5034,22 @@ function renderDays() {
       card.style.setProperty("--accent", day.accent);
       card.innerHTML = `
         <div class="event-time">${escapeHtml(view.time)}</div>
-        <div>
-          <div class="event-title-row">
-            <h4 class="event-title">${escapeHtml(view.title)}</h4>
-            ${statusBadge(view.status)}
+        <div class="event-layout">
+          <div class="event-main">
+            <div class="event-title-row">
+              <h4 class="event-title">${escapeHtml(view.title)}</h4>
+              ${statusBadge(view.status)}
+            </div>
+            <p class="event-note">${escapeHtml(view.note)}</p>
+            ${mapLinksHtml(view)}
+            ${eventLinksHtml(view)}
+            ${eventOptionsHtml(view)}
+            <div class="tags">${tags.map((tag) => `<span class="tag">#${escapeHtml(tag)}</span>`).join("")}</div>
           </div>
-          <p class="event-note">${escapeHtml(view.note)}</p>
-          ${mapLinksHtml(view)}
-          ${eventLinksHtml(view)}
-          ${eventOptionsHtml(view)}
-          <div class="tags">${tags.map((tag) => `<span class="tag">#${escapeHtml(tag)}</span>`).join("")}</div>
+          ${venueCoversHtml(view.mapKeys)}
         </div>
       `;
+      bindVenueOpeners(card);
       timeline.append(card);
     });
 
@@ -4351,14 +5087,21 @@ function renderReference(targetId, items) {
   target.innerHTML = "";
   items.forEach((item) => {
     const row = el("article", "reference-item");
+    const profile = venueProfile(item.placeKey);
     row.innerHTML = `
-      <div class="item-title-row">
-        <strong>${escapeHtml(getItemTitle(item))}</strong>
+      <div class="reference-layout">
+        <div class="reference-main">
+          <div class="item-title-row">
+            <strong>${profile ? `<button class="venue-name-button" type="button" data-venue-key="${escapeHtml(item.placeKey)}">${escapeHtml(getItemTitle(item))}</button>` : escapeHtml(getItemTitle(item))}</strong>
+          </div>
+          ${itemDetailsHtml(item)}
+          ${itemMapLinksHtml(item)}
+          ${itemLinksHtml(item)}
+        </div>
+        ${item.placeKey ? venueCoversHtml([item.placeKey], 1) : ""}
       </div>
-      ${itemDetailsHtml(item)}
-      ${itemMapLinksHtml(item)}
-      ${itemLinksHtml(item)}
     `;
+    bindVenueOpeners(row);
     target.append(row);
   });
 }
@@ -4376,13 +5119,16 @@ function renderExtraPlaces() {
     category.items.forEach((item) => {
       const place = places[item.placeKey];
       if (!place) return;
-      const card = el("article", "extra-place-card");
+      const profile = venueProfile(item.placeKey);
+      const card = el("article", `extra-place-card${profile?.closed ? " is-closed-venue" : ""}`);
       card.dataset.search = `${place.title} ${category.category} ${item.note}`.toLowerCase();
       card.dataset.tags = category.tags.join(",");
       card.innerHTML = `
         <p class="extra-place-card__category">${escapeHtml(category.category)}</p>
-        <h4>${escapeHtml(place.title)}</h4>
-        <p>${escapeHtml(item.note)}</p>
+        ${profile?.closed ? `<span class="venue-closed-badge">${escapeHtml(profile.closedLabel || "Больше не работает")}</span>` : ""}
+        <h4>${profile ? `<button class="venue-name-button" type="button" data-venue-key="${escapeHtml(item.placeKey)}">${escapeHtml(place.title)}</button>` : escapeHtml(place.title)}</h4>
+        <p>${escapeHtml(profile?.closed ? profile.description : item.note)}</p>
+        ${profile?.closed ? "" : venueCoversHtml([item.placeKey], 1)}
         <div class="map-actions">
           <a class="map-link" href="${escapeHtml(place.yandex)}" target="_blank" rel="noopener noreferrer">📍 Яндекс Карты</a>
           ${
@@ -4392,6 +5138,7 @@ function renderExtraPlaces() {
           }
         </div>
       `;
+      bindVenueOpeners(card);
       grid.append(card);
     });
 
@@ -4586,6 +5333,7 @@ async function init() {
 
   byId("offlineSave")?.addEventListener("click", saveOfflinePdf);
   setupInstallAppDialog();
+  setupVenueModal();
 }
 
 init();
