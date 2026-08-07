@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-06T10:16:59.372Z",
+  "generatedAt": "2026-08-07T01:53:57.911Z",
   "location": {
     "title": "Площадь Минина и Пожарского",
     "lat": 56.327436,
@@ -14,7 +14,7 @@
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "ovc_-ra",
-        "precipitationProbability": 30,
+        "precipitationProbability": 40,
         "precipitationType": "RAIN",
         "hasRain": true
       },
@@ -22,28 +22,66 @@
         "temperature": 20,
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
-        "icon": "bkn_-ra_d",
-        "precipitationProbability": 50,
-        "precipitationType": "RAIN",
-        "hasRain": true
-      },
-      "evening": {
-        "temperature": 18,
-        "condition": "LIGHT_RAIN",
-        "conditionText": "Небольшой дождь",
-        "icon": "bkn_-ra_n",
+        "icon": "ovc_-ra",
         "precipitationProbability": 60,
         "precipitationType": "RAIN",
         "hasRain": true
       },
-      "night": {
+      "evening": {
         "temperature": 17,
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "ovc_-ra",
-        "precipitationProbability": 20,
+        "precipitationProbability": 50,
         "precipitationType": "RAIN",
         "hasRain": true
+      },
+      "night": {
+        "temperature": 18,
+        "condition": "OVERCAST",
+        "conditionText": "Пасмурно",
+        "icon": "ovc",
+        "precipitationProbability": 0,
+        "precipitationType": "NO_TYPE",
+        "hasRain": false
+      }
+    },
+    "2026-08-13": {
+      "morning": {
+        "temperature": 14,
+        "condition": "LIGHT_RAIN",
+        "conditionText": "Небольшой дождь",
+        "icon": "ovc_-ra",
+        "precipitationProbability": 30,
+        "precipitationType": "RAIN",
+        "hasRain": true
+      },
+      "day": {
+        "temperature": 18,
+        "condition": "LIGHT_RAIN",
+        "conditionText": "Небольшой дождь",
+        "icon": "bkn_-ra_d",
+        "precipitationProbability": 80,
+        "precipitationType": "RAIN",
+        "hasRain": true
+      },
+      "evening": {
+        "temperature": 16,
+        "condition": "LIGHT_RAIN",
+        "conditionText": "Небольшой дождь",
+        "icon": "bkn_-ra_n",
+        "precipitationProbability": 50,
+        "precipitationType": "RAIN",
+        "hasRain": true
+      },
+      "night": {
+        "temperature": 14,
+        "condition": "CLOUDY",
+        "conditionText": "Облачно",
+        "icon": "bkn_n",
+        "precipitationProbability": 0,
+        "precipitationType": "NO_TYPE",
+        "hasRain": false
       }
     }
   }
