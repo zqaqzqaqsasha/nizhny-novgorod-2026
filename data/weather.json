@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-08T14:09:15.727Z",
+  "generatedAt": "2026-08-08T18:57:03.583Z",
   "location": {
     "title": "Площадь Минина и Пожарского",
     "lat": 56.327436,
@@ -11,36 +11,36 @@
     "2026-08-12": {
       "morning": {
         "temperature": 17,
-        "condition": "LIGHT_RAIN",
-        "conditionText": "Небольшой дождь",
-        "icon": "ovc_-ra",
-        "precipitationProbability": 50,
+        "condition": "RAIN",
+        "conditionText": "Дождь",
+        "icon": "ovc_ra",
+        "precipitationProbability": 70,
         "precipitationType": "RAIN",
         "hasRain": true
       },
       "day": {
         "temperature": 20,
-        "condition": "LIGHT_RAIN",
-        "conditionText": "Небольшой дождь",
-        "icon": "ovc_-ra",
-        "precipitationProbability": 60,
+        "condition": "RAIN",
+        "conditionText": "Дождь",
+        "icon": "ovc_ra",
+        "precipitationProbability": 80,
         "precipitationType": "RAIN",
         "hasRain": true
       },
       "evening": {
         "temperature": 17,
-        "condition": "LIGHT_RAIN",
-        "conditionText": "Небольшой дождь",
-        "icon": "bkn_-ra_n",
-        "precipitationProbability": 20,
-        "precipitationType": "RAIN",
-        "hasRain": true
+        "condition": "CLOUDY",
+        "conditionText": "Облачно",
+        "icon": "bkn_n",
+        "precipitationProbability": 0,
+        "precipitationType": "NO_TYPE",
+        "hasRain": false
       },
       "night": {
         "temperature": 18,
-        "condition": "LIGHT_RAIN",
-        "conditionText": "Небольшой дождь",
-        "icon": "bkn_-ra_n",
+        "condition": "RAIN",
+        "conditionText": "Дождь",
+        "icon": "ovc_ra",
         "precipitationProbability": 20,
         "precipitationType": "RAIN",
         "hasRain": true
@@ -49,48 +49,48 @@
     "2026-08-13": {
       "morning": {
         "temperature": 14,
-        "condition": "OVERCAST",
-        "conditionText": "Пасмурно",
-        "icon": "ovc",
-        "precipitationProbability": 0,
-        "precipitationType": "NO_TYPE",
-        "hasRain": false
-      },
-      "day": {
-        "temperature": 17,
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
-        "icon": "bkn_-ra_d",
-        "precipitationProbability": 50,
+        "icon": "ovc_-ra",
+        "precipitationProbability": 70,
+        "precipitationType": "RAIN",
+        "hasRain": true
+      },
+      "day": {
+        "temperature": 16,
+        "condition": "RAIN",
+        "conditionText": "Дождь",
+        "icon": "bkn_ra_d",
+        "precipitationProbability": 70,
         "precipitationType": "RAIN",
         "hasRain": true
       },
       "evening": {
-        "temperature": 14,
-        "condition": "OVERCAST",
-        "conditionText": "Пасмурно",
-        "icon": "ovc",
-        "precipitationProbability": 0,
-        "precipitationType": "NO_TYPE",
-        "hasRain": false
+        "temperature": 13,
+        "condition": "LIGHT_RAIN",
+        "conditionText": "Небольшой дождь",
+        "icon": "ovc_-ra",
+        "precipitationProbability": 30,
+        "precipitationType": "RAIN",
+        "hasRain": true
       },
       "night": {
         "temperature": 13,
-        "condition": "CLOUDY",
-        "conditionText": "Облачно",
-        "icon": "bkn_n",
-        "precipitationProbability": 0,
-        "precipitationType": "NO_TYPE",
-        "hasRain": false
+        "condition": "LIGHT_RAIN",
+        "conditionText": "Небольшой дождь",
+        "icon": "bkn_-ra_n",
+        "precipitationProbability": 20,
+        "precipitationType": "RAIN",
+        "hasRain": true
       }
     },
     "2026-08-14": {
       "morning": {
         "temperature": 11,
-        "condition": "LIGHT_RAIN",
-        "conditionText": "Небольшой дождь",
-        "icon": "ovc_-ra",
-        "precipitationProbability": 50,
+        "condition": "RAIN",
+        "conditionText": "Дождь",
+        "icon": "ovc_ra",
+        "precipitationProbability": 40,
         "precipitationType": "RAIN",
         "hasRain": true
       },
@@ -105,18 +105,18 @@
       },
       "evening": {
         "temperature": 13,
-        "condition": "OVERCAST",
-        "conditionText": "Пасмурно",
-        "icon": "ovc",
-        "precipitationProbability": 0,
-        "precipitationType": "NO_TYPE",
-        "hasRain": false
+        "condition": "RAIN",
+        "conditionText": "Дождь",
+        "icon": "ovc_ra",
+        "precipitationProbability": 60,
+        "precipitationType": "RAIN",
+        "hasRain": true
       },
       "night": {
         "temperature": 11,
-        "condition": "LIGHT_RAIN",
-        "conditionText": "Небольшой дождь",
-        "icon": "ovc_-ra",
+        "condition": "RAIN",
+        "conditionText": "Дождь",
+        "icon": "ovc_ra",
         "precipitationProbability": 30,
         "precipitationType": "RAIN",
         "hasRain": true
