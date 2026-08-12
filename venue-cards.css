@@ -544,6 +544,11 @@ body.venue-dialog-open {
     grid-template-columns: 1fr;
   }
 
+  .event-detail-thumb {
+    width: 100%;
+    max-width: 420px;
+  }
+
   .venue-thumbs {
     justify-content: flex-start;
     max-width: 100%;
