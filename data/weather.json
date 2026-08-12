@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T10:29:39.846Z",
+  "generatedAt": "2026-08-12T12:02:21.742Z",
   "location": {
     "title": "Площадь Минина и Пожарского",
     "lat": 56.327436,
@@ -19,7 +19,7 @@
         "hasRain": true
       },
       "day": {
-        "temperature": 20,
+        "temperature": 18,
         "condition": "RAIN",
         "conditionText": "Дождь",
         "icon": "bkn_ra_d",
@@ -52,7 +52,7 @@
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "ovc_-ra",
-        "precipitationProbability": 40,
+        "precipitationProbability": 30,
         "precipitationType": "RAIN",
         "hasRain": true
       },
@@ -70,7 +70,7 @@
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "ovc_-ra",
-        "precipitationProbability": 90,
+        "precipitationProbability": 80,
         "precipitationType": "RAIN",
         "hasRain": true
       },
@@ -137,7 +137,7 @@
         "condition": "RAIN",
         "conditionText": "Дождь",
         "icon": "ovc_ra",
-        "precipitationProbability": 70,
+        "precipitationProbability": 90,
         "precipitationType": "RAIN",
         "hasRain": true
       },
@@ -151,7 +151,7 @@
         "hasRain": true
       },
       "night": {
-        "temperature": 10,
+        "temperature": 9,
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "ovc_-ra",
