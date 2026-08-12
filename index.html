@@ -494,6 +494,15 @@ input {
   color: currentColor;
 }
 
+.day-nav a.is-past:not(.is-active) {
+  background: color-mix(in srgb, var(--accent) 7%, #fff);
+  color: color-mix(in srgb, var(--ink) 76%, var(--muted));
+}
+
+.day-nav a.is-past:not(.is-active) span {
+  color: currentColor;
+}
+
 .day-nav span {
   color: var(--muted);
   font-size: 12px;
@@ -617,6 +626,82 @@ input {
   display: grid;
   gap: 8px;
   min-width: 210px;
+}
+
+.day-section.is-past .day-heading {
+  margin-bottom: 10px;
+}
+
+.past-day-disclosure {
+  margin-left: 66px;
+  border: 1px solid color-mix(in srgb, var(--accent) 34%, var(--line));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent) 5%, #fff);
+  overflow: clip;
+}
+
+.past-day-disclosure__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 48px;
+  padding: 10px 14px;
+  color: var(--ink);
+  cursor: pointer;
+  font-weight: 900;
+  list-style: none;
+}
+
+.past-day-disclosure__summary::-webkit-details-marker {
+  display: none;
+}
+
+.past-day-disclosure__summary::before {
+  content: "✓";
+  flex: 0 0 auto;
+  color: var(--accent);
+  font-size: 18px;
+}
+
+.past-day-disclosure__label {
+  flex: 1 1 auto;
+}
+
+.past-day-disclosure__action {
+  flex: 0 0 auto;
+  color: var(--blue);
+  font-size: 13px;
+}
+
+.past-day-disclosure__summary:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 58%, #fff);
+  outline-offset: -3px;
+}
+
+.past-day-disclosure__content {
+  padding: 0 14px 14px;
+  border-top: 1px solid color-mix(in srgb, var(--accent) 22%, var(--line));
+  background: #fff;
+}
+
+.past-day-disclosure__context {
+  display: grid;
+  gap: 8px;
+  padding-top: 14px;
+}
+
+.past-day-disclosure__context:empty {
+  display: none;
+}
+
+.past-day-disclosure__context .day-heading__controls {
+  width: min(100%, 420px);
+}
+
+.past-day-disclosure__content .day-weather {
+  margin-left: 0;
+  margin-top: 14px;
 }
 
 .day-notice,
@@ -1380,6 +1465,25 @@ body.event-detail-open { overflow: hidden; }
 
   .day-heading {
     grid-template-columns: auto 1fr;
+  }
+
+  .past-day-disclosure {
+    margin-left: 0;
+  }
+
+  .past-day-disclosure__summary {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    padding: 10px 12px;
+  }
+
+  .past-day-disclosure__label {
+    min-width: 0;
+  }
+
+  .past-day-disclosure__action {
+    margin-left: 28px;
   }
 
   .day-weather {
@@ -3251,6 +3355,10 @@ const state = {
   weather: {},
 };
 
+const pastDayDisclosureState = new Map();
+let currentMoscowDateISO = "";
+let moscowMidnightTimer = 0;
+
 let daySectionObserver = null;
 let activeDayId = "";
 let dayNavPointerActive = false;
@@ -3258,6 +3366,45 @@ let dayNavPointerStartScrollLeft = 0;
 let dayNavAutoScrolling = false;
 let dayNavAutoPauseUntil = 0;
 let dayNavClickLockUntil = 0;
+
+function moscowDateParts(value = new Date()) {
+  const formatter = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Moscow",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hourCycle: "h23",
+  });
+  return Object.fromEntries(
+    formatter
+      .formatToParts(value)
+      .filter((part) => part.type !== "literal")
+      .map((part) => [part.type, part.value]),
+  );
+}
+
+function getMoscowDateISO(value = new Date()) {
+  const parts = moscowDateParts(value);
+  return `${parts.year}-${parts.month}-${parts.day}`;
+}
+
+function resolveMoscowDateISO() {
+  const queryDate = new URLSearchParams(window.location.search).get("test-date");
+  return /^2026-08-(?:11|12|13|14|17|18)$/.test(queryDate || "") ? queryDate : getMoscowDateISO();
+}
+
+function isPastTripDay(day, todayISO = currentMoscowDateISO || getMoscowDateISO()) {
+  return Boolean(day?.dateISO && day.dateISO < todayISO);
+}
+
+function millisecondsUntilNextMoscowMidnight(value = new Date()) {
+  const parts = moscowDateParts(value);
+  const elapsed = ((Number(parts.hour) * 60 + Number(parts.minute)) * 60 + Number(parts.second)) * 1000 + value.getMilliseconds();
+  return Math.max(1000, 24 * 60 * 60 * 1000 - elapsed + 1000);
+}
 
 function isValidWeatherPayload(payload) {
   return Boolean(payload && typeof payload === "object" && payload.days && typeof payload.days === "object");
@@ -4330,6 +4477,7 @@ function renderDayNav() {
     const shortDate = date.replace("августа", "авг.");
     link.setAttribute("aria-label", day.date);
     link.title = day.date;
+    link.classList.toggle("is-past", isPastTripDay(day));
     link.innerHTML = `
       <span class="day-nav__full">${escapeHtml(date)}</span>
       <span class="day-nav__full">${escapeHtml(day.icon)} ${escapeHtml(weekday)}</span>
@@ -4337,7 +4485,9 @@ function renderDayNav() {
     `;
     link.addEventListener("click", () => {
       dayNavClickLockUntil = Date.now() + 1800;
+      revealPastDay(day.id, { remember: true });
       setActiveDay(day.id, true);
+      window.setTimeout(() => byId(day.id)?.scrollIntoView({ block: "start" }), 0);
     });
     nav.append(link);
   });
@@ -4512,6 +4662,68 @@ function renderDayWeather(day) {
   return panel;
 }
 
+function updatePastDayDisclosureLabel(details) {
+  const action = details?.querySelector(".past-day-disclosure__action");
+  if (action) action.textContent = details.open ? "Скрыть расписание" : "Показать расписание";
+}
+
+function setPastDayDisclosureOpen(details, open, { remember = false } = {}) {
+  if (!details) return;
+  const dayId = details.dataset.dayId;
+  if (remember && dayId) pastDayDisclosureState.set(dayId, { open });
+  if (details.open !== open) details.open = open;
+  updatePastDayDisclosureLabel(details);
+}
+
+function revealPastDay(dayId, { remember = false, scroll = false } = {}) {
+  const section = byId(dayId);
+  const details = section?.querySelector(".past-day-disclosure");
+  if (!details) return false;
+  setPastDayDisclosureOpen(details, true, { remember });
+  if (scroll) {
+    window.requestAnimationFrame(() => section.scrollIntoView({ block: "start" }));
+  }
+  return true;
+}
+
+function revealPastDayFromHash() {
+  const dayId = window.location.hash.slice(1);
+  if (!dayId || !days.some((day) => day.id === dayId)) return;
+  revealPastDay(dayId, { remember: true, scroll: true });
+}
+
+function syncPastDayDisclosuresWithFilters() {
+  const filterActive = Boolean(state.query.trim()) || state.activeTag !== "all";
+  document.querySelectorAll(".past-day-disclosure").forEach((details) => {
+    const hasVisibleMatch = Boolean(details.querySelector(".event-card:not(.is-hidden)"));
+    const dayId = details.dataset.dayId;
+    if (filterActive && hasVisibleMatch) {
+      setPastDayDisclosureOpen(details, true);
+      return;
+    }
+    setPastDayDisclosureOpen(details, pastDayDisclosureState.get(dayId)?.open === true);
+  });
+}
+
+function refreshTripDayState(todayISO = resolveMoscowDateISO(), { resetDisclosureState = false } = {}) {
+  currentMoscowDateISO = todayISO;
+  if (resetDisclosureState) {
+    pastDayDisclosureState.clear();
+  }
+  renderDayNav();
+  renderDays();
+  applyFilters();
+  revealPastDayFromHash();
+}
+
+function scheduleMoscowDateRefresh() {
+  window.clearTimeout(moscowMidnightTimer);
+  moscowMidnightTimer = window.setTimeout(() => {
+    refreshTripDayState(resolveMoscowDateISO());
+    scheduleMoscowDateRefresh();
+  }, millisecondsUntilNextMoscowMidnight());
+}
+
 function renderDays() {
   const container = byId("days");
   container.innerHTML = "";
@@ -4522,6 +4734,8 @@ function renderDays() {
     const section = el("section", "day-section");
     section.id = day.id;
     section.style.setProperty("--accent", day.accent);
+    const past = isPastTripDay(day);
+    section.classList.toggle("is-past", past);
 
     const heading = el("div", "day-heading");
     heading.innerHTML = `
@@ -4602,7 +4816,43 @@ function renderDays() {
       timeline.append(card);
     });
 
-    section.append(heading, renderDayWeather(day), timeline);
+    const weatherPanel = renderDayWeather(day);
+    if (past) {
+      const details = el("details", "past-day-disclosure");
+      details.dataset.dayId = day.id;
+      const storedDisclosureState = pastDayDisclosureState.get(day.id);
+      details.open = storedDisclosureState?.open === true;
+
+      const summary = el("summary", "past-day-disclosure__summary");
+      summary.innerHTML = `
+        <span class="past-day-disclosure__label">Прошедший день</span>
+        <span class="past-day-disclosure__action">${details.open ? "Скрыть расписание" : "Показать расписание"}</span>
+      `;
+
+      const content = el("div", "past-day-disclosure__content");
+      const context = el("div", "past-day-disclosure__context");
+      heading
+        .querySelectorAll(".day-notice, .day-info-card, .weather-note, .day-heading__controls")
+        .forEach((element) => context.append(element));
+      content.append(context, weatherPanel, timeline);
+      details.append(summary, content);
+      details.addEventListener("toggle", () => {
+        updatePastDayDisclosureLabel(details);
+      });
+      summary.addEventListener("click", () => {
+        window.setTimeout(() => {
+          pastDayDisclosureState.set(day.id, { open: details.open });
+        }, 0);
+      });
+      summary.addEventListener("keydown", (event) => {
+        if (!["Enter", " "].includes(event.key)) return;
+        event.preventDefault();
+        setPastDayDisclosureOpen(details, !details.open, { remember: true });
+      });
+      section.append(heading, details);
+    } else {
+      section.append(heading, weatherPanel, timeline);
+    }
     container.append(section);
   });
   setupDayNavigationSync();
@@ -4749,6 +4999,7 @@ function applyFilters() {
   document.querySelectorAll(".extra-category").forEach((category) => {
     category.hidden = !category.querySelector(".extra-place-card:not([hidden])");
   });
+  syncPastDayDisclosuresWithFilters();
 }
 
 function setupResponsiveDisclosures() {
@@ -4878,8 +5129,7 @@ async function init() {
 
   renderSummary();
   renderFilters();
-  renderDayNav();
-  renderDays();
+  refreshTripDayState(resolveMoscowDateISO());
   renderChecklist("prepList", prepItems, "prep");
   renderPackingList("packingList", packingItems);
   renderReference("bookingList", bookingItems);
@@ -4888,6 +5138,8 @@ async function init() {
   setupResponsiveDisclosures();
   setupVenueCards();
   setupEventDetails();
+  window.addEventListener("hashchange", revealPastDayFromHash);
+  scheduleMoscowDateRefresh();
 
   byId("searchInput").addEventListener("input", (event) => {
     state.query = event.target.value;
