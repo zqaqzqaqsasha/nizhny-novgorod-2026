@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T19:30:13.645Z",
+  "generatedAt": "2026-08-12T21:06:35.165Z",
   "location": {
     "title": "Площадь Минина и Пожарского",
     "lat": 56.327436,
@@ -8,56 +8,18 @@
   "source": "Яндекс Погода",
   "sourceUrl": "https://yandex.ru/pogoda/nizhny-novgorod",
   "days": {
-    "2026-08-12": {
-      "morning": {
-        "temperature": 16,
-        "condition": "RAIN",
-        "conditionText": "Дождь",
-        "icon": "ovc_ra",
-        "precipitationProbability": 90,
-        "precipitationType": "RAIN",
-        "hasRain": true
-      },
-      "day": {
-        "temperature": 19,
-        "condition": "RAIN",
-        "conditionText": "Дождь",
-        "icon": "bkn_ra_d",
-        "precipitationProbability": 90,
-        "precipitationType": "RAIN",
-        "hasRain": true
-      },
-      "evening": {
-        "temperature": 17,
-        "condition": "LIGHT_RAIN",
-        "conditionText": "Небольшой дождь",
-        "icon": "bkn_-ra_n",
-        "precipitationProbability": 90,
-        "precipitationType": "RAIN",
-        "hasRain": true
-      },
-      "night": {
-        "temperature": 16,
-        "condition": "LIGHT_RAIN",
-        "conditionText": "Небольшой дождь",
-        "icon": "ovc_-ra",
-        "precipitationProbability": 40,
-        "precipitationType": "RAIN",
-        "hasRain": true
-      }
-    },
     "2026-08-13": {
       "morning": {
         "temperature": 13,
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "ovc_-ra",
-        "precipitationProbability": 40,
+        "precipitationProbability": 30,
         "precipitationType": "RAIN",
         "hasRain": true
       },
       "day": {
-        "temperature": 16,
+        "temperature": 15,
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "ovc_-ra",
@@ -70,12 +32,12 @@
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "ovc_-ra",
-        "precipitationProbability": 90,
+        "precipitationProbability": 60,
         "precipitationType": "RAIN",
         "hasRain": true
       },
       "night": {
-        "temperature": 12,
+        "temperature": 11,
         "condition": "PARTLY_CLOUDY",
         "conditionText": "Малооблачно",
         "icon": "skc_n",
@@ -95,7 +57,7 @@
         "hasRain": true
       },
       "day": {
-        "temperature": 9,
+        "temperature": 10,
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "ovc_-ra",
@@ -104,7 +66,7 @@
         "hasRain": true
       },
       "evening": {
-        "temperature": 9,
+        "temperature": 10,
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "ovc_-ra",
@@ -162,7 +124,7 @@
     },
     "2026-08-16": {
       "morning": {
-        "temperature": 11,
+        "temperature": 12,
         "condition": "OVERCAST",
         "conditionText": "Пасмурно",
         "icon": "ovc",
@@ -171,10 +133,10 @@
         "hasRain": false
       },
       "day": {
-        "temperature": 15,
+        "temperature": 16,
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
-        "icon": "bkn_-ra_d",
+        "icon": "ovc_-ra",
         "precipitationProbability": 20,
         "precipitationType": "RAIN",
         "hasRain": true
@@ -190,17 +152,17 @@
       },
       "night": {
         "temperature": 10,
-        "condition": "OVERCAST",
-        "conditionText": "Пасмурно",
-        "icon": "ovc",
-        "precipitationProbability": 0,
-        "precipitationType": "NO_TYPE",
-        "hasRain": false
+        "condition": "LIGHT_RAIN",
+        "conditionText": "Небольшой дождь",
+        "icon": "ovc_-ra",
+        "precipitationProbability": 50,
+        "precipitationType": "RAIN",
+        "hasRain": true
       }
     },
     "2026-08-17": {
       "morning": {
-        "temperature": 15,
+        "temperature": 14,
         "condition": "RAIN",
         "conditionText": "Дождь",
         "icon": "ovc_ra",
@@ -212,13 +174,13 @@
         "temperature": 19,
         "condition": "RAIN",
         "conditionText": "Дождь",
-        "icon": "bkn_ra_d",
+        "icon": "ovc_ra",
         "precipitationProbability": 30,
         "precipitationType": "RAIN",
         "hasRain": true
       },
       "evening": {
-        "temperature": 19,
+        "temperature": 18,
         "condition": "RAIN",
         "conditionText": "Дождь",
         "icon": "bkn_ra_n",
