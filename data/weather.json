@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T12:02:21.742Z",
+  "generatedAt": "2026-08-12T13:51:57.817Z",
   "location": {
     "title": "Площадь Минина и Пожарского",
     "lat": 56.327436,
@@ -19,7 +19,7 @@
         "hasRain": true
       },
       "day": {
-        "temperature": 18,
+        "temperature": 19,
         "condition": "RAIN",
         "conditionText": "Дождь",
         "icon": "bkn_ra_d",
@@ -28,7 +28,7 @@
         "hasRain": true
       },
       "evening": {
-        "temperature": 17,
+        "temperature": 16,
         "condition": "PARTLY_CLOUDY",
         "conditionText": "Малооблачно",
         "icon": "skc_n",
@@ -52,7 +52,7 @@
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "ovc_-ra",
-        "precipitationProbability": 30,
+        "precipitationProbability": 40,
         "precipitationType": "RAIN",
         "hasRain": true
       },
@@ -70,7 +70,7 @@
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "ovc_-ra",
-        "precipitationProbability": 80,
+        "precipitationProbability": 90,
         "precipitationType": "RAIN",
         "hasRain": true
       },
@@ -95,7 +95,7 @@
         "hasRain": true
       },
       "day": {
-        "temperature": 10,
+        "temperature": 9,
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "ovc_-ra",
@@ -113,7 +113,7 @@
         "hasRain": true
       },
       "night": {
-        "temperature": 9,
+        "temperature": 10,
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "bkn_-ra_n",
@@ -151,7 +151,7 @@
         "hasRain": true
       },
       "night": {
-        "temperature": 9,
+        "temperature": 10,
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "ovc_-ra",
@@ -190,12 +190,12 @@
       },
       "night": {
         "temperature": 10,
-        "condition": "LIGHT_RAIN",
-        "conditionText": "Небольшой дождь",
-        "icon": "ovc_-ra",
-        "precipitationProbability": 20,
-        "precipitationType": "RAIN",
-        "hasRain": true
+        "condition": "OVERCAST",
+        "conditionText": "Пасмурно",
+        "icon": "ovc",
+        "precipitationProbability": 0,
+        "precipitationType": "NO_TYPE",
+        "hasRain": false
       }
     },
     "2026-08-17": {
