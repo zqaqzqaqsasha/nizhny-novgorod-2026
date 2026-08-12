@@ -637,14 +637,6 @@ input {
   border: 1px solid var(--line);
 }
 
-.fiesta-mode-note {
-  max-width: 820px;
-  padding: 9px 11px;
-  border-left: 4px solid var(--accent);
-  background: #fff7f7;
-  color: var(--ink) !important;
-}
-
 .day-info-card {
   display: grid;
   gap: 2px;
@@ -665,8 +657,7 @@ input {
   font-size: 14px;
 }
 
-.weather-toggle,
-.fiesta-toggle {
+.weather-toggle {
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-width: 210px;
@@ -676,8 +667,7 @@ input {
   background: #fff;
 }
 
-.weather-toggle button,
-.fiesta-toggle button {
+.weather-toggle button {
   min-height: 34px;
   padding: 7px 10px;
   border: 0;
@@ -688,14 +678,9 @@ input {
   cursor: pointer;
 }
 
-.weather-toggle button.is-active,
-.fiesta-toggle button.is-active {
+.weather-toggle button.is-active {
   background: var(--accent);
   color: #fff;
-}
-
-.fiesta-toggle {
-  min-width: 330px;
 }
 
 .timeline {
@@ -714,6 +699,41 @@ input {
   background: #fff;
   box-shadow: 0 8px 20px rgba(25, 33, 48, 0.04);
 }
+
+.event-detail-thumb {
+  width: min(220px, 28vw);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.event-detail-thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.event-detail-thumb span {
+  display: block;
+  padding: 7px 9px;
+  color: var(--ink);
+  font-weight: 850;
+}
+
+.event-detail-modal[hidden] { display: none; }
+.event-detail-modal { position: fixed; inset: 0; z-index: 120; display: grid; place-items: center; padding: 20px; }
+.event-detail-modal__backdrop { position: absolute; inset: 0; background: rgba(15, 23, 42, .72); }
+.event-detail-card { position: relative; z-index: 1; width: min(760px, 100%); max-height: calc(100vh - 40px); overflow: auto; border-radius: 18px; background: #fff; box-shadow: 0 24px 80px rgba(15, 23, 42, .35); }
+.event-detail-card__image { display: block; width: 100%; max-height: 430px; object-fit: cover; background: #edf1f5; }
+.event-detail-card__body { display: grid; gap: 12px; padding: 24px; }
+.event-detail-card__body h2 { margin: 0; font-size: clamp(24px, 5vw, 38px); line-height: 1.08; }
+.event-detail-card__eyebrow { margin: 0; color: var(--muted); font-weight: 900; text-transform: uppercase; letter-spacing: .04em; }
+.event-detail-card__meta, .event-detail-card__copy { margin: 0; color: var(--ink); line-height: 1.55; }
+body.event-detail-open { overflow: hidden; }
 
 .event-card.is-hidden {
   display: none;
@@ -1409,11 +1429,6 @@ input {
     width: 100%;
   }
 
-  .fiesta-toggle {
-    width: 100%;
-    min-width: 0;
-  }
-
   .event-time {
     white-space: normal;
   }
@@ -1464,7 +1479,7 @@ input {
 }
 
     </style>
-    <link rel="stylesheet" href="./venue-cards.css?v=3" />
+    <link rel="stylesheet" href="./venue-cards.css?v=5" />
   </head>
   <body>
     <header class="hero" id="top">
@@ -1766,8 +1781,17 @@ input {
       </section>
     </div>
 
-    <script src="./venue-cards-data.js?v=3"></script>
-    <script src="./venue-cards.js?v=3"></script>
+    <div class="event-detail-modal" id="eventDetailModal" hidden>
+      <div class="event-detail-modal__backdrop" data-event-detail-close></div>
+      <section class="event-detail-card" role="dialog" aria-modal="true" aria-labelledby="eventDetailTitle" tabindex="-1">
+        <button class="venue-card__close" type="button" aria-label="Закрыть подробности события" data-event-detail-close>×</button>
+        <img class="event-detail-card__image" id="eventDetailImage" alt="" decoding="async" />
+        <div class="event-detail-card__body" id="eventDetailBody"></div>
+      </section>
+    </div>
+
+    <script src="./venue-cards-data.js?v=5"></script>
+    <script src="./venue-cards.js?v=5"></script>
     <script>
 let tags = [
   "еда",
@@ -1788,6 +1812,10 @@ let tags = [
   "на улице",
   "логистика",
   "теплоход",
+  "живая очередь",
+  "парфюмерия",
+  "локальный бренд",
+  "магазин",
 ];
 
 const tricountUrl = "https://tricount.com/toVVuhWmjLHqRaYsSe";
@@ -1801,6 +1829,30 @@ const nizhny800StoreUrl = "https://store.nizhny800.ru";
 const arsenalUrl = "https://arsenal-museum.art";
 const vazariUrl = "https://arsenal-museum.art/magazin/";
 const volgaRegattaUrl = "https://nn-afisha.ru/products/volzhskaya-regata-2026";
+const kremlinTicketsUrl = "https://disk.360.yandex.ru/i/rpoq3AOB2I-djw";
+const pakgauzyTicketLinks = [
+  { title: "Билет Сони", url: "https://disk.360.yandex.ru/i/hhMeqbDrJctDZg" },
+  { title: "Билет Евгения", url: "https://disk.360.yandex.ru/i/_3FzDRjxaJulKQ" },
+  { title: "Билет Александра", url: "https://disk.360.yandex.ru/i/RWXVuqfv6rcNag" },
+  { title: "Билет Полины", url: "https://disk.360.yandex.ru/i/CfwP9pnxf5liig" },
+];
+const eventDetails = {
+  polnalyubvi: {
+    eyebrow: "Музыка балконов · 15 августа · 17:00",
+    title: "Музыка балконов. Великие реки",
+    artist: "Марина Демещенко / polnalyubvi",
+    location: "Балкон исторического здания Нижегородской семинарии, пл. Минина и Пожарского, 7",
+    description: "Акустическая программа polnalyubvi в рамках фестиваля «Музыка балконов». Выступление пройдет на балконе исторического здания Нижегородской семинарии.",
+    note: "Городское выступление под открытым небом. Заранее проверяем возможные ограничения движения в День города и приходим с запасом времени.",
+    cover320: "./assets/events/polnalyubvi/cover-320.webp",
+    cover640: "./assets/events/polnalyubvi/cover-640.webp",
+    full: "./assets/events/polnalyubvi/detail.webp",
+    links: [
+      { title: "Открыть карту", url: "https://yandex.ru/maps/-/CTS0FXmq" },
+      { title: "Организатор во ВКонтакте", url: "https://vk.ru/club135720406" },
+    ],
+  },
+};
 
 const places = {
   fonda: {
@@ -2062,7 +2114,15 @@ const places = {
   },
   gusVYablokah: {
     title: "Гусь в яблоках",
-    yandex: "https://yandex.ru/maps/?text=Гусь%20в%20яблоках%20Нижний%20Новгород",
+    address: "Рождественская ул., 17, Нижний Новгород",
+    yandex: "https://yandex.ru/maps/-/CTCxfT9V",
+    site: "https://gooserest.ru/",
+  },
+  kustarnik: {
+    title: "Кустарник",
+    address: "Нижний Новгород",
+    yandex: "https://yandex.ru/maps/-/CTS1zS8w",
+    site: "https://kustarnik.store",
   },
   samovarDaUtki: {
     title: "Самовар да утки",
@@ -2141,7 +2201,6 @@ const extraPlaces = [
       { placeKey: "redWall", note: "Ресторан из запасного списка для корректировки маршрута. Актуальные условия посещения лучше проверить заранее." },
       { placeKey: "brera", note: "Альтернативный ресторанный вариант вне основного расписания. Рассматривать только при изменении планов." },
       { placeKey: "negroni", note: "Запасной ресторанный вариант для свободного окна. Перед посещением проверить актуальный режим работы." },
-      { placeKey: "gusVYablokah", note: "Дополнительный вариант ресторана при изменении гастрономического плана поездки." },
       { placeKey: "samovarDaUtki", note: "Ресторан из резервного списка. Подойдет только если появится свободное время и точка будет удобна по маршруту." },
       { placeKey: "krasa", note: "Дополнительная ресторанная точка вне основного расписания. Перед посещением проверить актуальную информацию." },
       { placeKey: "citadel", note: "Запасной ресторанный вариант на случай изменения маршрута или неудобной логистики основных заведений." },
@@ -2162,6 +2221,16 @@ const extraPlaces = [
     items: [
       { placeKey: "mixturaBar", note: "Дополнительный вечерний вариант вне основного расписания. Актуальные условия посещения лучше проверить заранее." },
       { placeKey: "scladclub", note: "Архивная запись: заведение больше не работает и не предлагается для маршрута или бронирования." },
+    ],
+  },
+  {
+    category: "Локальные бренды и магазины",
+    tags: ["парфюмерия", "локальный бренд", "сувениры", "магазин", "в помещении"],
+    items: [
+      {
+        placeKey: "kustarnik",
+        note: "Нижегородский парфюмерный дом с авторскими ароматами, косметикой и предметами для дома. Подходит для знакомства с локальным брендом и выбора необычного сувенира.",
+      },
     ],
   },
   {
@@ -2194,6 +2263,8 @@ const placeAliases = [
   ["cafe38", ["кафе 38"]],
   ["pinci", ["pinci"]],
   ["ceylon", ["цейлон"]],
+  ["gusVYablokah", ["гусь в яблоках"]],
+  ["kustarnik", ["кустарник", "парфюмерный дом"]],
   ["seledkaCoffee", ["селедка и кофе"]],
   ["mayar", ["mayar"]],
   ["skuratov", ["skuratov coffee", "skuratov"]],
@@ -2227,7 +2298,7 @@ let days = [
         title: "Поезд: Москва → Нижний Новгород",
         note: "Прибытие на Московский вокзал в Нижнем Новгороде.",
         tags: ["поезд", "логистика"],
-        links: [{ title: "Открыть билет", url: trainTicketUrl }],
+        links: [{ title: "Открыть билеты", url: trainTicketUrl }],
       },
       {
         time: "14:40-15:20",
@@ -2266,10 +2337,20 @@ let days = [
       {
         time: "19:00-20:00",
         title: "🍽 Si, Mamma",
-        note: "Ужин на Рождественской, 24. Нужно забронировать заранее.",
-        tags: ["еда", "бронь"],
+        note: "Ужин на Рождественской, 24. Столы не бронируют — посадка в порядке живой очереди.",
+        tags: ["еда", "живая очередь", "в помещении"],
         mapKeys: ["siMamma"],
         venueKey: "siMamma",
+        options: [
+          {
+            title: "Запасной вариант: «Гусь в яблоках»",
+            note: "Если в Si, Mamma большая очередь, переходим в ресторан «Гусь в яблоках» на Рождественской, 17. Это запасной вариант на той же улице без отдельного переезда.",
+            tags: ["еда", "запас", "живая очередь", "в помещении"],
+            mapKeys: ["gusVYablokah"],
+            venueKey: "gusVYablokah",
+            links: [{ title: "Открыть официальный сайт", url: places.gusVYablokah.site }],
+          },
+        ],
       },
       {
         time: "20:00-21:00",
@@ -2286,11 +2367,11 @@ let days = [
       {
         time: "21:00-22:30",
         title: "🍸 Медные Трубы",
-        note: "Один из лучших коктейльных баров России. Посещение только по предварительной брони.",
-        tags: ["бар", "бронь"],
+        note: "Один из лучших коктейльных баров России. Стол забронирован на 12 августа.",
+        tags: ["бар", "в помещении"],
         mapKeys: ["mednyeTruby"],
         venueKey: "mednyeTruby",
-        links: [{ title: "Забронировать в Медных Трубах", url: places.mednyeTruby.site }],
+        links: [{ title: "Открыть официальный сайт", url: places.mednyeTruby.site }],
       },
       {
         time: "После 22:30",
@@ -2350,10 +2431,16 @@ let days = [
         note: "Круговой маршрут по кремлевской стене: начинаем и завершаем прогулку примерно в одной части Кремля.",
         tags: ["фото", "бронь"],
         mapKeys: ["kremlinMuseum"],
-        links: [{ title: "Купить билет в Кремль", url: kremlinRouteTicketUrl }],
+        links: [
+          { title: "Открыть билеты", url: kremlinTicketsUrl },
+          { title: "Официальная страница маршрута", url: kremlinRouteTicketUrl },
+        ],
         rain: {
           note: "При небольшом дожде круговой маршрут по стенам можно оставить. При сильном дожде сокращаем открытые переходы и переносим акцент на музей, кафе или более короткий маршрут.",
-          links: [{ title: "Купить билет в Кремль", url: kremlinRouteTicketUrl }],
+          links: [
+            { title: "Открыть билеты", url: kremlinTicketsUrl },
+            { title: "Официальная страница маршрута", url: kremlinRouteTicketUrl },
+          ],
         },
       },
       {
@@ -2415,8 +2502,8 @@ let days = [
       {
         time: "18:00-19:15",
         title: "🍽 Пяткинъ",
-        note: "Русская кухня, плотный ужин. Бронь заранее. Чтобы без спешки успеть к закату, ближе к 19:00 просим счет и выходим не позднее 19:15.",
-        tags: ["еда", "бронь"],
+        note: "Русская кухня, плотный ужин. Стол забронирован на 13 августа. Чтобы без спешки успеть к закату, ближе к 19:00 просим счет и выходим не позднее 19:15.",
+        tags: ["еда", "в помещении"],
         mapKeys: ["pyatkin"],
         venueKey: "pyatkin",
       },
@@ -2492,8 +2579,8 @@ let days = [
       {
         time: "11:00-12:30",
         title: "☕🍽 Бистро 9/18",
-        note: "Кофейня и бистро в центре Нижнего, около Кремля. Еда, кофе и десерты; из окон открываются красивые виды. В меню есть завтраки, обеды и ужины, а кофе готовят при посетителях. Возможность и способ бронирования уточнить заранее.",
-        tags: ["еда", "кофе", "бронь"],
+        note: "Кофейня и бистро в центре Нижнего, около Кремля. Еда, кофе и десерты; из окон открываются красивые виды. Приходим без предварительной брони, посадка — в порядке живой очереди.",
+        tags: ["еда", "кофе", "живая очередь", "в помещении"],
         mapKeys: ["bistro918"],
         venueKey: "bistro918",
       },
@@ -2571,19 +2658,19 @@ let days = [
         note: "Ключевые видовые точки поездки и выставка «Великая Всероссийская» в Пакгаузах: про Всероссийскую промышленную и художественную выставку 1896 года, одно из главных событий в истории города. Билет — 500 ₽; дни работы проверить ближе к поездке, время работы выставки — 11:00-19:00.",
         tags: ["фото", "пешком"],
         mapKeys: ["yarmarka", "strelka", "alexanderNevsky", "pakgauzy"],
-        links: [{ title: "Купить билет на выставку", url: velikayaVserossiyskayaUrl }],
+        links: [...pakgauzyTicketLinks, { title: "Официальная страница выставки", url: velikayaVserossiyskayaUrl }],
         rain: {
           title: "📷 Ярмарка, собор Александра Невского и Пакгаузы",
           note: "При дожде сокращаем открытую часть у воды и оставляем закрытую выставку «Великая Всероссийская» в Пакгаузах как главный якорь блока.",
           mapKeys: ["yarmarka", "alexanderNevsky", "pakgauzy"],
-          links: [{ title: "Купить билет на выставку", url: velikayaVserossiyskayaUrl }],
+          links: [...pakgauzyTicketLinks, { title: "Официальная страница выставки", url: velikayaVserossiyskayaUrl }],
         },
       },
       {
         time: "18:00-19:15",
         title: "🍽 Самоварная",
-        note: "Самоварная — ресторан русской кухни; блюда готовят по старинным рецептам, восстановленным по архивным материалам и книгам о ресторанах Нижегородской ярмарки. Стол на 18:00 лучше забронировать заранее.",
-        tags: ["еда", "запас", "бронь"],
+        note: "Самоварная — ресторан русской кухни; блюда готовят по старинным рецептам, восстановленным по архивным материалам и книгам о ресторанах Нижегородской ярмарки. Стол забронирован на 14 августа, 18:00.",
+        tags: ["еда", "запас", "в помещении"],
         mapKeys: ["samovarnaya"],
         venueKey: "samovarnaya",
       },
@@ -2620,136 +2707,38 @@ let days = [
     icon: "🟥",
     date: "15 августа, суббота",
     title: "Приволжская фиеста и День города",
-    summary: "Два варианта дня: полный сценарий с ранним стартом или спокойное начало, Волжская регата, День города и вечерняя программа фиесты.",
-    notice: "План предварительный и будет скорректирован после публикации официальной программы Приволжской фиесты. 15 августа — День города Нижнего Новгорода. Официальную программу, площадки и возможные ограничения движения нужно проверить ближе к поездке. При переносе Фиесты маршруты соответствующих дней поменяем местами.",
+    summary: "День города, Волжская регата, обед в Pinci, концерт polnalyubvi, первый вечерний полет Фиесты и концерт Олега Газманова.",
+    notice: "15 августа — День города Нижнего Новгорода. Из-за неблагоприятной погоды первый полет Приволжской фиесты запланирован только вечером; точное время и площадку подтверждает организатор. 16 и 17 августа заявлены полеты утром и перед закатом, но отдельными событиями маршрута они не добавлены.",
     weatherToggle: false,
-    fiestaModeNote: "Утренняя программа фиесты требует очень раннего подъема. Можно выбрать полный сценарий с утренними полетами либо более спокойный вариант только с дневной и вечерней программой.",
-    fiestaModes: {
-      early: { label: "С ранним подъемом" },
-      relaxed: {
-        label: "Без раннего подъема",
-        events: [
-          {
-            time: "10:00-11:00",
-            title: "Поздний подъем и завтрак",
-            note: "Поздний подъем и завтрак в отеле или рядом. Новое обязательное заведение не назначаем.",
-            tags: ["еда", "запас"],
-          },
-          {
-            time: "11:00-12:00",
-            title: "Спокойное начало дня и подготовка к выезду",
-            note: "Проверяем актуальную площадку фиесты и регаты, собираемся и планируем дорогу без спешки.",
-            tags: ["фиеста", "регата", "логистика", "запас"],
-          },
-          {
-            time: "Время уточняется",
-            title: "⛵ Волжская регата — 2026",
-            note: "Соревнования профессионалов и любителей парусного спорта в акватории Волги и Оки. Посещение бесплатное. Точное время и удобную точку просмотра проверяем после публикации программы.",
-            tags: ["регата", "фото", "запас"],
-            links: [{ title: "Открыть страницу регаты", url: volgaRegattaUrl }],
-          },
-          {
-            time: "12:00-15:30",
-            title: "🍽 Обед в Pinci",
-            note: "Основной вариант обеда при возвращении в центр. После уточнения площадки Фиесты, программы регаты и Дня города выбранное время лучше забронировать.",
-            tags: ["еда", "запас", "в помещении", "бронь"],
-            mapKeys: ["pinci"],
-            venueKey: "pinci",
-            options: [
-              {
-                title: "Цейлон",
-                note: "Азиатское бистро с блюдами, вдохновленными кухнями Шри-Ланки, Индии, Таиланда и Малайзии. При выборе вместо Pinci стол лучше забронировать; одновременно оба заведения не бронируем.",
-                tags: ["еда", "запас", "в помещении", "бронь"],
-                mapKeys: ["ceylon"],
-                venueKey: "ceylon",
-                links: [{ title: "Открыть официальный сайт «Цейлона»", url: places.ceylon.site }],
-              },
-            ],
-          },
-          {
-            time: "15:30-16:00",
-            title: "🚕 Выезд на вечернюю площадку",
-            note: "Ориентируемся на официально объявленную локацию.",
-            tags: ["такси", "фиеста"],
-          },
-          {
-            time: "16:00-21:00",
-            title: "🎈🌅📷 Вечерняя программа и свечение",
-            note: "Полеты, привязные подъемы, подготовка аэростатов и закат.",
-            tags: ["фиеста", "закат", "фото"],
-          },
-          {
-            time: "21:00-00:00",
-            title: "🍸 «Селедка и Кофе» по силам",
-            note: "Вечерний вариант после фиесты при возвращении в центр и наличии сил. Можно зайти на напитки, закуски или поздний ужин. При сильной усталости сразу идем спать.",
-            tags: ["еда", "ночь", "запас", "в помещении"],
-            mapKeys: ["seledkaCoffee"],
-            venueKey: "seledkaCoffee",
-          },
-        ],
-      },
-    },
     weatherNotes: {
       sunny: "Фиеста проводится при подходящей погоде; точный порядок событий сверяем с официальной программой.",
     },
     events: [
       {
-        time: "03:30-04:00",
-        title: "Подъем",
-        note: "Одежду, воду, телефоны, пауэрбанки и перекус подготовить с вечера. Времени пока пугаться не стоит: оно может быть скорректировано по официальной программе. Но обычно старт проходит примерно по такому графику.",
-        tags: ["фиеста", "логистика"],
-      },
-      {
-        time: "Перед выездом",
-        title: "🎈 Бесплатные точки просмотра Фиесты с земли",
-        note: "Смотреть Фиесту с земли можно бесплатно. После публикации площадки и направления полета выбираем одну подходящую точку наблюдения. Это варианты, а не последовательный маршрут: не нужно посещать все места подряд.",
-        tags: ["фиеста", "фото", "запас"],
-        mapKeys: ["fedorovskaya", "chkalovStairs", "strelka", "verkhneVolzhskaya", "shveytsariya"],
-      },
-      {
-        time: "04:00-04:30",
-        title: "🚕 Такси к точке наблюдения",
-        note: "Точку выбираем только по актуальной информации организаторов, площадке и направлению полета.",
-        tags: ["такси", "фиеста"],
-      },
-      {
-        time: "04:30-07:00",
-        title: "🎈📷 Утренний старт аэростатов",
-        note: "Выбираем одну понятную видовую точку. Чкаловская лестница — хороший ориентир для видов и фото, если она ложится в маршрут.",
-        tags: ["фиеста", "фото"],
-        mapKeys: ["chkalovStairs"],
-      },
-      {
-        time: "07:00-08:00",
-        title: "☕ Перекус по ситуации",
-        note: "Кофе и легкий перекус там, где будет удобно по фактической точке фиесты.",
-        tags: ["кофе", "запас"],
-      },
-      {
-        time: "08:00-11:30",
-        title: "🟡 Сон в отеле",
-        note: "Восстановление после раннего подъема.",
-        tags: ["запас"],
+        time: "10:00-11:00",
+        title: "Поздний подъем и завтрак",
+        note: "Спокойно начинаем День города: завтракаем в отеле или рядом, без нового обязательного заведения.",
+        tags: ["еда", "запас"],
       },
       {
         time: "Время уточняется",
         title: "⛵ Волжская регата — 2026",
-        note: "Соревнования профессионалов и любителей парусного спорта в акватории Волги и Оки. Яхты проходят от Борского моста к Чкаловской лестнице. Посещение бесплатное. Точное время и удобную точку просмотра проверяем после публикации программы.",
+        note: "Соревнования профессионалов и любителей парусного спорта в акватории Волги и Оки. Посещение бесплатное. Точное время и удобную точку просмотра сверяем с программой Дня города.",
         tags: ["регата", "фото", "запас"],
         links: [{ title: "Открыть страницу регаты", url: volgaRegattaUrl }],
       },
       {
         time: "12:00-15:30",
         title: "🍽 Обед в Pinci",
-        note: "Основной вариант обеда при возвращении в центр. После уточнения площадки Фиесты, программы регаты и Дня города выбранное время лучше забронировать.",
-        tags: ["еда", "запас", "в помещении", "бронь"],
+        note: "Pinci — стол забронирован на 15 августа. Время обеда сохраняем гибким относительно программы Дня города и регаты.",
+        tags: ["еда", "запас", "в помещении"],
         mapKeys: ["pinci"],
         venueKey: "pinci",
         options: [
           {
-            title: "Цейлон",
-            note: "Азиатское бистро с блюдами, вдохновленными кухнями Шри-Ланки, Индии, Таиланда и Малайзии. При выборе вместо Pinci стол лучше забронировать; одновременно оба заведения не бронируем.",
-            tags: ["еда", "запас", "в помещении", "бронь"],
+            title: "Запасной вариант: Цейлон",
+            note: "Азиатское бистро с блюдами, вдохновленными кухнями Шри-Ланки, Индии, Таиланда и Малайзии. Используем только как запасной вариант вместо Pinci.",
+            tags: ["еда", "запас", "в помещении"],
             mapKeys: ["ceylon"],
             venueKey: "ceylon",
             links: [{ title: "Открыть официальный сайт «Цейлона»", url: places.ceylon.site }],
@@ -2757,21 +2746,32 @@ let days = [
         ],
       },
       {
-        time: "15:30-16:00",
-        title: "🚕 Выезд на вечернюю площадку",
-        note: "Ориентироваться на объявленную локацию.",
-        tags: ["такси", "фиеста"],
+        time: "17:00",
+        title: "🎵 Музыка балконов. Великие реки",
+        note: "Акустическая программа polnalyubvi в рамках фестиваля «Музыка балконов». Выступление пройдет на балконе исторического здания Нижегородской семинарии.",
+        tags: ["музыка", "фото", "на улице"],
+        detailKey: "polnalyubvi",
+        links: [
+          { title: "Открыть карту", url: "https://yandex.ru/maps/-/CTS0FXmq" },
+          { title: "Страница организатора во ВКонтакте", url: "https://vk.ru/club135720406" },
+        ],
       },
       {
-        time: "16:00-21:00",
-        title: "🎈🌅📷 Вечерняя программа и свечение",
-        note: "Полеты, привязные подъемы, подготовка аэростатов и закат.",
-        tags: ["фиеста", "закат", "фото"],
+        time: "Вечером · время уточняется",
+        title: "🎈📷 Первый полет Приволжской фиесты",
+        note: "Из-за неблагоприятной погоды первый полет перенесен на вечер 15 августа. Точное время, площадка и возможность старта зависят от погоды и подтверждения организатора; этот блок может пересекаться с концертной программой Дня города.",
+        tags: ["фиеста", "фото", "запас", "логистика"],
       },
       {
-        time: "21:00-00:00",
+        time: "20:30-21:30",
+        title: "🎤 Концерт Олега Газманова",
+        note: "Концерт в программе Дня города. Проверяем официальную площадку перед выходом и учитываем возможное пересечение с вечерним полетом Фиесты.",
+        tags: ["музыка", "ночь", "на улице", "запас"],
+      },
+      {
+        time: "После 21:30",
         title: "🍸 «Селедка и Кофе» по силам",
-        note: "Вечерний вариант после фиесты при возвращении в центр и наличии сил. Можно зайти на напитки, закуски или поздний ужин. При сильной усталости сразу идем спать.",
+        note: "Необязательный поздний вариант после городской программы при наличии сил. При усталости сразу возвращаемся в отель.",
         tags: ["еда", "ночь", "запас", "в помещении"],
         mapKeys: ["seledkaCoffee"],
         venueKey: "seledkaCoffee",
@@ -2798,8 +2798,8 @@ let days = [
       {
         time: "10:00-11:00",
         title: "🍳 Завтрак в Mayar",
-        note: "Неспешный завтрак в светлом кафе-кондитерской перед дневной программой. Стол на воскресный завтрак лучше забронировать.",
-        tags: ["еда", "кофе", "в помещении", "бронь"],
+        note: "Неспешный завтрак в светлом кафе-кондитерской перед дневной программой. Приходим без предварительной брони.",
+        tags: ["еда", "кофе", "в помещении"],
         mapKeys: ["mayar"],
         venueKey: "mayar",
         links: [{ title: "Открыть официальный сайт Mayar", url: places.mayar.site }],
@@ -2862,8 +2862,8 @@ let days = [
       {
         time: "20:00-21:30",
         title: "🍽 Юла пицца",
-        note: "Бронь заранее. Желательно из-за посадки. У входа есть надпись «Это по любви».",
-        tags: ["еда", "бронь"],
+        note: "Стол забронирован на 16 августа. У входа есть надпись «Это по любви».",
+        tags: ["еда", "в помещении"],
         mapKeys: ["yulaPizza"],
         venueKey: "yulaPizza",
       },
@@ -2954,63 +2954,44 @@ let days = [
 
 const canonicalPrepItems = [
   {
-    title: "Забронировать Si, Mamma на 12 августа.",
-    note: "Телефон: +7 (831) 234-43-07.",
-    status: "не выполнено",
+    id: "pyatkin-booking",
+    title: "Пяткинъ — стол забронирован на 13 августа.",
+    status: "выполнено",
   },
   {
-    title: "Забронировать Пяткинъ на 13 августа.",
-    note: "Телефон: +7 (831) 430-91-83.",
-    status: "не выполнено",
+    id: "mednye-truby-booking",
+    title: "Медные Трубы — стол забронирован на 12 августа.",
+    links: [{ title: "Открыть официальный сайт", url: places.mednyeTruby.site }],
+    status: "выполнено",
   },
   {
-    title: "Забронировать Медные Трубы на 12 августа.",
-    note: "Посещение возможно только по предварительной брони. Лучше забронировать заранее. Телефон: +7 (929) 046-47-50.",
-    links: [{ title: "Забронировать в Медных Трубах", url: places.mednyeTruby.site }],
-    status: "не выполнено",
+    id: "yula-booking",
+    title: "Юла пицца — стол забронирован на 16 августа.",
+    status: "выполнено",
   },
   {
-    title: "Забронировать Юла пицца на 16 августа.",
-    note: "Телефон: +7 (920) 299-06-96.",
-    status: "не выполнено",
-  },
-  {
-    title: "Забронировать Самоварную на 14 августа, 18:00.",
-    note: "Телефон: +7 (831) 224-88-83. Пятничный вечер и ограниченное окно перед закатом — стол лучше забронировать заранее.",
+    id: "samovarnaya-booking",
+    title: "Самоварная — стол забронирован на 14 августа, 18:00.",
     placeKey: "samovarnaya",
     links: [{ title: "Открыть официальную страницу Самоварной", url: places.samovarnaya.site }],
-    status: "не выполнено",
+    status: "выполнено",
   },
   {
-    title: "После публикации программы Фиесты и Дня города выбрать Pinci или Цейлон и забронировать один стол на 15 августа.",
-    note: "Основной вариант — Pinci, запасной — Цейлон. Одновременно бронировать оба заведения не нужно. Время выбрать после уточнения площадки Фиесты, программы регаты и городской программы.",
-    phone: places.ceylon.phone,
-    links: [
-      { title: "Открыть официальный сайт Pinci", url: places.pinci.site },
-      { title: "Открыть официальный сайт Цейлона", url: places.ceylon.site },
-    ],
-    status: "не выполнено",
+    id: "pinci-booking",
+    title: "Pinci — стол забронирован на 15 августа.",
+    placeKey: "pinci",
+    links: [{ title: "Открыть официальный сайт Pinci", url: places.pinci.site }],
+    status: "выполнено",
   },
   {
-    title: "Забронировать Mayar на 16 августа, 10:00.",
-    note: "Воскресный завтрак. Телефон: +7 (987) 747-44-30.",
-    placeKey: "mayar",
-    links: [{ title: "Открыть официальный сайт Mayar", url: places.mayar.site }],
-    status: "не выполнено",
-  },
-  {
-    title: "Уточнить возможность бронирования Бистро 9/18 на 14 августа, 11:00.",
-    note: "Заведение небольшое, поэтому возможность и способ бронирования лучше уточнить заранее по актуальным контактам.",
-    placeKey: "bistro918",
-    status: "не выполнено",
-  },
-  {
+    id: "seledka-late-option",
     title: "В день Фиесты уточнить наличие столов в «Селедке и Кофе», если решим идти.",
     note: "Это необязательный поздний вариант после вечерней программы. Не создавать жесткую бронь заранее, пока не понятны время возвращения и силы.",
     placeKey: "seledkaCoffee",
     status: "не выполнено",
   },
   {
+    id: "yunost-late-option",
     title: "При решении продолжить вечер 16 августа уточнить бронь в баре «Юность».",
     note: "Необязательное продолжение после Юла пицца. Бронировать только после решения, что мы действительно идем.",
     placeKey: "yunost",
@@ -3018,35 +2999,42 @@ const canonicalPrepItems = [
     status: "не выполнено",
   },
   {
+    id: "city-day-program",
     title: "Проверить официальную программу Дня города и ограничения движения 15 августа.",
     note: "Сверить площадки, концерты, перекрытия, работу транспорта и влияние городской программы на Фиесту, регату и возвращение в центр.",
     status: "не выполнено",
   },
   {
+    id: "fiesta-program",
     title: "Проверить дату, площадку, время и официальную программу Приволжской фиесты.",
-    comment: "Маршрут 15 августа предварительный и будет скорректирован после публикации официальной программы.",
+    comment: "Первый полет заявлен на вечер 15 августа; точное время и площадку нужно подтвердить у организатора по погоде.",
     status: "не выполнено",
   },
   {
+    id: "volga-regatta-program",
     title: "Проверить точное время и программу Волжской регаты 15 августа.",
     comment: "Посещение бесплатное; точное время и удобную точку просмотра определим после обновления официальной программы.",
     status: "не выполнено",
   },
   {
-    title: "Решить, идем ли на выставку «Великая Всероссийская» в Пакгаузах.",
-    comment: "Билет — 500 ₽, дни работы лучше проверить ближе к поездке.",
-    status: "не выполнено",
+    id: "pakgauzy-exhibition",
+    title: "Выставка «Великая Всероссийская» — билеты куплены.",
+    links: pakgauzyTicketLinks,
+    status: "выполнено",
   },
   {
+    id: "weather-check",
     title: "Проверить прогноз: ветер, дождь, облачность, температура утром и вечером.",
     status: "не выполнено",
   },
   {
-    title: "Решить, покупаем ли билет на летний музейный маршрут по Кремлю.",
-    comment: "Стоимость — 600 ₽.",
-    status: "не выполнено",
+    id: "kremlin-wall-tickets",
+    title: "Билеты на маршрут по кремлевской стене куплены.",
+    links: [{ title: "Открыть билеты", url: kremlinTicketsUrl }],
+    status: "выполнено",
   },
   {
+    id: "boat-tickets",
     title: "Проверить билеты на теплоходы и речные прогулки.",
     comment: "Ссылка на речные экскурсии добавлена в маршрут и полезные ссылки.",
     status: "не выполнено",
@@ -3058,38 +3046,38 @@ let prepItems = canonicalPrepItems.map((item) => ({ ...item }));
 const canonicalBookingItems = [
   {
     title: "Si, Mamma",
-    note: "Ужин 12 августа на Рождественской, 24. Нужна бронь заранее.",
+    note: "Ужин 12 августа на Рождественской. Столы не бронируют — посадка в порядке живой очереди.",
     phone: places.siMamma.phone,
     placeKey: "siMamma",
-    status: "не выполнено",
+    status: "",
   },
   {
     title: "Пяткинъ",
-    note: "Основной ужин 13 августа. Русская кухня, плотный вечер.",
+    note: "Стол забронирован на 13 августа.",
     phone: places.pyatkin.phone,
     placeKey: "pyatkin",
-    status: "не выполнено",
+    status: "выполнено",
   },
   {
     title: "Медные Трубы",
-    note: "Один из лучших коктейльных баров России. Посещение только по предварительной брони.",
+    note: "Стол забронирован на 12 августа.",
     phone: places.mednyeTruby.phone,
     placeKey: "mednyeTruby",
-    links: [{ title: "Забронировать в Медных Трубах", url: places.mednyeTruby.site }],
-    status: "не выполнено",
+    links: [{ title: "Открыть официальный сайт", url: places.mednyeTruby.site }],
+    status: "выполнено",
   },
   {
     title: "Бистро 9/18",
-    note: "Полноценный завтрак 14 августа. Возможность и способ бронирования уточнить заранее.",
+    note: "Полноценный завтрак 14 августа. Приходим без предварительной брони, посадка — в порядке живой очереди.",
     placeKey: "bistro918",
-    status: "не выполнено",
+    status: "",
   },
   {
     title: "Юла пицца",
-    note: "Ужин 16 августа. Желательно бронировать из-за посадки.",
+    note: "Стол забронирован на 16 августа.",
     phone: places.yulaPizza.phone,
     placeKey: "yulaPizza",
-    status: "не выполнено",
+    status: "выполнено",
   },
   {
     title: "Темп воздух / Министерство Завтраков",
@@ -3110,8 +3098,9 @@ const canonicalBookingItems = [
   },
   {
     title: "Пакгаузы / «Великая Всероссийская»",
-    note: "Выставка про Всероссийскую промышленную и художественную выставку 1896 года. Билет — 500 ₽; дни работы проверить ближе к поездке.",
-    status: "не выполнено",
+    note: "Билеты на выставку куплены для четырех участников.",
+    links: pakgauzyTicketLinks,
+    status: "выполнено",
   },
   {
     title: "Тематическая точка «Очень странные дела»",
@@ -3121,34 +3110,26 @@ const canonicalBookingItems = [
   },
   {
     title: "Самоварная",
-    note: "Бронь желательна на 14 августа, 18:00.",
+    note: "Стол забронирован на 14 августа, 18:00.",
     phone: places.samovarnaya.phone,
     placeKey: "samovarnaya",
     links: [{ title: "Открыть официальную страницу Самоварной", url: places.samovarnaya.site }],
-    status: "не выполнено",
+    status: "выполнено",
   },
   {
     title: "Pinci",
-    note: "Основной вариант 15 августа. Бронировать после уточнения программы Фиесты, регаты и Дня города.",
+    note: "Стол забронирован на 15 августа.",
     placeKey: "pinci",
     links: [{ title: "Открыть официальный сайт Pinci", url: places.pinci.site }],
-    status: "не выполнено",
-  },
-  {
-    title: "Цейлон",
-    note: "Запасной вариант вместо Pinci. Не бронировать одновременно с Pinci.",
-    phone: places.ceylon.phone,
-    placeKey: "ceylon",
-    links: [{ title: "Открыть официальный сайт Цейлона", url: places.ceylon.site }],
-    status: "не выполнено",
+    status: "выполнено",
   },
   {
     title: "Mayar",
-    note: "Бронь желательна на 16 августа, 10:00.",
+    note: "Завтрак 16 августа. Приходим без предварительной брони.",
     phone: places.mayar.phone,
     placeKey: "mayar",
     links: [{ title: "Открыть официальный сайт Mayar", url: places.mayar.site }],
-    status: "не выполнено",
+    status: "",
   },
   {
     title: "Селедка и Кофе",
@@ -3208,10 +3189,12 @@ const usefulLinks = [
     button: "Купить билет на теплоход",
   },
   {
-    title: "Летний музейный маршрут по Кремлю",
-    note: "Билет на основные объекты Кремля. Стоимость — 600 ₽.",
-    url: kremlinRouteTicketUrl,
-    button: "Купить билет в Кремль",
+    title: "Маршрут по кремлевской стене",
+    note: "Билеты куплены. Официальная страница маршрута сохранена для справки.",
+    links: [
+      { title: "Открыть билеты", url: kremlinTicketsUrl },
+      { title: "Официальная страница маршрута", url: kremlinRouteTicketUrl },
+    ],
   },
   {
     title: "Афиша «Столица закатов»",
@@ -3220,10 +3203,9 @@ const usefulLinks = [
     button: "Открыть афишу «Столица закатов»",
   },
   {
-    title: "Билет на выставку «Великая Всероссийская»",
-    note: "Пакгаузы, Стрелка. Билет — 500 ₽; дни работы лучше проверить ближе к поездке.",
-    url: velikayaVserossiyskayaUrl,
-    button: "Купить билет на выставку",
+    title: "Билеты на выставку «Великая Всероссийская»",
+    note: "Пакгаузы, Стрелка. Билеты куплены для четырех участников.",
+    links: [...pakgauzyTicketLinks, { title: "Официальная страница выставки", url: velikayaVserossiyskayaUrl }],
   },
   {
     title: "Волжская регата — 2026",
@@ -3259,33 +3241,14 @@ const googleSheetConfig = {
   sheet: "Данные",
 };
 
-const fiestaModeStorageKey = "nizhny-novgorod-fiesta-mode";
 const weatherStorageKey = "nizhny-novgorod-weather";
 let weatherData = null;
 let weatherLoadState = "loading";
-
-function loadFiestaMode() {
-  try {
-    const saved = window.localStorage.getItem(fiestaModeStorageKey);
-    return saved === "relaxed" ? "relaxed" : "early";
-  } catch {
-    return "early";
-  }
-}
-
-function saveFiestaMode(mode) {
-  try {
-    window.localStorage.setItem(fiestaModeStorageKey, mode);
-  } catch {
-    // The route still works when browser storage is unavailable.
-  }
-}
 
 const state = {
   activeTag: "all",
   query: "",
   weather: {},
-  fiestaMode: loadFiestaMode(),
 };
 
 let daySectionObserver = null;
@@ -3552,7 +3515,7 @@ function collectPackingSection(rows) {
 function mergeEditableSheetFields(sheetItem, localItem) {
   return {
     ...localItem,
-    status: sheetItem?.status || localItem.status,
+    status: isClosed(sheetItem?.status) || isClosed(localItem.status) ? "выполнено" : sheetItem?.status || localItem.status,
     comment: sheetItem?.comment || localItem.comment || "",
     phone: sheetItem?.phone || localItem.phone || "",
     placeKey: sheetItem?.placeKey || localItem.placeKey || "",
@@ -3563,24 +3526,61 @@ function mergeEditableSheetFields(sheetItem, localItem) {
 function itemStableKey(item) {
   if (item?.id) return `id:${normalizeText(item.id)}`;
   const title = normalizeText(getItemTitle(item));
+  if (title.includes("пяткин") && (title.includes("забронировать") || title.includes("забронирован"))) return "id:pyatkin-booking";
   if (title.includes("очень странн")) return "title:stranger-coffee";
-  if (title.includes("медные трубы")) return "title:mednye-truby";
-  if (title.includes("юл") && title.includes("забронировать")) return "title:yula-booking";
-  if (title.includes("pinci") || title.includes("цейлон")) return `title:${title}`;
-  if (title.includes("приволжской фиесты") && title.includes("проверить")) return "title:fiesta-program";
-  if (title.includes("кремл") && (title.includes("билет") || title.includes("маршрут") || title.includes("стен"))) return "title:kremlin-ticket";
-  if (title.includes("теплоход")) return "title:boat-tickets";
+  if (title.includes("медные трубы") && (title.includes("забронировать") || title.includes("забронирован"))) return "id:mednye-truby-booking";
+  if (title.includes("юл") && (title.includes("забронировать") || title.includes("забронирован"))) return "id:yula-booking";
+  if (title.includes("самоварн") && (title.includes("забронировать") || title.includes("забронирован"))) return "id:samovarnaya-booking";
+  if (title.includes("pinci") && title.includes("забронирован")) return "id:pinci-booking";
+  if (title.includes("великая всероссийская") || title.includes("пакгауз")) return "id:pakgauzy-exhibition";
+  if (title.includes("селедк") && title.includes("стол")) return "id:seledka-late-option";
+  if (title.includes("юность") && title.includes("брон")) return "id:yunost-late-option";
+  if (title.includes("дня города") && title.includes("проверить")) return "id:city-day-program";
+  if (title.includes("приволжской фиесты") && title.includes("проверить")) return "id:fiesta-program";
+  if (title.includes("волжской регаты") && title.includes("проверить")) return "id:volga-regatta-program";
+  if (title.includes("прогноз") && (title.includes("ветер") || title.includes("дожд"))) return "id:weather-check";
+  if (title.includes("кремл") && (title.includes("билет") || title.includes("маршрут") || title.includes("стен"))) return "id:kremlin-wall-tickets";
+  if (title.includes("теплоход")) return "id:boat-tickets";
   return `title:${title}`;
 }
 
-function mergeCanonicalAndSheetItems(canonicalItems, sheetItems) {
-  const sheetByKey = new Map(sheetItems.map((item) => [itemStableKey(item), item]));
+function isDeprecatedPrepItem(item) {
+  const title = normalizeText(getItemTitle(item));
+  return (
+    (title.includes("si, mamma") && title.includes("забронировать")) ||
+    (title.includes("бистро 9/18") && (title.includes("бронир") || title.includes("уточнить"))) ||
+    (title.includes("mayar") && title.includes("забронировать")) ||
+    (title.includes("pinci") && title.includes("цейлон") && title.includes("выбрать"))
+  );
+}
+
+function aggregateSheetItems(items) {
+  const ordered = [...items].sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b), "ru"));
+  const base = ordered[0] || {};
+  const comments = [...new Set(ordered.map((item) => item.comment).filter(Boolean))].sort((a, b) => a.localeCompare(b, "ru"));
+  return {
+    ...base,
+    status: ordered.some((item) => isClosed(item.status)) ? "выполнено" : base.status,
+    comment: comments.join(" · "),
+    tags: [...new Set(ordered.flatMap((item) => item.tags || []))],
+  };
+}
+
+function mergeCanonicalAndSheetItems(canonicalItems, sheetItems, { dropDeprecated = false } = {}) {
+  const sheetGroups = new Map();
+  sheetItems
+    .filter((item) => !(dropDeprecated && isDeprecatedPrepItem(item)))
+    .forEach((item) => {
+      const key = itemStableKey(item);
+      sheetGroups.set(key, [...(sheetGroups.get(key) || []), item]);
+    });
+  const sheetByKey = new Map([...sheetGroups].map(([key, items]) => [key, aggregateSheetItems(items)]));
   const canonicalKeys = new Set(canonicalItems.map(itemStableKey));
   const merged = canonicalItems.map((localItem) => {
     const sheetItem = sheetByKey.get(itemStableKey(localItem));
     return sheetItem ? mergeEditableSheetFields(sheetItem, localItem) : { ...localItem };
   });
-  sheetItems.forEach((item) => {
+  sheetByKey.forEach((item) => {
     if (!canonicalKeys.has(itemStableKey(item))) merged.push(item);
   });
   return merged;
@@ -3590,8 +3590,12 @@ function applySheetSafeLocalOverrides() {
   prepItems = mergeCanonicalAndSheetItems(
     canonicalPrepItems,
     prepItems.filter((item) => !normalizeText(getItemTitle(item)).includes("канатн")),
+    { dropDeprecated: true },
   );
-  bookingItems = mergeCanonicalAndSheetItems(canonicalBookingItems, bookingItems);
+  bookingItems = mergeCanonicalAndSheetItems(
+    canonicalBookingItems,
+    bookingItems.filter((item) => normalizeText(getItemTitle(item)) !== "цейлон"),
+  );
 }
 
 function buildDaysFromRows(rows) {
@@ -3636,8 +3640,7 @@ function buildDaysFromRows(rows) {
 function refreshTags() {
   const set = new Set();
   days.forEach((day) => {
-    const eventGroups = [day.events, ...Object.values(day.fiestaModes || {}).map((mode) => mode.events || [])];
-    eventGroups.flat().forEach((event) => {
+    day.events.forEach((event) => {
       (event.tags || []).forEach((tag) => set.add(tag));
       (event.options || []).forEach((option) => (option.tags || []).forEach((tag) => set.add(tag)));
     });
@@ -3743,8 +3746,62 @@ function getDayWeather(day) {
   return state.weather[day.id] || "sunny";
 }
 
-function getDayEvents(day, fiestaMode = state.fiestaMode) {
-  return day.fiestaModes?.[fiestaMode]?.events || day.events;
+function getDayEvents(day) {
+  return day.events;
+}
+
+function eventDetailThumbHtml(detailKey) {
+  const detail = eventDetails[detailKey];
+  if (!detail) return "";
+  return `<button class="event-detail-thumb" type="button" data-event-detail="${escapeHtml(detailKey)}" aria-label="Открыть подробности события ${escapeHtml(detail.title)}">
+    <img src="${escapeHtml(detail.cover320)}" srcset="${escapeHtml(detail.cover320)} 320w, ${escapeHtml(detail.cover640)} 640w" sizes="(max-width: 430px) 100vw, 220px" alt="${escapeHtml(`Афиша: ${detail.title}`)}" loading="lazy" decoding="async" />
+    <span>Подробнее о событии</span>
+  </button>`;
+}
+
+function setupEventDetails() {
+  const modal = byId("eventDetailModal");
+  const card = modal?.querySelector(".event-detail-card");
+  const body = byId("eventDetailBody");
+  const image = byId("eventDetailImage");
+  if (!modal || !card || !body || !image) return;
+  let opener = null;
+
+  const close = () => {
+    if (modal.hidden) return;
+    modal.hidden = true;
+    image.removeAttribute("src");
+    document.body.classList.remove("event-detail-open");
+    opener?.focus();
+  };
+
+  const open = (key, button) => {
+    const detail = eventDetails[key];
+    if (!detail) return;
+    opener = button;
+    image.alt = `Афиша: ${detail.title}`;
+    image.src = detail.full;
+    body.innerHTML = `
+      <p class="event-detail-card__eyebrow">${escapeHtml(detail.eyebrow)}</p>
+      <h2 id="eventDetailTitle">${escapeHtml(detail.title)}</h2>
+      <p class="event-detail-card__meta"><strong>Артист:</strong> ${escapeHtml(detail.artist)}</p>
+      <p class="event-detail-card__meta"><strong>Место:</strong> ${escapeHtml(detail.location)}</p>
+      <p class="event-detail-card__copy">${escapeHtml(detail.description)}</p>
+      <p class="event-detail-card__copy">${escapeHtml(detail.note)}</p>
+      <div class="event-links">${detail.links.map((link) => `<a class="event-link" href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.title)}</a>`).join("")}</div>`;
+    modal.hidden = false;
+    document.body.classList.add("event-detail-open");
+    card.focus();
+  };
+
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-event-detail]");
+    if (button) open(button.dataset.eventDetail, button);
+  });
+  modal.querySelectorAll("[data-event-detail-close]").forEach((control) => control.addEventListener("click", close));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !modal.hidden) close();
+  });
 }
 
 function hasWeatherToggle(day) {
@@ -4099,16 +4156,7 @@ function buildRoutePdfDefinition() {
       content.push({ text: pdfText(day.infoCard.title), bold: true, color: "#667085", margin: [0, 3, 0, 1] });
       content.push({ text: wrapPdfText(day.infoCard.note), style: "smallAccent" });
     }
-    if (day.fiestaModeNote) content.push({ text: wrapPdfText(day.fiestaModeNote), style: "smallAccent" });
     if (day.weatherNotes?.sunny) content.push({ text: wrapPdfText(day.weatherNotes.sunny), style: "smallAccent" });
-
-    if (day.fiestaModes) {
-      Object.entries(day.fiestaModes).forEach(([mode, config]) => {
-        content.push({ text: config.label, style: "weatherPdfTitle", color: day.accent });
-        getDayEvents(day, mode).forEach((event) => content.push(eventPdfBlock(event, "sunny")));
-      });
-      return;
-    }
 
     content.push({ text: "Ясно", style: "weatherPdfTitle", color: day.accent });
     day.events.forEach((event) => content.push(eventPdfBlock(event, "sunny")));
@@ -4151,11 +4199,12 @@ function buildRoutePdfDefinition() {
 
   content.push(sectionTitle("Полезные ссылки"));
   usefulLinks.forEach((link) => {
+    const links = link.links || [{ title: link.button, url: link.url }];
     content.push({
       stack: [
         { text: link.title, bold: true },
         { text: wrapPdfText(link.note), style: "small" },
-        { text: wrapPdfText(`${link.button} — ${link.url}`, 78), link: link.url, style: "pdfLink" },
+        ...links.map((item) => ({ text: wrapPdfText(`${item.title} — ${item.url}`, 78), link: item.url, style: "pdfLink" })),
       ],
       margin: [0, 0, 0, 7],
     });
@@ -4470,7 +4519,6 @@ function renderDays() {
     const weather = getDayWeather(day);
     const weatherNote = day.weatherNotes?.[weather] || "";
     const showWeatherToggle = hasWeatherToggle(day);
-    const showFiestaToggle = Boolean(day.fiestaModes);
     const section = el("section", "day-section");
     section.id = day.id;
     section.style.setProperty("--accent", day.accent);
@@ -4491,23 +4539,11 @@ function renderDays() {
               </aside>`
             : ""
         }
-        ${day.fiestaModeNote ? `<p class="fiesta-mode-note">${escapeHtml(day.fiestaModeNote)}</p>` : ""}
         ${weatherNote ? `<p class="weather-note">${escapeHtml(weatherNote)}</p>` : ""}
       </div>
       ${
-        showWeatherToggle || showFiestaToggle
+        showWeatherToggle
           ? `<div class="day-heading__controls">
-              ${
-                showFiestaToggle
-                  ? `<div class="fiesta-toggle" role="group" aria-label="Сценарий Фиесты: ${escapeHtml(day.date)}">
-                      ${Object.entries(day.fiestaModes)
-                        .map(
-                          ([mode, config]) => `<button class="${state.fiestaMode === mode ? "is-active" : ""}" type="button" data-fiesta-mode="${escapeHtml(mode)}" aria-pressed="${state.fiestaMode === mode}">${escapeHtml(config.label)}</button>`,
-                        )
-                        .join("")}
-                    </div>`
-                  : ""
-              }
               ${
                 showWeatherToggle
                   ? `<div class="weather-toggle" role="group" aria-label="Погода: ${escapeHtml(day.date)}">
@@ -4523,14 +4559,6 @@ function renderDays() {
     heading.querySelectorAll("[data-weather]").forEach((button) => {
       button.addEventListener("click", () => {
         state.weather[button.dataset.day] = button.dataset.weather;
-        renderDays();
-        applyFilters();
-      });
-    });
-    heading.querySelectorAll("[data-fiesta-mode]").forEach((button) => {
-      button.addEventListener("click", () => {
-        state.fiestaMode = button.dataset.fiestaMode === "relaxed" ? "relaxed" : "early";
-        saveFiestaMode(state.fiestaMode);
         renderDays();
         applyFilters();
       });
@@ -4563,6 +4591,7 @@ function renderDays() {
                 ${mapLinksHtml(view)}
                 ${eventLinksHtml(view)}
               </div>
+              ${eventDetailThumbHtml(view.detailKey)}
               ${venueThumbsHtml(view)}
             </div>
             <div class="tags">${tags.map((tag) => `<span class="tag">#${escapeHtml(tag)}</span>`).join("")}</div>
@@ -4689,6 +4718,7 @@ function renderUsefulLinks() {
   if (!target) return;
   target.innerHTML = "";
   usefulLinks.forEach((link) => {
+    const links = link.links || [{ title: link.button, url: link.url }];
     const row = el("article", "link-card");
     row.innerHTML = `
       <div>
@@ -4696,7 +4726,7 @@ function renderUsefulLinks() {
         <strong>${escapeHtml(link.title)}</strong>
         <p>${escapeHtml(link.note)}</p>
       </div>
-      <a class="button button--small" href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.button)}</a>
+      <div class="event-links">${links.map((item) => `<a class="button button--small" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.title)}</a>`).join("")}</div>
     `;
     target.append(row);
   });
@@ -4857,6 +4887,7 @@ async function init() {
   renderUsefulLinks();
   setupResponsiveDisclosures();
   setupVenueCards();
+  setupEventDetails();
 
   byId("searchInput").addEventListener("input", (event) => {
     state.query = event.target.value;

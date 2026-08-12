@@ -170,6 +170,7 @@
         ${!profile.closed && profile.whyInRoute ? `<div class="venue-card__route"><strong>Почему в маршруте</strong><p class="venue-card__route-copy">${escapeHtml(profile.whyInRoute)}</p></div>` : ""}
       </div>
       <dl class="venue-card__facts">
+        ${profile.address ? `<div class="venue-card__fact"><dt>Адрес</dt><dd>${escapeHtml(profile.address)}</dd></div>` : ""}
         ${profile.category ? `<div class="venue-card__fact"><dt>Категория</dt><dd>${escapeHtml(profile.category)}</dd></div>` : ""}
         ${showCuisine ? `<div class="venue-card__fact"><dt>Кухня</dt><dd>${escapeHtml(profile.cuisine)}</dd></div>` : ""}
         ${showAverage ? `<div class="venue-card__fact"><dt>Средний чек</dt><dd>${escapeHtml(profile.averageCheck)}${showSource ? `<br><a href="${escapeHtml(profile.averageCheckSourceUrl)}" target="_blank" rel="noopener noreferrer">Источник: ${escapeHtml(profile.averageCheckSource)}</a>` : ""}</dd></div>` : ""}

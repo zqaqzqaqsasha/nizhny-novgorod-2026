@@ -613,15 +613,16 @@ window.NN_VENUES = {
     "number": 30,
     "key": "gusVYablokah",
     "title": "Гусь в яблоках",
-    "routeStatus": "Дополнительное место вне маршрута",
-    "approvalStatus": "На согласовании",
+    "address": "Рождественская ул., 17, Нижний Новгород",
+    "routeStatus": "Запасной вариант для ужина 12 августа",
+    "approvalStatus": "В маршруте как запасной вариант",
     "category": "Гранд-кафе",
     "cuisine": "Русская, европейская, кавказская, французская и смешанная кухня",
     "averageCheck": "около 2 500 ₽ без напитков",
     "averageCheckSource": "Restoclub",
     "averageCheckSourceUrl": "https://www.restoclub.ru/nn/place/gus-v-jablokah-1/menu",
-    "description": "Городской ресторан на Рождественской улице, где русская история и ярмарочные традиции сочетаются с современными гастрономическими тенденциями.",
-    "whyInRoute": "Дополнительный вариант ресторана при изменении гастрономического плана поездки.",
+    "description": "Городской ресторан на Рождественской, 17, где русская история и ярмарочные традиции сочетаются с современными гастрономическими тенденциями.",
+    "whyInRoute": "Запасной вариант рядом с Si, Mamma: если там большая очередь, можно перейти сюда пешком без отдельного переезда.",
     "officialSite": "https://gooserest.ru/",
     "mapUrl": "https://yandex.ru/maps/-/CTCxfT9V",
     "note": null,
@@ -774,6 +775,27 @@ window.NN_VENUES = {
     "note": null,
     "checkedAt": "2026-08-04",
     "photoFolder": "mixtura-bar",
+    "closed": false,
+    "closedLabel": null
+  },
+  "kustarnik": {
+    "number": 39,
+    "key": "kustarnik",
+    "title": "Кустарник",
+    "routeStatus": "Дополнительное место",
+    "approvalStatus": "Добавлено пользователем",
+    "category": "Парфюмерный дом",
+    "cuisine": null,
+    "averageCheck": null,
+    "averageCheckSource": null,
+    "averageCheckSourceUrl": null,
+    "description": "Нижегородский парфюмерный дом с авторскими ароматами, косметикой и предметами для дома. Пространство объединяет магазин и атмосферную мастерскую локального бренда.",
+    "whyInRoute": "Зайти за необычным нижегородским сувениром, познакомиться с локальной парфюмерией и увидеть выразительный интерьер бренда.",
+    "officialSite": "https://kustarnik.store",
+    "mapUrl": "https://yandex.ru/maps/-/CTS1zS8w",
+    "note": null,
+    "checkedAt": "2026-08-12",
+    "photoFolder": "kustarnik",
     "closed": false,
     "closedLabel": null
   },
@@ -4152,6 +4174,40 @@ window.NN_VENUE_ASSETS = {
           "remoteUrl": "https://ik.imagekit.io/maltsevph/nizhny-novgorod-2026/yula-pizza/food-2.WEBP"
         }
       ],
+      "exter": [],
+      "other": []
+    },
+    "kustarnik": {
+      "cover": {
+        "file": "кустарник-1.JPG",
+        "url": "./assets/venues/kustarnik/gallery/cover.webp",
+        "thumbUrl": "./assets/venues/kustarnik/thumbs/cover.webp",
+        "src320": "./assets/venues/kustarnik/cover-320.webp",
+        "src640": "./assets/venues/kustarnik/cover-640.webp"
+      },
+      "inter": [
+        {
+          "file": "кустарник-2.JPG",
+          "url": "./assets/venues/kustarnik/gallery/inter-1.webp",
+          "thumbUrl": "./assets/venues/kustarnik/thumbs/inter-1.webp"
+        },
+        {
+          "file": "кустарник-3.JPG",
+          "url": "./assets/venues/kustarnik/gallery/inter-2.webp",
+          "thumbUrl": "./assets/venues/kustarnik/thumbs/inter-2.webp"
+        },
+        {
+          "file": "кустарник-4.JPG",
+          "url": "./assets/venues/kustarnik/gallery/inter-3.webp",
+          "thumbUrl": "./assets/venues/kustarnik/thumbs/inter-3.webp"
+        },
+        {
+          "file": "кустарник-5.JPG",
+          "url": "./assets/venues/kustarnik/gallery/inter-4.webp",
+          "thumbUrl": "./assets/venues/kustarnik/thumbs/inter-4.webp"
+        }
+      ],
+      "food": [],
       "exter": [],
       "other": []
     },
