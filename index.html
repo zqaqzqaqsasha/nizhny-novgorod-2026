@@ -795,6 +795,13 @@ input {
   cursor: pointer;
 }
 
+.event-detail-thumb:hover,
+.event-detail-thumb:focus-visible {
+  border-color: var(--accent);
+  outline: 3px solid color-mix(in srgb, var(--accent) 26%, transparent);
+  outline-offset: 2px;
+}
+
 .event-detail-thumb img {
   display: block;
   width: 100%;
@@ -813,11 +820,26 @@ input {
 .event-detail-modal { position: fixed; inset: 0; z-index: 120; display: grid; place-items: center; padding: 20px; }
 .event-detail-modal__backdrop { position: absolute; inset: 0; background: rgba(15, 23, 42, .72); }
 .event-detail-card { position: relative; z-index: 1; width: min(760px, 100%); max-height: calc(100vh - 40px); overflow: auto; border-radius: 18px; background: #fff; box-shadow: 0 24px 80px rgba(15, 23, 42, .35); }
-.event-detail-card__image { display: block; width: 100%; max-height: 430px; object-fit: cover; background: #edf1f5; }
+.event-detail-gallery { background: #edf1f5; }
+.event-detail-gallery__viewport { position: relative; }
+.event-detail-gallery__main { display: block; width: 100%; max-height: 430px; aspect-ratio: 16 / 10; object-fit: cover; background: #edf1f5; }
+.event-detail-gallery__arrow { position: absolute; top: 50%; width: 42px; height: 42px; padding: 0; transform: translateY(-50%); border: 0; border-radius: 50%; background: rgba(15, 23, 42, .78); color: #fff; font-size: 28px; cursor: pointer; }
+.event-detail-gallery__arrow--prev { left: 12px; }
+.event-detail-gallery__arrow--next { right: 12px; }
+.event-detail-gallery__counter { position: absolute; right: 12px; bottom: 10px; padding: 4px 8px; border-radius: 999px; background: rgba(15, 23, 42, .78); color: #fff; font-size: 12px; font-weight: 900; }
+.event-detail-gallery__thumbs { display: flex; gap: 8px; padding: 10px; overflow-x: auto; }
+.event-detail-gallery__thumb { flex: 0 0 92px; padding: 0; overflow: hidden; border: 2px solid transparent; border-radius: 8px; background: transparent; cursor: pointer; }
+.event-detail-gallery__thumb.is-active { border-color: var(--accent); }
+.event-detail-gallery__thumb img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
 .event-detail-card__body { display: grid; gap: 12px; padding: 24px; }
 .event-detail-card__body h2 { margin: 0; font-size: clamp(24px, 5vw, 38px); line-height: 1.08; }
 .event-detail-card__eyebrow { margin: 0; color: var(--muted); font-weight: 900; text-transform: uppercase; letter-spacing: .04em; }
 .event-detail-card__meta, .event-detail-card__copy { margin: 0; color: var(--ink); line-height: 1.55; }
+.event-detail-card__section { display: grid; gap: 6px; padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: #f8fafc; }
+.event-detail-card__section h3, .event-detail-card__section p { margin: 0; }
+.event-detail-card__section-meta { color: var(--accent); font-weight: 900; }
+.event-detail-card__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.event-detail-card__venue { width: fit-content; padding: 8px 11px; border: 1px solid color-mix(in srgb, var(--accent) 38%, var(--line)); border-radius: 8px; background: color-mix(in srgb, var(--accent) 8%, #fff); color: var(--accent); font-weight: 900; cursor: pointer; }
 body.event-detail-open { overflow: hidden; }
 
 .event-card.is-hidden {
@@ -1580,6 +1602,28 @@ body.event-detail-open { overflow: hidden; }
   .install-modal__dialog h2 {
     font-size: 24px;
   }
+
+  .event-detail-modal {
+    padding: 8px;
+  }
+
+  .event-detail-card {
+    max-height: calc(100dvh - 16px);
+    border-radius: 14px;
+  }
+
+  .event-detail-card__body {
+    padding: 18px 14px;
+  }
+
+  .event-detail-thumb {
+    width: 100%;
+  }
+
+  .event-detail-gallery__arrow {
+    width: 38px;
+    height: 38px;
+  }
 }
 
     </style>
@@ -1888,8 +1932,16 @@ body.event-detail-open { overflow: hidden; }
     <div class="event-detail-modal" id="eventDetailModal" hidden>
       <div class="event-detail-modal__backdrop" data-event-detail-close></div>
       <section class="event-detail-card" role="dialog" aria-modal="true" aria-labelledby="eventDetailTitle" tabindex="-1">
-        <button class="venue-card__close" type="button" aria-label="Закрыть подробности события" data-event-detail-close>×</button>
-        <img class="event-detail-card__image" id="eventDetailImage" alt="" decoding="async" />
+        <button class="venue-card__close" type="button" aria-label="Закрыть подробности" data-event-detail-close>×</button>
+        <div class="event-detail-gallery" id="eventDetailGallery" hidden>
+          <div class="event-detail-gallery__viewport">
+            <img class="event-detail-gallery__main" id="eventDetailImage" alt="" decoding="async" />
+            <button class="event-detail-gallery__arrow event-detail-gallery__arrow--prev" id="eventDetailPrev" type="button" aria-label="Предыдущая фотография">‹</button>
+            <button class="event-detail-gallery__arrow event-detail-gallery__arrow--next" id="eventDetailNext" type="button" aria-label="Следующая фотография">›</button>
+            <span class="event-detail-gallery__counter" id="eventDetailCounter" aria-live="polite"></span>
+          </div>
+          <div class="event-detail-gallery__thumbs" id="eventDetailThumbs" aria-label="Фотографии"></div>
+        </div>
         <div class="event-detail-card__body" id="eventDetailBody"></div>
       </section>
     </div>
@@ -1942,19 +1994,119 @@ const pakgauzyTicketLinks = [
 ];
 const eventDetails = {
   polnalyubvi: {
-    eyebrow: "Музыка балконов · 15 августа · 17:00",
+    type: "event",
+    category: "Музыка балконов",
+    dateTime: "15 августа · 17:00",
     title: "Музыка балконов. Великие реки",
-    artist: "Марина Демещенко / polnalyubvi",
-    location: "Балкон исторического здания Нижегородской семинарии, пл. Минина и Пожарского, 7",
-    description: "Акустическая программа polnalyubvi в рамках фестиваля «Музыка балконов». Выступление пройдет на балконе исторического здания Нижегородской семинарии.",
-    note: "Городское выступление под открытым небом. Заранее проверяем возможные ограничения движения в День города и приходим с запасом времени.",
+    shortDescription: "Акустическая программа polnalyubvi в рамках фестиваля «Музыка балконов».",
+    description: [
+      "Выступление пройдет на балконе исторического здания Нижегородской семинарии на площади Минина и Пожарского, 7.",
+      "Городское выступление проходит под открытым небом. Заранее проверяем возможные ограничения движения в День города и приходим с запасом времени.",
+    ],
+    metadata: [
+      { label: "Артист", value: "Марина Демещенко / polnalyubvi" },
+      { label: "Место", value: "Историческое здание Нижегородской семинарии, пл. Минина и Пожарского, 7" },
+    ],
+    tags: ["музыка", "фото", "на улице"],
     cover320: "./assets/events/polnalyubvi/cover-320.webp",
     cover640: "./assets/events/polnalyubvi/cover-640.webp",
-    full: "./assets/events/polnalyubvi/detail.webp",
+    gallery: [
+      { src: "./assets/events/polnalyubvi/detail.webp", thumb: "./assets/events/polnalyubvi/cover-320.webp", alt: "Афиша выступления polnalyubvi", caption: "Музыка балконов" },
+    ],
     links: [
       { title: "Открыть карту", url: "https://yandex.ru/maps/-/CTS0FXmq" },
       { title: "Организатор во ВКонтакте", url: "https://vk.ru/club135720406" },
     ],
+  },
+  funicular: {
+    type: "place",
+    category: "Исторический транспорт",
+    dateTime: "14 августа · 12:50–13:10",
+    title: "Нижегородский кремлевский фуникулер",
+    shortDescription: "Поездка на восстановленном Кремлевском фуникулере от Нижней станции к Кремлю.",
+    description: [
+      "Кремлевский фуникулер — восстановленный исторический подъемник у стен Нижегородского кремля. Первый фуникулер на этом месте открылся 9 июня 1896 года к Всероссийской промышленной и художественной выставке.",
+      "Первоначальный подъемник, который в то время называли элеватором, работал на водяной тяге. Перед спуском в бак вагона поступала вода из специально построенной водонапорной башни. Под ее весом вагон двигался вниз, а на Нижней станции балласт сбрасывался в колодец.",
+      "Длина исторического рельсового пути составляла 133,12 метра. Фуникулер стал частью масштабного инженерного преобразования Нижнего Новгорода конца XIX века вместе с развитием железной дороги, трамвайного сообщения, паровых мельниц и появлением первых автомобилей.",
+      "Кремлевский элеватор закрылся в марте 1927 года. К 800-летию Нижнего Новгорода было принято решение восстановить исторический подъемник, и сегодня фуникулер вновь работает у стен Кремля.",
+    ],
+    tags: ["достопримечательность", "история", "транспорт", "билеты"],
+    cover320: "./assets/events/funicular/cover-320.webp",
+    cover640: "./assets/events/funicular/cover-640.webp",
+    gallery: [
+      { src: "./assets/events/funicular/gallery/funicular-1.webp", thumb: "./assets/events/funicular/thumbs/funicular-1.webp", alt: "Нижегородский кремлевский фуникулер", caption: "Кремлевский фуникулер" },
+      { src: "./assets/events/funicular/gallery/funicular-2.webp", thumb: "./assets/events/funicular/thumbs/funicular-2.webp", alt: "Восстановленный фуникулер у Кремля", caption: "Исторический подъемник" },
+    ],
+    links: [
+      { title: "Открыть карту", url: "https://yandex.ru/maps/-/CTcqEZYC" },
+      { title: "Официальный сайт и билеты", url: "https://funicular.dcl.ru" },
+    ],
+  },
+  cityParades: {
+    type: "event",
+    category: "День города",
+    dateTime: "15 августа · 10:00–12:00",
+    title: "Парад парусов и SUP-парад · смотрим из Темп воздух",
+    shortDescription: "Утренний блок Дня города на Волге и Оке: два парада одновременно и вид на Волгу из Темп воздух.",
+    description: [
+      "Парад парусов проходит по Волге с 10:00 до 11:30, а с 10:30 до 12:00 одновременно проходит SUP-парад. Парад парусов смотрим из Темп воздух с видом на Волгу.",
+    ],
+    sections: [
+      { title: "Темп воздух", meta: "Основная точка просмотра", text: "Кофейня на Георгиевском съезде с видом на Волгу. Здесь располагаемся на утренний блок Дня города.", venueKey: "tempVozdukh" },
+      { title: "Парад парусов", meta: "10:00–11:30", text: "Борский мост → Стрелка → Речной вокзал → Чкаловская лестница → район канатной дороги." },
+      { title: "SUP-парад", meta: "10:30–12:00 · около 200 участников", text: "Метромост по Оке → Гребневский канал → Нижне-Волжская набережная." },
+    ],
+    tags: ["День города", "парад", "Волга", "SUP", "кофе"],
+    cover320: "./assets/events/city-parades/cover-320.webp",
+    cover640: "./assets/events/city-parades/cover-640.webp",
+    gallery: [
+      { src: "./assets/events/city-parades/gallery/sup-parade.webp", thumb: "./assets/events/city-parades/thumbs/sup-parade.webp", alt: "Участники SUP-парада", caption: "SUP-парад" },
+      { src: "./assets/events/city-parades/gallery/sailing-parade-1.webp", thumb: "./assets/events/city-parades/thumbs/sailing-parade-1.webp", alt: "Парусные суда на Волге", caption: "Парад парусов" },
+      { src: "./assets/events/city-parades/gallery/sailing-parade-2.webp", thumb: "./assets/events/city-parades/thumbs/sailing-parade-2.webp", alt: "Парад парусов в Нижнем Новгороде", caption: "Парад парусов" },
+    ],
+    links: [],
+  },
+  russianPhotoMuseum: {
+    type: "place",
+    category: "Музей",
+    dateTime: "15 августа · 12:30–13:45",
+    title: "Русский музей фотографии",
+    shortDescription: "Музей истории отечественной фотографии и нижегородской фотографической традиции.",
+    description: [
+      "Русский музей фотографии расположен в историческом центре Нижнего Новгорода и посвящен развитию фотографии, фототехники и нижегородской фотографической школе. Экспозиция знакомит с историческими снимками, фотографическими аппаратами и наследием мастеров, работавших в городе.",
+      "Музей находится в доме, связанном с историей нижегородской фотографии конца XIX — начала XX века. Посещение дополняет прогулку по историческому центру и позволяет увидеть Нижний Новгород через фотографии разных эпох.",
+    ],
+    tags: ["музей", "фотография", "история", "в помещении"],
+    cover320: "./assets/places/russian-photo-museum/cover-320.webp",
+    cover640: "./assets/places/russian-photo-museum/cover-640.webp",
+    gallery: [
+      { src: "./assets/places/russian-photo-museum/gallery/museum-1.webp", thumb: "./assets/places/russian-photo-museum/thumbs/museum-1.webp", alt: "Экспозиция Русского музея фотографии", caption: "Русский музей фотографии" },
+      { src: "./assets/places/russian-photo-museum/gallery/museum-2.webp", thumb: "./assets/places/russian-photo-museum/thumbs/museum-2.webp", alt: "Исторические фотографии в музее", caption: "Экспозиция музея" },
+      { src: "./assets/places/russian-photo-museum/gallery/museum-3.webp", thumb: "./assets/places/russian-photo-museum/thumbs/museum-3.webp", alt: "Фототехника в Русском музее фотографии", caption: "История фотографии" },
+    ],
+    links: [{ title: "Открыть карту", url: "https://yandex.ru/maps/-/CTcqUG5i" }],
+  },
+  volgaFiesta: {
+    type: "event",
+    category: "Фестиваль воздухоплавания",
+    dateTime: "15 августа · вечером, время уточняется",
+    title: "Первый вечерний полет Приволжской фиесты",
+    shortDescription: "Первый полет обновленной программы Фиесты запланирован на вечер 15 августа; запуск зависит от погоды и решения организаторов.",
+    description: [
+      "Приволжская фиеста — фестиваль воздухоплавания в Нижнем Новгороде. В 2026 году зрительская летная программа была перенесена из-за неблагоприятных погодных условий.",
+      "По обновленной программе первый полет запланирован на вечер 15 августа. Еще по два полета заявлены 16 и 17 августа — утром и перед закатом, однако отдельно в основной маршрут этих дней они не включены.",
+      "Запуски аэростатов напрямую зависят от ветра и других погодных условий, поэтому точное время и возможность проведения полета подтверждаются организаторами непосредственно перед стартом.",
+      "Привязные подъемы и ночное свечение аэростатов в актуальной программе не предусмотрены.",
+    ],
+    tags: ["фиеста", "аэростаты", "фото", "погода"],
+    cover320: "./assets/events/fiesta/cover-320.webp",
+    cover640: "./assets/events/fiesta/cover-640.webp",
+    gallery: [
+      { src: "./assets/events/fiesta/gallery/fiesta-1.webp", thumb: "./assets/events/fiesta/thumbs/fiesta-1.webp", alt: "Аэростаты Приволжской фиесты", caption: "Приволжская фиеста" },
+      { src: "./assets/events/fiesta/gallery/fiesta-2.webp", thumb: "./assets/events/fiesta/thumbs/fiesta-2.webp", alt: "Воздушные шары на фестивале", caption: "Фестиваль воздухоплавания" },
+      { src: "./assets/events/fiesta/gallery/fiesta-3.webp", thumb: "./assets/events/fiesta/thumbs/fiesta-3.webp", alt: "Полет аэростатов", caption: "Полет аэростатов" },
+    ],
+    links: [],
   },
 };
 
@@ -2316,11 +2468,6 @@ const extraPlaces = [
     category: "Кофейни",
     tags: ["кофе", "запас", "в помещении"],
     items: [
-      {
-        placeKey: "tempVozdukh",
-        note: "Кофейня с видом на город, которую рассматривали для основного маршрута. Оставляем как дополнительный вариант на случай свободного времени или изменения планов.",
-        tags: ["кофе", "запас", "вид", "в помещении"],
-      },
       { placeKey: "veryMatch", note: "Дополнительная кофейная точка при появлении свободного времени. Перед посещением проверить режим работы." },
       { placeKey: "salutSpecialty", note: "Запасная кофейня вне основного маршрута. Рассматривать при удобной логистике." },
       { placeKey: "molaMolaCapri", note: "Альтернативная кофейная остановка, если основной план изменится или появится свободное окно." },
@@ -2479,10 +2626,10 @@ let days = [
     accent: "#2f9e44",
     icon: "🟩",
     date: "13 августа, четверг",
-    title: "Кремль, Покровка, закат и Настаятель",
-    summary: "Исторический центр, Родина, Нижний 800, стены Кремля, Покровка, Пяткинъ, закат на набережной Федоровского и вечер на Рождественской.",
+    title: "Локальные магазины, Кремль, закат и Настаятель",
+    summary: "Локальные магазины, Кремль, исторический центр, Пяткинъ, закат и вечер на Рождественской.",
     weatherNotes: {
-      sunny: "Базовый план: завтрак в отеле, Кремль, верхний центр, ужин в Пяткине, закат на набережной Федоровского и Настаятель.",
+      sunny: "Базовый план: завтрак в отеле, локальные магазины, стены Кремля, исторический центр, ужин в Пяткине, закат на набережной Федоровского и Настаятель.",
       rain: "Дождевой вариант: при небольшом дожде стены Кремля оставляем, при сильном сокращаем открытые переходы, пропускаем закатную точку и раньше переходим к вечерней части на Рождественской.",
     },
     events: [
@@ -2503,7 +2650,15 @@ let days = [
         },
       },
       {
-        time: "12:00-12:15",
+        time: "11:50-12:10",
+        title: "☕ Кофе 1896",
+        note: "Кофейная остановка в здании Русского музея фотографии. Кофе, выпечка и спокойная пауза перед дальнейшим маршрутом.",
+        tags: ["кофе", "запас", "в помещении"],
+        mapKeys: ["kofe1896"],
+        venueKey: "kofe1896",
+      },
+      {
+        time: "12:10-12:25",
         title: "🛍️ Родина",
         note: "10–15 минут, по желанию. Если хочется привезти из Нижнего что-то интересное, можно заглянуть в «Родину» — магазин одноименного нижегородского бренда: футболки, худи, сумки, головные уборы и другие вещи с локальной символикой.",
         tags: ["сувениры", "магазин", "локальный бренд", "в помещении"],
@@ -2511,7 +2666,7 @@ let days = [
         links: [{ title: "Открыть сайт «Родины»", url: rodinaUrl }],
       },
       {
-        time: "12:15-12:30",
+        time: "12:25-12:40",
         title: "🎁 Нижний 800",
         note: "Магазин современных нижегородских сувениров и товаров локальных брендов: керамика, одежда, книги, значки, изделия народных промыслов и подарки с городской символикой.",
         tags: ["сувениры", "магазин", "локальный бренд", "в помещении"],
@@ -2519,7 +2674,16 @@ let days = [
         links: [{ title: "Открыть сайт «Нижний 800»", url: nizhny800StoreUrl }],
       },
       {
-        time: "12:30-14:30",
+        time: "12:40-13:00",
+        title: "🧴 Kustarnik",
+        note: "Нижегородский парфюмерный дом с авторскими унисекс-ароматами. Короткая остановка для знакомства с локальным брендом и выбора необычного сувенира.",
+        tags: ["парфюмерия", "локальный бренд", "сувениры", "магазин", "в помещении"],
+        mapKeys: ["kustarnik"],
+        venueKey: "kustarnik",
+        links: [{ title: "Открыть официальный сайт", url: places.kustarnik.site }],
+      },
+      {
+        time: "13:00-15:00",
         title: "🏰📷 Стены Кремля",
         note: "Круговой маршрут по кремлевской стене: начинаем и завершаем прогулку примерно в одной части Кремля.",
         tags: ["фото", "бронь"],
@@ -2537,7 +2701,7 @@ let days = [
         },
       },
       {
-        time: "14:30-15:05",
+        time: "15:00-15:35",
         title: "🏛️ Арсенал + 📚 Вазари",
         note: "Если останется свободное время, стоит зайти в Арсенал — центр современного искусства в историческом здании Кремля. Внутри находится книжный магазин «Вазари»: книги по искусству, архитектуре, истории Нижнего Новгорода и необычные сувениры.",
         tags: ["пешком", "музей", "сувениры", "запас"],
@@ -2555,26 +2719,14 @@ let days = [
         },
       },
       {
-        time: "15:05-15:55",
-        title: "🚶📷 Большая Покровская + 🍰 Мишка",
-        note: "После Кремля остаемся в верхнем центре: Мишка находится на Большой Покровской, поэтому не спускаемся на Рождественскую и не делаем лишний подъем обратно.",
-        tags: ["пешком", "фото", "еда"],
-        mapKeys: ["bolshayaPokrovskaya", "mishka"],
-        venueKey: "mishka",
-        rain: {
-          title: "🍰 Мишка и короткая прогулка по Большой Покровской",
-          note: "Если идет сильный дождь, оставляем Мишку как короткий перекус и сокращаем прогулку по улице.",
-        },
-      },
-      {
-        time: "15:55-16:35",
+        time: "15:35-16:15",
         title: "🚶 Переход к Рождественской улице",
-        note: "Самостоятельно спускаемся в нижнюю часть центра к вечерним точкам на Рождественской, вновь пройдя через Кремль.",
+        note: "Самостоятельно спускаемся в нижнюю часть исторического центра к вечерним точкам на Рождественской.",
         tags: ["пешком", "логистика"],
         mapKeys: ["rozhdestvenskaya"],
       },
       {
-        time: "16:35-18:00",
+        time: "16:15-18:00",
         title: "🚶 Рождественская / запас времени",
         note: "Спокойная прогулка по нижней части центра перед ужином, без новых обязательных точек.",
         tags: ["пешком", "запас"],
@@ -2637,10 +2789,10 @@ let days = [
     accent: "#7c3aed",
     icon: "🟪",
     date: "14 августа, пятница",
-    title: "Покровская, промыслы, кварталы, метромост и Стрелка",
-    summary: "Большая Покровская, Kustarnik, промыслы, кварталы, Пакгаузы, Самоварная и Медные Трубы.",
+    title: "Фуникулер, Покровка, кварталы и Стрелка",
+    summary: "Бистро 9/18, исторический фуникулер, Кремль, Покровка, Мишка, кварталы, Стрелка, Самоварная и Медные Трубы.",
     weatherNotes: {
-      sunny: "Базовый план: локальные магазины, Большая Покровская, Kustarnik, Художественные промыслы, Заповедные кварталы, метромост, Пакгаузы, Самоварная, закат и Медные Трубы.",
+      sunny: "Базовый план: Бистро 9/18, фуникулер от Нижней станции, проход через Кремль, Большая Покровская, Мишка, локальные магазины, кварталы, Стрелка, Самоварная и Медные Трубы.",
       rain: "Дождевой вариант: Художественные промыслы оставляем без изменений, сокращаем прогулку по Заповедным кварталам и открытые переходы на Стрелке, больше времени оставляем закрытым точкам.",
     },
     events: [
@@ -2666,20 +2818,39 @@ let days = [
         venueKey: "bistro918",
       },
       {
-        time: "12:30-13:20",
-        title: "☕ Кофе 1896",
-        note: "Кофейная остановка в здании Русского музея фотографии. Кофе, выпечка и спокойная пауза перед дальнейшим маршрутом.",
-        tags: ["кофе", "запас"],
-        mapKeys: ["kofe1896"],
-        venueKey: "kofe1896",
+        time: "12:30-12:50",
+        title: "🚶 Переход к Нижней станции фуникулера",
+        note: "После Бистро 9/18 идем к Нижней станции и оставляем небольшой запас на покупку или проверку билетов.",
+        tags: ["пешком", "логистика", "запас"],
+        mapUrl: "https://yandex.ru/maps/-/CTcqEZYC",
+        mapTitle: "Нижняя станция фуникулера",
       },
       {
-        time: "13:20-13:55",
-        title: "🚶📷 Большая Покровская + Государственный банк",
-        note: "Городские скульптуры и архитектура. Тематическую точку в стиле «Очень странных дел» оставляем короткой остановкой по пути.",
-        tags: ["пешком", "фото", "напитки"],
-        mapKeys: ["bolshayaPokrovskaya", "gosbank", "strangerCoffee"],
-        venueKey: "strangerCoffee",
+        time: "12:50-13:10",
+        title: "🚞 Нижегородский кремлевский фуникулер",
+        note: "Поездка на восстановленном Кремлевском фуникулере от Нижней станции к Кремлю. Исторический подъемник впервые заработал здесь в 1896 году и был восстановлен почти через сто лет после закрытия.",
+        tags: ["достопримечательность", "история", "транспорт", "билеты"],
+        mapUrl: "https://yandex.ru/maps/-/CTcqEZYC",
+        mapTitle: "Кремлевский фуникулер",
+        detailKey: "funicular",
+        links: [
+          { title: "Официальный сайт и билеты", url: "https://funicular.dcl.ru" },
+        ],
+      },
+      {
+        time: "13:10-13:40",
+        title: "🚶🏰 Прогулка через Нижегородский кремль к Большой Покровской",
+        note: "После подъема на Верхнюю станцию проходим через территорию Кремля и выходим в сторону Большой Покровской. Это транспортно-прогулочный участок маршрута, а не повтор полного маршрута по кремлевской стене.",
+        tags: ["пешком", "история", "логистика"],
+        mapKeys: ["kremlinMuseum", "bolshayaPokrovskaya"],
+      },
+      {
+        time: "13:40-14:30",
+        title: "🚶📷 Большая Покровская + 🍰 Мишка",
+        note: "Прогулка по Большой Покровской с короткой остановкой в Мишке. По пути смотрим городские скульптуры, Государственный банк и тематическую точку «Очень странные дела».",
+        tags: ["пешком", "фото", "еда"],
+        mapKeys: ["bolshayaPokrovskaya", "gosbank", "mishka", "strangerCoffee"],
+        venueKey: "mishka",
         options: [
           {
             title: "Surf Coffee × Cinema",
@@ -2690,20 +2861,20 @@ let days = [
           },
         ],
         rain: {
-          note: "Сокращаем уличные остановки, оставляем главные фасады и при необходимости пропускаем тематическую кофейную точку без внутреннего зала.",
+          title: "🍰 Мишка и короткая прогулка по Большой Покровской",
+          note: "Если идет сильный дождь, оставляем Мишку, главные фасады и короткие остановки по пути, сокращая прогулку по улице.",
         },
       },
       {
-        time: "13:55-14:15",
-        title: "🧴 Kustarnik",
-        note: "Нижегородский парфюмерный дом с авторскими унисекс-ароматами. Короткая остановка по маршруту для знакомства с локальным брендом и выбора необычного сувенира.",
-        tags: ["парфюмерия", "локальный бренд", "сувениры", "магазин", "в помещении"],
-        mapKeys: ["kustarnik"],
-        venueKey: "kustarnik",
-        links: [{ title: "Открыть официальный сайт", url: places.kustarnik.site }],
+        time: "14:30-14:50",
+        title: "☕ Кофе 1896",
+        note: "Кофейная остановка в здании Русского музея фотографии. Кофе, выпечка и спокойная пауза перед дальнейшим маршрутом.",
+        tags: ["кофе", "запас", "в помещении"],
+        mapKeys: ["kofe1896"],
+        venueKey: "kofe1896",
       },
       {
-        time: "14:15-14:35",
+        time: "14:50-15:15",
         title: "🎨🛍 Художественные промыслы",
         note: "Магазин и выставочное пространство изделий народных художественных промыслов на Большой Покровской. Можно посмотреть хохлому, городецкую роспись, семеновскую матрешку, изделия из дерева, текстиля и другие нижегородские сувениры.",
         tags: ["сувениры", "пешком", "в помещении", "запас"],
@@ -2713,7 +2884,7 @@ let days = [
         },
       },
       {
-        time: "14:35-15:10",
+        time: "15:15-15:50",
         title: "🏘📷 Заповедные кварталы",
         note: "Прогулка по кварталу деревянной застройки в районе улиц Короленко, Славянской, Студеной и Новой. Заходим со стороны центра, осматриваем исторические дома и постепенно выходим к метро „Горьковская“.",
         tags: ["пешком", "фото", "музей", "на улице", "архитектура"],
@@ -2724,26 +2895,19 @@ let days = [
         },
       },
       {
-        time: "15:10-15:20",
+        time: "15:50-16:00",
         title: "🚶 Переход к метро «Горьковская»",
         note: "От Заповедных кварталов идем к станции „Горьковская“.",
         tags: ["пешком", "логистика"],
       },
       {
-        time: "15:20-15:45",
+        time: "16:00-16:30",
         title: "🚇 Метро через метромост",
         note: "Едем Горьковская → Московская → Стрелка, чтобы проехать через Оку.",
         tags: ["метро", "логистика"],
       },
       {
-        time: "15:45-16:00",
-        title: "🟡 Запас / выход к Стрелке",
-        note: "Выходим из метро и оставляем короткий запас на переход к дневной программе у Стрелки.",
-        tags: ["пешком", "логистика", "запас"],
-        mapKeys: ["strelka"],
-      },
-      {
-        time: "16:00-18:00",
+        time: "16:30-18:00",
         title: "📷 Ярмарка, Стрелка, собор Александра Невского, Пакгаузы",
         note: "Ключевые видовые точки поездки и выставка «Великая Всероссийская» в Пакгаузах: про Всероссийскую промышленную и художественную выставку 1896 года, одно из главных событий в истории города. Билет — 500 ₽; дни работы проверить ближе к поездке, время работы выставки — 11:00-19:00.",
         tags: ["фото", "пешком"],
@@ -2794,10 +2958,11 @@ let days = [
       },
       {
         time: "После 21:40",
-        title: "🚕 Возвращение в отель / отдых",
-        note: "После второй брони возвращаемся в Фонду и завершаем вечер.",
-        tags: ["такси", "логистика"],
-        mapKeys: ["fonda"],
+        title: "🍔🍸 Настаятель — по желанию",
+        note: "Необязательное продолжение вечера после Медных Труб. Идем только при наличии сил и желания; в противном случае возвращаемся в отель.",
+        tags: ["бар", "ночь", "запас"],
+        mapKeys: ["nastayatel"],
+        venueKey: "nastayatel",
       },
     ],
   },
@@ -2808,7 +2973,7 @@ let days = [
     icon: "🟥",
     date: "15 августа, суббота",
     title: "Приволжская фиеста и День города",
-    summary: "День города, регата, Pinci, polnalyubvi, вечерний полет Фиесты, концерт и поздний ужин в «Гусе в яблоках».",
+    summary: "День города: парад парусов и SUP-парад, Русский музей фотографии, Цейлон, polnalyubvi, Фиеста, концерт и поздний ужин.",
     notice: "15 августа — День города Нижнего Новгорода. Из-за неблагоприятной погоды первый полет Приволжской фиесты запланирован только вечером; точное время и площадку подтверждает организатор. 16 и 17 августа заявлены полеты утром и перед закатом, но отдельными событиями маршрута они не добавлены.",
     weatherToggle: false,
     weatherNotes: {
@@ -2816,35 +2981,57 @@ let days = [
     },
     events: [
       {
-        time: "10:00-11:00",
-        title: "Поздний подъем и завтрак",
-        note: "Спокойно начинаем День города: завтракаем в отеле или рядом, без нового обязательного заведения.",
-        tags: ["еда", "запас"],
-      },
-      {
-        time: "Время уточняется",
-        title: "⛵ Волжская регата — 2026",
-        note: "Соревнования профессионалов и любителей парусного спорта в акватории Волги и Оки. Посещение бесплатное. Точное время и удобную точку просмотра сверяем с программой Дня города.",
-        tags: ["регата", "фото", "запас"],
-        links: [{ title: "Открыть страницу регаты", url: volgaRegattaUrl }],
-      },
-      {
-        time: "12:00-15:30",
-        title: "🍽 Обед в Pinci",
-        note: "Pinci — стол забронирован на 15 августа. Время обеда сохраняем гибким относительно программы Дня города и регаты.",
-        tags: ["еда", "запас", "в помещении"],
-        mapKeys: ["pinci"],
-        venueKey: "pinci",
-        options: [
-          {
-            title: "Запасной вариант: Цейлон",
-            note: "Азиатское бистро с блюдами, вдохновленными кухнями Шри-Ланки, Индии, Таиланда и Малайзии. Используем только как запасной вариант вместо Pinci.",
-            tags: ["еда", "запас", "в помещении"],
-            mapKeys: ["ceylon"],
-            venueKey: "ceylon",
-            links: [{ title: "Открыть официальный сайт «Цейлона»", url: places.ceylon.site }],
-          },
+        time: "10:00-12:00",
+        title: "⛵🏄 Парад парусов и SUP-парад · смотрим из Темп воздух",
+        note: "Утренний блок Дня города на Волге и Оке. Парад парусов проходит по Волге с 10:00 до 11:30, а с 10:30 до 12:00 одновременно проходит SUP-парад. Парад парусов смотрим из Темп воздух с видом на Волгу.",
+        pdfDetails: [
+          "Парад парусов: 10:00–11:30 · Борский мост → Стрелка → Речной вокзал → Чкаловская лестница → район канатной дороги.",
+          "SUP-парад: 10:30–12:00 · около 200 участников · метромост → Гребневский канал → Нижне-Волжская набережная.",
         ],
+        tags: ["День города", "парад", "регата", "фото", "кофе", "на улице"],
+        mapKeys: ["tempVozdukh"],
+        venueKey: "tempVozdukh",
+        detailKey: "cityParades",
+      },
+      {
+        time: "12:00-12:30",
+        title: "🚕/🚶 Переход к Русскому музею фотографии",
+        note: "Переходим или переезжаем от Темп воздух к музею на Пискунова, сохраняя запас на городские ограничения Дня города.",
+        tags: ["пешком", "такси", "логистика", "запас"],
+        mapUrl: "https://yandex.ru/maps/-/CTcqUG5i",
+        mapTitle: "Русский музей фотографии",
+      },
+      {
+        time: "12:30-13:45",
+        title: "📷 Русский музей фотографии",
+        note: "Посещение Русского музея фотографии — музея, посвященного истории отечественной фотографии и нижегородской фотографической традиции.",
+        tags: ["музей", "фотография", "история", "в помещении"],
+        mapUrl: "https://yandex.ru/maps/-/CTcqUG5i",
+        mapTitle: "Русский музей фотографии",
+        detailKey: "russianPhotoMuseum",
+      },
+      {
+        time: "13:45-15:00",
+        title: "🟡 Переход / свободное время / дорога в Цейлон",
+        note: "Буфер после насыщенной утренней программы: дорога, короткий отдых и запас перед обедом. Новых обязательных точек не добавляем.",
+        tags: ["логистика", "запас"],
+        mapKeys: ["ceylon"],
+      },
+      {
+        time: "15:00-16:15",
+        title: "🍽 Цейлон",
+        note: "Основной обеденный пункт дня — азиатское бистро с блюдами, вдохновленными кухнями Шри-Ланки, Индии, Таиланда и Малайзии.",
+        tags: ["еда", "в помещении"],
+        mapKeys: ["ceylon"],
+        venueKey: "ceylon",
+        links: [{ title: "Открыть официальный сайт «Цейлона»", url: places.ceylon.site }],
+      },
+      {
+        time: "16:15-17:00",
+        title: "🚶 Переход к площади Минина и Пожарского / запас",
+        note: "Идем к площадке «Музыки балконов» и оставляем запас на ограничения движения и поток людей в День города.",
+        tags: ["пешком", "логистика", "запас"],
+        mapKeys: ["mininSquare"],
       },
       {
         time: "17:00",
@@ -2860,8 +3047,9 @@ let days = [
       {
         time: "Вечером · время уточняется",
         title: "🎈📷 Первый полет Приволжской фиесты",
-        note: "Из-за неблагоприятной погоды первый полет перенесен на вечер 15 августа. Точное время, площадка и возможность старта зависят от погоды и подтверждения организатора; этот блок может пересекаться с концертной программой Дня города.",
+        note: "Первый полет обновленной программы Фиесты запланирован на вечер 15 августа. Точное время и возможность запуска зависят от погодных условий и решения организаторов. Вечерний порядок зависит от фактического времени запуска и может пересекаться с polnalyubvi или концертом.",
         tags: ["фиеста", "фото", "запас", "логистика"],
+        detailKey: "volgaFiesta",
       },
       {
         time: "20:30-21:30",
@@ -3891,55 +4079,164 @@ function getDayEvents(day) {
 function eventDetailThumbHtml(detailKey) {
   const detail = eventDetails[detailKey];
   if (!detail) return "";
-  return `<button class="event-detail-thumb" type="button" data-event-detail="${escapeHtml(detailKey)}" aria-label="Открыть подробности события ${escapeHtml(detail.title)}">
+  const typeLabel = detail.type === "place" ? "места" : detail.type === "venue" ? "заведения" : "события";
+  return `<button class="event-detail-thumb" type="button" data-event-detail="${escapeHtml(detailKey)}" aria-label="Открыть подробности ${escapeHtml(typeLabel)} ${escapeHtml(detail.title)}">
     <img src="${escapeHtml(detail.cover320)}" srcset="${escapeHtml(detail.cover320)} 320w, ${escapeHtml(detail.cover640)} 640w" sizes="(max-width: 430px) 100vw, 220px" alt="${escapeHtml(`Афиша: ${detail.title}`)}" loading="lazy" decoding="async" />
-    <span>Подробнее о событии</span>
+    <span>Открыть подробности</span>
   </button>`;
+}
+
+function eventDetailSearchText(detailKey) {
+  const detail = eventDetails[detailKey];
+  if (!detail) return "";
+  return [
+    detail.title,
+    detail.category,
+    detail.dateTime,
+    detail.shortDescription,
+    ...(detail.description || []),
+    ...(detail.tags || []),
+    ...(detail.metadata || []).flatMap((item) => [item.label, item.value]),
+    ...(detail.sections || []).flatMap((section) => [section.title, section.meta, section.text]),
+  ].filter(Boolean).join(" ");
 }
 
 function setupEventDetails() {
   const modal = byId("eventDetailModal");
   const card = modal?.querySelector(".event-detail-card");
   const body = byId("eventDetailBody");
+  const gallery = byId("eventDetailGallery");
   const image = byId("eventDetailImage");
-  if (!modal || !card || !body || !image) return;
+  const thumbs = byId("eventDetailThumbs");
+  const counter = byId("eventDetailCounter");
+  const previous = byId("eventDetailPrev");
+  const next = byId("eventDetailNext");
+  if (!modal || !card || !body || !gallery || !image || !thumbs || !counter || !previous || !next) return;
   let opener = null;
+  let currentDetail = null;
+  let galleryIndex = 0;
 
-  const close = () => {
+  const close = ({ restoreFocus = true } = {}) => {
     if (modal.hidden) return;
     modal.hidden = true;
     image.removeAttribute("src");
+    image.removeAttribute("alt");
+    thumbs.innerHTML = "";
+    currentDetail = null;
     document.body.classList.remove("event-detail-open");
-    opener?.focus();
+    if (restoreFocus) opener?.focus();
   };
+
+  const setGalleryIndex = (index) => {
+    const images = currentDetail?.gallery || [];
+    if (!images.length) return;
+    galleryIndex = (index + images.length) % images.length;
+    const selected = images[galleryIndex];
+    image.src = selected.src;
+    image.alt = selected.alt || currentDetail.title;
+    counter.textContent = `${galleryIndex + 1} / ${images.length}${selected.caption ? ` · ${selected.caption}` : ""}`;
+    thumbs.querySelectorAll("[data-event-gallery-index]").forEach((button, buttonIndex) => {
+      button.classList.toggle("is-active", buttonIndex === galleryIndex);
+      button.setAttribute("aria-pressed", String(buttonIndex === galleryIndex));
+    });
+  };
+
+  const metadataHtml = (detail) => (detail.metadata || [])
+    .map((item) => `<p class="event-detail-card__meta"><strong>${escapeHtml(item.label)}:</strong> ${escapeHtml(item.value)}</p>`)
+    .join("");
+
+  const sectionsHtml = (detail) => (detail.sections || [])
+    .map((section) => `<section class="event-detail-card__section">
+      <h3>${escapeHtml(section.title)}</h3>
+      ${section.meta ? `<p class="event-detail-card__section-meta">${escapeHtml(section.meta)}</p>` : ""}
+      ${section.text ? `<p>${escapeHtml(section.text)}</p>` : ""}
+      ${section.venueKey ? `<button class="event-detail-card__venue" type="button" data-event-venue-key="${escapeHtml(section.venueKey)}" data-venue-key="${escapeHtml(section.venueKey)}">Открыть карточку ${escapeHtml(section.title)}</button>` : ""}
+    </section>`)
+    .join("");
 
   const open = (key, button) => {
     const detail = eventDetails[key];
     if (!detail) return;
     opener = button;
-    image.alt = `Афиша: ${detail.title}`;
-    image.src = detail.full;
+    currentDetail = detail;
+    const images = detail.gallery || [];
+    gallery.hidden = !images.length;
+    previous.hidden = images.length < 2;
+    next.hidden = images.length < 2;
+    thumbs.hidden = images.length < 2;
+    thumbs.innerHTML = images.map((item, index) => `<button class="event-detail-gallery__thumb" type="button" data-event-gallery-index="${index}" aria-label="Показать фотографию ${index + 1}" aria-pressed="false">
+      <img src="${escapeHtml(item.thumb || item.src)}" alt="" loading="lazy" decoding="async" />
+    </button>`).join("");
+    const typeLabel = detail.type === "place" ? "Место" : detail.type === "venue" ? "Заведение" : "Событие";
     body.innerHTML = `
-      <p class="event-detail-card__eyebrow">${escapeHtml(detail.eyebrow)}</p>
+      <p class="event-detail-card__eyebrow">${escapeHtml(typeLabel)} · ${escapeHtml(detail.category || "Подробности")}</p>
       <h2 id="eventDetailTitle">${escapeHtml(detail.title)}</h2>
-      <p class="event-detail-card__meta"><strong>Артист:</strong> ${escapeHtml(detail.artist)}</p>
-      <p class="event-detail-card__meta"><strong>Место:</strong> ${escapeHtml(detail.location)}</p>
-      <p class="event-detail-card__copy">${escapeHtml(detail.description)}</p>
-      <p class="event-detail-card__copy">${escapeHtml(detail.note)}</p>
-      <div class="event-links">${detail.links.map((link) => `<a class="event-link" href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.title)}</a>`).join("")}</div>`;
+      <p class="event-detail-card__meta"><strong>Дата и время:</strong> ${escapeHtml(detail.dateTime || "Уточняется")}</p>
+      ${metadataHtml(detail)}
+      ${detail.shortDescription ? `<p class="event-detail-card__copy"><strong>${escapeHtml(detail.shortDescription)}</strong></p>` : ""}
+      ${(detail.description || []).map((paragraph) => `<p class="event-detail-card__copy">${escapeHtml(paragraph)}</p>`).join("")}
+      ${sectionsHtml(detail)}
+      ${(detail.tags || []).length ? `<div class="event-detail-card__tags">${detail.tags.map((tag) => `<span class="tag">#${escapeHtml(tag)}</span>`).join("")}</div>` : ""}
+      ${(detail.links || []).length ? `<div class="event-links">${detail.links.map((link) => `<a class="event-link" href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.title)}</a>`).join("")}</div>` : ""}`;
     modal.hidden = false;
     document.body.classList.add("event-detail-open");
+    if (images.length) setGalleryIndex(0);
     card.focus();
   };
 
   document.addEventListener("click", (event) => {
+    const galleryButton = event.target.closest("[data-event-gallery-index]");
+    if (galleryButton && !modal.hidden) {
+      setGalleryIndex(Number(galleryButton.dataset.eventGalleryIndex));
+      return;
+    }
+    if (event.target.closest("[data-event-venue-key]") && !modal.hidden) {
+      close({ restoreFocus: false });
+      return;
+    }
     const button = event.target.closest("[data-event-detail]");
     if (button) open(button.dataset.eventDetail, button);
   });
   modal.querySelectorAll("[data-event-detail-close]").forEach((control) => control.addEventListener("click", close));
+  previous.addEventListener("click", () => setGalleryIndex(galleryIndex - 1));
+  next.addEventListener("click", () => setGalleryIndex(galleryIndex + 1));
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !modal.hidden) close();
+    if (modal.hidden) return;
+    if (event.key === "Escape") {
+      event.preventDefault();
+      close();
+    } else if (event.key === "ArrowLeft") {
+      setGalleryIndex(galleryIndex - 1);
+    } else if (event.key === "ArrowRight") {
+      setGalleryIndex(galleryIndex + 1);
+    } else if (event.key === "Tab") {
+      const focusable = [...card.querySelectorAll('a[href], button:not([disabled]):not([hidden]), [tabindex]:not([tabindex="-1"])')]
+        .filter((node) => node.offsetParent !== null);
+      if (!focusable.length) {
+        event.preventDefault();
+        card.focus();
+        return;
+      }
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && (document.activeElement === first || document.activeElement === card)) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
   });
+  document.addEventListener("focusin", (event) => {
+    if (modal.hidden && modal.contains(event.target)) opener?.focus();
+  });
+  const venueModal = byId("venueModal");
+  if (venueModal && "MutationObserver" in window) {
+    new MutationObserver(() => {
+      if (venueModal.hidden && modal.hidden) opener?.focus();
+    }).observe(venueModal, { attributes: true, attributeFilter: ["hidden"] });
+  }
 }
 
 function hasWeatherToggle(day) {
@@ -4164,6 +4461,10 @@ function eventPdfBlock(event, mode) {
   if (view.note) {
     stack.push({ text: wrapPdfText(view.note), color: "#4b5563", margin: [0, 0, 0, 4] });
   }
+
+  (view.pdfDetails || []).forEach((line) => {
+    stack.push({ text: wrapPdfText(line), style: "smallAccent" });
+  });
 
   placesForEvent(view).forEach((place) => {
     if (place.address) stack.push({ text: wrapPdfText(`Адрес: ${place.title} — ${place.address}`), style: "small" });
@@ -4777,9 +5078,10 @@ function renderDays() {
       const status = hasStatus(view.status) ? normalizeStatus(view.status) : "";
       const tags = view.tags || [];
       const optionsSearch = eventOptionsSearchText(view);
+      const detailSearch = eventDetailSearchText(view.detailKey);
       const card = el("article", `event-card${isClosed(view.status) ? " is-closed" : ""}`);
       card.dataset.search =
-        `${day.date} ${day.title} ${view.time} ${view.title} ${view.note} ${tags.join(" ")} ${status} ${links} ${regularLinks} ${optionsSearch}`.toLowerCase();
+        `${day.date} ${day.title} ${view.time} ${view.title} ${view.note} ${tags.join(" ")} ${status} ${links} ${regularLinks} ${optionsSearch} ${detailSearch}`.toLowerCase();
       card.dataset.tags = tags.join(",");
       card.style.setProperty("--accent", day.accent);
       card.innerHTML = `
