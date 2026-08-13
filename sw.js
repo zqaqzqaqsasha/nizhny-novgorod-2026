@@ -1,11 +1,11 @@
-const CACHE_NAME = "nn-route-final-updates-v5";
+const CACHE_NAME = "nn-route-final-updates-v6";
 const VENUE_IMAGE_CACHE = "nn-route-venue-images-v1";
 const VENUE_IMAGE_CACHE_LIMIT = 100;
 const APP_SHELL = [
   "./",
   "./index.html",
   "./venue-cards.css?v=5",
-  "./venue-cards-data.js?v=5",
+  "./venue-cards-data.js?v=6",
   "./venue-cards.js?v=5",
   "./data/weather.json",
 ];
