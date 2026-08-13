@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-13T08:46:18.685Z",
+  "generatedAt": "2026-08-13T10:31:01.469Z",
   "location": {
     "title": "Площадь Минина и Пожарского",
     "lat": 56.327436,
@@ -11,18 +11,18 @@
     "2026-08-13": {
       "morning": {
         "temperature": 13,
-        "condition": "LIGHT_RAIN",
-        "conditionText": "Небольшой дождь",
-        "icon": "ovc_-ra",
-        "precipitationProbability": 90,
-        "precipitationType": "RAIN",
-        "hasRain": true
+        "condition": "OVERCAST",
+        "conditionText": "Пасмурно",
+        "icon": "ovc",
+        "precipitationProbability": 0,
+        "precipitationType": "NO_TYPE",
+        "hasRain": false
       },
       "day": {
         "temperature": 15,
-        "condition": "LIGHT_RAIN",
-        "conditionText": "Небольшой дождь",
-        "icon": "ovc_-ra",
+        "condition": "RAIN",
+        "conditionText": "Дождь",
+        "icon": "bkn_ra_d",
         "precipitationProbability": 90,
         "precipitationType": "RAIN",
         "hasRain": true
@@ -133,7 +133,7 @@
         "hasRain": false
       },
       "day": {
-        "temperature": 16,
+        "temperature": 15,
         "condition": "OVERCAST",
         "conditionText": "Пасмурно",
         "icon": "ovc",
@@ -155,7 +155,7 @@
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "ovc_-ra",
-        "precipitationProbability": 50,
+        "precipitationProbability": 60,
         "precipitationType": "RAIN",
         "hasRain": true
       }
@@ -171,7 +171,7 @@
         "hasRain": true
       },
       "day": {
-        "temperature": 18,
+        "temperature": 19,
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "ovc_-ra",
@@ -180,7 +180,7 @@
         "hasRain": true
       },
       "evening": {
-        "temperature": 17,
+        "temperature": 18,
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "ovc_-ra",
@@ -189,7 +189,7 @@
         "hasRain": true
       },
       "night": {
-        "temperature": 13,
+        "temperature": 12,
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "ovc_-ra",
