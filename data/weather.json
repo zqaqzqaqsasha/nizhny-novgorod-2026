@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-14T03:02:03.889Z",
+  "generatedAt": "2026-08-14T05:08:07.404Z",
   "location": {
     "title": "Площадь Минина и Пожарского",
     "lat": 56.327436,
@@ -70,7 +70,7 @@
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "bkn_-ra_n",
-        "precipitationProbability": 30,
+        "precipitationProbability": 50,
         "precipitationType": "RAIN",
         "hasRain": true
       },
@@ -99,7 +99,7 @@
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "bkn_-ra_d",
-        "precipitationProbability": 80,
+        "precipitationProbability": 70,
         "precipitationType": "RAIN",
         "hasRain": true
       },
@@ -117,7 +117,7 @@
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "ovc_-ra",
-        "precipitationProbability": 30,
+        "precipitationProbability": 40,
         "precipitationType": "RAIN",
         "hasRain": true
       }
@@ -128,7 +128,7 @@
         "condition": "RAIN",
         "conditionText": "Дождь",
         "icon": "ovc_ra",
-        "precipitationProbability": 30,
+        "precipitationProbability": 70,
         "precipitationType": "RAIN",
         "hasRain": true
       },
@@ -137,7 +137,7 @@
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "bkn_-ra_d",
-        "precipitationProbability": 50,
+        "precipitationProbability": 60,
         "precipitationType": "RAIN",
         "hasRain": true
       },
@@ -152,12 +152,12 @@
       },
       "night": {
         "temperature": 12,
-        "condition": "OVERCAST",
-        "conditionText": "Пасмурно",
-        "icon": "ovc",
-        "precipitationProbability": 0,
-        "precipitationType": "NO_TYPE",
-        "hasRain": false
+        "condition": "LIGHT_RAIN",
+        "conditionText": "Небольшой дождь",
+        "icon": "ovc_-ra",
+        "precipitationProbability": 60,
+        "precipitationType": "RAIN",
+        "hasRain": true
       }
     }
   }
