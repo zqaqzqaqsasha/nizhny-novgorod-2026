@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-15T11:37:37.428Z",
+  "generatedAt": "2026-08-15T13:02:15.243Z",
   "location": {
     "title": "Площадь Минина и Пожарского",
     "lat": 56.327436,
@@ -19,7 +19,7 @@
         "hasRain": true
       },
       "day": {
-        "temperature": 11,
+        "temperature": 10,
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "ovc_-ra",
@@ -29,9 +29,9 @@
       },
       "evening": {
         "temperature": 11,
-        "condition": "CLOUDY",
-        "conditionText": "Облачно",
-        "icon": "bkn_n",
+        "condition": "OVERCAST",
+        "conditionText": "Пасмурно",
+        "icon": "ovc",
         "precipitationProbability": 0,
         "precipitationType": "NO_TYPE",
         "hasRain": false
@@ -49,27 +49,27 @@
     "2026-08-16": {
       "morning": {
         "temperature": 12,
-        "condition": "CLOUDY",
-        "conditionText": "Облачно",
-        "icon": "bkn_d",
+        "condition": "OVERCAST",
+        "conditionText": "Пасмурно",
+        "icon": "ovc",
         "precipitationProbability": 0,
         "precipitationType": "NO_TYPE",
         "hasRain": false
       },
       "day": {
         "temperature": 19,
-        "condition": "CLOUDY",
-        "conditionText": "Облачно",
-        "icon": "bkn_d",
+        "condition": "OVERCAST",
+        "conditionText": "Пасмурно",
+        "icon": "ovc",
         "precipitationProbability": 0,
         "precipitationType": "NO_TYPE",
         "hasRain": false
       },
       "evening": {
         "temperature": 18,
-        "condition": "CLOUDY",
-        "conditionText": "Облачно",
-        "icon": "bkn_n",
+        "condition": "OVERCAST",
+        "conditionText": "Пасмурно",
+        "icon": "ovc",
         "precipitationProbability": 0,
         "precipitationType": "NO_TYPE",
         "hasRain": false
@@ -108,7 +108,7 @@
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "bkn_-ra_n",
-        "precipitationProbability": 40,
+        "precipitationProbability": 50,
         "precipitationType": "RAIN",
         "hasRain": true
       },
