@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T13:08:42.605Z",
+  "generatedAt": "2026-08-16T13:47:14.881Z",
   "location": {
     "title": "Площадь Минина и Пожарского",
     "lat": 56.327436,
@@ -19,7 +19,7 @@
         "hasRain": true
       },
       "day": {
-        "temperature": 19,
+        "temperature": 20,
         "condition": "CLOUDY",
         "conditionText": "Облачно",
         "icon": "bkn_d",
@@ -57,7 +57,7 @@
         "hasRain": true
       },
       "day": {
-        "temperature": 20,
+        "temperature": 19,
         "condition": "LIGHT_RAIN",
         "conditionText": "Небольшой дождь",
         "icon": "bkn_-ra_d",
