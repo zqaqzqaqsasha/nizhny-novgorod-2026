@@ -1,4 +1,4 @@
-const CACHE_NAME = "nn-route-final-updates-v6";
+const CACHE_NAME = "nn-route-final-updates-v7";
 const VENUE_IMAGE_CACHE = "nn-route-venue-images-v1";
 const VENUE_IMAGE_CACHE_LIMIT = 100;
 const APP_SHELL = [
@@ -8,6 +8,8 @@ const APP_SHELL = [
   "./venue-cards-data.js?v=6",
   "./venue-cards.js?v=5",
   "./data/weather.json",
+  "./trip-nav.css?v=1",
+  "./trip-nav.js?v=1",
 ];
 
 self.addEventListener("install", (event) => {
@@ -20,7 +22,7 @@ self.addEventListener("activate", (event) => {
     caches.keys()
       .then((keys) => Promise.all(
         keys
-          .filter((key) => ![CACHE_NAME, VENUE_IMAGE_CACHE].includes(key))
+          .filter((key) => key.startsWith("nn-route-") && ![CACHE_NAME, VENUE_IMAGE_CACHE].includes(key))
           .map((key) => caches.delete(key)),
       ))
       .then(() => self.clients.claim()),
